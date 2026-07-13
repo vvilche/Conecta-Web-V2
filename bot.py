@@ -103,6 +103,7 @@ def process_messages():
         except Exception as e:
             print("Error:", e)
             time.sleep(3)
+        time.sleep(2)  # Evitar CPU burn, la API no hace long-poll real
 
 if __name__ == "__main__":
     process_messages()
