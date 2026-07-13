@@ -63,6 +63,17 @@ def form_handler():
 def health():
     return jsonify({"status":"ok"})
 
+@app.route("/whatsapp-notify", methods=["POST"])
+def whatsapp_notify():
+    d = request.get_json(force=True, silent=True) or {}
+    msg = d.get("message", "Nuevo lead desde conecta.cl/v2")
+    try:
+        subprocess.run(["hermes","send-message","--target","whatsapp","--message",msg],
+                      capture_output=True, timeout=10, cwd="/root/.hermes")
+        return jsonify({"ok":True})
+    except:
+        return jsonify({"ok":False}), 500
+
 @app.route("/")
 def index():
     return send_from_directory('.', 'index_light.html')
