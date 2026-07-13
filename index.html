@@ -226,7 +226,9 @@ a{text-decoration:none;color:inherit}
 .form-grp{margin-bottom:18px}
 .form-grp label{display:block;font-size:12px;font-weight:600;color:var(--navy-deep);margin-bottom:5px}
 .form-grp input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);transition:all 0.2s}
-.form-grp input:focus{outline:none;border-color:var(--blue-accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1);background:var(--bg)}
+.form-grp select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);transition:all 0.2s;appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%2394A3B8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.form-grp select:focus{outline:none;border-color:var(--blue-accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1);background-color:var(--bg)}
+.form-grp select:invalid{color:var(--text3)}
 .form-btn{width:100%;background:var(--blue-accent);color:#fff;border:none;border-radius:var(--r-sm);padding:13px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;box-shadow:var(--sh-sm);transition:all 0.25s ease;margin-top:6px}
 .form-btn:hover{background:var(--blue-hover);transform:translateY(-2px);box-shadow:var(--sh-md)}
 .form-disc{font-size:10.5px;color:var(--text3);margin-top:14px;text-align:center;line-height:1.4}
@@ -507,17 +509,18 @@ a{text-decoration:none;color:inherit}
 <section class="cta-final" id="diagnostico">
   <div class="cta-container">
     <div class="cta-content fade-up">
-      <span class="cta-overline">Agendar Reunión Técnica de Evaluación</span>
-      <h2 class="cta-title">Análisis de Data.<br>Gemelo Digital.<br><strong>Sin Impacto Operativo.</strong></h2>
-      <p class="cta-subtitle">Selecciona un equipo crítico de tu planta (molino, turbina, calderas, bomba de alta potencia). Ejecutamos una Prueba de Concepto (POC) implementando nuestra IA SUPcon para validar las optimizaciones de control avanzado en terreno, con un modelo de costos transparente previo a un escalamiento mayor.</p>
-      <div class="cta-stamps"><div class="cta-stamp">Monitoreo Pasivo No-Invasivo</div><div class="cta-stamp">Informes de Salud Semanales</div><div class="cta-stamp">Factibilidad DCS Incluida</div></div>
+      <span class="cta-overline">Agendar Reunión</span>
+      <h2 class="cta-title"><strong>Solicita una reunión</strong> con nuestro equipo técnico</h2>
+      <p class="cta-subtitle">Cuéntanos qué necesitas y te contactaremos para coordinar una evaluación sin compromiso.</p>
+      <div class="cta-stamps"><div class="cta-stamp">Respuesta en 24h</div><div class="cta-stamp">Sin compromiso</div><div class="cta-stamp">Ingeniería chilena</div></div>
     </div>
     <div class="cta-form fade-up">
-      <h3>Agendar Reunión Técnica</h3>
-      <form action="http://76.13.239.113:8091/form" method="POST" id="pilot-form" onsubmit="return handleForm(event)">
-        <div class="form-grp"><label>Nombre y Apellido</label><input type="text" placeholder="Ej. Juan Pérez" required></div>
-        <div class="form-grp"><label>Email Corporativo</label><input type="email" placeholder="jperez@empresa.cl" required></div>
-        <div class="form-grp"><label>Equipo Crítico a Monitorear</label><input type="text" placeholder="Ej. Caldera Recuperadora N°3" required></div>
+      <h3>Agendar Reunión</h3>
+      <form action="http://76.13.239.113:8091/form" method="POST" id="pilot-form">
+        <div class="form-grp"><label>Nombre y Apellido</label><input type="text" name="name" placeholder="Ej. Juan Pérez" required></div>
+        <div class="form-grp"><label>Celular</label><input type="tel" name="phone" placeholder="+56 9 XXXX XXXX" required></div>
+        <div class="form-grp"><label>Email Corporativo</label><input type="email" name="email" placeholder="jperez@empresa.cl" required></div>
+        <div class="form-grp"><label>Tipo de Servicio</label><select name="service" required><option value="" disabled selected>Selecciona el servicio...</option><option value="RTU">RTU / Cambio de Remotas</option><option value="PMU">PMU / Telemedida</option><option value="SCADA">SCADA / EMS</option><option value="DCS">DCS / Control de Procesos</option><option value="Instrumentacion">Instrumentación / Equipos</option><option value="Ciberseguridad">Ciberseguridad OT</option><option value="Protecciones">Protecciones / EDAC</option><option value="BESS">BESS / PMGD</option><option value="Consultoria">Consultoría / Auditoría</option><option value="Otro">Otro</option></select></div>
         <button type="submit" class="form-btn" id="form-btn">Solicitar Reunión</button>
       </form>
       <p class="form-disc">* Ingeniería y soporte local 24/7 en Chile.</p>
@@ -548,7 +551,7 @@ const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-document.getElementById('pilot-form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const name=this.querySelector('input[type=text]').value;const email=this.querySelector('input[type=email]').value;const asset=this.querySelectorAll('input[type=text]')[1].value;b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('http://76.13.239.113:8091/form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,asset:asset})}).then(r=>r.json()).then(d=>{if(d.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754'}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
+document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const f=this;const d={name:f.name.value,phone:f.phone.value,email:f.email.value,service:f.service.value};b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('http://76.13.239.113:8091/form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(r=>{if(r.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754';f.reset()}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
 </script>
 
 <a href="https://wa.me/56997847438" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
