@@ -377,11 +377,11 @@ a{text-decoration:none;color:inherit}
       <p style="color:var(--text2);max-width:600px;margin:14px auto 0">Aplicamos metodologías probadas bajo estándares internacionales para asegurar el cumplimiento normativo de su planta sin interrumpir su producción.</p>
     </div>
     <div class="sol-grid">
-      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">01</span><h3 class="sol-title" style="margin-top:8px">Diagnóstico de Brechas</h3><p class="sol-desc">Realizamos un <b>levantamiento de señales y ciberseguridad sin costo por 4 semanas</b> de forma pasiva y no invasiva para detectar vulnerabilidades normativas o riesgos críticos en su SCADA de respaldo.</p></div>
+      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">01</span><h3 class="sol-title" style="margin-top:8px">Diagnóstico de Brechas</h3><p class="sol-desc">Realizamos un <b>levantamiento de señales y ciberseguridad</b> de forma pasiva y no invasiva para detectar vulnerabilidades normativas o riesgos críticos en su SCADA de respaldo.</p></div>
       <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">02</span><h3 class="sol-title" style="margin-top:8px">Integración de Ingeniería</h3><p class="sol-desc">Modernizamos sus RTUs obsoletas e implementamos los armarios PMUs o DCS (ECS-700 de SUPcon) de manera modular, traduciendo protocolos y validando cada señal sin detener la continuidad operativa de su negocio.</p></div>
       <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">03</span><h3 class="sol-title" style="margin-top:8px">Aprobación y Soporte 24/7</h3><p class="sol-desc">Nos encargamos de las auditorías y la aprobación final ante el Coordinador Eléctrico Nacional. Su planta queda respaldada bajo el <b>Soporte Local 24/7 y la garantía directa de CONECTA</b> en Chile.</p></div>
     </div>
-    <div class="sec-cta-center"><a href="#diagnostico" class="nav-cta" style="font-size:15px;padding:14px 30px">Agendar Piloto de Diagnóstico Sin Costo →</a></div>
+    <div class="sec-cta-center"><a href="#diagnostico" class="nav-cta" style="font-size:15px;padding:14px 30px">Solicitar una Reunión Técnica →</a></div>
   </div>
 </section>
 
@@ -488,12 +488,12 @@ a{text-decoration:none;color:inherit}
       <div class="cta-stamps"><div class="cta-stamp">Monitoreo Pasivo No-Invasivo</div><div class="cta-stamp">Informes de Salud Semanales</div><div class="cta-stamp">Factibilidad DCS Incluida</div></div>
     </div>
     <div class="cta-form fade-up">
-      <h3>Agendar Piloto de Monitoreo</h3>
+      <h3>Agendar Reunión Técnica</h3>
       <form action="#" method="POST" id="pilot-form">
         <div class="form-grp"><label>Nombre y Apellido</label><input type="text" placeholder="Ej. Juan Pérez" required></div>
         <div class="form-grp"><label>Email Corporativo</label><input type="email" placeholder="jperez@empresa.cl" required></div>
         <div class="form-grp"><label>Equipo Crítico a Monitorear</label><input type="text" placeholder="Ej. Caldera Recuperadora N°3" required></div>
-        <button type="submit" class="form-btn" id="form-btn">Iniciar Protocolo de Diagnóstico</button>
+        <button type="submit" class="form-btn" id="form-btn">Solicitar Reunión</button>
       </form>
       <p class="form-disc">* Ingeniería y soporte local 24/7 en Chile.</p>
     </div>
@@ -523,7 +523,7 @@ const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-document.getElementById('pilot-form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';setTimeout(()=>{b.textContent='✓ Solicitud Registrada';b.style.background='#198754';setTimeout(()=>{this.reset();b.disabled=false;b.textContent='Iniciar Protocolo de Diagnóstico';b.style.background='var(--blue-accent)'},4000)},1500)});
+document.getElementById('pilot-form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';setTimeout(()=>{b.textContent='✓ Solicitud Registrada';b.style.background='#198754';setTimeout(()=>{this.reset();b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)},1500)});
 </script>
 </body>
 </html>
