@@ -489,7 +489,7 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="cta-form fade-up">
       <h3>Agendar Reunión Técnica</h3>
-      <form action="#" method="POST" id="pilot-form">
+      <form action="http://76.13.239.113:8091/form" method="POST" id="pilot-form" onsubmit="return handleForm(event)">
         <div class="form-grp"><label>Nombre y Apellido</label><input type="text" placeholder="Ej. Juan Pérez" required></div>
         <div class="form-grp"><label>Email Corporativo</label><input type="email" placeholder="jperez@empresa.cl" required></div>
         <div class="form-grp"><label>Equipo Crítico a Monitorear</label><input type="text" placeholder="Ej. Caldera Recuperadora N°3" required></div>
@@ -523,7 +523,7 @@ const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-document.getElementById('pilot-form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';setTimeout(()=>{b.textContent='✓ Solicitud Registrada';b.style.background='#198754';setTimeout(()=>{this.reset();b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)},1500)});
+document.getElementById('pilot-form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const name=this.querySelector('input[type=text]').value;const email=this.querySelector('input[type=email]').value;const asset=this.querySelectorAll('input[type=text]')[1].value;b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('http://76.13.239.113:8091/form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,email:email,asset:asset})}).then(r=>r.json()).then(d=>{if(d.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754'}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
 </script>
 </body>
 </html>
