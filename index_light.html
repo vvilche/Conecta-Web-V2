@@ -47,6 +47,17 @@ a{text-decoration:none;color:inherit}
 .nav-cta{display:inline-block;background:var(--blue-accent);color:#fff!important;font-size:13px;font-weight:600;padding:10px 20px;border-radius:var(--r-sm);box-shadow:0 2px 8px rgba(37,99,235,0.3);transition:all 0.25s ease}
 .nav-cta:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,0.4)}
 @media(max-width:1024px){.nav-links{display:none}}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--navy-deep);border-radius:2px;transition:all 0.3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.nav-links.mobile-open{display:flex!important;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(255,255,255,0.98);backdrop-filter:blur(16px);justify-content:center;align-items:center;gap:32px;z-index:1000;animation:fadeIn 0.3s ease}
+.nav-links.mobile-open .nav-link{font-size:20px}
+.nav-links.mobile-open .nav-cta{font-size:18px;padding:16px 32px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:1024px){.hamburger{display:flex}}
 
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#0A1628 0%,#0F1F3D 40%,#13294B 70%,#0A1628 100%);padding-top:80px}
@@ -267,6 +278,7 @@ a{text-decoration:none;color:inherit}
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="#" class="nav-logo"><span class="nav-dot"></span>CONECTA S.A.</a>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
     <div class="nav-links">
       <a href="#soluciones" class="nav-link">División Sistemas</a>
       <a href="#procesos" class="nav-link">SUPcon Procesos</a>
@@ -497,7 +509,7 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="cta-form fade-up">
       <h3>Agendar Reunión</h3>
-      <form action="http://76.13.239.113:8091/form" method="POST" id="pilot-form">
+      <form action="/form" method="POST" id="pilot-form">
         <div class="form-grp"><label>Nombre y Apellido</label><input type="text" name="name" placeholder="Ej. Juan Pérez" required></div>
         <div class="form-grp"><label>Empresa</label><input type="text" name="company" placeholder="Ej. Minera Los Andes" required></div>
         <div class="form-grp" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label>Cargo</label><input type="text" name="role" placeholder="Ej. Jefe de Mantención" required></div><div><label>Celular</label><input type="tel" name="phone" placeholder="+56 9 XXXX XXXX" required></div></div>
@@ -530,10 +542,22 @@ a{text-decoration:none;color:inherit}
 
 <script>
 const navbar=document.getElementById('navbar');
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.querySelector('.nav-links');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  navLinks.classList.toggle('mobile-open');
+  document.body.style.overflow=navLinks.classList.contains('mobile-open')?'hidden':'';
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hamburger.classList.remove('open');
+  navLinks.classList.remove('mobile-open');
+  document.body.style.overflow='';
+}));
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const f=this;const d={name:f.name.value,company:f.company.value,role:f.role.value,phone:f.phone.value,email:f.email.value,service:f.service.value,urgency:f.urgency.value};b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('http://76.13.239.113:8091/form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(r=>{if(r.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754';f.reset()}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
+document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const f=this;const d={name:f.name.value,company:f.company.value,role:f.role.value,phone:f.phone.value,email:f.email.value,service:f.service.value,urgency:f.urgency.value};b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('/form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(r=>{if(r.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754';f.reset()}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
 </script>
 
 <a href="https://wa.me/56997847438?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20CONECTA%20S.A." target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">

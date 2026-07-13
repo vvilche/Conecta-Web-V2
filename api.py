@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Mini API para recibir formularios de conecta.cl -> email + WhatsApp"""
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 import subprocess, json, os
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='assets', static_url_path='/assets')
 CORS(app)
 POSTMARK_SCRIPT = "/root/.hermes/scripts/postmark_send.py"
 TO_EMAIL = "victor.vilche@conecta.cl"
@@ -62,6 +62,16 @@ def form_handler():
 @app.route("/health")
 def health():
     return jsonify({"status":"ok"})
+
+@app.route("/")
+def index():
+    return send_from_directory('.', 'index_light.html')
+
+@app.route("/<path:path>")
+def static_files(path):
+    if os.path.isfile(path):
+        return send_from_directory('.', path)
+    return send_from_directory('.', 'index_light.html')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8091)
