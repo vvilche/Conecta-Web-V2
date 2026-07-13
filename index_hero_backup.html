@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONECTA INGENIERÍA | Digitalización de Subestaciones y Control Industrial</title>
+  <meta name="description" content="Especialistas en RTU, PMU, SCADA y protecciones eléctricas. 34 años digitalizando la infraestructura crítica de Chile.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================================================
+       CONECTA WEB V2 — DESIGN SYSTEM
+       ================================================================ */
+    :root {
+      --navy-deep: #0A1628;
+      --navy: #0F1F3D;
+      --blue-royal: #1E3A5F;
+      --blue-accent: #2563eb;
+      --blue-accent-hover: #1d4ed8;
+      --blue-glow: rgba(37, 99, 235, 0.15);
+      --text-primary: #0F172A;
+      --text-secondary: #475569;
+      --text-tertiary: #94A3B8;
+      --bg-page: #ffffff;
+      --bg-soft: #F1F5F9;
+      --border: #E2E8F0;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-xl: 0 20px 40px rgba(0,0,0,0.12);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      /* Industry accent colors */
+      --accent-mining: #F59E0B;
+      --accent-energy: #2563EB;
+      --accent-pulp: #10B981;
+      --accent-industrial: #EF4444;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body { overflow-x: hidden; line-height: 1.6; }
+
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; font-weight: 700; line-height: 1.15; color: var(--navy-deep); }
+
+    /* ================================================================
+       NAVBAR — Frosted Glass + Compact on Scroll
+       ================================================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar.scrolled {
+      height: 64px;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+
+    .navbar-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--navy-deep);
+      transition: font-size 0.3s ease;
+    }
+
+    .navbar.scrolled .logo { font-size: 19px; }
+
+    .logo-dot {
+      width: 8px; height: 8px;
+      background: var(--blue-accent);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      position: relative;
+      padding: 6px 0;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover { color: var(--blue-accent); }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--blue-accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .btn-nav-cta {
+      display: inline-block;
+      background: var(--blue-accent);
+      color: #fff !important;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-nav-cta:hover {
+      background: var(--blue-accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+    }
+
+    /* ================================================================
+       HERO — Cinematic Blueprint Grid + Animated Stats
+       ================================================================ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, #0A1628 0%, #0F1F3D 40%, #13294B 70%, #0A1628 100%);
+      padding-top: 80px;
+    }
+
+    /* Blueprint animated grid */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(37, 99, 235, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.08) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridPulse 8s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes gridPulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 0.8; }
+    }
+
+    /* Radial glow behind the illustration */
+    .hero-glow {
+      position: absolute;
+      top: 50%; right: -5%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.12), transparent 70%);
+      transform: translateY(-50%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Floating geometric particles */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px; height: 2px;
+      background: rgba(37, 99, 235, 0.6);
+      border-radius: 50%;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+    .particle:nth-child(2) { top: 25%; left: 70%; animation-delay: -3s; width: 3px; height: 3px; }
+    .particle:nth-child(3) { top: 60%; left: 20%; animation-delay: -5s; }
+    .particle:nth-child(4) { top: 70%; left: 80%; animation-delay: -7s; width: 3px; height: 3px; }
+    .particle:nth-child(5) { top: 40%; left: 50%; animation-delay: -9s; }
+    .particle:nth-child(6) { top: 80%; left: 40%; animation-delay: -2s; width: 3px; height: 3px; }
+    .particle:nth-child(7) { top: 10%; left: 45%; animation-delay: -6s; }
+    .particle:nth-child(8) { top: 90%; left: 60%; animation-delay: -10s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+      33% { transform: translateY(-30px) translateX(15px); opacity: 0.8; }
+      66% { transform: translateY(10px) translateX(-10px); opacity: 0.5; }
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 40px;
+      width: 100%;
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-content { max-width: 680px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      color: #93C5FD;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: #60A5FA;
+      border-radius: 50%;
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes statusPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, #60A5FA, #3B82F6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: #94A3B8;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 560px;
+      font-weight: 400;
+    }
+
+    /* CTA buttons */
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 56px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-accent);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .btn-primary:hover::after { transform: translateX(100%); }
+    .btn-primary:hover {
+      background: var(--blue-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #CBD5E1;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+
+    /* Stats row */
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: #64748B;
+      font-weight: 500;
+      margin-top: 4px;
+    }
+
+    /* Hero Illustration — Isometric Substation SVG */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      filter: drop-shadow(0 0 60px rgba(37, 99, 235, 0.2));
+    }
+
+    /* Connection line animation */
+    @keyframes dataFlow {
+      0% { stroke-dashoffset: 40; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    .data-line {
+      stroke-dasharray: 8 4;
+      animation: dataFlow 2s linear infinite;
+    }
+
+    .pulse-node {
+      animation: nodePulse 3s ease-in-out infinite;
+    }
+
+    @keyframes nodePulse {
+      0%, 100% { r: 6; opacity: 0.8; }
+      50% { r: 9; opacity: 1; }
+    }
+
+    /* ================================================================
+       RESPONSIVE
+       ================================================================ */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+      }
+      .hero-content { max-width: 100%; }
+      .hero-subtitle { max-width: 100%; }
+      .hero-ctas { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-visual svg { max-width: 360px; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 100px; min-height: auto; padding-bottom: 60px; }
+      .hero-stats { gap: 24px; flex-wrap: wrap; }
+      .hero-stat-value { font-size: 1.6rem; }
+      .hero-ctas { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-container">
+      <a href="#" class="logo">
+        <span class="logo-dot"></span>CONECTA S.A.
+      </a>
+      <div class="nav-links">
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#industrias" class="nav-link">Industrias</a>
+        <a href="#casos" class="nav-link">Casos de Éxito</a>
+        <a href="#normativa" class="nav-link">Normativa</a>
+        <a href="#contacto" class="btn-nav-cta">Evaluar Proyecto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <!-- Blueprint grid background -->
+    <div class="hero-grid"></div>
+    <!-- Radial glow -->
+    <div class="hero-glow"></div>
+    <!-- Floating particles -->
+    <div class="hero-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <div class="hero-container">
+      <!-- LEFT: Content -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Representantes exclusivos SUPcon Chile
+        </div>
+        
+        <h1>
+          Su subestación aún no cumple<br>
+          <span class="highlight">la norma PMUS.</span><br>
+          La dejamos operativa. Sin pausa.
+        </h1>
+
+        <p class="hero-subtitle">
+          Digitalización de subestaciones, RTU, SCADA y protecciones eléctricas. 
+          Ingeniería chilena con soporte 24/7. Sin tiempo muerto. Sin riesgos normativos.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn-primary">
+            Evaluar mi subestación
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#casos" class="btn-secondary">
+            Ver casos reales
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value" id="stat-years">34</span>
+            <span class="hero-stat-label">Años operando</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" id="stat-projects">200</span>
+            <span class="hero-stat-label">Proyectos ejecutados</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" id="stat-substations">50</span>
+            <span class="hero-stat-label">Subestaciones digitalizadas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Isometric substation illustration -->
+      <div class="hero-visual">
+        <svg viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ground grid -->
+          <rect x="40" y="380" width="440" height="1" stroke="rgba(37,99,235,0.2)" stroke-width="1"/>
+          <rect x="40" y="340" width="440" height="1" stroke="rgba(37,99,235,0.1)" stroke-width="0.5"/>
+          
+          <!-- Main transformer building (isometric) -->
+          <g transform="translate(260, 200)">
+            <!-- Roof -->
+            <polygon points="0,-80 -120,-40 0,0 120,-40" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+            <!-- Right face -->
+            <polygon points="0,-80 120,-40 120,80 0,40" fill="rgba(37,99,235,0.08)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <!-- Left face -->
+            <polygon points="0,-80 -120,-40 -120,80 0,40" fill="rgba(37,99,235,0.05)" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+            
+            <!-- Window panels on right face -->
+            <rect x="10" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <rect x="40" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            <rect x="70" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+            
+            <!-- Antenna on roof -->
+            <line x1="0" y1="-80" x2="0" y2="-120" stroke="rgba(37,99,235,0.6)" stroke-width="2"/>
+            <circle cx="0" cy="-120" r="3" fill="#3B82F6" class="pulse-node"/>
+          </g>
+          
+          <!-- Left substation equipment -->
+          <g transform="translate(80, 240)">
+            <rect x="-20" y="-60" width="40" height="100" rx="3" fill="rgba(37,99,235,0.06)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+            <line x1="0" y1="-60" x2="0" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="2"/>
+            <line x1="-20" y1="-80" x2="20" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="1.5"/>
+            <line x1="-15" y1="-80" x2="-15" y2="-95" stroke="rgba(37,99,235,0.4)" stroke-width="1.5"/>
+            <line x1="15" y1="-80" x2="15" y2="-95" stroke="rgba(37,99,235,0.4)" stroke-width="1.5"/>
+          </g>
+          
+          <!-- Right substation equipment -->
+          <g transform="translate(440, 240)">
+            <rect x="-20" y="-60" width="40" height="100" rx="3" fill="rgba(37,99,235,0.06)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+            <line x1="0" y1="-60" x2="0" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="2"/>
+            <line x1="-20" y1="-80" x2="20" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="1.5"/>
+            <line x1="-15" y1="-80" x2="-15" y2="-95" stroke="rgba(37,99,235,0.4)" stroke-width="1.5"/>
+            <line x1="15" y1="-80" x2="15" y2="-95" stroke="rgba(37,99,235,0.4)" stroke-width="1.5"/>
+          </g>
+          
+          <!-- Transmission tower (isometric) -->
+          <g transform="translate(170, 140)">
+            <line x1="0" y1="0" x2="0" y2="120" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+            <line x1="0" y1="40" x2="-40" y2="80" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+            <line x1="0" y1="40" x2="40" y2="80" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+            <line x1="0" y1="0" x2="-60" y2="0" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+            <line x1="0" y1="0" x2="60" y2="0" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+            <line x1="-60" y1="0" x2="-60" y2="200" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+            <line x1="60" y1="0" x2="60" y2="200" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+          </g>
+          
+          <!-- Data connection lines (SCADA network) -->
+          <g>
+            <!-- Main building to left equipment -->
+            <path d="M260,240 Q170,230 100,240" fill="none" stroke="#3B82F6" stroke-width="1" class="data-line" opacity="0.6"/>
+            <!-- Main building to right equipment -->
+            <path d="M260,240 Q350,230 420,240" fill="none" stroke="#3B82F6" stroke-width="1" class="data-line" opacity="0.6" style="animation-delay: -1s;"/>
+            <!-- Building to tower -->
+            <path d="M260,120 Q220,100 170,140" fill="none" stroke="#3B82F6" stroke-width="1" class="data-line" opacity="0.4" style="animation-delay: -0.5s;"/>
+            <!-- Tower to left -->
+            <path d="M170,140 Q130,160 100,240" fill="none" stroke="#3B82F6" stroke-width="1" class="data-line" opacity="0.4" style="animation-delay: -1.5s;"/>
+          </g>
+          
+          <!-- SCADA label -->
+          <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" fill="rgba(96,165,250,0.4)" letter-spacing="2">SCADA REDUNDANTE · IEC 61850</text>
+          
+          <!-- Bottom dots (data flow indicators) -->
+          <circle cx="160" cy="280" r="4" fill="#3B82F6" opacity="0.5" class="pulse-node" style="animation-delay: -1s;"/>
+          <circle cx="360" cy="270" r="4" fill="#3B82F6" opacity="0.5" class="pulse-node" style="animation-delay: -2s;"/>
+          <circle cx="260" cy="300" r="4" fill="#3B82F6" opacity="0.6" class="pulse-node" style="animation-delay: -0.5s;"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NAVBAR SCROLL SCRIPT ===== -->
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>

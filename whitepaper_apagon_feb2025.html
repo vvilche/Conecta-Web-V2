@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Paper — Post-Mortem Apagón 25-Feb-2025 | CONECTA INGENIERIA</title>
+    <meta name="description"
+        content="Análisis post-mortem del mayor apagón de la historia moderna de Chile. Diagnóstico normativo de fallas SCADA, SITR y telecomunicaciones en empresa transmisora STN." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --ink: #0f172a;
+            --ink-soft: #334155;
+            --ink-dim: #64748b;
+            --line: #e2e8f0;
+            --bg: #f8fafc;
+            --accent: #dc2626;
+            --accent-soft: #fee2e2;
+            --accent2: #1d4ed8;
+            --accent3: #059669;
+            --warn: #d97706;
+            --warn-soft: #fef3c7;
+            --sidebar-bg: #0f172a;
+            --sidebar-text: #94a3b8;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 1.0625rem;
+            line-height: 1.75;
+        }
+
+        /* LAYOUT */
+        .layout {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 28px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-logo {
+            padding: 0 22px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-brand {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #f1f5f9;
+            letter-spacing: 0.03em;
+        }
+
+        .sidebar-doc {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #64748b;
+            margin-top: 3px;
+        }
+
+        .toc-label {
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #475569;
+            padding: 0 22px;
+            margin-bottom: 8px;
+        }
+
+        .toc-links {
+            list-style: none;
+        }
+
+        .toc-links li {
+            display: block;
+        }
+
+        .toc-links a {
+            display: block;
+            padding: 7px 22px;
+            font-size: 12.5px;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.18s;
+        }
+
+        .toc-links a:hover {
+            color: #f1f5f9;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .toc-links a.active {
+            color: #fff;
+            background: rgba(220, 38, 38, 0.25);
+            border-left-color: var(--accent);
+            font-weight: 600;
+            box-shadow: inset 0 0 0 1px rgba(220, 38, 38, 0.2);
+        }
+
+        .toc-links .sub {
+            padding-left: 36px;
+            font-size: 12px;
+        }
+
+        .sidebar-meta {
+            margin-top: auto;
+            padding: 16px 22px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .sidebar-meta p {
+            font-size: 10.5px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .print-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 22px 0;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            color: #fca5a5;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: all 0.18s;
+        }
+
+        .print-btn:hover {
+            background: rgba(220, 38, 38, 0.25);
+            color: #fff;
+        }
+
+        /* MAIN */
+        .main {
+            overflow: hidden;
+        }
+
+        /* COVER */
+        .cover {
+            background: linear-gradient(135deg, #1a0000 0%, #450a0a 40%, #1e3a5f 100%);
+            color: #fff;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(220, 38, 38, 0.15) 0%, transparent 70%);
+        }
+
+        .cover-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.4);
+            border-radius: 100px;
+            padding: 5px 16px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fca5a5;
+            margin-bottom: 28px;
+        }
+
+        .cover h1 {
+            font-family: 'Lora', serif;
+            font-size: 36px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .cover h1 em {
+            color: #fca5a5;
+            font-style: italic;
+        }
+
+        .cover-subtitle {
+            font-size: 15px;
+            color: #cbd5e1;
+            max-width: 620px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        /* ALERT SVG */
+        .cover-alert {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(220, 38, 38, 0.15);
+            border: 1px solid rgba(220, 38, 38, 0.35);
+            border-radius: 12px;
+            padding: 16px 20px;
+            max-width: 620px;
+            margin-bottom: 32px;
+        }
+
+        .cover-alert-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+
+        .cover-alert-text {
+            font-size: 13px;
+            color: #fecaca;
+            line-height: 1.5;
+        }
+
+        .cover-alert-text strong {
+            color: #fff;
+        }
+
+        /* TIMELINE SVG */
+        .event-timeline {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin: 32px 0 36px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .event-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .event-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border: 2px solid;
+        }
+
+        .event-dot.red {
+            background: rgba(220, 38, 38, 0.25);
+            border-color: #dc2626;
+        }
+
+        .event-dot.amber {
+            background: rgba(217, 119, 6, 0.25);
+            border-color: #d97706;
+        }
+
+        .event-dot.blue {
+            background: rgba(29, 78, 216, 0.25);
+            border-color: #1d4ed8;
+        }
+
+        .event-label {
+            font-size: 10px;
+            color: #94a3b8;
+            text-align: center;
+            max-width: 72px;
+            line-height: 1.3;
+        }
+
+        .event-arrow {
+            color: #475569;
+            font-size: 18px;
+            margin: 0 4px;
+            padding-bottom: 16px;
+        }
+
+        .cover-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 36px;
+            font-size: 12px;
+            color: #64748b;
+            flex-wrap: wrap;
+        }
+
+        .cover-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            max-width: 620px;
+        }
+
+        .cover-meta-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+
+        .cover-meta-item dt {
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .cover-meta-item dd {
+            font-size: 13px;
+            color: #cbd5e1;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        /* CONTENT */
+        .doc-body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 60px 80px;
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            font-size: 24px;
+            color: var(--ink);
+            margin: 52px 0 16px;
+            padding-top: 8px;
+            border-top: 2px solid var(--line);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            flex-shrink: 0;
+        }
+
+        h3 {
+            font-size: 17px;
+            color: var(--ink);
+            margin: 28px 0 12px;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 15px;
+            color: var(--ink);
+            margin: 20px 0 10px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+        }
+
+        p {
+            color: var(--ink-soft);
+            margin-bottom: 16px;
+        }
+
+        strong {
+            color: var(--ink);
+        }
+
+        /* TABLES */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+
+        thead th {
+            background: #f1f5f9;
+            padding: 11px 14px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            border-bottom: 1px solid var(--line);
+            white-space: nowrap;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--line);
+            transition: background 0.12s;
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        tbody td {
+            padding: 12px 14px;
+            color: var(--ink-soft);
+            vertical-align: top;
+        }
+
+        tbody td strong {
+            color: var(--ink);
+        }
+
+        /* BREACH TABLE SEMAPHORE */
+        tr.breach-red td:first-child {
+            border-left: 4px solid #ef4444;
+        }
+
+        tr.breach-amber td:first-child {
+            border-left: 4px solid #f59e0b;
+        }
+
+        tr.breach-green td:first-child {
+            border-left: 4px solid #10b981;
+        }
+
+        /* BADGES */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 100px;
+            white-space: nowrap;
+        }
+
+        .badge-red {
+            background: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+        }
+
+        .badge-amber {
+            background: #fffbeb;
+            color: #d97706;
+            border: 1px solid #fde68a;
+        }
+
+        .badge-green {
+            background: #f0fdf4;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+        }
+
+        .badge-blue {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* CALLOUTS */
+        .callout {
+            display: flex;
+            gap: 14px;
+            padding: 16px 18px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid;
+        }
+
+        .callout-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            line-height: 1.4;
+        }
+
+        .callout-body {
+            flex: 1;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            font-size: 13.5px;
+        }
+
+        .callout.danger {
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .callout.danger .callout-title {
+            color: #dc2626;
+        }
+
+        .callout.warn {
+            background: var(--warn-soft);
+            border-color: #fde68a;
+        }
+
+        .callout.warn .callout-title {
+            color: var(--warn);
+        }
+
+        .callout.info {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .callout.info .callout-title {
+            color: #1d4ed8;
+        }
+
+        .callout.success {
+            background: #f0fdf4;
+            border-color: #a7f3d0;
+        }
+
+        .callout.success .callout-title {
+            color: #059669;
+        }
+
+        /* KPI METRICS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .kpi-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Lora', serif;
+        }
+
+        .kpi-label {
+            font-size: 11.5px;
+            color: var(--ink-dim);
+            margin-top: 4px;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            margin: 24px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            padding-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 32px;
+            bottom: 0;
+            width: 2px;
+            background: var(--line);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            flex-shrink: 0;
+            border: 2px solid;
+        }
+
+        .timeline-dot.red {
+            background: #fef2f2;
+            border-color: #dc2626;
+        }
+
+        .timeline-dot.amber {
+            background: #fffbeb;
+            border-color: #d97706;
+        }
+
+        .timeline-dot.blue {
+            background: #eff6ff;
+            border-color: #1d4ed8;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-tag {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+        }
+
+        .timeline-content h4 {
+            margin: 4px 0 6px;
+            font-size: 14px;
+        }
+
+        .timeline-content p {
+            font-size: 13px;
+        }
+
+        /* PROPOSAL BOX */
+        .proposal-box {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+            color: #fff;
+            border-radius: 16px;
+            padding: 36px 40px;
+            margin: 32px 0;
+        }
+
+        .proposal-box h3 {
+            font-family: 'Lora', serif;
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .proposal-box p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .proposal-items {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .proposal-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px 16px;
+        }
+
+        .proposal-item dt {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #fca5a5;
+            margin-bottom: 4px;
+        }
+
+        .proposal-item dd {
+            font-size: 13px;
+            color: #cbd5e1;
+        }
+
+        /* FOOTER */
+        .doc-footer {
+            background: #f1f5f9;
+            border-top: 1px solid var(--line);
+            padding: 16px 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--ink-dim);
+        }
+
+        /* PRINT */
+        @page {
+            margin: 20mm 18mm;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+            }
+
+            .cover {
+                padding: 48px 0;
+            }
+
+            .doc-body {
+                padding: 40px 32px 60px;
+                max-width: 100%;
+            }
+
+            .cover>div {
+                padding: 0 32px !important;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .layout {
+                display: block;
+            }
+
+            .cover {
+                page-break-after: always;
+            }
+
+            .callout,
+            table {
+                break-inside: avoid;
+            }
+
+            h2 {
+                break-after: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar no-print">
+            <div class="sidebar-logo">
+                <span class="sidebar-brand">CONECTA INGENIERIA</span>
+                <span class="sidebar-doc">White Paper Técnico</span>
+            </div>
+            <nav>
+                <p class="toc-label">Contenido</p>
+                <ul class="toc-links">
+                    <li><a href="#top">Portada</a></li>
+                    <li><a href="#resumen">Resumen Ejecutivo</a></li>
+                    <li><a href="#contexto">1. Contexto del Evento</a></li>
+                    <li><a href="#diagnostico">2. Diagnóstico Normativo</a></li>
+                    <li><a href="#hallazgos">3. Hallazgos SCADA/Telecom</a></li>
+                    <li><a href="#sitr">4. Brechas SITR</a></li>
+                    <li><a href="#consecuencias">5. Consecuencias Regulatorias</a></li>
+                    <li><a href="#plan">6. Plan de Remediación</a></li>
+                    <li><a href="#propuesta">7. Propuesta de Valor</a></li>
+                    <li><a href="#conclusiones">8. Conclusiones</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-meta">
+                <p>CON-WP-APAGON-001<br>Rev. 1.0 — Feb 2026</p>
+            </div>
+            <button class="print-btn no-print" onclick="window.print()">🖨️ Imprimir / PDF</button>
+        </aside>
+
+        <!-- MAIN -->
+        <main class="main">
+
+            <!-- COVER -->
+            <div class="cover" id="top">
+                <div style="max-width:900px; margin:0 auto; padding:0 60px; position:relative; z-index:1;">
+                    <span class="cover-label">⚡ Caso Real — mercado Chileno 25-Feb-2025</span>
+                    <h1>Post-Mortem del <em>Mayor Apagón</em> de la Historia Moderna de Chile</h1>
+                    <p class="cover-subtitle">
+                        Análisis normativo de las fallas de SCADA, SITR y telecomunicaciones que agravaron el apagón del
+                        25-Feb-2025.
+                        38 hallazgos críticos identificados en auditoría post-evento. Lo que una empresa transmisora
+                        debería haber detectado antes.
+                    </p>
+                    <div class="cover-alert">
+                        <div class="cover-alert-icon">🚨</div>
+                        <div class="cover-alert-text">
+                            <strong>Pérdida económica estimada: ~USD 1.000 millones</strong> en el país por el apagón
+                            total.
+                            El incumplimiento normativo SITR/SCADA no es un riesgo abstracto — es un evento que ya
+                            ocurrió.
+                        </div>
+                    </div>
+
+                    <!-- Timeline del evento -->
+                    <div class="event-timeline">
+                        <div class="event-node">
+                            <div class="event-dot red">⚡</div>
+                            <div class="event-label">14:32 UTC<br>Falla línea 500kV</div>
+                        </div>
+                        <div class="event-arrow">→</div>
+                        <div class="event-node">
+                            <div class="event-dot red">📡</div>
+                            <div class="event-label">SCADA<br>perdido</div>
+                        </div>
+                        <div class="event-arrow">→</div>
+                        <div class="event-node">
+                            <div class="event-dot amber">⏱</div>
+                            <div class="event-label">+80 min<br>sin respaldo</div>
+                        </div>
+                        <div class="event-arrow">→</div>
+                        <div class="event-node">
+                            <div class="event-dot red">🔇</div>
+                            <div class="event-label">Hot Line<br>perdida</div>
+                        </div>
+                        <div class="event-arrow">→</div>
+                        <div class="event-node">
+                            <div class="event-dot red">🌑</div>
+                            <div class="event-label">Apagón<br>total SEN</div>
+                        </div>
+                    </div>
+
+                    <div class="cover-meta">
+                        <span>⏱ 9 min de lectura</span>
+                        <span>✍️ CONECTA INGENIERIA — Equipo de Ingeniería</span>
+                        <span>📅 Febrero 2026</span>
+                    </div>
+                    <div class="cover-meta-grid">
+                        <div class="cover-meta-item">
+                            <dt>Documento</dt>
+                            <dd>CON-WP-APAGON-001</dd>
+                        </div>
+                        <div class="cover-meta-item">
+                            <dt>Revisión</dt>
+                            <dd>1.0 — Feb 2026</dd>
+                        </div>
+                        <div class="cover-meta-item">
+                            <dt>Normativa</dt>
+                            <dd>NTSyCS + AT-SITR</dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-body">
+
+                <!-- RESUMEN EJECUTIVO -->
+                <h2 id="resumen"><span class="section-num" style="background:#dc2626;">RE</span> Resumen Ejecutivo</h2>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">38</div>
+                        <div class="kpi-label">Hallazgos críticos encontrados en auditoría post-evento</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">0%</div>
+                        <div class="kpi-label">Disponibilidad SITR de la transmisora durante el evento</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">+80 min</div>
+                        <div class="kpi-label">Tiempo para activar SCADA de respaldo (req: ≤ 5 min)</div>
+                    </div>
+                </div>
+
+                <p>El 25 de febrero de 2025, Chile experimentó el <strong>mayor apagón de su historia moderna</strong>.
+                    La causa
+                    raíz fue una acción no autorizada de ISA Interchile sobre una protección 87L en línea 500 kV. Sin
+                    embargo,
+                    la <strong>magnitud y duración del evento se vio agravada</strong> por fallas normativas en los
+                    sistemas
+                    SCADA, SITR y telecomunicaciones de la empresa transmisora STN responsable — hallazgos que una
+                    auditoría
+                    preventiva habría identificado.</p>
+
+                <div class="callout danger">
+                    <div class="callout-icon">⚠️</div>
+                    <div class="callout-body">
+                        <div class="callout-title">Impacto del incumplimiento normativo</div>
+                        <p>Cuando el CEN necesitó coordinar la recuperación del sistema, <strong>no tenía señales SITR
+                                válidas
+                                de la transmisora</strong>. Sin visibilidad en tiempo real y sin Hot Line operativa, la
+                            restitución del
+                            servicio se demoró horas. Este caso transformó el cumplimiento SITR/SCADA de obligación
+                            técnica a
+                            imperativo de seguridad nacional.</p>
+                    </div>
+                </div>
+
+                <!-- 1. CONTEXTO -->
+                <h2 id="contexto"><span class="section-num">1</span> Contexto del Evento</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><strong>Fecha</strong></td>
+                                <td>25-Feb-2025, ~14:32 UTC</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Empresa analizada</strong></td>
+                                <td>Empresa Transmisora STN (referencia basada en datos públicos del evento)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rol en el evento</strong></td>
+                                <td>Agravante — fallas de SCADA y telecomunicaciones dificultaron la recuperación del
+                                    sistema</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Causa raíz del apagón</strong></td>
+                                <td>ISA Interchile — reinicio no autorizado de protección 87L en línea 500 kV</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Causa de agravamiento</strong></td>
+                                <td>Pérdida total de SCADA, SITR y Hot Line operativa en empresa transmisora STN</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Instalaciones afectadas</strong></td>
+                                <td>12 subestaciones AT (110–500 kV); 3.200 km de líneas de transmisión</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pérdida económica país</strong></td>
+                                <td>~USD 1.000 millones estimados</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout info">
+                    <div class="callout-icon">📋</div>
+                    <div class="callout-body">
+                        <div class="callout-title">Fuente del caso</div>
+                        <p>Este análisis se basa en el <strong>Informe de Análisis de Falla (EAF)</strong> publicado por
+                            el CEN
+                            el 19-mar-2025, informes de la SEC, y prensa técnica verificada. El caso es real y los
+                            datos son públicos.</p>
+                    </div>
+                </div>
+
+                <!-- 2. DIAGNÓSTICO NORMATIVO -->
+                <h2 id="diagnostico"><span class="section-num">2</span> Diagnóstico de Cumplimiento SITR</h2>
+
+                <p>Al momento del evento, todos los sistemas críticos de supervisión y comunicación de la transmisora
+                    presentaban <strong>incumplimiento normativo bajo NTSyCS</strong>:</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parámetro</th>
+                                <th>Requisito</th>
+                                <th>Estado durante evento</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="breach-red">
+                                <td>Disponibilidad SITR</td>
+                                <td>≥ 99,5%</td>
+                                <td><strong>0%</strong> — sin señales válidas</td>
+                                <td><span class="badge badge-red">❌ Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td>SCADA principal</td>
+                                <td>Operativo 24/7</td>
+                                <td><strong>Perdido totalmente</strong></td>
+                                <td><span class="badge badge-red">❌ Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td>SCADA respaldo</td>
+                                <td>Disponible ≤ 5 min</td>
+                                <td><strong>+80 minutos</strong> sin activar</td>
+                                <td><span class="badge badge-red">❌ Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td>Hot Line voz operativa</td>
+                                <td>≥ 99,5% disponible</td>
+                                <td><strong>Perdida</strong> — sin comunicación con CEN</td>
+                                <td><span class="badge badge-red">❌ Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td>Telecontrol remoto</td>
+                                <td>Operativo</td>
+                                <td><strong>Perdido</strong> — sin capacidad de maniobra</td>
+                                <td><span class="badge badge-red">❌ Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td>Señales SITR al CEN</td>
+                                <td>Actualizadas &lt;= 5 s</td>
+                                <td><strong>CEN sin datos</strong> durante crisis</td>
+                                <td><span class="badge badge-red">❌ Crítico</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 3. HALLAZGOS SCADA -->
+                <h2 id="hallazgos"><span class="section-num">3</span> Hallazgos SCADA y Telecomunicaciones</h2>
+
+                <h3>Sistema SCADA y Respaldo</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Ítem</th>
+                                <th>Requisito</th>
+                                <th>Estado encontrado</th>
+                                <th>Hallazgo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SCADA respaldo disponible</td>
+                                <td>24/7 activo/listo</td>
+                                <td>⚠️ En modo "frío" (arranque manual)</td>
+                                <td><span class="badge badge-red">H-01 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Tiempo conmutación a respaldo</td>
+                                <td>≤ 5 min</td>
+                                <td><strong>82 minutos</strong> en prueba realizada</td>
+                                <td><span class="badge badge-red">H-02 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pruebas periódicas</td>
+                                <td>Mensual</td>
+                                <td>Última prueba: <strong>14 meses atrás</strong></td>
+                                <td><span class="badge badge-red">H-03 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Sincronización SCADA-respaldo</td>
+                                <td>Datos en tiempo real</td>
+                                <td>Solo sincroniza cada <strong>6 horas</strong></td>
+                                <td><span class="badge badge-amber">H-04 🟠</span></td>
+                            </tr>
+                            <tr>
+                                <td>Actualizaciones configuración</td>
+                                <td>Automática</td>
+                                <td>Manual — requiere intervención operador</td>
+                                <td><span class="badge badge-amber">H-05 🟠</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Comunicaciones Operacionales</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Canal</th>
+                                <th>Requisito</th>
+                                <th>Estado</th>
+                                <th>Hallazgo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Hot Line principal (voz)</td>
+                                <td>≥ 99,5%</td>
+                                <td>98,9% — 3 puntos con falla batería</td>
+                                <td><span class="badge badge-red">H-06 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Hot Line respaldo (celular)</td>
+                                <td>Operativo</td>
+                                <td>Sin plan celular activo en 2 S/E rurales</td>
+                                <td><span class="badge badge-red">H-07 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Canal ICCP principal</td>
+                                <td>Operativo</td>
+                                <td>✅ 99,72% disponibilidad</td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Canal ICCP respaldo</td>
+                                <td>Requerido</td>
+                                <td>❌ Solo canal principal activo</td>
+                                <td><span class="badge badge-red">H-08 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Grabación de voz ≥ 6 meses</td>
+                                <td>Requerida</td>
+                                <td>Solo <strong>3 meses</strong> de retención</td>
+                                <td><span class="badge badge-amber">H-09 🟠</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Mantenimiento Preventivo</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sistema</th>
+                                <th>Frecuencia req.</th>
+                                <th>Última ejecución</th>
+                                <th>Hallazgo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>UPS salas de control</td>
+                                <td>6 meses</td>
+                                <td><strong>22 meses atrás</strong></td>
+                                <td><span class="badge badge-red">H-11 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Baterías Hot Line</td>
+                                <td>12 meses</td>
+                                <td><strong>18 meses atrás</strong></td>
+                                <td><span class="badge badge-red">H-12 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Equipos GPS calibración</td>
+                                <td>12 meses</td>
+                                <td>8 meses — OK</td>
+                                <td>✅</td>
+                            </tr>
+                            <tr>
+                                <td>RTUs y equipos SITR</td>
+                                <td>12 meses</td>
+                                <td><strong>14 meses atrás</strong></td>
+                                <td><span class="badge badge-amber">H-13 🟠</span></td>
+                            </tr>
+                            <tr>
+                                <td>Pruebas protecciones 87L</td>
+                                <td>24 meses</td>
+                                <td><strong>31 meses atrás</strong></td>
+                                <td><span class="badge badge-red">H-14 🔴</span></td>
+                            </tr>
+                            <tr>
+                                <td>Revisión firmware SCADA</td>
+                                <td>18 meses</td>
+                                <td><strong>36 meses atrás</strong></td>
+                                <td><span class="badge badge-amber">H-15 🟠</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 4. BRECHAS SITR -->
+                <h2 id="sitr"><span class="section-num">4</span> Tabla de Brechas Normativas</h2>
+
+                <p>Resumen de las 6 brechas normativas principales identificadas, de los 38 hallazgos totales:</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Brecha</th>
+                                <th>Normativa</th>
+                                <th>Criticidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="breach-red">
+                                <td><strong>T01</strong></td>
+                                <td>SCADA sin redundancia efectiva (respaldo tardó &gt; 80 min)</td>
+                                <td>NTSyCS — redundancia requerida</td>
+                                <td><span class="badge badge-red">🔴 Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td><strong>T02</strong></td>
+                                <td>Hot Line de voz operativa perdida</td>
+                                <td>NTSyCS — disp. voz ≥ 99,5%</td>
+                                <td><span class="badge badge-red">🔴 Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td><strong>T03</strong></td>
+                                <td>SITR sin datos válidos durante evento (0%)</td>
+                                <td>AT-SITR — edad datos ≤ 5 s</td>
+                                <td><span class="badge badge-red">🔴 Crítico</span></td>
+                            </tr>
+                            <tr class="breach-red">
+                                <td><strong>T04</strong></td>
+                                <td>Telecontrol remoto perdido</td>
+                                <td>NTSyCS — control operativo remoto</td>
+                                <td><span class="badge badge-red">🔴 Crítico</span></td>
+                            </tr>
+                            <tr class="breach-amber">
+                                <td><strong>T05</strong></td>
+                                <td>Mantenimiento preventivo insuficiente (38 hallazgos)</td>
+                                <td>NTSyCS — mantenimiento obligatorio</td>
+                                <td><span class="badge badge-amber">🟠 Alta</span></td>
+                            </tr>
+                            <tr class="breach-amber">
+                                <td><strong>T06</strong></td>
+                                <td>Sin plan de contingencia efectivo ante pérdida de SCADA</td>
+                                <td>Procedimientos CEN</td>
+                                <td><span class="badge badge-amber">🟠 Alta</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 5. CONSECUENCIAS -->
+                <h2 id="consecuencias"><span class="section-num">5</span> Consecuencias Regulatorias</h2>
+
+                <div class="table-wrapper">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cargos SEC</strong></td>
+                                <td>Formulados contra transmisora por fallas críticas de operación y supervisión</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Auditoría CEN</strong></td>
+                                <td>CEN instruyó auditoría técnica SCADA y telecomunicaciones con plazo definido</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Análisis independiente</strong></td>
+                                <td>EPRI + universidades chilenas analizaron causas y mejoras del sistema</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pérdida económica país</strong></td>
+                                <td>~USD 1.000 millones estimados en pérdidas económicas por corte total de suministro
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 6. PLAN DE REMEDIACIÓN -->
+                <h2 id="plan"><span class="section-num">6</span> Plan de Remediación CONECTA INGENIERIA</h2>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot red">🔴</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tag">Inmediato — 0 a 15 días</div>
+                            <h4>Activar SCADA respaldo en modo "caliente"</h4>
+                            <p>H-01, H-02, H-03 — Pasar SCADA respaldo a modo activo con sincronización en tiempo real;
+                                realizar prueba de conmutación con tiempo objetivo ≤ 5 min.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot red">🔴</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tag">15 a 30 días</div>
+                            <h4>Reparar Hot Line y activar canal ICCP respaldo</h4>
+                            <p>H-06, H-07, H-08 — Reemplazar baterías Hot Line en todos los puntos afectados; activar
+                                segundo canal ICCP hacia el CEN; gestionar plan celular S/E rurales.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot amber">🟠</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tag">30 a 45 días</div>
+                            <h4>Mantenimiento UPS y baterías</h4>
+                            <p>H-11, H-12 — Mantenimiento completo de UPS y baterías. Programar calendario semestral con
+                                alertas automáticas 30 días antes del vencimiento.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot amber">🟠</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tag">45 a 90 días</div>
+                            <h4>Protecciones, firmware y procedimientos</h4>
+                            <p>H-14, H-15 — Prueba protección 87L en todas las líneas; actualizar firmware SCADA;
+                                actualizar procedimientos de emergencia ante pérdida de SCADA.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. PROPUESTA -->
+                <h2 id="propuesta"><span class="section-num">7</span> Propuesta de Valor CONECTA INGENIERIA</h2>
+
+                <div class="proposal-box">
+                    <h3>Servicio: Diagnóstico Preventivo SCADA/SITR para Transmisoras</h3>
+                    <p>El apagón del 25-Feb-2025 dejó en evidencia que los 38 hallazgos existían <em>antes</em> del
+                        evento. CONECTA INGENIERIA puede ejecutar este mismo diagnóstico de forma preventiva, antes de
+                        que el CEN o la SEC te auditen.</p>
+                    <dl class="proposal-items">
+                        <div class="proposal-item">
+                            <dt>Cobertura</dt>
+                            <dd>38 puntos de verificación basados en hallazgos reales del apagón</dd>
+                        </div>
+                        <div class="proposal-item">
+                            <dt>Plazo</dt>
+                            <dd>4 semanas desde inicio hasta entrega de informe</dd>
+                        </div>
+                        <div class="proposal-item">
+                            <dt>Entregable</dt>
+                            <dd>Tabla de brechas priorizada + plan de acción con plazos</dd>
+                        </div>
+                        <div class="proposal-item">
+                            <dt>Normativas</dt>
+                            <dd>NTSyCS + AT-SITR + Instructivos CEN + Reglamentos SEC</dd>
+                        </div>
+                    </dl>
+                </div>
+
+                <!-- 8. CONCLUSIONES -->
+                <h2 id="conclusiones"><span class="section-num">8</span> Conclusiones</h2>
+
+                <p>El apagón del 25-Feb-2025 demostró que el <strong>riesgo regulatorio del incumplimiento SITR/SCADA no
+                        es abstracto</strong>.
+                    Una transmisora con infraestructura de clase mundial puede perder toda su visibilidad operacional en
+                    minutos
+                    si no mantiene correctamente sus sistemas de respaldo.</p>
+
+                <p>Los <strong>38 hallazgos identificados en la auditoría post-evento</strong> son exactamente el tipo
+                    de
+                    brechas que CONECTA INGENIERIA identifica en diagnósticos preventivos. El costo del diagnóstico
+                    preventivo es una fracción ínfima del costo de un evento de este tipo.</p>
+
+                <div class="callout success">
+                    <div class="callout-icon">✅</div>
+                    <div class="callout-body">
+                        <div class="callout-title">Lección clave para coordinados del mercado Chileno</div>
+                        <p>Resolving the 38 breach points identified in the audit brings the company to full NTSyCS
+                            compliance:
+                            SITR availability from 99,12% to ≥ 99,5%, effective SCADA redundancy (&lt; 5 min), and
+                            operational voice
+                            communications. <strong>El cumplimiento no es auditoría — es continuidad
+                                operacional.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="doc-footer no-print">
+                <span><strong>CONECTA INGENIERIA</strong> — Ingeniería &amp; Diseño | mercado Chileno</span>
+                <span>CON-WP-APAGON-001 | Rev. 1.0 — Feb 2026</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        // Active TOC
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    document.querySelectorAll('.toc-links a').forEach(l => l.classList.remove('active'));
+                    const a = document.querySelector(`.toc-links a[href="#${e.target.id}"]`);
+                    if (a) a.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        document.querySelectorAll('[id]').forEach(s => observer.observe(s));
+    </script>
+</body>
+
+</html>

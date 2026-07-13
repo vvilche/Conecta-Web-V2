@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>White Paper — Auditoría SITR/SCADA Transmisora STN | CONECTA INGENIERIA</title>
+  <meta name="description" content="Diagnóstico preventivo SCADA/SITR para empresa transmisora STN. 38 hallazgos de alta criticidad clasificados y plan de acción priorizado."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ink:#0f172a;--ink-soft:#334155;--ink-dim:#64748b;--line:#e2e8f0;--bg:#f8fafc;--accent:#1d4ed8;--sidebar-bg:#0f172a;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:16px;scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);font-size:1.0625rem;line-height:1.75;}
+    .layout{display:grid;grid-template-columns:230px 1fr;min-height:100vh;}
+    .sidebar{background:var(--sidebar-bg);color:#94a3b8;padding:28px 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;}
+    .sidebar-logo{padding:0 22px 24px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:20px;}
+    .sb{display:block;font-size:13px;font-weight:700;color:#f1f5f9;}
+    .sd{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#64748b;margin-top:3px;}
+    .tl{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#475569;padding:0 22px;margin-bottom:8px;}
+    .toc-links{list-style:none;}
+    .toc-links a{display:block;padding:7px 22px;font-size:12.5px;color:#94a3b8;text-decoration:none;border-left:3px solid transparent;transition:all .18s;}
+    .toc-links a:hover{color:#f1f5f9;background:rgba(255,255,255,0.05);}
+    .toc-links a.active{color:#fff;background:rgba(29,78,216,0.25);border-left-color:#1d4ed8;font-weight:600;}
+    .sm{margin-top:auto;padding:16px 22px 0;border-top:1px solid rgba(255,255,255,0.07);}
+    .sm p{font-size:10.5px;color:#475569;line-height:1.5;}
+    .pb{display:flex;align-items:center;gap:8px;margin:16px 22px 0;background:rgba(29,78,216,0.15);border:1px solid rgba(29,78,216,0.3);color:#93c5fd;border-radius:8px;padding:8px 12px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;}
+    .cover{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 50%,#1e1b4b 100%);color:#fff;padding:80px 0;width:100%;position:relative;overflow:hidden;}
+    .cl{display:inline-flex;align-items:center;gap:8px;background:rgba(29,78,216,0.2);border:1px solid rgba(29,78,216,0.4);border-radius:100px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#93c5fd;margin-bottom:24px;}
+    .cover h1{font-family:'Lora',serif;font-size:32px;line-height:1.2;margin-bottom:16px;}
+    .cover h1 em{color:#93c5fd;font-style:italic;}
+    .cover-sub{font-size:14px;color:#cbd5e1;max-width:580px;line-height:1.7;margin-bottom:24px;}
+    .stats-row{display:flex;gap:16px;margin:24px 0 28px;flex-wrap:wrap;}
+    .stat-box{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:14px 20px;text-align:center;min-width:100px;}
+    .stat-n{font-size:28px;font-weight:700;color:#93c5fd;font-family:'Lora',serif;}
+    .stat-l{font-size:10px;color:#94a3b8;margin-top:2px;}
+    .cm{display:flex;gap:18px;margin-bottom:24px;font-size:12px;color:#64748b;}
+    .cmg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px;}
+    .cmi{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;}
+    .cmi dt{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:4px;}
+    .cmi dd{font-size:12px;color:#cbd5e1;font-weight:500;white-space:nowrap;}
+    .doc-body{max-width:900px;margin:0 auto;padding:60px 60px 80px;}
+    h2{font-family:'Lora',serif;font-size:22px;color:var(--ink);margin:44px 0 14px;padding-top:8px;border-top:2px solid var(--line);display:flex;align-items:center;gap:12px;}
+    .sn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:7px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;font-family:'Inter',sans-serif;flex-shrink:0;}
+    h3{font-size:15px;color:var(--ink);margin:22px 0 10px;font-weight:600;}
+    p{color:var(--ink-soft);margin-bottom:12px;}
+    strong{color:var(--ink);}
+    .tw{overflow-x:auto;margin:16px 0;border-radius:10px;border:1px solid var(--line);}
+    table{width:100%;border-collapse:collapse;font-size:12.5px;}
+    thead th{background:#f1f5f9;padding:9px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line);white-space:nowrap;}
+    tbody tr{border-bottom:1px solid var(--line);}
+    tbody tr:last-child{border-bottom:none;}
+    tbody tr:hover{background:#f8fafc;}
+    tbody td{padding:10px 12px;color:var(--ink-soft);vertical-align:top;}
+    tbody td strong{color:var(--ink);}
+    tr.br td:first-child{border-left:4px solid #ef4444;}
+    tr.ba td:first-child{border-left:4px solid #f59e0b;}
+    tr.bg td:first-child{border-left:4px solid #10b981;}
+    .badge{display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+    .bdr{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .bda{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .bdg{background:#f0fdf4;color:#059669;border:1px solid #a7f3d0;}
+    .bdb{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;}
+    .callout{display:flex;gap:12px;padding:14px 16px;border-radius:10px;margin:16px 0;border:1px solid;}
+    .ci{font-size:18px;flex-shrink:0;line-height:1.5;}
+    .cb{flex:1;}
+    .ct{font-weight:700;font-size:11.5px;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;}
+    .callout p{margin-bottom:0;font-size:13px;}
+    .cd{background:#fef2f2;border-color:#fecaca;} .cd .ct{color:#dc2626;}
+    .csu{background:#f0fdf4;border-color:#a7f3d0;} .csu .ct{color:#059669;}
+    .cw{background:#fffbeb;border-color:#fde68a;} .cw .ct{color:#d97706;}
+    .kpig{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0;}
+    .kpic{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;}
+    .kpiv{font-size:26px;font-weight:700;color:var(--accent);font-family:'Lora',serif;}
+    .kpil{font-size:10.5px;color:var(--ink-dim);margin-top:4px;line-height:1.4;}
+    .timeline{margin:20px 0;}
+    .ti{display:flex;gap:14px;padding-bottom:20px;position:relative;}
+    .ti::before{content:'';position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--line);}
+    .ti:last-child::before{display:none;}
+    .td{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;border:2px solid;}
+    .tdr{background:#fef2f2;border-color:#dc2626;}
+    .tda{background:#fffbeb;border-color:#d97706;}
+    .ttag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);}
+    .tc h4{margin:3px 0 4px;font-size:13.5px;}
+    .tc p{font-size:12.5px;}
+    .pbox{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:#fff;border-radius:14px;padding:28px 32px;margin:28px 0;}
+    .pbox h3{font-family:'Lora',serif;font-size:18px;color:#fff;margin-bottom:8px;}
+    .pbox p{color:#94a3b8;font-size:13px;margin-bottom:14px;}
+    .pi{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .pitem{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;}
+    .pitem dt{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#93c5fd;margin-bottom:3px;}
+    .pitem dd{font-size:12.5px;color:#cbd5e1;}
+    .doc-footer{background:#f1f5f9;border-top:1px solid var(--line);padding:14px 60px;display:flex;justify-content:space-between;font-size:12px;color:var(--ink-dim);}
+@media (max-width: 900px){.layout{grid-template-columns:1fr;}.sidebar{position:relative;height:auto;}.cover{padding:48px 0;}.doc-body{padding:40px 32px 60px;} .cover > div {padding: 0 32px !important;} }
+    @media print{.no-print{display:none!important;}.layout{display:block;}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar no-print">
+    <div class="sidebar-logo">
+      <span class="sb">CONECTA INGENIERIA</span>
+      <span class="sd">White Paper Técnico</span>
+    </div>
+    <nav>
+      <p class="tl">Contenido</p>
+      <ul class="toc-links">
+        <li><a href="#top">Portada</a></li>
+        <li><a href="#resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#empresa">1. Empresa Analizada</a></li>
+        <li><a href="#sitr">2. Verificación SITR</a></li>
+        <li><a href="#scada">3. SCADA y Respaldo</a></li>
+        <li><a href="#telecom">4. Comunicaciones</a></li>
+        <li><a href="#mant">5. Mantenimiento</a></li>
+        <li><a href="#brechas">6. Top 15 Hallazgos</a></li>
+        <li><a href="#plan">7. Plan de Acción</a></li>
+        <li><a href="#propuesta">8. Propuesta CONECTA</a></li>
+      </ul>
+    </nav>
+    <div class="sm"><p>CON-WP-SITR-STN-001<br>Rev. 1.0 — Feb 2026</p></div>
+    <button class="pb no-print" onclick="window.print()">🖨️ Imprimir / PDF</button>
+  </aside>
+  <main>
+    <div class="cover" id="top">
+      <div style="max-width:900px;margin:0 auto;padding:0 60px;position:relative;z-index:1;">
+        <span class="cl">📡 Auditoría SITR/SCADA — Transmisora STN</span>
+        <h1>Diagnóstico Preventivo:<br><em>SCADA, SITR y Telecomunicaciones</em><br>en Empresa Transmisora</h1>
+        <p class="cover-sub">Diagnóstico completo de sistemas de supervisión y telecomunicaciones en una empresa transmisora STN. El mismo análisis que reveló 38 hallazgos críticos tras el apagón del 25-Feb-2025 — ejecutado de forma preventiva.</p>
+        <div class="stats-row">
+          <div class="stat-box"><div class="stat-n">38</div><div class="stat-l">hallazgos totales</div></div>
+          <div class="stat-box"><div class="stat-n">9</div><div class="stat-l">de alta criticidad</div></div>
+          <div class="stat-box"><div class="stat-n">82 min</div><div class="stat-l">conmutación SCADA real</div></div>
+          <div class="stat-box"><div class="stat-n">4 sem</div><div class="stat-l">plazo diagnóstico</div></div>
+        </div>
+        <div class="cm">
+          <span>⏱ 8 min de lectura</span>
+          <span>✍️ CONECTA INGENIERIA — Equipo de Ingeniería</span>
+          <span>📅 Febrero 2026</span>
+        </div>
+        <div class="cmg">
+          <div class="cmi"><dt>Documento</dt><dd>CON-WP-SITR-STN-001</dd></div>
+          <div class="cmi"><dt>Revisión</dt><dd>1.0 — Feb 2026</dd></div>
+          <div class="cmi"><dt>Normativa</dt><dd>NTSyCS + AT-SITR</dd></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-body">
+      <h2 id="resumen"><span class="sn" style="background:#1d4ed8">RE</span> Resumen Ejecutivo</h2>
+      <div class="kpig">
+        <div class="kpic"><div class="kpiv">99,12%</div><div class="kpil">Disponibilidad SITR promedio global (req: 99,5%)</div></div>
+        <div class="kpic"><div class="kpiv">82 min</div><div class="kpil">Tiempo real de conmutación a SCADA respaldo (req: ≤5 min)</div></div>
+        <div class="kpic"><div class="kpiv">36 meses</div><div class="kpil">Sin actualización de firmware SCADA (req: 18 meses)</div></div>
+      </div>
+      <p>Diagnóstico preventivo de sistemas SCADA, SITR y telecomunicaciones en empresa transmisora STN con
+        12 subestaciones AT (110–500 kV) y 3.200 km de líneas. El diagnóstico replica el checklist de 38 puntos
+        utilizado en la auditoría real post-apagón 25-Feb-2025, permitiendo detectar las mismas brechas de forma
+        preventiva — antes de que el CEN o la SEC las encuentren.</p>
+      <div class="callout cd"><div class="ci">⚠️</div><div class="cb"><div class="ct">Riesgo normativo identificado</div>
+        <p>Disponibilidad SITR promedio de 99,12% — bajo el límite de 99,5% exigido por la NTSyCS. Una de las
+          subestaciones tiene 95,21% en su peor mes, lo que constituye incumplimiento grave.</p></div></div>
+
+      <h2 id="empresa"><span class="sn">1</span> Empresa Analizada</h2>
+      <div class="tw"><table><tbody>
+        <tr><td><strong>Tipo de coordinado</strong></td><td>Transmisora STN (Sistema de Transmisión Nacional)</td></tr>
+        <tr><td><strong>Instalaciones</strong></td><td>12 subestaciones AT (110–500 kV); 3.200 km de líneas</td></tr>
+        <tr><td><strong>Centro de Control principal</strong></td><td>Ciudad X — SCADA propio con 1.200 puntos de medición</td></tr>
+        <tr><td><strong>Centro de Control respaldo</strong></td><td>Ciudad Y — SCADA espejo</td></tr>
+        <tr><td><strong>SITR</strong></td><td>Protocolo ICCP hacia el CEN; 85 puntos de medición</td></tr>
+      </tbody></table></div>
+
+      <h2 id="sitr"><span class="sn">2</span> Verificación SITR — 12 Meses</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Subestación</th><th>Disp. promedio 12M</th><th>Mes peor</th><th>Disp. mes peor</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr class="bg"><td>S/E Norte 500 kV</td><td>99,72%</td><td>Jul-2024</td><td>99,01%</td><td><span class="badge bdg">✅ OK</span></td></tr>
+          <tr class="bg"><td>S/E Centro 220 kV</td><td>99,61%</td><td>Nov-2024</td><td>98,92%</td><td><span class="badge bdg">✅ OK (límite)</span></td></tr>
+          <tr class="br"><td><strong>S/E Sur 110 kV</strong></td><td><strong>97,84%</strong></td><td>Ago-2024</td><td><strong>95,21%</strong></td><td><span class="badge bdr">❌ Crítico</span></td></tr>
+          <tr class="br"><td><strong>S/E Costa 110 kV</strong></td><td>99,32%</td><td>Feb-2025</td><td><strong>98,10%</strong></td><td><span class="badge bdr">❌ Incumple</span></td></tr>
+          <tr class="br"><td><strong>Promedio global</strong></td><td><strong>99,12%</strong></td><td>—</td><td>—</td><td><span class="badge bdr">❌ Bajo 99,5%</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="scada"><span class="sn">3</span> SCADA y Sistema de Respaldo</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Ítem</th><th>Requisito</th><th>Estado encontrado</th><th>Hallazgo</th></tr></thead>
+        <tbody>
+          <tr class="bg"><td>SCADA principal</td><td>Operativo 24/7</td><td>✅ 99,9% disponibilidad</td><td>—</td></tr>
+          <tr class="br"><td>SCADA respaldo</td><td>24/7 activo/listo</td><td>En modo "frío" (arranque manual)</td><td><span class="badge bdr">H-01 🔴</span></td></tr>
+          <tr class="br"><td>Tiempo conmutación</td><td>≤ 5 min</td><td><strong>82 minutos</strong> en prueba</td><td><span class="badge bdr">H-02 🔴</span></td></tr>
+          <tr class="br"><td>Pruebas periódicas</td><td>Mensual</td><td>Última: <strong>14 meses atrás</strong></td><td><span class="badge bdr">H-03 🔴</span></td></tr>
+          <tr class="ba"><td>Sincronización respaldo</td><td>Tiempo real</td><td>Solo cada <strong>6 horas</strong></td><td><span class="badge bda">H-04 🟠</span></td></tr>
+          <tr class="ba"><td>Actualizaciones</td><td>Automática</td><td>Manual — requiere operador</td><td><span class="badge bda">H-05 🟠</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="telecom"><span class="sn">4</span> Comunicaciones Operacionales</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Canal</th><th>Requisito</th><th>Estado</th><th>Hallazgo</th></tr></thead>
+        <tbody>
+          <tr class="br"><td>Hot Line principal (voz)</td><td>≥ 99,5%</td><td>98,9% — 3 puntos con batería descargada</td><td><span class="badge bdr">H-06 🔴</span></td></tr>
+          <tr class="br"><td>Hot Line respaldo (celular)</td><td>Operativo</td><td>Sin plan celular en 2 S/E rurales</td><td><span class="badge bdr">H-07 🔴</span></td></tr>
+          <tr class="bg"><td>Canal ICCP principal</td><td>Operativo</td><td>✅ 99,72% disponibilidad</td><td>—</td></tr>
+          <tr class="br"><td>Canal ICCP respaldo</td><td>Requerido</td><td>❌ Solo canal principal activo</td><td><span class="badge bdr">H-08 🔴</span></td></tr>
+          <tr class="ba"><td>Grabación voz ≥ 6 meses</td><td>Requerida</td><td>Solo <strong>3 meses</strong> retención</td><td><span class="badge bda">H-09 🟠</span></td></tr>
+          <tr class="ba"><td>Sincronización grabación</td><td>± 1 s</td><td>± 3,2 s — fuera de rango</td><td><span class="badge bda">H-10 🟠</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="mant"><span class="sn">5</span> Mantenimiento Preventivo</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Sistema</th><th>Frec. req.</th><th>Última ejecución</th><th>Hallazgo</th></tr></thead>
+        <tbody>
+          <tr class="br"><td>UPS salas de control</td><td>6 meses</td><td><strong>22 meses atrás</strong></td><td><span class="badge bdr">H-11 🔴</span></td></tr>
+          <tr class="br"><td>Baterías Hot Line</td><td>12 meses</td><td><strong>18 meses atrás</strong></td><td><span class="badge bdr">H-12 🔴</span></td></tr>
+          <tr class="bg"><td>Equipos GPS calibración</td><td>12 meses</td><td>8 meses — OK</td><td>✅</td></tr>
+          <tr class="ba"><td>RTUs y equipos SITR</td><td>12 meses</td><td><strong>14 meses atrás</strong></td><td><span class="badge bda">H-13 🟠</span></td></tr>
+          <tr class="br"><td>Pruebas protecciones 87L</td><td>24 meses</td><td><strong>31 meses atrás</strong></td><td><span class="badge bdr">H-14 🔴</span></td></tr>
+          <tr class="ba"><td>Firmware SCADA</td><td>18 meses</td><td><strong>36 meses atrás</strong></td><td><span class="badge bda">H-15 🟠</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="brechas"><span class="sn">6</span> Top 15 Hallazgos (de 38 totales)</h2>
+      <div class="tw"><table>
+        <thead><tr><th>ID</th><th>Sistema</th><th>Descripción</th><th>Criticidad</th></tr></thead>
+        <tbody>
+          <tr class="br"><td><strong>H-01</strong></td><td>SCADA Respaldo</td><td>Modo frío — requiere arranque manual</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="br"><td><strong>H-02</strong></td><td>SCADA Respaldo</td><td>Conmutación 82 min (req: &lt;5 min)</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="br"><td><strong>H-03</strong></td><td>SCADA Respaldo</td><td>Sin prueba periódica (14 meses)</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="ba"><td><strong>H-04</strong></td><td>SCADA Respaldo</td><td>Sincronización solo cada 6 h</td><td><span class="badge bda">🟠 Media</span></td></tr>
+          <tr class="ba"><td><strong>H-05</strong></td><td>SCADA</td><td>Actualizaciones de configuración manuales</td><td><span class="badge bda">🟠 Media</span></td></tr>
+          <tr class="br"><td><strong>H-06</strong></td><td>Hot Line</td><td>3 puntos con batería sin carga</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="br"><td><strong>H-07</strong></td><td>Hot Line</td><td>Sin enlace voz respaldo en 2 S/E</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="br"><td><strong>H-08</strong></td><td>SITR/ICCP</td><td>Sin canal ICCP respaldo</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="ba"><td><strong>H-09</strong></td><td>Grabación voz</td><td>Retención 3 meses (req: 6 meses)</td><td><span class="badge bda">🟠 Media</span></td></tr>
+          <tr class="ba"><td><strong>H-10</strong></td><td>Grabación voz</td><td>Sincronización ±3,2 s (req: ±1 s)</td><td><span class="badge bda">🟠 Media</span></td></tr>
+          <tr class="br"><td><strong>H-11</strong></td><td>UPS</td><td>Sin mantenimiento en 22 meses</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="br"><td><strong>H-12</strong></td><td>Baterías</td><td>Sin mantenimiento en 18 meses</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="ba"><td><strong>H-13</strong></td><td>RTUs/SITR</td><td>Sin mantenimiento en 14 meses</td><td><span class="badge bda">🟠 Media</span></td></tr>
+          <tr class="br"><td><strong>H-14</strong></td><td>Protección 87L</td><td>Sin prueba en 31 meses</td><td><span class="badge bdr">🔴 Alta</span></td></tr>
+          <tr class="ba"><td><strong>H-15</strong></td><td>Firmware SCADA</td><td>Sin actualización en 36 meses</td><td><span class="badge bda">🟠 Media</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="plan"><span class="sn">7</span> Plan de Acción Priorizado</h2>
+      <div class="timeline">
+        <div class="ti"><div class="td tdr">🔴</div><div class="tc">
+          <div class="ttag">Inmediato — 0 a 15 días</div>
+          <h4>H-01, H-02, H-03 — SCADA respaldo a modo caliente</h4>
+          <p>Pasar SCADA respaldo a modo activo con sincronización en tiempo real. Realizar prueba de conmutación con tiempo objetivo ≤ 5 min.</p>
+        </div></div>
+        <div class="ti"><div class="td tdr">🔴</div><div class="tc">
+          <div class="ttag">15 a 30 días</div>
+          <h4>H-06, H-07, H-08 — Hot Line y canal ICCP respaldo</h4>
+          <p>Reemplazar baterías Hot Line en todos los puntos; activar segundo canal ICCP hacia el CEN; gestionar plan celular S/E rurales.</p>
+        </div></div>
+        <div class="ti"><div class="td tda">🟠</div><div class="tc">
+          <div class="ttag">30 a 45 días</div>
+          <h4>H-11, H-12 — Mantenimiento UPS y baterías</h4>
+          <p>Mantenimiento completo UPS y baterías. Programar calendario semestral con alertas 30 días antes del vencimiento.</p>
+        </div></div>
+        <div class="ti"><div class="td tda">🟠</div><div class="tc">
+          <div class="ttag">45 a 90 días</div>
+          <h4>H-14, H-15 — Protecciones y firmware</h4>
+          <p>Prueba protección 87L en todas las líneas. Actualizar firmware SCADA. Actualizar procedimientos de emergencia.</p>
+        </div></div>
+      </div>
+
+      <h2 id="propuesta"><span class="sn">8</span> Propuesta de Valor CONECTA INGENIERIA</h2>
+      <div class="pbox">
+        <h3>Servicio: Diagnóstico Preventivo SCADA/SITR en 4 semanas</h3>
+        <p>"Diagnóstico preventivo de redundancia SITR y SCADA: entregamos tabla de brechas con 38 puntos de verificación basados en los hallazgos reales del apagón del 25-Feb-2025, antes de que el CEN o la SEC te auditen."</p>
+        <dl class="pi">
+          <div class="pitem"><dt>Cobertura</dt><dd>38 puntos de verificación (checklist post-apagón)</dd></div>
+          <div class="pitem"><dt>Plazo</dt><dd>4 semanas desde inicio</dd></div>
+          <div class="pitem"><dt>Entregable</dt><dd>Informe de brechas + plan de acción priorizado</dd></div>
+          <div class="pitem"><dt>Normativa</dt><dd>NTSyCS + AT-SITR + Instructivos CEN</dd></div>
+        </dl>
+      </div>
+      <div class="callout csu"><div class="ci">✅</div><div class="cb"><div class="ct">Impacto normativo al resolver los 38 hallazgos</div>
+        <p>Disponibilidad SITR de 99,12% sube a ≥ 99,5% en todas las S/E. Conmutación SCADA de 82 min baja a &lt;5 min. Cumplimiento pleno NTSyCS para voz operativa y canal ICCP respaldo.</p></div></div>
+    </div>
+    <footer class="doc-footer no-print">
+      <span><strong>CONECTA INGENIERIA</strong> — Ingeniería &amp; Diseño | mercado Chileno</span>
+      <span>CON-WP-SITR-STN-001 | Rev. 1.0 — Feb 2026</span>
+    </footer>
+  </main>
+</div>
+<script>
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if(e.isIntersecting){
+        document.querySelectorAll('.toc-links a').forEach(l=>l.classList.remove('active'));
+        const a=document.querySelector('.toc-links a[href="#'+e.target.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

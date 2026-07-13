@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo NovaTech | CONECTA Especialistas B2B</title>
+    <meta name="description"
+        content="Proveedores e Integradores de la línea NovaTech Automation. RTUs OrionLX, Gateways IEC 61850 y Medición Bitronics para subestaciones en Chile.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Variables - Shared with Main Theme */
+        :root {
+            --brand-blue: #0f172a;
+            --brand-accent: #2563eb;
+            --brand-dark: #020617;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-page: #f8fafc;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* NovaTech Branding */
+            --nova-blue: #0033a0;
+            --nova-blue-light: #3b82f6;
+        }
+
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-page);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: var(--brand-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-accent);
+        }
+
+        .btn-primary {
+            background: var(--brand-accent);
+            color: #ffffff !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* NOVATECH HERO */
+        .nova-hero {
+            margin-top: 80px;
+            /* offset navbar */
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #001233 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle blue glow */
+        .nova-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 51, 160, 0.2) 0%, rgba(2, 6, 23, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .nova-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 51, 160, 0.3);
+            color: #93c5fd;
+            padding: 6px 16px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(0, 51, 160, 0.5);
+            margin-bottom: 24px;
+        }
+
+        .nova-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .nova-hero h1 span {
+            color: var(--nova-blue-light);
+        }
+
+        .nova-hero p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 540px;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+
+        .hero-image img {
+            max-height: 180px;
+            width: auto;
+            display: block;
+        }
+
+        /* Product Families Section */
+        .catalog-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 64px auto;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            color: var(--brand-blue);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Product Grid */
+        .product-category-title {
+            font-size: 1.75rem;
+            color: var(--brand-blue);
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .product-category-title span {
+            color: var(--nova-blue);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+
+        .product-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--nova-blue);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
+            z-index: 2;
+        }
+
+        .product-card .btn-primary {
+            margin-top: auto;
+        }
+
+        .product-icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .product-card h3 {
+            font-size: 1.35rem;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .product-card p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--nova-blue);
+            font-weight: bold;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 24px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--brand-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--nova-blue);
+            color: var(--nova-blue);
+            background: rgba(0, 51, 160, 0.05);
+        }
+
+        /* Banner CTA */
+        .cta-banner {
+            background: var(--brand-dark);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+            border-top: 1px solid #1e293b;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 32px auto;
+        }
+
+        .cta-banner .btn-primary {
+            background: var(--nova-blue);
+            font-size: 1.1rem;
+            padding: 14px 32px;
+        }
+
+        .cta-banner .btn-primary:hover {
+            background: #002277;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--brand-dark);
+            color: #94a3b8;
+            padding: 80px 0 40px;
+            border-top: 1px solid #1e293b;
+        }
+
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .nova-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* B2B MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 5px solid var(--nova-blue);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            font-size: 32px;
+            line-height: 1;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--nova-blue);
+        }
+
+        .modal-header h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--brand-blue);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .quote-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .quote-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .quote-form label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .quote-form input,
+        .quote-form select,
+        .quote-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: var(--text-dark);
+        }
+
+        .quote-form input:focus,
+        .quote-form select:focus,
+        .quote-form textarea:focus {
+            outline: none;
+            border-color: var(--nova-blue);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+            /* Safe generic shadow */
+        }
+
+        .quote-form .readonly-input {
+            background-color: #f8fafc;
+            color: var(--brand-blue);
+            font-weight: 700;
+            border-color: #cbd5e1;
+            cursor: not-allowed;
+        }
+
+        /* Reusing btn-submit class logic */
+        .btn-submit {
+            background: linear-gradient(135deg, var(--nova-blue), #002277);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            margin-top: 16px;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .quote-form .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">CONECTA<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html#sistemas">División Sistemas</a>
+                <a href="index.html#equipos">Venta de Equipos</a>
+                <a href="#catalogo">Catálogo Subestaciones</a>
+                <a href="index.html#normativa">Normativa</a>
+                <a href="#cotizar" class="btn-primary" style="background:var(--nova-blue);">Cotizar NovaTech</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="nova-hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <div class="nova-badge">Substation Automation</div>
+                <h1>Automatización <span>NovaTech</span>. El cerebro de la S/E.</h1>
+                <p>Integramos y suministramos la legendaria familia OrionLX para digitalizar, controlar y comunicar
+                    subestaciones eléctricas bajo los más altos estándares normativos.</p>
+                <div style="display:flex; gap:16px;">
+                    <a href="#catalogo" class="btn-primary" style="background:var(--nova-blue);">Ver Arquitectura
+                        Orion</a>
+                    <a href="index.html" class="btn-outline"
+                        style="color:white; border-color:rgba(255,255,255,0.2);">Volver a CONECTA</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="assets/novatech_img/orionlx_plus.webp" alt="NovaTech OrionLX Gateway"
+                    style="filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2)); width: 100%; border-radius: 8px;">
+            </div>
+        </div>
+    </header>
+
+    <!-- CATALOG SECTION -->
+    <section id="catalogo" class="catalog-section">
+        <div class="container">
+
+            <div class="section-header">
+                <h2>Plataforma NovaTech Automation</h2>
+                <p>Las RTUs, Medidores y Gateways preferidos por las utilies eléctricas en USA y validados por el
+                    Coordinador Eléctrico Nacional en Chile.</p>
+            </div>
+
+            <!-- CATEGORY 1: RTU & GATEWAYS -->
+            <h3 class="product-category-title"><span>01.</span> Gateways y RTUs (Familia Orion)</h3>
+            <div class="product-grid">
+
+                <!-- OrionLX -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/novatech_img/orionlx_plus.webp" alt="OrionLX"
+                            style="height: 120px; width: 100%; object-fit: contain;"></div>
+                    <h3>OrionLX Automation Platform</h3>
+                    <p>El estándar de la industria. Un gateway multiprotocolo, HMI local, procesador lógico y servidor
+                        de datos en un solo dispositivo robusto para racks de 19".</p>
+                    <ul class="feature-list">
+                        <li>Más de 40 protocolos (DNP3, IEC 61850, Modbus)</li>
+                        <li>Gestión de puertos seriales y Ethernet flexibles</li>
+                        <li>Editor de lógicas matemáticas tipo PLC integrado</li>
+                        <li>Ciberseguridad NERC CIP</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('OrionLX Automation Platform')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 8px; font-weight: 600; padding: 14px 20px; background: linear-gradient(135deg, var(--nova-blue), #002277); border: none; box-shadow: 0 4px 14px rgba(0, 51, 160, 0.3); transition: all 0.3s ease;"><span
+                            style="margin-right:8px;">✉️</span> Consultar a Ingeniería</button>
+                </div>
+
+                <!-- OrionLXm -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/novatech_img/orionlx_m.webp" alt="OrionLXm"
+                            style="height: 120px; width: 100%; object-fit: contain;"></div>
+                    <h3>OrionLXm (Compacto)</h3>
+                    <p>Todo el poder de ruteo del OrionLX en un formato compacto para montaje en riel DIN o paneles
+                        pequeños en celdas de Media Tensión.</p>
+                    <ul class="feature-list">
+                        <li>Consumo ultra-bajo (< 10W)</li>
+                        <li>Topologías de red redundantes integradas</li>
+                        <li>Micro-SD para almacenamiento masivo SCADA local</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('OrionLXm (Compacto)')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 8px; font-weight: 600; padding: 14px 20px; background: linear-gradient(135deg, var(--nova-blue), #002277); border: none; box-shadow: 0 4px 14px rgba(0, 51, 160, 0.3); transition: all 0.3s ease;"><span
+                            style="margin-right:8px;">✉️</span> Consultar a Ingeniería</button>
+                </div>
+
+                <!-- Orion I/O -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/novatech_img/orion_io.webp" alt="Orion I/O"
+                            style="height: 120px; width: 100%; object-fit: contain;"></div>
+                    <h3>Distributed I/O Modules</h3>
+                    <p>Módulos de entradas y salidas de campo (analógicas y digitales) ultra-robustos que conectan
+                        señales de desconectadores y relés mecánicos al ecosistema Orion.</p>
+                    <ul class="feature-list">
+                        <li>Comunicación rápida por Fibra/Cobre DNP3</li>
+                        <li>Etiquetas magnéticas personalizables</li>
+                        <li>Aislamiento galvánico severo clase S/E</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Distributed I/O Modules')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 8px; font-weight: 600; padding: 14px 20px; background: linear-gradient(135deg, var(--nova-blue), #002277); border: none; box-shadow: 0 4px 14px rgba(0, 51, 160, 0.3); transition: all 0.3s ease;"><span
+                            style="margin-right:8px;">✉️</span> Consultar a Ingeniería</button>
+                </div>
+            </div>
+
+            <!-- CATEGORY 2: MEASUREMENT -->
+            <h3 class="product-category-title"><span>02.</span> Medición y Calidad de Energía (Bitronics)</h3>
+            <div class="product-grid">
+
+                <!-- Bitronics M650 -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/novatech_img/bitronics_660.webp" alt="Bitronics M650"
+                            style="height: 120px; width: 100%; object-fit: contain;"></div>
+                    <h3>Medidores Panel Bitronics M650</h3>
+                    <p>Medidores de panel con gran visibilidad LED, diseñados especificamente para tableros eléctricos.
+                        Brindan medición SCADA y visualización in-situ.</p>
+                    <ul class="feature-list">
+                        <li>Pantalla LED de alto brillo y 3 líneas</li>
+                        <li>DNP3 Ethernet y Serial nativo</li>
+                        <li>Configuración vía puerto frontal IP</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Medidores Panel Bitronics M650')" " class="
+                        btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 8px; font-weight: 600; padding: 14px 20px; background: linear-gradient(135deg, var(--nova-blue), #002277); border: none; box-shadow: 0 4px 14px rgba(0, 51, 160, 0.3); transition: all 0.3s ease;"><span
+                            style="margin-right:8px;">✉️</span> Consultar a Ingeniería</button>
+                </div>
+
+                <!-- Bitronics M871 / PMU -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/novatech_img/bitronics_663.webp" alt="Bitronics M871"
+                            style="height: 120px; width: 100%; object-fit: contain;"></div>
+                    <h3>Bitronics M871 (Analizador & PMU)</h3>
+                    <p>Analizador de calidad de red avanzado que incorpora funcionalidad de medición fasorial
+                        sincronizada (PMU) según estándar IEEE C37.118-2018.</p>
+                    <ul class="feature-list">
+                        <li>Registro de fallas / Oscilografía de alta tasa</li>
+                        <li>Capacidad PMU exigida por el CEN</li>
+                        <li>Dual Ethernet para arquitecturas PRP/HSR</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Bitronics M871 (Analizador & PMU)')" " class="
+                        btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 8px; font-weight: 600; padding: 14px 20px; background: linear-gradient(135deg, var(--nova-blue), #002277); border: none; box-shadow: 0 4px 14px rgba(0, 51, 160, 0.3); transition: all 0.3s ease;"><span
+                            style="margin-right:8px;">✉️</span> Consultar a Ingeniería</button>
+                </div>
+
+            </div>
+
+            <!-- CATEGORY 3: TIME SYNCHRONIZATION -->
+            <h3 class="product-category-title" style="margin-top: 24px;"><span>03.</span> Sincronización de Tiempo
+                (Kronos)</h3>
+            <div class="product-grid" style="margin-bottom: 40px;">
+
+                <!-- Kronos Series 2 -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/novatech_img/kronos_2p.webp" alt="Kronos Series 2"
+                            style="height: 120px; width: 100%; object-fit: contain;"></div>
+                    <h3>Kronos Series 2 (Reloj Satelital)</h3>
+                    <p>Relojes precisos para montaje en riel DIN. Diseñados para entregar señales PTP e IRIG-B
+                        garantizando la marca de tiempo (SOE) requerida en subestaciones sin infraestructura rackeable.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Receptor GPS y GLONASS</li>
+                        <li>Salidas de precisión por fibra (ST/SC) o cobre (BNC)</li>
+                        <li>Alimentación dual redundante S/E</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Sincronizador Satelital Kronos Series 2')"
+                        class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 8px; font-weight: 600; padding: 14px 20px; background: linear-gradient(135deg, var(--nova-blue), #002277); border: none; box-shadow: 0 4px 14px rgba(0, 51, 160, 0.3); transition: all 0.3s ease;"><span
+                            style="margin-right:8px;">✉️</span> Consultar a Ingeniería</button>
+                </div>
+
+                <!-- Kronos Series 3 -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/novatech_img/kronos_3r.webp" alt="Kronos Series 3"
+                            style="height: 120px; width: 100%; object-fit: contain;"></div>
+                    <h3>Kronos Series 3 (Rack 19")</h3>
+                    <p>Grandmaster Clock IEC 61850 PTP robusto, apto para Centros de Datos de subestaciones y
+                        aplicaciones críticas de PMU donde la sincronización absoluta de la red es mandate.</p>
+                    <ul class="feature-list">
+                        <li>Soporte Perfil PTP Power (IEEE C37.238)</li>
+                        <li>Oscilador OCXO integrado ("Holdover")</li>
+                        <li>Configuración Web encriptada HTTPS</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Grandmaster Clock Kronos Series 3')"
+                        class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 8px; font-weight: 600; padding: 14px 20px; background: linear-gradient(135deg, var(--nova-blue), #002277); border: none; box-shadow: 0 4px 14px rgba(0, 51, 160, 0.3); transition: all 0.3s ease;"><span
+                            style="margin-right:8px;">✉️</span> Consultar a Ingeniería</button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SHORT B2B CTA -->
+    <section id="cotizar" class="cta-banner">
+        <div class="container">
+            <h2>Hablemos sobre redes de control bajo IEC 61850</h2>
+            <p>Nuestros ingenieros integradores están preparados para resolver sus arquitecturas de S/E, proveer soporte
+                y cotizar los equipos NovaTech que su proyecto necesita.</p>
+            <button type="button" onclick="openQuoteModal('Equipo/Servicio')" contacto@conecta.cl"
+                class="btn-primary">Cotizar Hardware con Ingeniería Integrada</button>
+        </div>
+    </section>
+
+    <!-- FOOTER (Simplified) -->
+    <footer class="footer">
+        <div class="container" style="text-align: center;">
+            <div class="brand" style="color:white; margin-bottom: 16px;">CONECTA<span>.</span></div>
+            <p>Integradores Multimarca recomendados NovaTech Automation Chile.<br>&copy; 2026 CONECTA Ingeniería. Todos
+                los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- MODAL COTIZACION B2B -->
+    <div id="quoteModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeQuoteModal()">&times;</span>
+            <div class="modal-header">
+                <h3>Solicitud de Cotización B2B</h3>
+                <p>Complete sus datos para que un ingeniero especialista le contacte a la brevedad.</p>
+            </div>
+            <!-- NETLIFY FORM -->
+            <form name="cotizacion-equipo" method="POST" data-netlify="true" class="quote-form">
+                <!-- Fallback subject for Netlify emails -->
+                <input type="hidden" name="subject" data-remove-prefix value="Nueva Cotización de Equipo B2B" />
+
+                <div class="form-group">
+                    <label for="frm-equipo">Equipo a Cotizar</label>
+                    <input type="text" id="frm-equipo" name="equipo" readonly class="readonly-input" value="">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="frm-nombre">Nombre Completo *</label>
+                        <input type="text" id="frm-nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label for="frm-empresa">Empresa / Rut *</label>
+                        <input type="text" id="frm-empresa" name="empresa" required placeholder="Ej: Minera Escondida">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="frm-email">Correo Corporativo *</label>
+                        <input type="email" id="frm-email" name="email" required placeholder="juan@empresa.cl">
+                    </div>
+                    <div class="form-group">
+                        <label for="frm-servicio">Requerimiento Principal *</label>
+                        <select id="frm-servicio" name="servicio" required>
+                            <option value="">Seleccione una opción...</option>
+                            <option value="Suministro de Hardware">Suministro de Equipos / Hardware</option>
+                            <option value="Servicio de Integracion">Integración y Puesta en Marcha</option>
+                            <option value="Soporte Tecnico">Soporte Técnico / Mantención</option>
+                            <option value="Asesoria Normativa">Asesoría Normativa / Consultoría</option>
+                            <option value="Otro">Otro (Especifique en el mensaje)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="frm-mensaje">Mensaje o Detalles Adicionales</label>
+                    <textarea id="frm-mensaje" name="mensaje" rows="3"
+                        placeholder="Indique cantidad, plazos o detalles técnicos relevantes..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Solicitud a Ingeniería</button>
+                <div style="text-align: center; margin-top: 12px; font-size: 0.8rem; color: #94a3b8;">Sistema cifrado y
+                    gestionado por CONECTA B2B</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL JS -->
+    <script>
+        function openQuoteModal(itemName) {
+            document.getElementById('frm-equipo').value = itemName;
+            var modal = document.getElementById('quoteModal');
+            modal.style.display = 'flex';
+            // Trigger reflow for animation
+            modal.offsetHeight;
+            modal.style.opacity = '1';
+        }
+
+        function closeQuoteModal() {
+            var modal = document.getElementById('quoteModal');
+            modal.style.display = 'none';
+            modal.style.opacity = '0';
+        }
+
+        window.onclick = function (event) {
+            var modal = document.getElementById('quoteModal');
+            if (event.target === modal) {
+                closeQuoteModal();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

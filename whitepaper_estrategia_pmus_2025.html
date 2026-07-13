@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>White Paper — Exigencia PMUS en Subestaciones >20 MW | CONECTA INGENIERIA</title>
+    <meta name="description"
+        content="Estrategia normativa y tecnológica frente a la exigencia de PMUS del CEN para PMGDs existentes con medidores ION (Schneider)." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --ink: #0f172a;
+            --ink-soft: #334155;
+            --ink-dim: #64748b;
+            --line: #e2e8f0;
+            --bg: #f8fafc;
+            --accent: #eab308;
+            --sidebar-bg: #1e293b;
+            --sidebar-text: #94a3b8;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            font-size: 1.0625rem;
+            line-height: 1.75;
+        }
+
+        .layout {
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            background: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 28px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-logo {
+            padding: 0 22px 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-brand {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+
+        .sidebar-doc {
+            display: block;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #64748b;
+            margin-top: 3px;
+        }
+
+        .toc-label {
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #475569;
+            padding: 0 22px;
+            margin-bottom: 8px;
+        }
+
+        .toc-links {
+            list-style: none;
+        }
+
+        .toc-links a {
+            display: block;
+            padding: 7px 22px;
+            font-size: 12.5px;
+            color: var(--sidebar-text);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all .18s;
+        }
+
+        .toc-links a:hover {
+            color: #f1f5f9;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .toc-links a.active {
+            color: #fff;
+            background: rgba(234, 179, 8, 0.25);
+            border-left-color: var(--accent);
+            font-weight: 600;
+        }
+
+        .sidebar-meta {
+            margin-top: auto;
+            padding: 16px 22px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .sidebar-meta p {
+            font-size: 10.5px;
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        .print-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 16px 22px 0;
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #fde047;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .main {
+            overflow: hidden;
+        }
+
+        .cover {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #b45309 100%);
+            color: #fff;
+            padding: 80px 0;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(234, 179, 8, 0.2);
+            border: 1px solid rgba(234, 179, 8, 0.4);
+            border-radius: 100px;
+            padding: 5px 14px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: #fde047;
+            margin-bottom: 24px;
+        }
+
+        .cover h1 {
+            font-family: 'Lora', serif;
+            font-size: 32px;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        .cover h1 em {
+            color: #fde047;
+            font-style: italic;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            color: #cbd5e1;
+            max-width: 680px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .cover-meta {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 24px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+
+        .cover-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            max-width: 520px;
+        }
+
+        .cover-meta-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+
+        .cover-meta-item dt {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            margin-bottom: 4px;
+        }
+
+        .cover-meta-item dd {
+            font-size: 12px;
+            color: #e2e8f0;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .doc-body {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 60px 80px;
+        }
+
+        h2 {
+            font-family: 'Lora', serif;
+            font-size: 23px;
+            color: var(--ink);
+            margin: 48px 0 14px;
+            padding-top: 8px;
+            border-top: 2px solid var(--line);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 7px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            flex-shrink: 0;
+        }
+
+        h3 {
+            font-size: 16px;
+            color: var(--ink);
+            margin: 24px 0 10px;
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--ink-soft);
+            margin-bottom: 14px;
+        }
+
+        strong {
+            color: var(--ink);
+        }
+
+        ul {
+            margin-bottom: 14px;
+            padding-left: 24px;
+        }
+
+        li {
+            color: var(--ink-soft);
+            margin-bottom: 6px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        thead th {
+            background: #f1f5f9;
+            padding: 10px 13px;
+            text-align: left;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--ink-dim);
+            border-bottom: 1px solid var(--line);
+            white-space: nowrap;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid var(--line);
+        }
+
+        tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        tbody td {
+            padding: 11px 13px;
+            color: var(--ink-soft);
+            vertical-align: top;
+        }
+
+        tbody td strong {
+            color: var(--ink);
+        }
+
+        .callout {
+            display: flex;
+            gap: 12px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            margin: 18px 0;
+            border: 1px solid;
+        }
+
+        .callout-icon {
+            font-size: 18px;
+            flex-shrink: 0;
+            line-height: 1.5;
+        }
+
+        .callout-body {
+            flex: 1;
+        }
+
+        .callout-title {
+            font-weight: 700;
+            font-size: 12px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .callout p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+        .cs {
+            background: #f0fdf4;
+            border-color: #a7f3d0;
+        }
+
+        .cs .callout-title {
+            color: #059669;
+        }
+
+        .cw {
+            background: #fefce8;
+            border-color: #fef08a;
+        }
+
+        .cw .callout-title {
+            color: #a16207;
+        }
+
+        .cr {
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .cr .callout-title {
+            color: #b91c1c;
+        }
+
+        .ci {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .ci .callout-title {
+            color: #1d4ed8;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .kpi-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .kpi-value {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .kpi-label {
+            font-size: 10.5px;
+            color: var(--ink-dim);
+            margin-top: 4px;
+            line-height: 1.4;
+        }
+
+        .decision-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #fff;
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin: 28px 0;
+        }
+
+        .decision-box h3 {
+            font-family: 'Lora', serif;
+            font-size: 18px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .decision-box p {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 14px;
+        }
+
+        .doc-footer {
+            background: #f1f5f9;
+            border-top: 1px solid var(--line);
+            padding: 14px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: var(--ink-dim);
+        }
+
+        @media (max-width: 900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+            }
+
+            .cover {
+                padding: 48px 0;
+            }
+
+            .doc-body {
+                padding: 40px 32px 60px;
+            }
+
+            .cover>div {
+                padding: 0 32px !important;
+            }
+        }
+
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .layout {
+                display: block;
+            }
+
+            .cover {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="layout">
+        <aside class="sidebar no-print">
+            <div class="sidebar-logo">
+                <span class="sidebar-brand">CONECTA INGENIERIA</span>
+                <span class="sidebar-doc">White Paper Ejecutivo</span>
+            </div>
+            <nav>
+                <p class="toc-label">Contenido</p>
+                <ul class="toc-links">
+                    <li><a href="#top">Portada</a></li>
+                    <li><a href="#riesgo">1. El Riesgo Normativo</a></li>
+                    <li><a href="#problema">2. El Problema de los Equipos</a></li>
+                    <li><a href="#costos">3. Impacto Financiero</a></li>
+                    <li><a href="#solucion">4. La Solución CONECTA</a></li>
+                </ul>
+            </nav>
+            <div class="sidebar-meta">
+                <p>CON-WP-PMUS-002<br>Rev. 1.0 — Feb 2026</p>
+            </div>
+            <button class="print-btn no-print" onclick="window.print()">🖨️ Exportar PDF</button>
+        </aside>
+        <main class="main">
+            <div class="cover" id="top">
+                <div style="max-width:900px;margin:0 auto;padding:0 60px;position:relative;z-index:1;">
+                    <span class="cover-label">⚠️ Alerta Regulatoria MMF 2025-2026</span>
+                    <h1>Exigencia Retroactiva PMUS:<br><em>Riesgos y Soluciones en S/E Congestionadas</em></h1>
+                    <p class="cover-subtitle">Guía ejecutiva para dueños de PMGDs operando en las 34 subestaciones con
+                        más de 20 MW. Análisis de impacto financiero, el problema de los medidores ION heredados, y cómo
+                        evitar sobrecostos cobrados por distribuidoras implementando su propia PMU normada.</p>
+                    <div class="cover-meta-grid" style="margin-top: 30px;">
+                        <div class="cover-meta-item">
+                            <dt>Reglamento</dt>
+                            <dd>ATSM - NTSyCS (Anexo PMUS)</dd>
+                        </div>
+                        <div class="cover-meta-item">
+                            <dt>Afectados</dt>
+                            <dd>PMGDs en 34 S/E (978 MW)</dd>
+                        </div>
+                        <div class="cover-meta-item">
+                            <dt>Exigencia</dt>
+                            <dd>C37.118-2018 (Retroactivo)</dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doc-body">
+                <h2 id="riesgo"><span class="section-num" style="background:#eab308; color:#0f172a;">1</span> El Riesgo
+                    Normativo Inminente (Umbral 20 MW)</h2>
+                <p>Según el último <em>Estudio de Verificación de Congestiones MMF (Julio 2025)</em> del Coordinador
+                    Eléctrico Nacional (CEN), existen actualmente <strong>34 subestaciones</strong> en el país donde la
+                    suma de inyección de todos los Pequeños Medios de Generación Distribuida (PMGD) conectados a su
+                    barra ha superado el <strong>umbral crítico de 20 MW</strong>.</p>
+                <p>Cuando este límite se cruza, <strong>la normativa hace exigible la instalación de Medición Fasorial
+                        (PMUS)</strong> en los transformadores de distribución primaria de dicha subestación. Lo que
+                    pocos coordinados saben es el principio de retroactividad que aplica en estos casos:</p>
+                <div class="callout cr">
+                    <div class="callout-icon">🚨</div>
+                    <div class="callout-body">
+                        <div class="callout-title">La regla es sobre el "Punto de Conexión", no sobre el parque
+                            individual</div>
+                        <p>Si un nuevo PMGD de 3 MW se conecta y hace que la subestación pase de 18 a 21 MW, el CEN
+                            exigirá medición PMUS <strong>a todos los actores de esa instalación</strong>, incluyendo a
+                            los parques que llevan años operando en dicho transformador. El CEN emitirá cartas de
+                            regularización con plazos perentorios (12-24 meses) bajo pena de desconexión del SEN.</p>
+                    </div>
+                </div>
+
+                <h2 id="problema"><span class="section-num">2</span> El Problema Tecnológico: La Base Instalada (ION)
+                </h2>
+                <p>A lo largo de los años, el estándar *de facto* para los PMGDs en Chile han sido los equipos de la
+                    serie <strong>Schneider Electric ION (ION 7650, ION 8600 / 8650, ION 9000)</strong>, los cuales
+                    fueron especificados e instalados primariamente para cumplir funciones de <em>Medidor de Facturación
+                        (Remuneración Comercial)</em> y Monitoreo de Calidad de Energía.</p>
+
+                <p>El desafío surge al contrastar equipos heredados contra la rigurosa exigencia actual de la Norma
+                    Técnica de Seguridad y Calidad de Suministro (NTSyCS):</p>
+
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Equipo Instalado</th>
+                                <th>Capacidad PMU NATIVA</th>
+                                <th>Cumplimiento Norma CEN (IEEE C37.118-2018)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Serie ION 7650 / 8600</strong></td>
+                                <td>❌ No (Hardware antiguo)</td>
+                                <td>❌ Incumple requerimiento SITR dinámico.</td>
+                            </tr>
+                            <tr class="br-amber">
+                                <td><strong>Serie ION 8650</strong></td>
+                                <td>⚠️ Opcional (Requiere FW/Licencia especial)</td>
+                                <td>⚠️ Frecuentemente sujeto a controversia por cumplimiento estricto de la versión 2018
+                                    (suele traer versión 2005 por defecto).</td>
+                            </tr>
+                            <tr class="br-amber">
+                                <td><strong>ION 9000</strong></td>
+                                <td>✅ Sí (Requiere módulo avanzado)</td>
+                                <td>✅ Cumple (Si está configurado correctamente para PDC).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="callout cw">
+                    <div class="callout-icon">⚙️</div>
+                    <div class="callout-body">
+                        <div class="callout-title">Diagnóstico para Dueños de PMGD</div>
+                        <p>La inmensa mayoría de los dueños de PMGDs enfrentando la notificación del CEN descubrirán que
+                            <strong>sus equipos actuales no están homologados de fábrica</strong> para reportar como
+                            Sincrofasor bajo la norma C37.118-2018 sin incurrir en complejas actualizaciones de firmware
+                            (arriesgando la homologación de facturación tarifaria) o costosos recambios de hardware.</p>
+                    </div>
+                </div>
+
+                <h2 id="costos"><span class="section-num">3</span> La "Trampa" del Costo Transferido</h2>
+                <p>Ante la necesidad de monitorear un alimentador saturado con >20 MW, existen dos caminos físicos para
+                    instalar la Unidad de Medición Fasorial (PMU). Elegir el camino equivocado puede triplicar los
+                    costos para el propietario del PMGD:</p>
+
+                <h3>Vía 1: Instalación Centralizada (A cargo de la Distribuidora)</h3>
+                <p>La distribuidora argumentará que su subestación original "no necesitaba de esto" y que la culpa es
+                    exclusiva de la congestión generada por las inyecciones de los privados. En este escenario, la
+                    distribuidora cotizará la compra e instalación de envolventes IP65, relés de alta gama, y canales
+                    exclusivos de comunicación de fibra directa al PDC del CEN, instalándolo dentro de la S/E.</p>
+                <ul>
+                    <li><strong>Consecuencia:</strong> El costo total de ese proyecto, que puede ascender a **decenas de
+                        cientos de UF**, será traspasado "a prorrata" directamente a los dueños de los PMGDs allí
+                        conectados mediante cobros autorizados por concepto de adecuaciones extracontractuales (Obras
+                        Adicionales de Conexión o Cargos ICC).</li>
+                    <li><strong>Control:</strong> El PMGD paga el 100% de la obra, pero <em>pierde la gobernanza</em> de
+                        sus datos y de la infraestructura.</li>
+                </ul>
+
+                <h3>Vía 2: Autonomía Distribuida — Instalación en el Punto de Conexión del Parque</h3>
+                <p>La alternativa técnica y legalmente válida, es que cada parque instale su propio nodo PMU en la
+                    frontera comercial (donde tiene acceso libre a los transformadores de corriente y potencial)
+                    utilizando un canal seguro de telemetría.</p>
+                <ul>
+                    <li><strong>Consecuencia:</strong> El costo de implementación es predecible, acotado y gestionado
+                        por CAPEX del propio PMGD.</li>
+                </ul>
+
+                <h2 id="solucion"><span class="section-num">4</span> La Solución CONECTA: Desempaquetando el Problema
+                </h2>
+                <p>CONECTA INGENIERIA ofrece una respuesta contundente al problema normativo, orientada 100% a la
+                    eficiencia de capital, protegiendo al inversionista de presupuestos inflados por empresas
+                    distribuidoras:</p>
+
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">🛡️ Audit ION</div>
+                        <div class="kpi-label">Diagnóstico de actualización firmware/licenciamiento (ION 8650 / 9000)
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">🔌 SEL Edge</div>
+                        <div class="kpi-label">Integración en paralelo (retrofitting) de equipos PMU normados.</div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">📡 SITR PDC</div>
+                        <div class="kpi-label">Configuración del canal 120 Kbps directo con el Coordinador.</div>
+                    </div>
+                </div>
+
+                <div class="decision-box">
+                    <h3 style="color: #fde047;">Plan de Acción Estratégico (Preventivo)</h3>
+                    <p>No espere a que la distribuidora le presente la factura por prorrateo de obras en la Subestación.
+                        Al instalar su propio Sincrofasor homologado, usted mantiene el cumplimiento normativo exigido
+                        por el CEN en términos que benefician comercialmente a su proyecto.</p>
+                    <p><strong>Nuestra metodología:</strong></p>
+                    <ol style="margin-left: 20px; font-size: 13.5px; color: #cbd5e1;">
+                        <li style="color: #cbd5e1; margin-bottom: 8px;"><strong>Levantamiento SCADA/Medidor:</strong>
+                            Auditamos sin modificar la cadena de facturación actual (respetando equipos ION 7650
+                            existentes si los hubiera).</li>
+                        <li style="color: #cbd5e1; margin-bottom: 8px;"><strong>Equipamiento Nativo:</strong> Si es
+                            requerido actualizar hardware, diseñamos el armario *PMU Standalone* que se intercala en los
+                            TT/CC de protección sin interrumpir servicio.</li>
+                        <li style="color: #cbd5e1; margin-bottom: 0;"><strong>Ingeniería Defensiva:</strong> Redactamos
+                            la carta técnica oficial frente a la Distribuidora y al CEN, certificando que su parque ya
+                            cumple con la norma PMUS de forma individualizada, eximiéndolo de cobros solidarios por
+                            obras mayores en la S/E.</li>
+                    </ol>
+                </div>
+            </div>
+            <footer class="doc-footer no-print">
+                <span><strong>CONECTA INGENIERIA</strong> — Innovación en Normativa Eléctrica</span>
+                <span>CON-WP-PMUS-002 | Confidencial</span>
+            </footer>
+        </main>
+    </div>
+    <script>
+        const obs = new IntersectionObserver(es => {
+            es.forEach(e => {
+                if (e.isIntersecting) {
+                    document.querySelectorAll('.toc-links a').forEach(l => l.classList.remove('active'));
+                    const a = document.querySelector('.toc-links a[href="#' + e.target.id + '"]');
+                    if (a) a.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-20% 0px -70% 0px' });
+        document.querySelectorAll('[id]').forEach(s => obs.observe(s));
+    </script>
+</body>
+
+</html>

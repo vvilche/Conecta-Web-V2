@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CONECTA — Biblioteca de Ejemplos Técnicos</title>
+  <meta name="description"
+    content="Biblioteca de casos de uso reales del Agente de Ingeniería-Diseño de CONECTA: PMGD, SITR, ECAP, protecciones, transmisión y más." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0e1a;
+      --bg-card: #111827;
+      --bg-card2: #1a2235;
+      --border: #1f2d45;
+      --accent: #3b82f6;
+      --accent2: #6366f1;
+      --accent3: #10b981;
+      --accent4: #f59e0b;
+      --accent5: #ef4444;
+      --text: #e2e8f0;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --glow: rgba(59, 130, 246, 0.15);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND GRID ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 80px 24px 56px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge span {
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.4
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .grad {
+      background: linear-gradient(135deg, #60a5fa 0%, #818cf8 50%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #60a5fa, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ── FILTERS ── */
+    .filters-wrapper {
+      position: relative;
+      z-index: 1;
+      padding: 0 24px 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .search-bar {
+      width: 100%;
+      max-width: 560px;
+      position: relative;
+    }
+
+    .search-bar input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 20px 14px 48px;
+      color: var(--text);
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-bar input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .search-bar input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .search-bar .icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .pill {
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-muted);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .pill.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.35);
+    }
+
+    /* ── GRID ── */
+    .grid-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      animation: fadeInUp 0.4s ease both;
+      cursor: default;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.4);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(59, 130, 246, 0.1);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .card-meta {
+      flex: 1;
+    }
+
+    .card-category {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+    }
+
+    .card-desc {
+      font-size: 13.5px;
+      color: var(--text-dim);
+      line-height: 1.65;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+      background: rgba(99, 102, 241, 0.1);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 6px;
+      padding: 3px 9px;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .badge-criticidad {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .badge-alta {
+      background: rgba(239, 68, 68, 0.12);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .badge-media {
+      background: rgba(245, 158, 11, 0.12);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .badge-rutina {
+      background: rgba(16, 185, 129, 0.12);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .badge-nuevo {
+      background: rgba(59, 130, 246, 0.12);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+
+    .file-link {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: color 0.2s;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .file-link:hover {
+      color: var(--accent);
+    }
+
+    /* color themes per category */
+    .cat-pmgd .card-icon {
+      background: rgba(59, 130, 246, 0.15);
+    }
+
+    .cat-pmgd .card-category {
+      color: #60a5fa;
+    }
+
+    .cat-sitr .card-icon {
+      background: rgba(99, 102, 241, 0.15);
+    }
+
+    .cat-sitr .card-category {
+      color: #818cf8;
+    }
+
+    .cat-generacion .card-icon {
+      background: rgba(245, 158, 11, 0.15);
+    }
+
+    .cat-generacion .card-category {
+      color: #fbbf24;
+    }
+
+    .cat-transmision .card-icon {
+      background: rgba(16, 185, 129, 0.15);
+    }
+
+    .cat-transmision .card-category {
+      color: #34d399;
+    }
+
+    .cat-ingenieria .card-icon {
+      background: rgba(236, 72, 153, 0.15);
+    }
+
+    .cat-ingenieria .card-category {
+      color: #f472b6;
+    }
+
+    .cat-terreno .card-icon {
+      background: rgba(251, 146, 60, 0.15);
+    }
+
+    .cat-terreno .card-category {
+      color: #fb923c;
+    }
+
+    .cat-proteccion .card-icon {
+      background: rgba(239, 68, 68, 0.15);
+    }
+
+    .cat-proteccion .card-category {
+      color: #f87171;
+    }
+
+    /* ── FEATURED CARD ── */
+    .card.featured {
+      border-color: rgba(59, 130, 246, 0.4);
+      background: linear-gradient(135deg, #111827 0%, #131f35 100%);
+      grid-column: span 1;
+    }
+
+    .card.featured::before {
+      content: '★ DESTACADO';
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fbbf24;
+      display: block;
+      margin-bottom: -8px;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--text-muted);
+    }
+
+    .empty-state .emoji {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    footer strong {
+      color: var(--accent);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 60px 16px 40px;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .grid-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span>●</span> Biblioteca Técnica Activa — Feb 2026
+    </div>
+    <h1>Ejemplos Reales del<br><span class="grad">Agente de Ingeniería</span></h1>
+    <p>Casos de uso detallados del Agente Normativo CONECTA para coordinados del sistema eléctrico CHILENO: PMGD, SITR,
+      estudios de conexión, inspecciones y más.</p>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-value">15</span><span class="stat-label">Ejemplos</span></div>
+      <div class="stat"><span class="stat-value">16</span><span class="stat-label">Skills</span></div>
+      <div class="stat"><span class="stat-value">7</span><span class="stat-label">Categorías</span></div>
+      <div class="stat"><span class="stat-value">CNE</span><span class="stat-label">Feb 2026</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ FILTERS ═══ -->
+  <div class="filters-wrapper">
+    <div class="search-bar">
+      <span class="icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar por título, skill o tecnología…"
+        oninput="filterCards()" />
+    </div>
+    <div class="filter-pills">
+      <span class="pill active" onclick="setFilter('all', this)">Todos</span>
+      <span class="pill" onclick="setFilter('pmgd', this)">PMGD / PMG</span>
+      <span class="pill" onclick="setFilter('sitr', this)">SITR / SCADA</span>
+      <span class="pill" onclick="setFilter('generacion', this)">Generación</span>
+      <span class="pill" onclick="setFilter('transmision', this)">Transmisión</span>
+      <span class="pill" onclick="setFilter('ingenieria', this)">Ingeniería</span>
+      <span class="pill" onclick="setFilter('terreno', this)">Terreno</span>
+      <span class="pill" onclick="setFilter('proteccion', this)">Protecciones</span>
+    </div>
+  </div>
+
+  <!-- ═══ GRID ═══ -->
+  <div class="grid-wrapper" id="cardsGrid">
+
+    <!-- NUEVO. PMUS Comercial -->
+    <div class="card featured cat-sitr" data-cat="sitr" data-text="pmus sincrofasor ion schneider pmgd 20 mw comercial">
+      <div class="card-header">
+        <div class="card-icon">🚨</div>
+        <div class="card-meta">
+          <div class="card-category">Estrategia Comercial — SITR / PMGD</div>
+          <div class="card-title">Alerta MMF 2025: Exigencia Retroactiva PMUS</div>
+        </div>
+      </div>
+      <p class="card-desc"><strong>Caso de Negocio:</strong> Whitepaper comercial dirigido a dueños de PMGD obligados a
+        instalar PMUS en las 34 S/E congestionadas. Aborda el problema de medidores ION 7650/8600 incompatibles y evita
+        millonarios cobros de la distribuidora.</p>
+      <div class="card-tags">
+        <span class="tag">skill_pmgd_pmg</span>
+        <span class="tag">skill_base_sitr</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-alta">🔴 Obligación Legal</span>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a style="font-size:12px;font-weight:700;color:#f87171;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:4px 10px;text-decoration:none;"
+            href="whitepaper_estrategia_pmus_2025.html" target="_blank">📄 Pitch Comercial →</a>
+          <a class="file-link" href="estrategia_comercial_pmus.md">estrategia.md →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. PMGD+BESS -->
+    <div class="card featured cat-pmgd" data-cat="pmgd"
+      data-text="pmgd bess solar almacenamiento maipo enel distribución">
+      <div class="card-header">
+        <div class="card-icon">⚡</div>
+        <div class="card-meta">
+          <div class="card-category">PMGD / Almacenamiento</div>
+          <div class="card-title">Diagnóstico PMGD Solar + BESS — 8 MW + 4 MWh</div>
+        </div>
+      </div>
+      <p class="card-desc">Nuevo coordinado con sistema de almacenamiento en baterías LFP. Aplica normativa CNE feb-2026
+        para BESS: variables SITR adicionales, bloques horarios de inyección, antipasivación y tabla de brechas
+        pre-comisionamiento.</p>
+      <div class="card-tags">
+        <span class="tag">skill_pmgd_pmg</span>
+        <span class="tag">skill_base_sitr</span>
+        <span class="tag">skill_estudio_ecap</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-nuevo">🔵 CNE Feb-2026</span>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a style="font-size:12px;font-weight:700;color:#60a5fa;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:6px;padding:4px 10px;text-decoration:none;"
+            href="whitepaper_pmgd_bess.html" target="_blank">📄 White Paper →</a>
+          <a class="file-link" href="skills/examples/example_pmgd_bess.md">md →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Auditoría Transelec STN -->
+    <div class="card cat-sitr" data-cat="sitr"
+      data-text="transelec auditoría scada sitr transmisora stn apagón hallazgos">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <div class="card-meta">
+          <div class="card-category">SITR / SCADA — Transmisión</div>
+          <div class="card-title">Auditoría SITR/SCADA Transmisora STN (Caso Transelec 2025)</div>
+        </div>
+      </div>
+      <p class="card-desc">Diagnóstico preventivo completo de empresa transmisora con 12 S/E y 3.200 km de líneas. 38
+        hallazgos encontrados: SCADA respaldo en modo frío, tiempo conmutación 82 min, ICCP sin canal respaldo.</p>
+      <div class="card-tags">
+        <span class="tag">skill_transmision</span>
+        <span class="tag">skill_base_sitr</span>
+        <span class="tag">skill_vigilancia_normativa</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-alta">🔴 Alta criticidad</span>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a style="font-size:12px;font-weight:700;color:#f87171;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:4px 10px;text-decoration:none;"
+            href="whitepaper_auditoria_sitr_stn.html" target="_blank">📄 White Paper →</a>
+          <a class="file-link" href="skills/examples/example_transelec_auditoria.md">md →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Caso apagón real feb-2025 -->
+    <div class="card cat-sitr" data-cat="sitr" data-text="apagón real feb 2025 evento coordinados sistema eléctrico">
+      <div class="card-header">
+        <div class="card-icon">🌩️</div>
+        <div class="card-meta">
+          <div class="card-category">Evento Real — Caso Post-Incidente</div>
+          <div class="card-title">Análisis Post-Apagón Real — Febrero 2025</div>
+        </div>
+      </div>
+      <p class="card-desc">Caso basado en el apagón masivo del 25-feb-2025. Análisis de causas técnicas, comportamiento
+        del SCADA respaldo y lecciones normativas aplicables a coordinados para evitar sanciones similares.</p>
+      <div class="card-tags">
+        <span class="tag">skill_vigilancia_normativa</span>
+        <span class="tag">skill_base_sitr</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-alta">🔴 Caso real</span>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a style="font-size:12px;font-weight:700;color:#f87171;background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);border-radius:6px;padding:4px 10px;text-decoration:none;"
+            href="whitepaper_apagon_feb2025.html" target="_blank">📄 White Paper →</a>
+          <a class="file-link" href="skills/examples/example_apagon_real_feb2025.md">md →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Central Solar 50 MW — SITR -->
+    <div class="card cat-sitr" data-cat="sitr" data-text="central solar 50 mw sitr generación pmus rtu coordinado">
+      <div class="card-header">
+        <div class="card-icon">☀️</div>
+        <div class="card-meta">
+          <div class="card-category">SITR — Generación Mayor</div>
+          <div class="card-title">Central Solar 50 MW — Diagnóstico SITR Completo</div>
+        </div>
+      </div>
+      <p class="card-desc">Caso base para coordinados de generación mayor. Verificación de variables SITR,
+        disponibilidad, configuración RTU y cumplimiento AT-SITR-1 para central fotovoltaica de gran escala.</p>
+      <div class="card-tags">
+        <span class="tag">skill_base_sitr</span>
+        <span class="tag">skill_generacion</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-media">🟠 Complejidad media</span>
+        <a class="file-link" href="skills/examples/example_sitr.md">example_sitr.md →</a>
+      </div>
+    </div>
+
+    <!-- 5. PMUS Generación -->
+    <div class="card cat-generacion" data-cat="generacion"
+      data-text="pmus generación esquema regulación secondary frecuencia agc">
+      <div class="card-header">
+        <div class="card-icon">⚙️</div>
+        <div class="card-meta">
+          <div class="card-category">Generación — PMUS 2025</div>
+          <div class="card-title">Caso PMUS — Generador con Obligación de Unidad de Medida</div>
+        </div>
+      </div>
+      <p class="card-desc">Evaluación de obligación PMU para central generadora. Verifica si la S/E supera el umbral
+        acumulado, requisitos de bloqueo horario y coordinación con el Plan de Medición del Coordinador.</p>
+      <div class="card-tags">
+        <span class="tag">skill_generacion</span>
+        <span class="tag">skill_base_sitr</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-media">🟠 Evaluación normativa</span>
+        <a class="file-link" href="skills/examples/example_generacion.md">example_generacion.md →</a>
+      </div>
+    </div>
+
+    <!-- 6. PMU en STN — Transmisión -->
+    <div class="card cat-transmision" data-cat="transmision"
+      data-text="pmu transmisión stn sincrofasor medición dinámica coordinador">
+      <div class="card-header">
+        <div class="card-icon">🗼</div>
+        <div class="card-meta">
+          <div class="card-category">Transmisión — PMU STN</div>
+          <div class="card-title">Instalación PMU en Empresa Transmisora STN</div>
+        </div>
+      </div>
+      <p class="card-desc">Caso para transmisoras que deben instalar Unidades de Medida de Fasores (PMU). Verifica
+        puntos de instalación, protocolo IEEE C37.118 hacia el CEN, latencia y disponibilidad requeridas.</p>
+      <div class="card-tags">
+        <span class="tag">skill_transmision</span>
+        <span class="tag">skill_base_sitr</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-rutina">🟢 Planificación</span>
+        <a class="file-link" href="skills/examples/example_transmision.md">example_transmision.md →</a>
+      </div>
+    </div>
+
+    <!-- 7. PMGD > 20 MW -->
+    <div class="card cat-pmgd" data-cat="pmgd" data-text="pmgd 20 mw umbral pmus distribuidora conexión media tensión">
+      <div class="card-header">
+        <div class="card-icon">🔆</div>
+        <div class="card-meta">
+          <div class="card-category">PMGD — Umbral 20 MW</div>
+          <div class="card-title">Caso PMGD Acumulado Mayor a 20 MW en S/E</div>
+        </div>
+      </div>
+      <p class="card-desc">Evaluación cuando la subestación supera el umbral de 20 MW acumulados en PMGD. Activación de
+        obligación PMUS, coordinación con el CEN y ajustes al acuerdo SITR con la distribuidora.</p>
+      <div class="card-tags">
+        <span class="tag">skill_pmgd_pmg</span>
+        <span class="tag">skill_base_sitr</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-alta">🔴 Umbral superado</span>
+        <a class="file-link" href="skills/examples/example_pmgd.md">example_pmgd.md →</a>
+      </div>
+    </div>
+
+    <!-- 8. AGC/SSCC -->
+    <div class="card cat-sitr" data-cat="sitr"
+      data-text="agc regulación secundaria agu frecuencia sscc servicios complementarios">
+      <div class="card-header">
+        <div class="card-icon">🎛️</div>
+        <div class="card-meta">
+          <div class="card-category">SSCC — AGC Regulación Secundaria</div>
+          <div class="card-title">Prestador AGC — Regulación Secundaria de Frecuencia</div>
+        </div>
+      </div>
+      <p class="card-desc">Caso para central que presta servicio de regulación secundaria (AGC). Requisitos de señales
+        al CEN: potencia activa, potencia de referencia AGC, respuesta en frecuencia y tiempos de telemetría.</p>
+      <div class="card-tags">
+        <span class="tag">skill_sscc</span>
+        <span class="tag">skill_base_sitr</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-media">🟠 SSCC</span>
+        <a class="file-link" href="skills/examples/example_sscc.md">example_sscc.md →</a>
+      </div>
+    </div>
+
+    <!-- 9. EDAC Post-Evento -->
+    <div class="card cat-proteccion" data-cat="proteccion"
+      data-text="edac edag erag esquema disparo automático coordinación post-evento">
+      <div class="card-header">
+        <div class="card-icon">⚠️</div>
+        <div class="card-meta">
+          <div class="card-category">Protecciones — EDAC/EDAG/ERAG</div>
+          <div class="card-title">EDAC Post-Evento — Análisis de Actuación de Esquema</div>
+        </div>
+      </div>
+      <p class="card-desc">Análisis post-evento de actuación de Esquema de Disparo Automático de Cargas. Verificación de
+        secuencia de actuación, tiempo de disparo, registros oscilográficos y cumplimiento normativo.</p>
+      <div class="card-tags">
+        <span class="tag">skill_edac_edag_erag</span>
+        <span class="tag">skill_vigilancia_normativa</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-alta">🔴 Post-evento</span>
+        <a class="file-link" href="skills/examples/example_edac.md">example_edac.md →</a>
+      </div>
+    </div>
+
+    <!-- 10. Estudio ECAP -->
+    <div class="card cat-ingenieria" data-cat="ingenieria"
+      data-text="ecap conexión sen estudio flujo potencia tensión pmgd 5 mw">
+      <div class="card-header">
+        <div class="card-icon">📊</div>
+        <div class="card-meta">
+          <div class="card-category">Ingeniería — Estudio ECAP</div>
+          <div class="card-title">Estudio ECAP — Conexión PMGD 5 MW a Red MT</div>
+        </div>
+      </div>
+      <p class="card-desc"><strong>Valor Consultivo:</strong> Demuestra matemáticamente viabilidad de conexión para PMGD
+        eólico 5 MW. Verifica capacidad térmica, cortocircuito e impacto en red MT (NTSyCS), ahorrando costos de
+        maniobras innecesarias al cliente final.</p>
+      <div class="card-tags">
+        <span class="tag">skill_estudio_ecap</span>
+        <span class="tag">skill_calculo_cortocircuito</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-media">🟠 Estudio formal</span>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a style="font-size:12px;font-weight:700;color:#f472b6;background:rgba(236,72,153,0.1);border:1px solid rgba(236,72,153,0.3);border-radius:6px;padding:4px 10px;text-decoration:none;"
+            href="whitepaper_ecap_eolico.html" target="_blank">📄 White Paper →</a>
+          <a class="file-link" href="skills/examples/example_ecap.md">md →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11. Cálculo Cortocircuito -->
+    <div class="card cat-ingenieria" data-cat="ingenieria"
+      data-text="cortocircuito icc cálculo subestación industrial falla trifásica monofásica">
+      <div class="card-header">
+        <div class="card-icon">⚡</div>
+        <div class="card-meta">
+          <div class="card-category">Ingeniería — Cortocircuito</div>
+          <div class="card-title">Análisis de Cortocircuito — S/E Industrial 400A</div>
+        </div>
+      </div>
+      <p class="card-desc">Cálculo de corrientes de cortocircuito según IEC 60909 para subestación industrial.
+        Determinación de Icc trifásico y monofásico por barra, selección de interruptores y ajuste de protecciones.</p>
+      <div class="card-tags">
+        <span class="tag">skill_calculo_cortocircuito</span>
+        <span class="tag">skill_coordinacion_protecciones</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-rutina">🟢 Cálculo técnico</span>
+        <a class="file-link" href="skills/examples/example_cortocircuito.md">example_cortocircuito.md →</a>
+      </div>
+    </div>
+
+    <!-- 12. Revisión Planos -->
+    <div class="card cat-ingenieria" data-cat="ingenieria"
+      data-text="planos unifilar revisión rfi comentarios diseño eléctrico">
+      <div class="card-header">
+        <div class="card-icon">📐</div>
+        <div class="card-meta">
+          <div class="card-category">Ingeniería — Revisión de Planos</div>
+          <div class="card-title">Revisión de Plano Unifilar — Lista de Comentarios RFI</div>
+        </div>
+      </div>
+      <p class="card-desc">Proceso de revisión formal de plano unifilar eléctrico. Genera lista estructurada de
+        comentarios RFI con categorización por criticidad, referencia normativa y recomendación de corrección.</p>
+      <div class="card-tags">
+        <span class="tag">skill_revision_planos</span>
+        <span class="tag">skill_informe_tecnico</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-rutina">🟢 Revisión formal</span>
+        <a class="file-link" href="skills/examples/example_revision_planos.md">example_revision_planos.md →</a>
+      </div>
+    </div>
+
+    <!-- 13. Memoria de Cálculo -->
+    <div class="card cat-ingenieria" data-cat="ingenieria"
+      data-text="memoria cálculo dimensionamiento cables tablero industrial conductores">
+      <div class="card-header">
+        <div class="card-icon">📋</div>
+        <div class="card-meta">
+          <div class="card-category">Ingeniería — Memoria de Cálculo</div>
+          <div class="card-title">Memoria de Cálculo — Tablero Industrial 400A</div>
+        </div>
+      </div>
+      <p class="card-desc">Memoria de cálculo eléctrica completa para ampliación de tablero industrial. Dimensionado de
+        conductores, protecciones, verificación de caída de tensión y selección de equipos según SEC/IEC.</p>
+      <div class="card-tags">
+        <span class="tag">skill_memoria_calculo</span>
+        <span class="tag">skill_informe_tecnico</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-rutina">🟢 Ingeniería básica</span>
+        <a class="file-link" href="skills/examples/example_memoria_calculo.md">example_memoria_calculo.md →</a>
+      </div>
+    </div>
+
+    <!-- 14. Visita Terreno -->
+    <div class="card cat-terreno" data-cat="terreno"
+      data-text="visita terreno inspección subestación industrial puerto montt observaciones epp">
+      <div class="card-header">
+        <div class="card-icon">🏭</div>
+        <div class="card-meta">
+          <div class="card-category">Inspección — Visita Terreno</div>
+          <div class="card-title">Inspección S/E Industrial Puerto Montt — 8 Observaciones</div>
+        </div>
+      </div>
+      <p class="card-desc">Informe de visita técnica a planta acuícola en Puerto Montt. 1 observación crítica (sin
+        tierra en tablero exterior), 3 mayores y 4 menores. Plan de acción con plazos y responsables definidos.</p>
+      <div class="card-tags">
+        <span class="tag">skill_visita_terreno</span>
+        <span class="tag">skill_informe_tecnico</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-alta">🔴 Obs. crítica</span>
+        <div style="display:flex;gap:10px;align-items:center;">
+          <a style="font-size:12px;font-weight:700;color:#fb923c;background:rgba(251,146,60,0.1);border:1px solid rgba(251,146,60,0.3);border-radius:6px;padding:4px 10px;text-decoration:none;"
+            href="whitepaper_visita_terreno.html" target="_blank">📄 White Paper →</a>
+          <a class="file-link" href="skills/examples/example_visita_terreno.md">md →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 15. Informe Técnico ECAP Formal -->
+    <div class="card cat-ingenieria" data-cat="ingenieria"
+      data-text="informe técnico ecap formal con-ing documento entregable">
+      <div class="card-header">
+        <div class="card-icon">📄</div>
+        <div class="card-meta">
+          <div class="card-category">Documentación — Informe Técnico</div>
+          <div class="card-title">Informe ECAP Formal — CON-ING-2025-042</div>
+        </div>
+      </div>
+      <p class="card-desc">Generación de informe técnico formal con portada, control de versiones, resumen ejecutivo,
+        análisis técnico y conclusiones. Estructura estándar CONECTA para entregables a clientes y regulador.</p>
+      <div class="card-tags">
+        <span class="tag">skill_informe_tecnico</span>
+        <span class="tag">skill_estudio_ecap</span>
+      </div>
+      <div class="card-footer">
+        <span class="badge-criticidad badge-rutina">🟢 Entregable</span>
+        <a class="file-link" href="skills/examples/example_informe_tecnico.md">example_informe_tecnico.md →</a>
+      </div>
+    </div>
+
+    <!-- EMPTY STATE (hidden by default) -->
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="emoji">🔍</div>
+      <p>No se encontraron ejemplos para tu búsqueda.</p>
+    </div>
+
+  </div>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <strong>CONECTA</strong> — Agente de Ingeniería-Diseño &nbsp;|&nbsp; 15 ejemplos &nbsp;|&nbsp; Normativa actualizada
+    a <strong>febrero 2026</strong>
+  </footer>
+
+  <script>
+    let activeFilter = 'all';
+
+    function setFilter(cat, el) {
+      activeFilter = cat;
+      document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      filterCards();
+    }
+
+    function filterCards() {
+      const q = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card:not(.empty-state)');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const catMatch = activeFilter === 'all' || card.dataset.cat === activeFilter;
+        const textMatch = !q || (card.dataset.text || '').includes(q) ||
+          card.innerText.toLowerCase().includes(q);
+        const show = catMatch && textMatch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      document.getElementById('emptyState').style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    // staggered animation on load
+    document.querySelectorAll('.card:not(.empty-state)').forEach((card, i) => {
+      card.style.animationDelay = `${i * 0.05}s`;
+    });
+  </script>
+</body>
+
+</html>

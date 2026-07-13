@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Informe de Inspección — S/E Industrial Puerto Montt | CONECTA INGENIERIA</title>
+  <meta name="description" content="Informe técnico de inspección eléctrica en S/E Industrial 23/0,4 kV. 8 observaciones clasificadas por criticidad con plan de acción y evidencia fotográfica."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--ink:#0f172a;--ink-soft:#334155;--ink-dim:#64748b;--line:#e2e8f0;--bg:#f8fafc;--accent:#d97706;--sidebar-bg:#1c1100;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:16px;scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);font-size:1.0625rem;line-height:1.75;}
+    .layout{display:grid;grid-template-columns:230px 1fr;min-height:100vh;}
+    .sidebar{background:var(--sidebar-bg);color:#94a3b8;padding:28px 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;}
+    .sidebar-logo{padding:0 22px 24px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:20px;}
+    .sb{display:block;font-size:13px;font-weight:700;color:#f1f5f9;}
+    .sd{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#64748b;margin-top:3px;}
+    .tl{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#475569;padding:0 22px;margin-bottom:8px;}
+    .toc-links{list-style:none;}
+    .toc-links a{display:block;padding:7px 22px;font-size:12.5px;color:#94a3b8;text-decoration:none;border-left:3px solid transparent;transition:all .18s;}
+    .toc-links a:hover{color:#f1f5f9;background:rgba(255,255,255,0.05);}
+    .toc-links a.active{color:#fff;background:rgba(217,119,6,0.25);border-left-color:var(--accent);font-weight:600;}
+    .sm{margin-top:auto;padding:16px 22px 0;border-top:1px solid rgba(255,255,255,0.07);}
+    .sm p{font-size:10.5px;color:#475569;line-height:1.5;}
+    .pb{display:flex;align-items:center;gap:8px;margin:16px 22px 0;background:rgba(217,119,6,0.15);border:1px solid rgba(217,119,6,0.3);color:#fcd34d;border-radius:8px;padding:8px 12px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;}
+    .cover{background:linear-gradient(135deg,#1c1100 0%,#78350f 50%,#1c1521 100%);color:#fff;padding:80px 0;width:100%;position:relative;overflow:hidden;}
+    .cl{display:inline-flex;align-items:center;gap:8px;background:rgba(217,119,6,0.2);border:1px solid rgba(217,119,6,0.4);border-radius:100px;padding:4px 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fcd34d;margin-bottom:22px;}
+    .cover h1{font-family:'Lora',serif;font-size:30px;line-height:1.2;margin-bottom:14px;}
+    .cover h1 em{color:#fcd34d;font-style:italic;}
+    .cover-sub{font-size:14px;color:#cbd5e1;max-width:560px;line-height:1.7;margin-bottom:22px;}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;}
+    .chip{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:4px 12px;font-size:11px;color:#cbd5e1;}
+    .chip.red{background:rgba(220,38,38,0.2);border-color:rgba(220,38,38,0.4);color:#fca5a5;}
+    .chip.amber{background:rgba(217,119,6,0.2);border-color:rgba(217,119,6,0.4);color:#fcd34d;}
+    .chip.green{background:rgba(5,150,105,0.2);border-color:rgba(5,150,105,0.4);color:#6ee7b7;}
+    .cm{display:flex;gap:18px;margin-bottom:22px;font-size:12px;color:#64748b;}
+    .cmg{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:510px;}
+    .cmi{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;}
+    .cmi dt{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:4px;}
+    .cmi dd{font-size:12px;color:#cbd5e1;font-weight:500;white-space:nowrap;}
+    .doc-body{max-width:900px;margin:0 auto;padding:60px 60px 80px;}
+    h2{font-family:'Lora',serif;font-size:22px;color:var(--ink);margin:44px 0 14px;padding-top:8px;border-top:2px solid var(--line);display:flex;align-items:center;gap:12px;}
+    .sn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:7px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;flex-shrink:0;}
+    h3{font-size:15px;color:var(--ink);margin:22px 0 10px;font-weight:600;}
+    p{color:var(--ink-soft);margin-bottom:12px;}
+    strong{color:var(--ink);}
+    .tw{overflow-x:auto;margin:16px 0;border-radius:10px;border:1px solid var(--line);}
+    table{width:100%;border-collapse:collapse;font-size:12.5px;}
+    thead th{background:#f1f5f9;padding:9px 12px;text-align:left;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line);white-space:nowrap;}
+    tbody tr{border-bottom:1px solid var(--line);}
+    tbody tr:last-child{border-bottom:none;}
+    tbody tr:hover{background:#f8fafc;}
+    tbody td{padding:10px 12px;color:var(--ink-soft);vertical-align:top;}
+    tbody td strong{color:var(--ink);}
+    tr.br td:first-child{border-left:4px solid #ef4444;}
+    tr.ba td:first-child{border-left:4px solid #f59e0b;}
+    tr.by td:first-child{border-left:4px solid #eab308;}
+    tr.bgs td:first-child{border-left:4px solid #10b981;}
+    .badge{display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;white-space:nowrap;}
+    .bdr{background:#fef2f2;color:#dc2626;border:1px solid #fecaca;}
+    .bda{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .bdy{background:#fefce8;color:#ca8a04;border:1px solid #fef08a;}
+    .bdg{background:#f0fdf4;color:#059669;border:1px solid #a7f3d0;}
+    .callout{display:flex;gap:12px;padding:14px 16px;border-radius:10px;margin:16px 0;border:1px solid;}
+    .ci{font-size:18px;flex-shrink:0;line-height:1.5;}
+    .cb{flex:1;}
+    .ct{font-weight:700;font-size:11.5px;margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;}
+    .callout p{margin-bottom:0;font-size:13px;}
+    .cd{background:#fef2f2;border-color:#fecaca;} .cd .ct{color:#dc2626;}
+    .csu{background:#f0fdf4;border-color:#a7f3d0;} .csu .ct{color:#059669;}
+    .cw{background:#fffbeb;border-color:#fde68a;} .cw .ct{color:#d97706;}
+    .ci2{background:#eff6ff;border-color:#bfdbfe;} .ci2 .ct{color:#1d4ed8;}
+    .kpig{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0;}
+    .kpic{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;}
+    .kpiv{font-size:22px;font-weight:700;color:var(--accent);font-family:'Lora',serif;}
+    .kpil{font-size:10.5px;color:var(--ink-dim);margin-top:4px;line-height:1.4;}
+    .visit-info{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+    .vi-box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;}
+    .vi-box dt{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-dim);margin-bottom:6px;}
+    .vi-box dd{font-size:13px;color:var(--ink-soft);}
+    .doc-footer{background:#f1f5f9;border-top:1px solid var(--line);padding:14px 58px;display:flex;justify-content:space-between;font-size:12px;color:var(--ink-dim);}
+@media (max-width: 900px){.layout{grid-template-columns:1fr;}.sidebar{position:relative;height:auto;}.cover{padding:48px 0;}.doc-body{padding:40px 32px 60px;} .cover > div {padding: 0 32px !important;} }
+    @media print{.no-print{display:none!important;}.layout{display:block;}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar no-print">
+    <div class="sidebar-logo">
+      <span class="sb">CONECTA INGENIERIA</span>
+      <span class="sd">Informe de Inspección</span>
+    </div>
+    <nav>
+      <p class="tl">Contenido</p>
+      <ul class="toc-links">
+        <li><a href="#top">Portada</a></li>
+        <li><a href="#resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#visita">1. Datos de la Visita</a></li>
+        <li><a href="#mediciones">2. Registro de Mediciones</a></li>
+        <li><a href="#observaciones">3. Tabla de Observaciones</a></li>
+        <li><a href="#plan">4. Plan de Acción</a></li>
+        <li><a href="#conclusion">5. Conclusión</a></li>
+      </ul>
+    </nav>
+    <div class="sm"><p>CON-INS-PM-001<br>Rev. 1.0 — Feb 2025</p></div>
+    <button class="pb no-print" onclick="window.print()">🖨️ Imprimir / PDF</button>
+  </aside>
+  <main>
+    <div class="cover" id="top">
+      <div style="max-width:900px;margin:0 auto;padding:0 60px;position:relative;z-index:1;">
+        <span class="cl">🔍 Inspección Eléctrica MT/BT</span>
+        <h1>Diagnóstico de Instalación:<br><em>S/E Industrial Puerto Montt</em></h1>
+        <p class="cover-sub">Diagnóstico eléctrico previo a ampliación de S/E industrial 23/0,4 kV — 1000 kVA. Identificación de 8 observaciones con evidencia fotográfica, clasificación normativa y plan de acción.</p>
+        <div class="chips">
+          <span class="chip red">🔴 1 Crítico — Riesgo electrocución</span>
+          <span class="chip amber">🟠 3 Mayores — Resolver antes ampliación</span>
+          <span class="chip">🟡 4 Menores</span>
+        </div>
+        <div class="cm">
+          <span>⏱ 5 min de lectura</span>
+          <span>✍️ CONECTA INGENIERIA — Equipo de Ingeniería</span>
+          <span>📅 18-Feb-2025</span>
+        </div>
+        <div class="cmg">
+          <div class="cmi"><dt>Documento</dt><dd>CON-INS-PM-001</dd></div>
+          <div class="cmi"><dt>Revisión</dt><dd>1.0 — Feb 2025</dd></div>
+          <div class="cmi"><dt>Instalación</dt><dd>S/E 23/0,4 kV 1000 kVA</dd></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-body">
+      <h2 id="resumen"><span class="sn" style="background:#dc2626">RE</span> Resumen Ejecutivo</h2>
+      <div class="kpig">
+        <div class="kpic"><div class="kpiv">8</div><div class="kpil">Observaciones totales identificadas</div></div>
+        <div class="kpic"><div class="kpiv">1 🔴</div><div class="kpil">Crítica — sin conductor de tierra en tablero exterior</div></div>
+        <div class="kpic"><div class="kpiv">3 🟠</div><div class="kpil">Mayores — a resolver antes de ampliación</div></div>
+        <div class="kpic"><div class="kpiv">4 🟡</div><div class="kpil">Menores — a resolver en 30 días</div></div>
+      </div>
+      <p>La instalación presenta estado general <strong>aceptable con observaciones mayores</strong> que deben resolverse
+        antes de la ampliación prevista. La observación más urgente (OBS-001) presenta <strong>riesgo real de
+        electrocución</strong> y debe corregirse inmediatamente antes de cualquier trabajo eléctrico adicional.</p>
+      <div class="callout cd"><div class="ci">⚠️</div><div class="cb"><div class="ct">Acción inmediata requerida — OBS-001</div>
+        <p>Circuitos del tablero de alumbrado exterior <strong>sin conductor de tierra (PE)</strong>. Riesgo de electrocución ante falla de aislación. Detener cualquier trabajo en esa zona hasta resolver.</p></div></div>
+
+      <h2 id="visita"><span class="sn">1</span> Datos de la Visita</h2>
+      <div class="visit-info">
+        <div class="vi-box"><dt>Empresa</dt><dd>Acuícola Los Canales SpA</dd></div>
+        <div class="vi-box"><dt>Instalación</dt><dd>Planta Puerto Montt — S/E 23/0,4 kV, 1000 kVA</dd></div>
+        <div class="vi-box"><dt>Objetivo</dt><dd>Diagnóstico previo a ampliación eléctrica</dd></div>
+        <div class="vi-box"><dt>Fecha</dt><dd>18 de febrero de 2025</dd></div>
+        <div class="vi-box"><dt>Asistentes</dt><dd>Ingeniero CONECTA INGENIERIA + Jefe mantenimiento cliente</dd></div>
+        <div class="vi-box"><dt>LOTO aplicado</dt><dd>Sí — interruptores Q1 (MT) y Q2 (BT) bloqueados para inspección visual</dd></div>
+      </div>
+      <div class="callout ci2"><div class="ci">🦺</div><div class="cb"><div class="ct">EPP utilizado</div>
+        <p>Casco + guantes dieléctricos Clase 2 + calzado dieléctrico + lentes de seguridad. Cumplimiento completo de protocolo de seguridad para trabajo eléctrico en MT/BT.</p></div></div>
+
+      <h2 id="mediciones"><span class="sn">2</span> Registro de Mediciones</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Punto</th><th>Medición</th><th>Valor</th><th>Límite</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr class="bgs"><td>Barra BT</td><td>Tensión L1-L2</td><td>402 V</td><td>380–415 V</td><td><span class="badge bdg">✅</span></td></tr>
+          <tr class="bgs"><td>Barra BT</td><td>Corriente L1/L2/L3</td><td>285/290/288 A</td><td>400 A máx</td><td><span class="badge bdg">✅</span></td></tr>
+          <tr class="bgs"><td>Barra BT</td><td>Desequilibrio corriente</td><td>0,9%</td><td>≤ 10%</td><td><span class="badge bdg">✅</span></td></tr>
+          <tr class="bgs"><td>Electrodo tierra 1</td><td>Resistencia</td><td>18,4 Ω</td><td>≤ 25 Ω</td><td><span class="badge bdg">✅</span></td></tr>
+          <tr class="bgs"><td>Motor bomba A</td><td>Temperatura carcasa</td><td>62°C</td><td>≤ 75°C (Clase F)</td><td><span class="badge bdg">✅</span></td></tr>
+          <tr class="bgs"><td>Transformador T1</td><td>Temperatura aceite</td><td>58°C</td><td>≤ 95°C</td><td><span class="badge bdg">✅</span></td></tr>
+          <tr class="br"><td><strong>Tablero alumbrado ext.</strong></td><td>Resistencia tierra</td><td><strong>Sin tierra</strong></td><td>—</td><td><span class="badge bdr">❌ Crítico</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="observaciones"><span class="sn">3</span> Tabla de Observaciones</h2>
+      <div class="tw"><table>
+        <thead><tr><th>N°</th><th>Área</th><th>Observación</th><th>Evidencia</th><th>Categoría</th><th>Recomendación</th><th>Plazo</th></tr></thead>
+        <tbody>
+          <tr class="br"><td><strong>OBS-001</strong></td><td>Tablero alum. ext.</td><td>Circuitos sin conductor de tierra — <strong>riesgo electrocución</strong></td><td>Foto 023</td><td><span class="badge bdr">🔴 Crítico</span></td><td>Instalar conductor PE y diferencial 30 mA</td><td>Inmediato</td></tr>
+          <tr class="ba"><td><strong>OBS-002</strong></td><td>Celda MT entrada</td><td>Empaque de sello tapa posterior deteriorado — posible ingreso humedad</td><td>Foto 008</td><td><span class="badge bda">🟠 Mayor</span></td><td>Reemplazar empaque y revisar interior</td><td>15 días</td></tr>
+          <tr class="ba"><td><strong>OBS-003</strong></td><td>Bandeja cable BT</td><td>Bandeja al 85% de llenado (req: ≤ 40% IEC para BT)</td><td>Foto 015</td><td><span class="badge bda">🟠 Mayor</span></td><td>Ampliar o instalar bandeja adicional</td><td>30 días</td></tr>
+          <tr class="ba"><td><strong>OBS-004</strong></td><td>Interruptor Q-08</td><td>Sin etiqueta actualizada: dice "bomba 2" pero alimenta línea proceso</td><td>Foto 019</td><td><span class="badge bda">🟠 Mayor</span></td><td>Reetiquetar según unifilar aprobado</td><td>15 días</td></tr>
+          <tr class="by"><td><strong>OBS-005</strong></td><td>Tablero TGBT</td><td>Extintor vencido (caducó ene-2025)</td><td>Foto 031</td><td><span class="badge bdy">🟡 Menor</span></td><td>Recargar o reemplazar extintor</td><td>7 días</td></tr>
+          <tr class="by"><td><strong>OBS-006</strong></td><td>Puesta a tierra</td><td>Unión equipotencial del transformador con corrosión visible</td><td>Foto 006</td><td><span class="badge bdy">🟡 Menor</span></td><td>Limpiar y retorcar, aplicar grasa antioxidante</td><td>30 días</td></tr>
+          <tr class="by"><td><strong>OBS-007</strong></td><td>Sala eléctrica</td><td>Iluminación de emergencia sin funcionar (batería descargada)</td><td>Foto 033</td><td><span class="badge bdy">🟡 Menor</span></td><td>Reemplazar batería luminaria emergencia</td><td>15 días</td></tr>
+          <tr class="by"><td><strong>OBS-008</strong></td><td>General</td><td>Sin plano unifilar as-built actualizado en sala</td><td>—</td><td><span class="badge bdy">🟡 Menor</span></td><td>Actualizar y plastificar plano vigente</td><td>30 días</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="plan"><span class="sn">4</span> Plan de Acción</h2>
+      <div class="tw"><table>
+        <thead><tr><th>Prioridad</th><th>Observaciones</th><th>Responsable</th><th>Fecha límite</th></tr></thead>
+        <tbody>
+          <tr class="br"><td><span class="badge bdr">🔴 Inmediato</span></td><td>OBS-001</td><td>Contratista eléctrico + cliente</td><td>25-Feb-2025</td></tr>
+          <tr class="ba"><td><span class="badge bda">🟠 15 días</span></td><td>OBS-002, OBS-004, OBS-007</td><td>Mantenimiento cliente</td><td>05-Mar-2025</td></tr>
+          <tr class="by"><td><span class="badge bdy">🟡 30 días</span></td><td>OBS-003, OBS-005, OBS-006, OBS-008</td><td>Mantenimiento cliente</td><td>20-Mar-2025</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="conclusion"><span class="sn">5</span> Conclusión</h2>
+      <p>La instalación puede operar en condiciones actuales, pero <strong>OBS-001 debe resolverse antes de cualquier
+        trabajo eléctrico adicional</strong> y antes de la ampliación prevista. Las observaciones mayores (OBS-002,
+        OBS-003, OBS-004) deben cerrarse también previo al inicio de obras.</p>
+      <div class="callout cw"><div class="ci">⚠️</div><div class="cb"><div class="ct">Condición para inicio de ampliación</div>
+        <p>La ampliación eléctrica no debe iniciarse hasta cerrar las observaciones OBS-001 (crítico) y OBS-002, OBS-003, OBS-004 (mayores). Se recomienda re-inspección de CONECTA INGENIERIA para verificar cierre.</p></div></div>
+      <div class="callout csu"><div class="ci">✅</div><div class="cb"><div class="ct">Resultado de mediciones elétricas</div>
+        <p>Todas las mediciones de calidad eléctrica (tensión, corriente, desequilibrio, resistencia de tierra, temperatura) están dentro de los límites normativos. La instalación es sana eléctricamente.</p></div></div>
+    </div>
+    <footer class="doc-footer no-print">
+      <span><strong>CONECTA INGENIERIA</strong> — Ingeniería &amp; Diseño | mercado Chileno</span>
+      <span>CON-INS-PM-001 | Rev. 1.0 — Feb 2025</span>
+    </footer>
+  </main>
+</div>
+<script>
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if(e.isIntersecting){
+        document.querySelectorAll('.toc-links a').forEach(l=>l.classList.remove('active'));
+        const a=document.querySelector('.toc-links a[href="#'+e.target.id+'"]');
+        if(a)a.classList.add('active');
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('[id]').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

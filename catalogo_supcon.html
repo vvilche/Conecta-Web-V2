@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo SUPCON | CONECTA Especialistas B2B</title>
+    <meta name="description"
+        content="Representantes oficiales de SUPCON en Chile. Conecta Ingeniería suministra sistemas DCS, SIS e instrumentación inteligente de clase mundial para la industria y minería.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* CSS Variables - Shared with Main Theme */
+        :root {
+            --brand-blue: #0f172a;
+            --brand-accent: #2563eb;
+            --brand-cyber: #00d4ff;
+            --brand-dark: #020617;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-page: #f8fafc;
+            --border-light: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 24px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            /* SUPCON Branding */
+            --supcon-red: #d32f2f;
+            --supcon-red-light: #ef4444;
+        }
+
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-page);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-light);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--brand-blue);
+            letter-spacing: -0.02em;
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: var(--brand-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--brand-accent);
+        }
+
+        .btn-primary {
+            background: var(--brand-accent);
+            color: #ffffff !important;
+            padding: 10px 24px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* SUPCON HERO */
+        .supcon-hero {
+            margin-top: 80px;
+            /* offset navbar */
+            background: linear-gradient(135deg, var(--brand-dark) 0%, #1a0808 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle red glow in the background */
+        .supcon-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(211, 47, 47, 0.15) 0%, rgba(2, 6, 23, 0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .supcon-badge {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(211, 47, 47, 0.2);
+            color: #fca5a5;
+            padding: 6px 16px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: 1px solid rgba(211, 47, 47, 0.4);
+            margin-bottom: 24px;
+        }
+
+        .supcon-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .supcon-hero h1 span {
+            color: var(--supcon-red-light);
+        }
+
+        .supcon-hero p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 540px;
+        }
+
+        .hero-image {
+            width: 100%;
+            border-radius: var(--radius-md);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: #ffffff;
+            padding: 24px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Product Families Section */
+        .catalog-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 64px auto;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            color: var(--brand-blue);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Product Grid */
+        .product-category-title {
+            font-size: 1.75rem;
+            color: var(--brand-blue);
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .product-category-title span {
+            color: var(--supcon-red);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+
+
+        .product-card {
+            background: #ffffff;
+            border: 1px solid var(--border-light);
+            min-height: 320px;
+            border-radius: var(--radius-md);
+            padding: 40px 32px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            border-top: 4px solid var(--supcon-red);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
+            z-index: 2;
+        }
+
+        .product-icon {
+            text-align: center;
+            margin-bottom: 24px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-icon img {
+            max-width: 100%;
+            max-height: 140px;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-icon img {
+            transform: scale(1.05);
+        }
+
+        .product-card h3 {
+            font-size: 1.35rem;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .product-card p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--supcon-red);
+            font-weight: bold;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            text-align: center;
+            padding: 12px 24px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--brand-blue);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--supcon-red);
+            color: var(--supcon-red);
+            background: rgba(211, 47, 47, 0.05);
+        }
+
+        /* Banner CTA */
+        .cta-banner {
+            background: var(--brand-dark);
+            padding: 60px 0;
+            text-align: center;
+            color: white;
+            border-top: 1px solid #1e293b;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            color: #94a3b8;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 32px auto;
+        }
+
+        .cta-banner .btn-primary {
+            background: var(--supcon-red);
+            font-size: 1.1rem;
+            padding: 14px 32px;
+        }
+
+        .cta-banner .btn-primary:hover {
+            background: #b91c1c;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--brand-dark);
+            color: #94a3b8;
+            padding: 80px 0 40px;
+            border-top: 1px solid #1e293b;
+        }
+
+        /* Utils */
+        .mb-2 {
+            margin-bottom: 8px;
+        }
+
+        .mb-4 {
+            margin-bottom: 16px;
+        }
+
+        .mb-8 {
+            margin-bottom: 32px;
+        }
+
+        @media (max-width: 900px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .supcon-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* B2B MODAL STYLES */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(6px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            border-top: 5px solid var(--supcon-red);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 24px;
+            right: 28px;
+            font-size: 32px;
+            line-height: 1;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--supcon-red);
+        }
+
+        .modal-header h3 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--brand-blue);
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .modal-header p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .quote-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .quote-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .quote-form label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .quote-form input,
+        .quote-form select,
+        .quote-form textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+            background: #ffffff;
+            color: var(--text-dark);
+        }
+
+        .quote-form input:focus,
+        .quote-form select:focus,
+        .quote-form textarea:focus {
+            outline: none;
+            border-color: var(--supcon-red);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+            /* Safe generic shadow */
+        }
+
+        .quote-form .readonly-input {
+            background-color: #f8fafc;
+            color: var(--brand-blue);
+            font-weight: 700;
+            border-color: #cbd5e1;
+            cursor: not-allowed;
+        }
+
+        /* Reusing btn-submit class logic */
+        .btn-submit {
+            background: linear-gradient(135deg, var(--supcon-red), #b91c1c);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            margin-top: 16px;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 600px) {
+            .quote-form .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+            }
+        }
+    
+        @media (max-width: 1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 640px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="index.html" class="brand">CONECTA<span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html#sistemas">División Sistemas</a>
+                <a href="index.html#equipos">Venta de Equipos</a>
+                <a href="#catalogo">Catálogo Automación</a>
+                <a href="index.html#normativa">Normativa</a>
+                <a href="#cotizar" class="btn-primary" style="background:var(--supcon-red);">Cotizar SUPCON</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="supcon-hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <div class="supcon-badge">Official Partners Chile</div>
+                <h1>Automatización <span>SUPCON</span> de Clase Mundial</h1>
+                <p>Distribuidores directos e integradores expertos del principal fabricante asiático de sistemas de
+                    control distribuido (DCS) e instrumentación inteligente de misión crítica.</p>
+                <div style="display:flex; gap:16px;">
+                    <a href="#catalogo" class="btn-primary" style="background:var(--supcon-red);">Ver Familias de
+                        Productos</a>
+                    <a href="index.html" class="btn-outline"
+                        style="color:white; border-color:rgba(255,255,255,0.2);">Volver a CONECTA</a>
+                </div>
+            </div>
+            <div class="hero-image"
+                style="background: rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px;">
+                <div class="brand-logo supcon" style="font-size: 5rem; padding: 20px 40px; margin-bottom: 20px;">SUPCON
+                </div>
+                <div
+                    style="text-align:center; color:var(--text-main); font-weight:600; font-family:'Outfit',sans-serif;">
+                    SUPCON Webfield DCS / Instrumentación Inteligente</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CATALOG SECTION -->
+    <section id="catalogo" class="catalog-section">
+        <div class="container">
+
+            <div class="section-header">
+                <h2>Catálogo Oficial de Tecnologías SUPCON</h2>
+                <p>Equipamiento e inteligencia industrial para minería, energía y manufactura avanzada.</p>
+            </div>
+
+            <h3 class="product-category-title"><span>01.</span> Sistemas de Control (DCS / SIS / PLC)</h3>
+            <div class="product-grid">
+                <!-- ECS-700 -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/DCS.png" alt="DCS ECS-700"></div>
+                    <h3>ECS-700 (DCS)</h3>
+                    <p>Plataforma de datos para toda la planta. Soporta una expansión flexible de hasta 1 millón de
+                        I/Os. Orientada a la asistencia inteligente con datos históricos de la planta.</p>
+                    <ul class="feature-list">
+                        <li>Integración: OPC, MODBUS, HART, FF, PROFIBUS</li>
+                        <li>CE(EMC/LVD), G3 anti-corrosión, EAC, PAC</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('ECS-700 (DCS)')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- JX-300XP -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/DCS.png" alt="DCS JX-300XP"></div>
+                    <h3>JX-300XP (DCS)</h3>
+                    <p>Red de comunicación industrial SCnet II de alta velocidad y confiabilidad. Permite redundancia
+                        aleatoria y descarga online sin interferencias en el control.</p>
+                    <ul class="feature-list">
+                        <li>Protocolos: Modbus, HostLink</li>
+                        <li>CE(EMC/LVD), G3 anti-corrosión</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('JX-300XP (DCS)')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- TCS-900 -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/SIS.webp" alt="TCS-900 SIS"></div>
+                    <h3>TCS-900 (SIS)</h3>
+                    <p>Sistema Instrumentado de Seguridad (SIS) de máximo nivel. Diagnóstico >99% con diseño
+                        'Fail-safe'. Tolerancia máxima de 3 fallos y red aislada del DCS.</p>
+                    <ul class="feature-list">
+                        <li>Certificación SIL3 y Seguridad IEC 62443</li>
+                        <li>CE(EMC), G3 anti-corrosión (-20~70℃)</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('TCS-900 (SIS)')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- TCS-500 -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/SIS.webp" alt="TCS-500 SIS"></div>
+                    <h3>TCS-500 (SIS)</h3>
+                    <p>Sistema de Seguridad de alta densidad y flexibilidad de instalación. Arquitectura 2oo4D con 300
+                        puntos de hardware por armario. Transmisión vía SCNET IV o Modbus RTU.</p>
+                    <ul class="feature-list">
+                        <li>Certificación SIL3 (2oo4D)</li>
+                        <li>Aislamiento físico del DCS</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('TCS-500 (SIS)')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- G5 Pro -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/PLC.png" alt="G5 Pro PLC"></div>
+                    <h3>G5 Pro (PLC)</h3>
+                    <p>PLC con procesador 32-bit a 1 GHz y 1.5 GB de memoria del sistema. Soporta Hot-swapping en todos
+                        los módulos. Capacidad de conexión de hasta 512 I/Os.</p>
+                    <ul class="feature-list">
+                        <li>PROFINET, DNP3, OPC, Modbus</li>
+                        <li>Ciberseguridad dual-core (RSA/AES)</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('G5 Pro (PLC)')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- G3 Smart -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/PLC.png" alt="G3 Smart PLC"></div>
+                    <h3>G3 Smart (PLC)</h3>
+                    <p>Controlador Lógico Programable compacto y flexible. Entorno de configuración amigable compatible
+                        con lenguajes IEC 61131-3 (FBD, LD, ST, SFC).</p>
+                    <ul class="feature-list">
+                        <li>Soporte de topologías Anillo y Estrella</li>
+                        <li>CE(EMC/LVD), G3 anti-corrosión</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('G3 Smart (PLC)')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+            </div>
+
+            <!-- CATEGORY 2: INSTRUMENTATIONS -->
+            <h3 class="product-category-title"><span>02.</span> Instrumentación de Campo</h3>
+            <div class="product-grid">
+                <!-- LN/LM Globe Valve -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/LNLM.png" alt="Válvula LN/LM"></div>
+                    <h3>Válvula de Globo LN/LM</h3>
+                    <p>Modularización funcional, alta precisión y mantenimiento sencillo. DN15 a DN600. Fugas: ANSI
+                        B16.104 Class Ⅳ/Ⅴ/Ⅵ.</p>
+                    <ul class="feature-list">
+                        <li>ANSI CL150~CL2500, DIN PN16~PN250</li>
+                        <li>CE, ATEX, ISO 15848, API 6FA, SIL3</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Válvula de Globo LN/LM')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- SN5 Ball Valve -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/SN5.png" alt="Válvula Bola SN5"></div>
+                    <h3>Válvula de Bola O-type SN5</h3>
+                    <p>Excelente corte y sellado. Bajo torque y fugas cero (API6D/API598). Alta resistencia al desgaste.
+                        DN15 a DN600.</p>
+                    <ul class="feature-list">
+                        <li>ANSI CL150~CL2500, DIN PN16~PN250</li>
+                        <li>CE, ATEX, API 607 Fire Safe, SIL3</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Válvula de Bola O-type SN5')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- CN8 Eccentric Rotary Plug Valve -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/CN8.png" alt="Válvula Excéntrica CN8">
+                    </div>
+                    <h3>Válvula Excéntrica CN8</h3>
+                    <p>Doble excentricidad. Alta capacidad de flujo, anti-cavitación y anti-desgaste. Ideal para lodos y
+                        fluidos abrasivos. DN15 a DN400.</p>
+                    <ul class="feature-list">
+                        <li>Fugas Clase Ⅳ/Ⅴ/Ⅵ. Lineal.</li>
+                        <li>CE, ATEX, ISO 15848, SIL3</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Válvula Excéntrica CN8')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- BN Butterfly Valve -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/BN.png" alt="Válvula Mariposa BN">
+                    </div>
+                    <h3>Válvula Mariposa BN</h3>
+                    <p>Libre de desgaste/fricción. Cierre hermético ante temperaturas o presiones extremas. Eje central,
+                        excentricidad triple disponible. DN50 a DN2400.</p>
+                    <ul class="feature-list">
+                        <li>ANSI CL150~1500, Fugas Ⅴ/Ⅵ.</li>
+                        <li>CE, ATEX, API 6FA, SIL3</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Válvula Mariposa BN')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- CXT Pressure Transmitter -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/CXT.png" alt="Transmisor Presión CXT">
+                    </div>
+                    <h3>Transmisor de Presión CXT</h3>
+                    <p>Precisión hasta +0.035% y estabilidad de ±0.1% a 10 años. Solución certificada para procesos
+                        especiales (Sinopec, CNPC).</p>
+                    <ul class="feature-list">
+                        <li>Capacidad: 200,000 uds/año</li>
+                        <li>CE, ROHS, ATEX/IECEx Ex d/Exia, SIL2</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Transmisor de Presión CXT')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- SFE900 Flowmeter -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/SFE900.webp" alt="Caudalímetro SFE900">
+                    </div>
+                    <h3>Caudalímetro Mag. SFE900</h3>
+                    <p>Mide líquidos con baja conductividad (2μS/cm). ±0.2% precisión. Fuerte supresión de ruido y malla
+                        de acero para presión negativa.</p>
+                    <ul class="feature-list">
+                        <li>Rango: 0.1~12 m/s</li>
+                        <li>Certificado Ex d (China)</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Caudalímetro Mag. SFE900')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- SL900 Radar Level -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/SL900.png" alt="Radar Nivel SL900">
+                    </div>
+                    <h3>Transmisor Nivel SL900 (Radar)</h3>
+                    <p>Tecnología FMCW 80GHz. Precisión ±1mm. Ángulo de haz 3°, perfecto para tanques estrechos. Zona
+                        muerta 0.1m, rango 100m.</p>
+                    <ul class="feature-list">
+                        <li>Bandwidth de barrido 4GHz</li>
+                        <li>Ex ia & Ex d, SIL2</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Transmisor Nivel SL900 (Radar)')" " class="
+                        btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- HD5500 Safety Barrier -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/HD5500.png"
+                            alt="Barrera Aislada HD5500"></div>
+                    <h3>Barrera de Seguridad HD5500</h3>
+                    <p>Diseño ultra-fino 12.5mm. Conversión a 0.1%. Alarma inteligente y ahorro energético 40%.
+                        Fiabilidad industrial líder (0.12‰).</p>
+                    <ul class="feature-list">
+                        <li>Múltiples montajes (DIN, bus bar)</li>
+                        <li>CE, IECEx/ATEX, Intrinsically Safe, SIL2/3</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Barrera de Seguridad HD5500')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+
+                <!-- X600 Calibrator -->
+                <div class="product-card">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/X600.png" alt="Calibrador X600"></div>
+                    <h3>Calibrador Interactivo X600</h3>
+                    <p>Precisión de señal máxima: 0.01%. Integración HART al 100%. Combina comunicador HART de campo e
+                        IDM de instrumentación SUPCON.</p>
+                    <ul class="feature-list">
+                        <li>Update online de archivos HART DD</li>
+                        <li>Módulo de señal desmontable</li>
+                    </ul>
+                    <button type="button" onclick="openQuoteModal('Calibrador Interactivo X600')" " class=" btn-primary"
+                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
+                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- SHORT B2B CTA -->
+    <section id="cotizar" class="cta-banner">
+        <div class="container">
+            <h2>¿Listo para integrar tecnología SUPCON en su planta?</h2>
+            <p>Nuestros ingenieros en Santiago están listos para revisar sus P&ID, homologar bases técnicas de
+                licitación o cotizar instrumentación específica con tiempos de entrega directos de fábrica.</p>
+            <button type="button" onclick="openQuoteModal('Equipo/Servicio')" contacto@conecta.cl"
+                class="btn-primary">Contactar a Ingeniería Comercial de CONECTA</button>
+        </div>
+    </section>
+
+    <!-- FOOTER (Simplified) -->
+    <footer class="footer">
+        <div class="container" style="text-align: center;">
+            <div class="brand" style="color:white; margin-bottom: 16px;">CONECTA<span>.</span></div>
+            <p>Representantes exclusivos e integradores nivel experto de tecnología SUPCON en Chile.<br>&copy; 2026
+                CONECTA Ingeniería. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <!-- MODAL COTIZACION B2B -->
+    <div id="quoteModal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeQuoteModal()">&times;</span>
+            <div class="modal-header">
+                <h3>Solicitud de Cotización B2B</h3>
+                <p>Complete sus datos para que un ingeniero especialista le contacte a la brevedad.</p>
+            </div>
+            <!-- NETLIFY FORM -->
+            <form name="cotizacion-equipo" method="POST" data-netlify="true" class="quote-form">
+                <!-- Fallback subject for Netlify emails -->
+                <input type="hidden" name="subject" data-remove-prefix value="Nueva Cotización de Equipo B2B" />
+
+                <div class="form-group">
+                    <label for="frm-equipo">Equipo a Cotizar</label>
+                    <input type="text" id="frm-equipo" name="equipo" readonly class="readonly-input" value="">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="frm-nombre">Nombre Completo *</label>
+                        <input type="text" id="frm-nombre" name="nombre" required placeholder="Ej: Juan Pérez">
+                    </div>
+                    <div class="form-group">
+                        <label for="frm-empresa">Empresa / Rut *</label>
+                        <input type="text" id="frm-empresa" name="empresa" required placeholder="Ej: Minera Escondida">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="frm-email">Correo Corporativo *</label>
+                        <input type="email" id="frm-email" name="email" required placeholder="juan@empresa.cl">
+                    </div>
+                    <div class="form-group">
+                        <label for="frm-servicio">Requerimiento Principal *</label>
+                        <select id="frm-servicio" name="servicio" required>
+                            <option value="">Seleccione una opción...</option>
+                            <option value="Suministro de Hardware">Suministro de Equipos / Hardware</option>
+                            <option value="Servicio de Integracion">Integración y Puesta en Marcha</option>
+                            <option value="Soporte Tecnico">Soporte Técnico / Mantención</option>
+                            <option value="Asesoria Normativa">Asesoría Normativa / Consultoría</option>
+                            <option value="Otro">Otro (Especifique en el mensaje)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="frm-mensaje">Mensaje o Detalles Adicionales</label>
+                    <textarea id="frm-mensaje" name="mensaje" rows="3"
+                        placeholder="Indique cantidad, plazos o detalles técnicos relevantes..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Enviar Solicitud a Ingeniería</button>
+                <div style="text-align: center; margin-top: 12px; font-size: 0.8rem; color: #94a3b8;">Sistema cifrado y
+                    gestionado por CONECTA B2B</div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL JS -->
+    <script>
+        function openQuoteModal(itemName) {
+            document.getElementById('frm-equipo').value = itemName;
+            var modal = document.getElementById('quoteModal');
+            modal.style.display = 'flex';
+            // Trigger reflow for animation
+            modal.offsetHeight;
+            modal.style.opacity = '1';
+        }
+
+        function closeQuoteModal() {
+            var modal = document.getElementById('quoteModal');
+            modal.style.display = 'none';
+            modal.style.opacity = '0';
+        }
+
+        window.onclick = function (event) {
+            var modal = document.getElementById('quoteModal');
+            if (event.target === modal) {
+                closeQuoteModal();
+            }
+        }
+    </script>
+
+</body>
+
+</html>

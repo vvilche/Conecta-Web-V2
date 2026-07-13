@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>White Paper — Estudio ECAP Parque Eólico 5 MW | CONECTA INGENIERIA</title>
+  <meta name="description" content="Estudio ECAP para PMGD eólico 5 MW, barra MT 23 kV. Flujo de potencia, cortocircuito, protecciones y SITR." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root{--ink:#0f172a;--ink-soft:#334155;--ink-dim:#64748b;--line:#e2e8f0;--bg:#f8fafc;--accent:#059669;--sidebar-bg:#022c22;--sidebar-text:#94a3b8;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:16px;scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);font-size:1.0625rem;line-height:1.75;}
+    .layout{display:grid;grid-template-columns:230px 1fr;min-height:100vh;}
+    .sidebar{background:var(--sidebar-bg);color:var(--sidebar-text);padding:28px 0;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;}
+    .sidebar-logo{padding:0 22px 24px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:20px;}
+    .sidebar-brand{display:block;font-size:13px;font-weight:700;color:#f1f5f9;}
+    .sidebar-doc{display:block;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:#64748b;margin-top:3px;}
+    .toc-label{font-size:9.5px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#475569;padding:0 22px;margin-bottom:8px;}
+    .toc-links{list-style:none;}
+    .toc-links a{display:block;padding:7px 22px;font-size:12.5px;color:var(--sidebar-text);text-decoration:none;border-left:3px solid transparent;transition:all .18s;}
+    .toc-links a:hover{color:#f1f5f9;background:rgba(255,255,255,0.05);}
+    .toc-links a.active{color:#fff;background:rgba(5,150,105,0.25);border-left-color:var(--accent);font-weight:600;}
+    .sidebar-meta{margin-top:auto;padding:16px 22px 0;border-top:1px solid rgba(255,255,255,0.07);}
+    .sidebar-meta p{font-size:10.5px;color:#475569;line-height:1.5;}
+    .print-btn{display:flex;align-items:center;gap:8px;margin:16px 22px 0;background:rgba(5,150,105,0.15);border:1px solid rgba(5,150,105,0.3);color:#6ee7b7;border-radius:8px;padding:8px 12px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;}
+    .main{overflow:hidden;}
+    .cover{background:linear-gradient(135deg,#022c22 0%,#064e3b 50%,#1e3a5f 100%);color:#fff;padding:80px 0;width:100%;position:relative;overflow:hidden;}
+    .cover-label{display:inline-flex;align-items:center;gap:8px;background:rgba(5,150,105,0.2);border:1px solid rgba(5,150,105,0.4);border-radius:100px;padding:5px 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6ee7b7;margin-bottom:24px;}
+    .cover h1{font-family:'Lora',serif;font-size:32px;line-height:1.2;margin-bottom:16px;}
+    .cover h1 em{color:#6ee7b7;font-style:italic;}
+    .cover-subtitle{font-size:14px;color:#cbd5e1;max-width:580px;line-height:1.7;margin-bottom:24px;}
+    .schema-flow{display:flex;align-items:center;gap:6px;margin:20px 0 28px;flex-wrap:wrap;}
+    .schema-box{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:8px 14px;text-align:center;min-width:80px;}
+    .schema-box .icon{font-size:20px;}
+    .schema-box .lbl{font-size:9px;font-weight:700;letter-spacing:.06em;color:#94a3b8;margin-top:2px;}
+    .schema-box .val{font-size:11px;color:#cbd5e1;}
+    .schema-arrow{color:#475569;font-size:20px;}
+    .cover-meta{display:flex;gap:18px;margin-bottom:24px;font-size:12px;color:#64748b;}
+    .cover-meta-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:520px;}
+    .cover-meta-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;}
+    .cover-meta-item dt{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#64748b;margin-bottom:4px;}
+    .cover-meta-item dd{font-size:12px;color:#cbd5e1;font-weight:500;white-space:nowrap;}
+    .doc-body{max-width:900px;margin:0 auto;padding:60px 60px 80px;}
+    h2{font-family:'Lora',serif;font-size:23px;color:var(--ink);margin:48px 0 14px;padding-top:8px;border-top:2px solid var(--line);display:flex;align-items:center;gap:12px;}
+    .section-num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:7px;background:var(--accent);color:#fff;font-size:13px;font-weight:700;font-family:'Inter',sans-serif;flex-shrink:0;}
+    h3{font-size:16px;color:var(--ink);margin:24px 0 10px;font-weight:600;}
+    p{color:var(--ink-soft);margin-bottom:14px;}
+    strong{color:var(--ink);}
+    pre{background:#1e293b;color:#e2e8f0;border-radius:10px;padding:18px;font-family:'JetBrains Mono',monospace;font-size:12.5px;overflow-x:auto;margin:14px 0;line-height:1.6;}
+    .table-wrapper{overflow-x:auto;margin:18px 0;border-radius:10px;border:1px solid var(--line);}
+    table{width:100%;border-collapse:collapse;font-size:13px;}
+    thead th{background:#f1f5f9;padding:10px 13px;text-align:left;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-dim);border-bottom:1px solid var(--line);white-space:nowrap;}
+    tbody tr{border-bottom:1px solid var(--line);}
+    tbody tr:last-child{border-bottom:none;}
+    tbody tr:hover{background:#f8fafc;}
+    tbody td{padding:11px 13px;color:var(--ink-soft);vertical-align:top;}
+    tbody td strong{color:var(--ink);}
+    tr.br-red td:first-child{border-left:4px solid #ef4444;}
+    tr.br-amber td:first-child{border-left:4px solid #f59e0b;}
+    tr.br-green td:first-child{border-left:4px solid #10b981;}
+    .badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:2px 9px;border-radius:100px;white-space:nowrap;}
+    .bg{background:#f0fdf4;color:#059669;border:1px solid #a7f3d0;}
+    .ba{background:#fffbeb;color:#d97706;border:1px solid #fde68a;}
+    .callout{display:flex;gap:12px;padding:14px 16px;border-radius:10px;margin:18px 0;border:1px solid;}
+    .callout-icon{font-size:18px;flex-shrink:0;line-height:1.5;}
+    .callout-body{flex:1;}
+    .callout-title{font-weight:700;font-size:12px;margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
+    .callout p{margin-bottom:0;font-size:13px;}
+    .cs{background:#f0fdf4;border-color:#a7f3d0;} .cs .callout-title{color:#059669;}
+    .cw{background:#fffbeb;border-color:#fde68a;} .cw .callout-title{color:#d97706;}
+    .ci{background:#eff6ff;border-color:#bfdbfe;} .ci .callout-title{color:#1d4ed8;}
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0;}
+    .kpi-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;}
+    .kpi-value{font-size:22px;font-weight:700;color:var(--accent);}
+    .kpi-label{font-size:10.5px;color:var(--ink-dim);margin-top:4px;line-height:1.4;}
+    .decision-box{background:linear-gradient(135deg,#022c22 0%,#1e3a5f 100%);color:#fff;border-radius:14px;padding:28px 32px;margin:28px 0;}
+    .decision-box h3{font-family:'Lora',serif;font-size:18px;color:#fff;margin-bottom:8px;}
+    .decision-box p{color:#94a3b8;font-size:13px;margin-bottom:14px;}
+    .decision-items{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+    .decision-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px 14px;}
+    .decision-item dt{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#6ee7b7;margin-bottom:3px;}
+    .decision-item dd{font-size:12.5px;color:#cbd5e1;}
+    .doc-footer{background:#f1f5f9;border-top:1px solid var(--line);padding:14px 60px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--ink-dim);}
+@media (max-width: 900px){.layout{grid-template-columns:1fr;}.sidebar{position:relative;height:auto;}.cover{padding:48px 0;}.doc-body{padding:40px 32px 60px;} .cover > div {padding: 0 32px !important;} }
+    @media print{.no-print{display:none!important;}.layout{display:block;}.cover{page-break-after:always;}}
+  </style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar no-print">
+    <div class="sidebar-logo">
+      <span class="sidebar-brand">CONECTA INGENIERIA</span>
+      <span class="sidebar-doc">White Paper Técnico</span>
+    </div>
+    <nav>
+      <p class="toc-label">Contenido</p>
+      <ul class="toc-links">
+        <li><a href="#top">Portada</a></li>
+        <li><a href="#resumen">Resumen Ejecutivo</a></li>
+        <li><a href="#proyecto">1. Descripción del Proyecto</a></li>
+        <li><a href="#flujo">2. Flujo de Potencia</a></li>
+        <li><a href="#icc">3. Cortocircuito</a></li>
+        <li><a href="#protecciones">4. Protecciones</a></li>
+        <li><a href="#calidad">5. Calidad de Suministro</a></li>
+        <li><a href="#sitr">6. Requisitos SITR</a></li>
+        <li><a href="#conclusion">7. Conclusión ECAP</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-meta"><p>CON-WP-ECAP-001<br>Rev. 1.0 — Feb 2026</p></div>
+    <button class="print-btn no-print" onclick="window.print()">🖨️ Imprimir / PDF</button>
+  </aside>
+  <main class="main">
+    <div class="cover" id="top">
+      <div style="max-width:900px;margin:0 auto;padding:0 60px;position:relative;z-index:1;">
+        <span class="cover-label">🌬️ Estudio ECAP — PMGD Eólico</span>
+        <h1>Evaluación de Capacidad de Acogida:<br><em>Parque Eólico Punta Negra 5 MW</em></h1>
+        <p class="cover-subtitle">Análisis técnico de conexión en barra MT 23 kV: flujo de potencia, aporte a cortocircuito, coordinación de protecciones y calidad de suministro bajo NTCO PMGD y NTSyCS.</p>
+        <div class="schema-flow">
+          <div class="schema-box"><div class="icon">🌬️</div><div class="lbl">Eólico</div><div class="val">5×1 MW</div></div>
+          <div class="schema-arrow">→</div>
+          <div class="schema-box"><div class="icon">🔄</div><div class="lbl">Convertidor</div><div class="val">back-to-back</div></div>
+          <div class="schema-arrow">→</div>
+          <div class="schema-box"><div class="icon">🔌</div><div class="lbl">Trafo</div><div class="val">5,5 MVA 23kV</div></div>
+          <div class="schema-arrow">→</div>
+          <div class="schema-box"><div class="icon">⚡</div><div class="lbl">S/E Litoral</div><div class="val">Barra 23 kV</div></div>
+          <div class="schema-arrow">→</div>
+          <div class="schema-box"><div class="icon">🌐</div><div class="lbl">SEN</div><div class="val">Chile</div></div>
+        </div>
+        <div class="cover-meta">
+          <span>⏱ 7 min de lectura</span>
+          <span>✍️ CONECTA INGENIERIA — Equipo de Ingeniería</span>
+          <span>📅 Febrero 2026</span>
+        </div>
+        <div class="cover-meta-grid">
+          <div class="cover-meta-item"><dt>Documento</dt><dd>CON-WP-ECAP-001</dd></div>
+          <div class="cover-meta-item"><dt>Revisión</dt><dd>1.0 — Feb 2026</dd></div>
+          <div class="cover-meta-item"><dt>Normativa</dt><dd>NTCO PMGD + NTSyCS</dd></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="doc-body">
+      <h2 id="resumen"><span class="section-num" style="background:#059669">RE</span> Resumen Ejecutivo</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card"><div class="kpi-value">✅</div><div class="kpi-label">Flujo de potencia sin restricciones</div></div>
+        <div class="kpi-card"><div class="kpi-value">✅</div><div class="kpi-label">Equipos existentes suficientes — sin cambio interruptores</div></div>
+        <div class="kpi-card"><div class="kpi-value">⚠️ 2</div><div class="kpi-label">Nuevos relés a instalar (R02 y R03)</div></div>
+        <div class="kpi-card"><div class="kpi-value">⚠️</div><div class="kpi-label">Acuerdo SITR pendiente con distribuidora</div></div>
+      </div>
+      <p>El Parque Eólico Punta Negra de <strong>5 MW</strong> puede conectarse a la barra MT 23 kV de la S/E Distribución Litoral Norte sin restricciones de flujo de potencia ni necesidad de reforzar interruptores. Se requieren 2 nuevos relés de protección y firma de acuerdo SITR previo al COD.</p>
+      <div class="callout cs"><div class="callout-icon">✅</div><div class="callout-body"><div class="callout-title">Resultado ECAP — Proyecto viable</div><p>El aporte al Icc en barra 23 kV es de solo 2,4% (6,35 kA vs 6,20 kA). Los interruptores existentes (12,5 kA capacidad) no requieren cambio. Calidad de suministro dentro de límites normativos.</p></div></div>
+
+      <h2 id="proyecto"><span class="section-num">1</span> Descripción del Proyecto</h2>
+      <div class="table-wrapper"><table><tbody>
+        <tr><td><strong>Proyecto</strong></td><td>Parque Eólico Punta Negra — 5 MW (5 aerogeneradores de 1 MW c/u)</td></tr>
+        <tr><td><strong>Punto de conexión</strong></td><td>Barra 23 kV, S/E Distribución Litoral Norte</td></tr>
+        <tr><td><strong>Distribuidora</strong></td><td>Cooperativa Eléctrica Litoral</td></tr>
+        <tr><td><strong>Tecnología</strong></td><td>Aerogeneradores con convertidor full back-to-back (control P independiente)</td></tr>
+        <tr><td><strong>Factor de potencia</strong></td><td>0,95 inductivo/capacitivo (control activo)</td></tr>
+        <tr><td><strong>Icc3φ barra 23 kV</strong></td><td>6,2 kA simétrico (dato del Coordinador)</td></tr>
+        <tr><td><strong>Transformador de conexión</strong></td><td>5,5 MVA, 23/0,69 kV, Z = 6%</td></tr>
+      </tbody></table></div>
+
+      <h2 id="flujo"><span class="section-num">2</span> Análisis de Flujo de Potencia</h2>
+      <h3>Caso Base — Inyección máxima (5 MW, FP = 0,95)</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Parámetro</th><th>Valor calculado</th><th>Límite</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr class="br-green"><td>Tensión barra 23 kV con proyecto</td><td>+1,2% vs caso base</td><td>≤ +5% NTSyCS</td><td><span class="badge bg">✅ OK</span></td></tr>
+          <tr class="br-green"><td>Flujo línea distribución aguas arriba</td><td>82% de capacidad</td><td>≤ 100%</td><td><span class="badge bg">✅ OK</span></td></tr>
+          <tr class="br-green"><td>Flujo en transformador S/E</td><td>67% de capacidad</td><td>≤ 100%</td><td><span class="badge bg">✅ OK</span></td></tr>
+          <tr class="br-green"><td>Tensión barra (noche, min. generación)</td><td>-0,3%</td><td>≥ -5%</td><td><span class="badge bg">✅ OK</span></td></tr>
+        </tbody>
+      </table></div>
+      <h3>Contingencia N-1 — Pérdida línea principal</h3>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Parámetro</th><th>Valor</th><th>Límite</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr class="br-green"><td>Tensión barra 23 kV</td><td>+4,1%</td><td>≤ +5%</td><td><span class="badge bg">✅ OK</span></td></tr>
+          <tr class="br-green"><td>Flujo línea respaldo</td><td>94% capacidad</td><td>≤ 100%</td><td><span class="badge bg">✅ OK (límite)</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="icc"><span class="section-num">3</span> Análisis de Cortocircuito</h2>
+      <pre>Icc_red_previa:  6,20 kA
+Icc_proyecto:    1,1 × In = 1,1 × (5500 / (√3 × 23)) = 152 A = 0,15 kA
+Icc_resultante:  ≈ 6,35 kA  (aumento del 2,4%)
+
+Interruptores existentes en barra 23 kV:
+  Poder de ruptura: 12,5 kA > 6,35 kA  ✅ No requieren cambio</pre>
+      <div class="callout cs"><div class="callout-icon">✅</div><div class="callout-body"><div class="callout-title">Sin inversión en equipos de maniobra</div><p>El aumento del 2,4% en el nivel de cortocircuito no supera la capacidad de ruptura de los interruptores existentes.</p></div></div>
+
+      <h2 id="protecciones"><span class="section-num">4</span> Coordinación de Protecciones</h2>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Relé</th><th>Función</th><th>Ajuste</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr class="br-green"><td><strong>R01</strong> — entrada S/E</td><td>51 sobrecorriente</td><td>Ip=450 A, TMS=0,25</td><td><span class="badge bg">✅ Vigente</span></td></tr>
+          <tr class="br-amber"><td><strong>R02</strong> — salida al PMGD</td><td>51 + 27/59 anti-isla</td><td>Ip=175 A, TMS=0,10; Vmin=0,85 pu, Vmax=1,10 pu</td><td><span class="badge ba">⚠️ Nuevo</span></td></tr>
+          <tr class="br-amber"><td><strong>R03</strong> — transformador PMGD</td><td>87T + 51N</td><td>Diferencial + neutro restringido</td><td><span class="badge ba">⚠️ Nuevo</span></td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout cw"><div class="callout-icon">⚠️</div><div class="callout-body"><div class="callout-title">Condición obligatoria antes del COD</div><p>La instalación de <strong>R02 y R03</strong> es condición para la conexión. R02 incluye función 27/59 anti-isla requerida por NTCO PMGD. R03 protege el transformador del generador con diferencial 87T.</p></div></div>
+
+      <h2 id="calidad"><span class="section-num">5</span> Calidad de Suministro</h2>
+      <div class="table-wrapper"><table>
+        <thead><tr><th>Parámetro</th><th>Resultado</th><th>Límite</th><th>Estado</th></tr></thead>
+        <tbody>
+          <tr class="br-green"><td>THD tensión barra 23 kV</td><td>2,8%</td><td>≤ 8% (IEC 61000-3-6)</td><td><span class="badge bg">✅ OK</span></td></tr>
+          <tr class="br-green"><td>Flicker Pst</td><td>0,42</td><td>≤ 1,0</td><td><span class="badge bg">✅ OK</span></td></tr>
+          <tr class="br-green"><td>Desequilibrio de tensión</td><td>0,3%</td><td>≤ 2%</td><td><span class="badge bg">✅ OK</span></td></tr>
+        </tbody>
+      </table></div>
+
+      <h2 id="sitr"><span class="section-num">6</span> Requisitos SITR para PMGD 5 MW</h2>
+      <div class="table-wrapper"><table><tbody>
+        <tr><td><strong>Enlace SITR</strong></td><td>Vía Cooperativa Litoral → <span class="badge ba">⚠️ Pendiente acuerdo formal</span></td></tr>
+        <tr><td><strong>Variables a enviar</strong></td><td>Potencia activa (MW), reactiva (MVAR), tensión (kV), estado interruptor (Bool)</td></tr>
+        <tr><td><strong>Disponibilidad mínima</strong></td><td>≥ 99,5% mensual</td></tr>
+        <tr><td><strong>Protocolo</strong></td><td>DNP3 TCP/IP o IEC 60870-5-104</td></tr>
+      </tbody></table></div>
+      <div class="callout ci"><div class="callout-icon">📋</div><div class="callout-body"><div class="callout-title">Iniciar acuerdo SITR con 90 días de anticipación al COD</div><p>La Cooperativa Eléctrica Litoral debe formalizar el acuerdo de enlace SITR con el CEN. Iniciar mínimo <strong>90 días antes del COD</strong> dado los plazos de gestión del Coordinador.</p></div></div>
+
+      <h2 id="conclusion"><span class="section-num">7</span> Conclusión del Estudio ECAP</h2>
+      <div class="decision-box">
+        <h3>Decisión: El PMGD puede conectarse</h3>
+        <p>Cumpliendo las 2 condiciones establecidas, el proyecto no presenta impactos que impidan su conexión a la red de distribución 23 kV.</p>
+        <dl class="decision-items">
+          <div class="decision-item"><dt>Flujo de potencia</dt><dd>✅ Sin restricciones en caso base y N-1</dd></div>
+          <div class="decision-item"><dt>Cortocircuito</dt><dd>✅ Equipos existentes suficientes (12,5 kA > 6,35 kA)</dd></div>
+          <div class="decision-item"><dt>Protecciones</dt><dd>⚠️ Instalar R02 y R03 antes del COD</dd></div>
+          <div class="decision-item"><dt>SITR</dt><dd>⚠️ Firmar acuerdo de enlace con distribuidora</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <footer class="doc-footer no-print">
+      <span><strong>CONECTA INGENIERIA</strong> — Ingeniería &amp; Diseño | mercado Chileno</span>
+      <span>CON-WP-ECAP-001 | Rev. 1.0 — Feb 2026</span>
+    </footer>
+  </main>
+</div>
+<script>
+  const obs = new IntersectionObserver(es => {
+    es.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.toc-links a').forEach(l => l.classList.remove('active'));
+        const a = document.querySelector('.toc-links a[href="#'+e.target.id+'"]');
+        if (a) a.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+  document.querySelectorAll('[id]').forEach(s => obs.observe(s));
+</script>
+</body>
+</html>
