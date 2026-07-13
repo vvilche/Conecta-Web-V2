@@ -7,294 +7,612 @@
     <title>Catálogo SUPCON | CONECTA Especialistas B2B</title>
     <meta name="description"
         content="Representantes oficiales de SUPCON en Chile. Conecta Ingeniería suministra sistemas DCS, SIS e instrumentación inteligente de clase mundial para la industria y minería.">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
 
     <style>
-        /* CSS Variables - Shared with Main Theme */
+        /* ================================================================
+           CONECTA WEB V2 — DESIGN SYSTEM + SUPCON BRAND EXTENSION
+           ================================================================ */
         :root {
-            --brand-blue: #0f172a;
-            --brand-accent: #2563eb;
-            --brand-cyber: #00d4ff;
-            --brand-dark: #020617;
-            --text-main: #334155;
-            --text-muted: #64748b;
-            --bg-page: #f8fafc;
-            --border-light: #e2e8f0;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 24px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --navy-deep: #0A1628;
+            --navy: #0F1F3D;
+            --blue-royal: #1E3A5F;
+            --blue-accent: #2563eb;
+            --blue-hover: #1d4ed8;
+            --blue-glow: rgba(37, 99, 235, 0.12);
+            --blue-glass: rgba(37, 99, 235, 0.06);
+            --text: #0F172A;
+            --text2: #475569;
+            --text3: #94A3B8;
+            --bg: #ffffff;
+            --bg2: #F1F5F9;
+            --bg3: #F8FAFC;
+            --border: #E2E8F0;
+            --r-sm: 6px;
+            --r-md: 10px;
+            --r-lg: 16px;
+            --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+            --sh-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --sh-xl: 0 20px 40px rgba(0, 0, 0, 0.10);
+            --t: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-            /* SUPCON Branding */
-            --supcon-red: #d32f2f;
-            --supcon-red-light: #ef4444;
+            /* SUPCON Brand Accent */
+            --supcon-red: #D32F2F;
+            --supcon-red-light: #EF4444;
+            --supcon-glow: rgba(211, 47, 47, 0.12);
         }
 
-        /* Base Resets */
-        * {
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
+        html {
+            scroll-behavior: smooth;
+            background: var(--bg);
+            color: var(--text);
             font-family: 'Inter', sans-serif;
-            color: var(--text-main);
-            background-color: var(--bg-page);
-            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
         }
 
-        .container {
+        body {
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--navy-deep);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ── NAVBAR (Frosted Glass V2) ── */
+        .navbar {
+            position: fixed;
+            top: 0;
             width: 100%;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid transparent;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar.scrolled {
+            height: 64px;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .nav-container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* NAVBAR */
-        .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-light);
-            position: fixed;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .nav-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            padding: 0 40px;
         }
 
-        .brand {
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 6px;
             font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
+            font-size: 22px;
             font-weight: 800;
-            color: var(--brand-blue);
-            letter-spacing: -0.02em;
-            text-decoration: none;
+            letter-spacing: -0.5px;
+            color: var(--navy-deep);
+            transition: font-size 0.3s ease;
         }
 
-        .brand span {
-            color: var(--brand-accent);
+        .navbar.scrolled .nav-logo {
+            font-size: 19px;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--supcon-red);
+            border-radius: 50%;
         }
 
         .nav-links {
             display: flex;
-            gap: 32px;
             align-items: center;
+            gap: 28px;
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
+        .nav-link {
+            font-size: 13.5px;
             font-weight: 500;
-            font-size: 0.95rem;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--brand-accent);
-        }
-
-        .btn-primary {
-            background: var(--brand-accent);
-            color: #ffffff !important;
-            padding: 10px 24px;
-            border-radius: var(--radius-sm);
-            font-weight: 600;
-            box-shadow: var(--shadow-sm);
-            text-decoration: none;
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        /* SUPCON HERO */
-        .supcon-hero {
-            margin-top: 80px;
-            /* offset navbar */
-            background: linear-gradient(135deg, var(--brand-dark) 0%, #1a0808 100%);
-            color: white;
-            padding: 100px 0;
+            color: var(--text2);
             position: relative;
-            overflow: hidden;
+            padding: 6px 0;
+            transition: color 0.2s;
         }
 
-        /* Subtle red glow in the background */
-        .supcon-hero::before {
+        .nav-link:hover {
+            color: var(--supcon-red);
+        }
+
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(211, 47, 47, 0.15) 0%, rgba(2, 6, 23, 0) 70%);
-            border-radius: 50%;
-            z-index: 0;
-            pointer-events: none;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--supcon-red);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.25s ease;
         }
 
-        .hero-inner {
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-cta {
+            display: inline-block;
+            background: var(--supcon-red);
+            color: #fff !important;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: var(--r-sm);
+            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .nav-cta:hover {
+            background: #b91c1c;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(211, 47, 47, 0.4);
+        }
+
+        @media(max-width:1024px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* ── HERO (Navy Gradient V2 + SUPCON Red Glow) ── */
+        .supcon-hero {
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(160deg, #0A1628 0%, #0F1F3D 40%, #1a0808 70%, #0A1628 100%);
+            padding-top: 80px;
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(211, 47, 47, 0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(211, 47, 47, 0.06) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: gridPulse 8s ease-in-out infinite;
+            pointer-events: none;
             z-index: 1;
+        }
+
+        @keyframes gridPulse {
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 50%;
+            right: -5%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(211, 47, 47, 0.15), transparent 70%);
+            transform: translateY(-50%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .hero-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+            position: relative;
+            z-index: 3;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 60px;
             align-items: center;
         }
 
-        .supcon-badge {
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .hero-badge {
             display: inline-flex;
             align-items: center;
-            background: rgba(211, 47, 47, 0.2);
-            color: #fca5a5;
-            padding: 6px 16px;
-            border-radius: 24px;
-            font-size: 0.85rem;
+            gap: 8px;
+            background: rgba(211, 47, 47, 0.15);
+            border: 1px solid rgba(211, 47, 47, 0.3);
+            color: #FCA5A5;
+            font-size: 12px;
             font-weight: 600;
-            letter-spacing: 0.05em;
             text-transform: uppercase;
-            border: 1px solid rgba(211, 47, 47, 0.4);
-            margin-bottom: 24px;
+            letter-spacing: 1.2px;
+            padding: 6px 16px;
+            border-radius: 999px;
+            margin-bottom: 28px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--supcon-red-light);
+            border-radius: 50%;
+            animation: statusPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes statusPulse {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.3;
+            }
         }
 
         .supcon-hero h1 {
             font-family: 'Outfit', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            font-weight: 800;
+            color: #FFF;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+
+        .supcon-hero h1 .hl {
+            background: linear-gradient(135deg, #FCA5A5, var(--supcon-red-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: #94A3B8;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+            font-weight: 400;
+        }
+
+        .hero-caps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .hero-cap {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--r-md);
+            padding: 16px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cap:hover {
+            background: rgba(211, 47, 47, 0.12);
+            border-color: rgba(211, 47, 47, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .hero-cap-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #CBD5E1;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .hero-cap-title svg {
+            color: var(--supcon-red-light);
+            flex-shrink: 0;
+        }
+
+        .hero-cap-desc {
+            font-size: 10.5px;
+            color: #64748B;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn1 {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--supcon-red);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: var(--r-sm);
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.4);
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn1::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+
+        .btn1:hover::after {
+            transform: translateX(100%);
+        }
+
+        .btn1:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(211, 47, 47, 0.5);
+        }
+
+        .btn2 {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            color: #CBD5E1;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: var(--r-sm);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.25s ease;
+        }
+
+        .btn2:hover {
+            background: rgba(255, 255, 255, 0.14);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--r-lg);
+            padding: 40px;
+            min-height: 300px;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .hero-visual .brand-logo {
+            font-family: 'Outfit', sans-serif;
             font-size: 4rem;
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 24px;
+            color: #FFF;
             letter-spacing: -0.02em;
         }
 
-        .supcon-hero h1 span {
-            color: var(--supcon-red-light);
+        .hero-visual .brand-sub {
+            font-size: 0.9rem;
+            color: #94A3B8;
+            font-weight: 500;
         }
 
-        .supcon-hero p {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            margin-bottom: 40px;
-            line-height: 1.6;
-            max-width: 540px;
+        @media(max-width:1024px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+                padding-top: 20px;
+                padding-bottom: 60px;
+            }
+            .hero-content {
+                max-width: 100%;
+            }
+            .hero-sub {
+                max-width: 100%;
+            }
+            .hero-ctas {
+                justify-content: center;
+            }
+            .hero-caps {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .hero-image {
-            width: 100%;
-            border-radius: var(--radius-md);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: #ffffff;
-            padding: 24px;
+        @media(max-width:640px) {
+            .supcon-hero {
+                min-height: auto;
+                padding-bottom: 60px;
+            }
+            .hero-caps {
+                grid-template-columns: 1fr;
+            }
+            .hero-ctas {
+                flex-direction: column;
+            }
         }
 
-        .hero-image img {
-            width: 100%;
-            height: auto;
+        /* ── CATALOG SECTION ── */
+        .catalog-section {
+            padding: 100px 0;
+            position: relative;
+            z-index: 10;
+            background: var(--bg);
+        }
+
+        .sec-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .sec-header {
+            margin-bottom: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .sec-overline {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--supcon-red);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
             display: block;
         }
 
-        /* Product Families Section */
-        .catalog-section {
-            padding: 100px 0;
-            background: #ffffff;
+        .sec-title {
+            font-size: clamp(28px, 3.5vw, 38px);
+            font-weight: 700;
+            color: var(--navy-deep);
+            letter-spacing: -0.5px;
         }
 
-        .section-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 64px auto;
+        .sec-title strong {
+            color: var(--supcon-red);
+            font-weight: 800;
         }
 
-        .section-header h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
-            color: var(--brand-blue);
-            margin-bottom: 16px;
+        .sec-tag {
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--text3);
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            text-align: right;
+            max-width: 300px;
         }
 
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-        }
-
-        /* Product Grid */
+        /* ── Product Category Title ── */
         .product-category-title {
+            font-family: 'Outfit', sans-serif;
             font-size: 1.75rem;
-            color: var(--brand-blue);
+            font-weight: 700;
+            color: var(--navy-deep);
             margin-bottom: 32px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 14px;
+            border-bottom: 2px solid var(--border);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .product-category-title span {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 500;
             color: var(--supcon-red);
+            background: rgba(211, 47, 47, 0.08);
+            padding: 4px 12px;
+            border-radius: var(--r-sm);
         }
 
+        /* ── Product Grid ── */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 24px;
             margin-bottom: 80px;
         }
 
-
         .product-card {
-            background: #ffffff;
-            border: 1px solid var(--border-light);
-            min-height: 320px;
-            border-radius: var(--radius-md);
-            padding: 40px 32px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            padding: 32px 28px;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             flex-direction: column;
-            border-top: 4px solid var(--supcon-red);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-top: 3px solid var(--supcon-red);
+            box-shadow: var(--sh-sm);
             position: relative;
         }
 
         .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transform: translateY(-6px);
+            box-shadow: var(--sh-xl);
             border-color: #cbd5e1;
-            z-index: 2;
         }
 
         .product-icon {
             text-align: center;
-            margin-bottom: 24px;
-            height: 160px;
+            margin-bottom: 20px;
+            height: 140px;
             display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--bg3);
+            border-radius: var(--r-md);
+            padding: 16px;
         }
 
         .product-icon img {
             max-width: 100%;
-            max-height: 140px;
+            max-height: 120px;
             object-fit: contain;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.05));
             transition: transform 0.3s ease;
         }
 
@@ -303,29 +621,34 @@
         }
 
         .product-card h3 {
-            font-size: 1.35rem;
-            color: var(--text-dark);
-            margin-bottom: 16px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--navy-deep);
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
         }
 
         .product-card p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
+            color: var(--text2);
+            margin-bottom: 16px;
             flex-grow: 1;
-            font-size: 0.95rem;
+            font-size: 0.875rem;
+            line-height: 1.6;
         }
 
         .feature-list {
             list-style: none;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
 
         .feature-list li {
             position: relative;
-            padding-left: 24px;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--text-main);
+            padding-left: 22px;
+            margin-bottom: 7px;
+            font-size: 0.8rem;
+            color: var(--text2);
+            line-height: 1.5;
         }
 
         .feature-list li::before {
@@ -333,96 +656,111 @@
             position: absolute;
             left: 0;
             color: var(--supcon-red);
-            font-weight: bold;
+            font-weight: 700;
+            font-size: 0.75rem;
         }
 
-        .btn-outline {
-            display: inline-block;
+        .btn-primary-card {
+            display: block;
             text-align: center;
-            padding: 12px 24px;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            color: var(--brand-blue);
+            margin-top: auto;
+            border-radius: var(--r-sm);
             font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
+            font-size: 0.85rem;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, var(--supcon-red), #b91c1c);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(211, 47, 47, 0.2);
+            transition: all 0.25s ease;
+            font-family: 'Inter', sans-serif;
         }
 
-        .btn-outline:hover {
-            border-color: var(--supcon-red);
-            color: var(--supcon-red);
-            background: rgba(211, 47, 47, 0.05);
+        .btn-primary-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.35);
+            filter: brightness(1.05);
         }
 
-        /* Banner CTA */
+        @media(max-width:1024px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:640px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .sec-container,
+            .nav-container,
+            .hero-container {
+                padding: 0 20px;
+            }
+        }
+
+        /* ── CTA BANNER ── */
         .cta-banner {
-            background: var(--brand-dark);
-            padding: 60px 0;
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(160deg, var(--navy-deep) 0%, #1a0808 70%);
+            padding: 80px 0;
             text-align: center;
             color: white;
-            border-top: 1px solid #1e293b;
         }
 
         .cta-banner h2 {
             font-family: 'Outfit', sans-serif;
-            font-size: 2.25rem;
-            margin-bottom: 16px;
+            font-size: clamp(24px, 3vw, 34px);
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
         }
 
         .cta-banner p {
-            color: #94a3b8;
-            font-size: 1.1rem;
+            color: #94A3B8;
+            font-size: 1.05rem;
             max-width: 600px;
             margin: 0 auto 32px auto;
+            line-height: 1.7;
         }
 
-        .cta-banner .btn-primary {
-            background: var(--supcon-red);
-            font-size: 1.1rem;
-            padding: 14px 32px;
+        .cta-banner .btn1 {
+            font-size: 1rem;
+            padding: 16px 36px;
         }
 
-        .cta-banner .btn-primary:hover {
-            background: #b91c1c;
-        }
-
-        /* Footer */
+        /* ── FOOTER ── */
         .footer {
-            background: var(--brand-dark);
-            color: #94a3b8;
-            padding: 80px 0 40px;
-            border-top: 1px solid #1e293b;
+            background: var(--navy-deep);
+            color: #94A3B8;
+            padding: 60px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            position: relative;
+            z-index: 10;
+            text-align: center;
         }
 
-        /* Utils */
-        .mb-2 {
-            margin-bottom: 8px;
+        .footer .brand-logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #FFF;
+            margin-bottom: 12px;
         }
 
-        .mb-4 {
-            margin-bottom: 16px;
+        .footer .brand-logo span {
+            color: var(--supcon-red);
         }
 
-        .mb-8 {
-            margin-bottom: 32px;
+        .footer p {
+            font-size: 0.85rem;
+            color: var(--text3);
         }
 
-        @media (max-width: 900px) {
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .supcon-hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* B2B MODAL STYLES */
+        /* ── MODAL (B2B Quote) ── */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -430,7 +768,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(10, 22, 40, 0.8);
             backdrop-filter: blur(6px);
             z-index: 9999;
             align-items: center;
@@ -441,14 +779,16 @@
 
         .modal-content {
             background: #ffffff;
-            border-radius: var(--radius-md);
+            border-radius: var(--r-lg);
             width: 90%;
-            max-width: 650px;
+            max-width: 600px;
             padding: 40px;
             position: relative;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-top: 5px solid var(--supcon-red);
+            border-top: 4px solid var(--supcon-red);
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
         @keyframes modalFadeIn {
@@ -456,7 +796,6 @@
                 opacity: 0;
                 transform: translateY(30px) scale(0.95);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
@@ -465,63 +804,69 @@
 
         .close-modal {
             position: absolute;
-            top: 24px;
-            right: 28px;
-            font-size: 32px;
+            top: 20px;
+            right: 24px;
+            font-size: 28px;
             line-height: 1;
             color: #94a3b8;
             cursor: pointer;
             transition: color 0.2s;
+            background: none;
+            border: none;
         }
 
         .close-modal:hover {
             color: var(--supcon-red);
         }
 
+        .modal-header {
+            margin-bottom: 28px;
+        }
+
         .modal-header h3 {
             font-family: 'Outfit', sans-serif;
-            color: var(--brand-blue);
-            font-size: 1.8rem;
+            color: var(--navy-deep);
+            font-size: 1.6rem;
             margin-bottom: 8px;
         }
 
         .modal-header p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            font-size: 0.95rem;
+            color: var(--text2);
+            font-size: 0.9rem;
             line-height: 1.5;
         }
 
         .quote-form .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 16px;
         }
 
         .quote-form .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .quote-form label {
             display: block;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            color: var(--text-main);
-            margin-bottom: 8px;
+            color: var(--text);
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
         }
 
         .quote-form input,
         .quote-form select,
         .quote-form textarea {
             width: 100%;
-            padding: 14px 16px;
-            border: 1px solid var(--border-light);
-            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            border: 1px solid var(--border);
+            border-radius: var(--r-sm);
             font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.2s;
-            background: #ffffff;
-            color: var(--text-dark);
+            background: var(--bg);
+            color: var(--text);
         }
 
         .quote-form input:focus,
@@ -529,118 +874,136 @@
         .quote-form textarea:focus {
             outline: none;
             border-color: var(--supcon-red);
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
-            /* Safe generic shadow */
+            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.08);
         }
 
         .quote-form .readonly-input {
-            background-color: #f8fafc;
-            color: var(--brand-blue);
+            background-color: var(--bg3);
+            color: var(--navy-deep);
             font-weight: 700;
-            border-color: #cbd5e1;
+            border-color: var(--border);
             cursor: not-allowed;
         }
 
-        /* Reusing btn-submit class logic */
         .btn-submit {
             background: linear-gradient(135deg, var(--supcon-red), #b91c1c);
             color: white;
             border: none;
             width: 100%;
             padding: 16px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            border-radius: var(--radius-sm);
+            border-radius: var(--r-sm);
             cursor: pointer;
-            margin-top: 16px;
+            margin-top: 12px;
             transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            font-family: 'Inter', sans-serif;
         }
 
         .btn-submit:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
-            filter: brightness(1.1);
+            box-shadow: 0 10px 15px -3px rgba(211, 47, 47, 0.3);
+            filter: brightness(1.08);
         }
 
-        @media (max-width: 600px) {
+        @media(max-width:600px) {
             .quote-form .form-row {
                 grid-template-columns: 1fr;
-                gap: 0;
             }
-
             .modal-content {
-                padding: 30px 20px;
+                padding: 28px 20px;
             }
         }
-    
-        @media (max-width: 1024px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+
+        /* ── Fade-up Animation ── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
         }
-        @media (max-width: 640px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="container nav-inner">
-            <a href="index.html" class="brand">CONECTA<span>.</span></a>
+    <!-- NAVBAR V2 (Frosted Glass) -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">CONECTA<div class="nav-dot"></div></a>
             <div class="nav-links">
-                <a href="index.html#sistemas">División Sistemas</a>
-                <a href="index.html#equipos">Venta de Equipos</a>
-                <a href="#catalogo">Catálogo Automación</a>
-                <a href="index.html#normativa">Normativa</a>
-                <a href="#cotizar" class="btn-primary" style="background:var(--supcon-red);">Cotizar SUPCON</a>
+                <a href="index.html#sistemas" class="nav-link">División Sistemas</a>
+                <a href="index.html#equipos" class="nav-link">Venta de Equipos</a>
+                <a href="#catalogo" class="nav-link">Catálogo Automación</a>
+                <a href="index.html#normativa" class="nav-link">Normativa</a>
+                <a href="#cotizar" class="nav-cta">Cotizar SUPCON</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- HERO V2 -->
     <header class="supcon-hero">
-        <div class="container hero-inner">
-            <div class="hero-text">
-                <div class="supcon-badge">Official Partners Chile</div>
-                <h1>Automatización <span>SUPCON</span> de Clase Mundial</h1>
-                <p>Distribuidores directos e integradores expertos del principal fabricante asiático de sistemas de
+        <div class="hero-grid"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-container">
+            <div class="hero-content fade-up">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span> Official Partners Chile
+                </div>
+                <h1>Automatización <span class="hl">SUPCON</span> de Clase Mundial</h1>
+                <p class="hero-sub">Distribuidores directos e integradores expertos del principal fabricante asiático de sistemas de
                     control distribuido (DCS) e instrumentación inteligente de misión crítica.</p>
-                <div style="display:flex; gap:16px;">
-                    <a href="#catalogo" class="btn-primary" style="background:var(--supcon-red);">Ver Familias de
-                        Productos</a>
-                    <a href="index.html" class="btn-outline"
-                        style="color:white; border-color:rgba(255,255,255,0.2);">Volver a CONECTA</a>
+                <div class="hero-caps">
+                    <div class="hero-cap">
+                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/></svg> DCS</div>
+                        <div class="hero-cap-desc">ECS-700 / JX-300XP</div>
+                    </div>
+                    <div class="hero-cap">
+                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> SIS</div>
+                        <div class="hero-cap-desc">TCS-900 / TCS-500 SIL3</div>
+                    </div>
+                    <div class="hero-cap">
+                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> PLC</div>
+                        <div class="hero-cap-desc">G5 Pro / G3 Smart</div>
+                    </div>
+                    <div class="hero-cap">
+                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg> Field</div>
+                        <div class="hero-cap-desc">Válvulas + Transmisores</div>
+                    </div>
+                </div>
+                <div class="hero-ctas">
+                    <a href="#catalogo" class="btn1">Ver Familias de Productos</a>
+                    <a href="index.html" class="btn2">Volver a CONECTA</a>
                 </div>
             </div>
-            <div class="hero-image"
-                style="background: rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 300px;">
-                <div class="brand-logo supcon" style="font-size: 5rem; padding: 20px 40px; margin-bottom: 20px;">SUPCON
-                </div>
-                <div
-                    style="text-align:center; color:var(--text-main); font-weight:600; font-family:'Outfit',sans-serif;">
-                    SUPCON Webfield DCS / Instrumentación Inteligente</div>
+            <div class="hero-visual">
+                <div class="brand-logo">SUPCON</div>
+                <div class="brand-sub">Webfield DCS / Instrumentación Inteligente</div>
             </div>
         </div>
     </header>
 
     <!-- CATALOG SECTION -->
     <section id="catalogo" class="catalog-section">
-        <div class="container">
-
-            <div class="section-header">
-                <h2>Catálogo Oficial de Tecnologías SUPCON</h2>
-                <p>Equipamiento e inteligencia industrial para minería, energía y manufactura avanzada.</p>
+        <div class="sec-container">
+            <div class="sec-header">
+                <div>
+                    <span class="sec-overline">Catálogo Oficial</span>
+                    <h2 class="sec-title">Tecnologías <strong>SUPCON</strong></h2>
+                </div>
+                <p class="sec-tag">Equipamiento e inteligencia industrial para minería, energía y manufactura avanzada.</p>
             </div>
 
-            <h3 class="product-category-title"><span>01.</span> Sistemas de Control (DCS / SIS / PLC)</h3>
+            <!-- CATEGORY 1: Control Systems -->
+            <h3 class="product-category-title"><span>01</span> Sistemas de Control (DCS / SIS / PLC)</h3>
             <div class="product-grid">
+
                 <!-- ECS-700 -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/DCS.png" alt="DCS ECS-700"></div>
                     <h3>ECS-700 (DCS)</h3>
                     <p>Plataforma de datos para toda la planta. Soporta una expansión flexible de hasta 1 millón de
@@ -649,13 +1012,11 @@
                         <li>Integración: OPC, MODBUS, HART, FF, PROFIBUS</li>
                         <li>CE(EMC/LVD), G3 anti-corrosión, EAC, PAC</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('ECS-700 (DCS)')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('ECS-700 (DCS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- JX-300XP -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/DCS.png" alt="DCS JX-300XP"></div>
                     <h3>JX-300XP (DCS)</h3>
                     <p>Red de comunicación industrial SCnet II de alta velocidad y confiabilidad. Permite redundancia
@@ -664,13 +1025,11 @@
                         <li>Protocolos: Modbus, HostLink</li>
                         <li>CE(EMC/LVD), G3 anti-corrosión</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('JX-300XP (DCS)')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('JX-300XP (DCS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- TCS-900 -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/SIS.webp" alt="TCS-900 SIS"></div>
                     <h3>TCS-900 (SIS)</h3>
                     <p>Sistema Instrumentado de Seguridad (SIS) de máximo nivel. Diagnóstico >99% con diseño
@@ -679,13 +1038,11 @@
                         <li>Certificación SIL3 y Seguridad IEC 62443</li>
                         <li>CE(EMC), G3 anti-corrosión (-20~70℃)</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('TCS-900 (SIS)')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('TCS-900 (SIS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- TCS-500 -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/SIS.webp" alt="TCS-500 SIS"></div>
                     <h3>TCS-500 (SIS)</h3>
                     <p>Sistema de Seguridad de alta densidad y flexibilidad de instalación. Arquitectura 2oo4D con 300
@@ -694,13 +1051,11 @@
                         <li>Certificación SIL3 (2oo4D)</li>
                         <li>Aislamiento físico del DCS</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('TCS-500 (SIS)')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('TCS-500 (SIS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- G5 Pro -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/PLC.png" alt="G5 Pro PLC"></div>
                     <h3>G5 Pro (PLC)</h3>
                     <p>PLC con procesador 32-bit a 1 GHz y 1.5 GB de memoria del sistema. Soporta Hot-swapping en todos
@@ -709,13 +1064,11 @@
                         <li>PROFINET, DNP3, OPC, Modbus</li>
                         <li>Ciberseguridad dual-core (RSA/AES)</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('G5 Pro (PLC)')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('G5 Pro (PLC)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- G3 Smart -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/PLC.png" alt="G3 Smart PLC"></div>
                     <h3>G3 Smart (PLC)</h3>
                     <p>Controlador Lógico Programable compacto y flexible. Entorno de configuración amigable compatible
@@ -724,17 +1077,16 @@
                         <li>Soporte de topologías Anillo y Estrella</li>
                         <li>CE(EMC/LVD), G3 anti-corrosión</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('G3 Smart (PLC)')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('G3 Smart (PLC)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
             </div>
 
-            <!-- CATEGORY 2: INSTRUMENTATIONS -->
-            <h3 class="product-category-title"><span>02.</span> Instrumentación de Campo</h3>
+            <!-- CATEGORY 2: Field Instrumentation -->
+            <h3 class="product-category-title"><span>02</span> Instrumentación de Campo</h3>
             <div class="product-grid">
+
                 <!-- LN/LM Globe Valve -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/LNLM.png" alt="Válvula LN/LM"></div>
                     <h3>Válvula de Globo LN/LM</h3>
                     <p>Modularización funcional, alta precisión y mantenimiento sencillo. DN15 a DN600. Fugas: ANSI
@@ -743,13 +1095,11 @@
                         <li>ANSI CL150~CL2500, DIN PN16~PN250</li>
                         <li>CE, ATEX, ISO 15848, API 6FA, SIL3</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula de Globo LN/LM')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Válvula de Globo LN/LM')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- SN5 Ball Valve -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/SN5.png" alt="Válvula Bola SN5"></div>
                     <h3>Válvula de Bola O-type SN5</h3>
                     <p>Excelente corte y sellado. Bajo torque y fugas cero (API6D/API598). Alta resistencia al desgaste.
@@ -758,15 +1108,12 @@
                         <li>ANSI CL150~CL2500, DIN PN16~PN250</li>
                         <li>CE, ATEX, API 607 Fire Safe, SIL3</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula de Bola O-type SN5')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Válvula de Bola O-type SN5')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- CN8 Eccentric Rotary Plug Valve -->
-                <div class="product-card">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/CN8.png" alt="Válvula Excéntrica CN8">
-                    </div>
+                <div class="product-card fade-up">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/CN8.png" alt="Válvula Excéntrica CN8"></div>
                     <h3>Válvula Excéntrica CN8</h3>
                     <p>Doble excentricidad. Alta capacidad de flujo, anti-cavitación y anti-desgaste. Ideal para lodos y
                         fluidos abrasivos. DN15 a DN400.</p>
@@ -774,15 +1121,12 @@
                         <li>Fugas Clase Ⅳ/Ⅴ/Ⅵ. Lineal.</li>
                         <li>CE, ATEX, ISO 15848, SIL3</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula Excéntrica CN8')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Válvula Excéntrica CN8')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- BN Butterfly Valve -->
-                <div class="product-card">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/BN.png" alt="Válvula Mariposa BN">
-                    </div>
+                <div class="product-card fade-up">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/BN.png" alt="Válvula Mariposa BN"></div>
                     <h3>Válvula Mariposa BN</h3>
                     <p>Libre de desgaste/fricción. Cierre hermético ante temperaturas o presiones extremas. Eje central,
                         excentricidad triple disponible. DN50 a DN2400.</p>
@@ -790,15 +1134,12 @@
                         <li>ANSI CL150~1500, Fugas Ⅴ/Ⅵ.</li>
                         <li>CE, ATEX, API 6FA, SIL3</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula Mariposa BN')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Válvula Mariposa BN')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- CXT Pressure Transmitter -->
-                <div class="product-card">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/CXT.png" alt="Transmisor Presión CXT">
-                    </div>
+                <div class="product-card fade-up">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/CXT.png" alt="Transmisor Presión CXT"></div>
                     <h3>Transmisor de Presión CXT</h3>
                     <p>Precisión hasta +0.035% y estabilidad de ±0.1% a 10 años. Solución certificada para procesos
                         especiales (Sinopec, CNPC).</p>
@@ -806,15 +1147,12 @@
                         <li>Capacidad: 200,000 uds/año</li>
                         <li>CE, ROHS, ATEX/IECEx Ex d/Exia, SIL2</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Transmisor de Presión CXT')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Transmisor de Presión CXT')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- SFE900 Flowmeter -->
-                <div class="product-card">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/SFE900.webp" alt="Caudalímetro SFE900">
-                    </div>
+                <div class="product-card fade-up">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/SFE900.webp" alt="Caudalímetro SFE900"></div>
                     <h3>Caudalímetro Mag. SFE900</h3>
                     <p>Mide líquidos con baja conductividad (2μS/cm). ±0.2% precisión. Fuerte supresión de ruido y malla
                         de acero para presión negativa.</p>
@@ -822,15 +1160,12 @@
                         <li>Rango: 0.1~12 m/s</li>
                         <li>Certificado Ex d (China)</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Caudalímetro Mag. SFE900')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Caudalímetro Mag. SFE900')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- SL900 Radar Level -->
-                <div class="product-card">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/SL900.png" alt="Radar Nivel SL900">
-                    </div>
+                <div class="product-card fade-up">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/SL900.png" alt="Radar Nivel SL900"></div>
                     <h3>Transmisor Nivel SL900 (Radar)</h3>
                     <p>Tecnología FMCW 80GHz. Precisión ±1mm. Ángulo de haz 3°, perfecto para tanques estrechos. Zona
                         muerta 0.1m, rango 100m.</p>
@@ -838,16 +1173,12 @@
                         <li>Bandwidth de barrido 4GHz</li>
                         <li>Ex ia & Ex d, SIL2</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Transmisor Nivel SL900 (Radar)')" " class="
-                        btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Transmisor Nivel SL900 (Radar)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- HD5500 Safety Barrier -->
-                <div class="product-card">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/HD5500.png"
-                            alt="Barrera Aislada HD5500"></div>
+                <div class="product-card fade-up">
+                    <div class="product-icon"><img src="assets/supcon_img/mapped/HD5500.png" alt="Barrera Aislada HD5500"></div>
                     <h3>Barrera de Seguridad HD5500</h3>
                     <p>Diseño ultra-fino 12.5mm. Conversión a 0.1%. Alarma inteligente y ahorro energético 40%.
                         Fiabilidad industrial líder (0.12‰).</p>
@@ -855,13 +1186,11 @@
                         <li>Múltiples montajes (DIN, bus bar)</li>
                         <li>CE, IECEx/ATEX, Intrinsically Safe, SIL2/3</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Barrera de Seguridad HD5500')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Barrera de Seguridad HD5500')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
 
                 <!-- X600 Calibrator -->
-                <div class="product-card">
+                <div class="product-card fade-up">
                     <div class="product-icon"><img src="assets/supcon_img/mapped/X600.png" alt="Calibrador X600"></div>
                     <h3>Calibrador Interactivo X600</h3>
                     <p>Precisión de señal máxima: 0.01%. Integración HART al 100%. Combina comunicador HART de campo e
@@ -870,55 +1199,43 @@
                         <li>Update online de archivos HART DD</li>
                         <li>Módulo de señal desmontable</li>
                     </ul>
-                    <button type="button" onclick="openQuoteModal('Calibrador Interactivo X600')" " class=" btn-primary"
-                        style="display: block; text-align: center; margin-top: auto; border-radius: 6px; font-weight: 600; padding: 12px 16px; background: linear-gradient(135deg, var(--supcon-red), #b91c1c); border: none; box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);"><span
-                            style="margin-right:8px;">✉️</span> Solicitar Cotización</button>
+                    <button type="button" onclick="openQuoteModal('Calibrador Interactivo X600')" class="btn-primary-card">✉️ Solicitar Cotización</button>
                 </div>
             </div>
-
-
         </div>
     </section>
 
-    <!-- SHORT B2B CTA -->
+    <!-- CTA BANNER -->
     <section id="cotizar" class="cta-banner">
-        <div class="container">
+        <div class="sec-container">
             <h2>¿Listo para integrar tecnología SUPCON en su planta?</h2>
             <p>Nuestros ingenieros en Santiago están listos para revisar sus P&ID, homologar bases técnicas de
                 licitación o cotizar instrumentación específica con tiempos de entrega directos de fábrica.</p>
-            <button type="button" onclick="openQuoteModal('Equipo/Servicio')" contacto@conecta.cl"
-                class="btn-primary">Contactar a Ingeniería Comercial de CONECTA</button>
+            <button type="button" onclick="openQuoteModal('Equipo/Servicio')" class="btn1">Contactar a Ingeniería Comercial de CONECTA</button>
         </div>
     </section>
 
-    <!-- FOOTER (Simplified) -->
+    <!-- FOOTER -->
     <footer class="footer">
-        <div class="container" style="text-align: center;">
-            <div class="brand" style="color:white; margin-bottom: 16px;">CONECTA<span>.</span></div>
-            <p>Representantes exclusivos e integradores nivel experto de tecnología SUPCON en Chile.<br>&copy; 2026
-                CONECTA Ingeniería. Todos los derechos reservados.</p>
-        </div>
+        <div class="brand-logo">CONECTA<span>.</span></div>
+        <p>Representantes exclusivos e integradores nivel experto de tecnología SUPCON en Chile.<br>&copy; 2026
+            CONECTA Ingeniería. Todos los derechos reservados.</p>
     </footer>
-
 
     <!-- MODAL COTIZACION B2B -->
     <div id="quoteModal" class="modal-overlay">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeQuoteModal()">&times;</span>
+            <button class="close-modal" onclick="closeQuoteModal()">&times;</button>
             <div class="modal-header">
                 <h3>Solicitud de Cotización B2B</h3>
                 <p>Complete sus datos para que un ingeniero especialista le contacte a la brevedad.</p>
             </div>
-            <!-- NETLIFY FORM -->
             <form name="cotizacion-equipo" method="POST" data-netlify="true" class="quote-form">
-                <!-- Fallback subject for Netlify emails -->
                 <input type="hidden" name="subject" data-remove-prefix value="Nueva Cotización de Equipo B2B" />
-
                 <div class="form-group">
                     <label for="frm-equipo">Equipo a Cotizar</label>
                     <input type="text" id="frm-equipo" name="equipo" readonly class="readonly-input" value="">
                 </div>
-
                 <div class="form-row">
                     <div class="form-group">
                         <label for="frm-nombre">Nombre Completo *</label>
@@ -929,7 +1246,6 @@
                         <input type="text" id="frm-empresa" name="empresa" required placeholder="Ej: Minera Escondida">
                     </div>
                 </div>
-
                 <div class="form-row">
                     <div class="form-group">
                         <label for="frm-email">Correo Corporativo *</label>
@@ -947,15 +1263,13 @@
                         </select>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <label for="frm-mensaje">Mensaje o Detalles Adicionales</label>
                     <textarea id="frm-mensaje" name="mensaje" rows="3"
                         placeholder="Indique cantidad, plazos o detalles técnicos relevantes..."></textarea>
                 </div>
-
                 <button type="submit" class="btn-submit">Enviar Solicitud a Ingeniería</button>
-                <div style="text-align: center; margin-top: 12px; font-size: 0.8rem; color: #94a3b8;">Sistema cifrado y
+                <div style="text-align: center; margin-top: 12px; font-size: 0.75rem; color: #94a3b8;">Sistema cifrado y
                     gestionado por CONECTA B2B</div>
             </form>
         </div>
@@ -967,7 +1281,6 @@
             document.getElementById('frm-equipo').value = itemName;
             var modal = document.getElementById('quoteModal');
             modal.style.display = 'flex';
-            // Trigger reflow for animation
             modal.offsetHeight;
             modal.style.opacity = '1';
         }
@@ -984,6 +1297,33 @@
                 closeQuoteModal();
             }
         }
+
+        // Navbar scroll shrink
+        window.addEventListener('scroll', function () {
+            var navbar = document.getElementById('navbar');
+            if (window.scrollY > 10) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-up reveal on scroll
+        (function () {
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-up').forEach(function (el) {
+                observer.observe(el);
+            });
+            // Make hero content visible immediately
+            var heroContent = document.querySelector('.hero-content.fade-up');
+            if (heroContent) heroContent.classList.add('visible');
+        })();
     </script>
 
 </body>
