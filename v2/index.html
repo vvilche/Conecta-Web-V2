@@ -323,6 +323,16 @@ a{text-decoration:none;color:inherit}
 @media(max-width:640px){.whatsapp-float{bottom:16px;right:16px;width:52px;height:52px}.whatsapp-float svg{width:28px;height:28px}}
 </style>
 <link rel="canonical" href="https://conecta.cl/v2/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "CONECTA Ingenieria", "item": "https://conecta.cl"},
+    {"@type": "ListItem", "position": 2, "name": "Soluciones de Automatizacion y Control", "item": "https://conecta.cl/v2/"}
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -620,6 +630,20 @@ a{text-decoration:none;color:inherit}
 </section>
 
 <!-- FOOTER -->
+<section class="sec sec-white" id="faq">
+  <div class="sec-container">
+    <div class="sec-header"><div><span class="sec-overline">Preguntas Frecuentes</span><h2 class="sec-title">Lo que necesitas saber sobre <strong>Cumplimiento CEN</strong></h2></div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:20px">
+      <div style="background:var(--bg2);padding:20px;border-radius:12px"><h3 style="font-size:1rem;color:var(--navy-deep);margin-bottom:8px">Que es el Articulo 1-14 de la NTSyCS?</h3><p style="font-size:.9rem;color:var(--text2);line-height:1.5">Es la norma del Coordinador Electrico Nacional que exige pruebas de verificacion SCADA a todas las empresas coordinadas. Evalua avalancha de datos, redundancia, conmutacion de enlaces y SCADA de respaldo. 212 de 257 coordinados no cumplen (Anexo 2025).</p></div>
+      <div style="background:var(--bg2);padding:20px;border-radius:12px"><h3 style="font-size:1rem;color:var(--navy-deep);margin-bottom:8px">Que pasa si no cumplo con el SCADA?</h3><p style="font-size:.9rem;color:var(--text2);line-height:1.5">El CEN puede aplicar sanciones, restricciones operativas y en casos extremos la desconexion del Sistema Electrico Nacional. La SEC puede multar hasta 5,000 UTA. La normalizacion es un proceso tecnico acotado.</p></div>
+      <div style="background:var(--bg2);padding:20px;border-radius:12px"><h3 style="font-size:1rem;color:var(--navy-deep);margin-bottom:8px">Que es EDAC/EDAG y quien debe implementarlo?</h3><p style="font-size:.9rem;color:var(--text2);line-height:1.5">Esquemas de Desconexion Automatica de Carga y Generacion exigidos por la NTSyCS. Aplica a todos los coordinados. 19 instalaciones en Chile no lo han implementado (Anexo 2025). Sin EDAC, la instalacion esta expuesta a desconexion automatica.</p></div>
+      <div style="background:var(--bg2);padding:20px;border-radius:12px"><h3 style="font-size:1rem;color:var(--navy-deep);margin-bottom:8px">Que es medicion sincrofasorial (PMU)?</h3><p style="font-size:.9rem;color:var(--text2);line-height:1.5">La medicion sincrofasorial (PMU, IEEE C37.118) permite al CEN monitorear en tiempo real la estabilidad del sistema electrico. Obligatoria para coordinados. 117 puntos PMU tienen plazos vencidos, algunos desde 2017. Plataforma oficial: ELPROS.</p></div>
+      <div style="background:var(--bg2);padding:20px;border-radius:12px"><h3 style="font-size:1rem;color:var(--navy-deep);margin-bottom:8px">Se puede reemplazar un GE D20 sin cambiar el gabinete?</h3><p style="font-size:.9rem;color:var(--text2);line-height:1.5">Si. Orion I/O de NovaTech es pin-compatible con GE D20, D200 y D25. Reemplazo sin re-cablear. OrionLX+ soporta DNP3, IEC 61850, Modbus e ICCP. Cumple Art.1-14. <a href="/v2/landing/reemplazo-ge-d20.html" style="color:var(--blue-accent);font-weight:600">Ver retrofit RTU &rarr;</a></p></div>
+      <div style="background:var(--bg2);padding:20px;border-radius:12px"><h3 style="font-size:1rem;color:var(--navy-deep);margin-bottom:8px">Que requiere el CEN para SCADA de respaldo?</h3><p style="font-size:.9rem;color:var(--text2);line-height:1.5">El CEN exige un segundo centro de control de respaldo con arquitectura redundante. Pruebas de avalancha de datos, redundancia de alimentacion, conmutacion de enlaces y SCADA de respaldo. <a href="/v2/landing/scada-cumplimiento-cen.html" style="color:var(--blue-accent);font-weight:600">Ver normalizacion SCADA &rarr;</a></p></div>
+    </div>
+  </div>
+</section>
+
 <footer class="footer">
   <div class="footer-grid">
     <div class="footer-brand">
@@ -683,5 +707,19 @@ function nextSlide() {
 <a href="https://wa.me/56997847438?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20CONECTA%20S.A." target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Que es el Articulo 1-14 de la NTSyCS?", "acceptedAnswer": {"@type": "Answer", "text": "Norma del CEN que exige pruebas de verificacion SCADA. 212 de 257 coordinados no cumplen (Anexo 2025)."}},
+    {"@type": "Question", "name": "Que pasa si no cumplo con SCADA?", "acceptedAnswer": {"@type": "Answer", "text": "Sanciones del CEN y multas de la SEC de hasta 5,000 UTA. Riesgo de desconexion del sistema electrico."}},
+    {"@type": "Question", "name": "Que es EDAC y quien lo necesita?", "acceptedAnswer": {"@type": "Answer", "text": "Esquemas de Desconexion Automatica obligatorios. 19 instalaciones sin implementar en Chile."}},
+    {"@type": "Question", "name": "Que es medicion sincrofasorial PMU?", "acceptedAnswer": {"@type": "Answer", "text": "Monitoreo en tiempo real IEEE C37.118. 117 puntos PMU con plazos vencidos en Chile."}},
+    {"@type": "Question", "name": "Se puede reemplazar GE D20 sin cambiar gabinete?", "acceptedAnswer": {"@type": "Answer", "text": "Si. Orion I/O NovaTech es pin-compatible. OrionLX+ cumple IEC 61850 y Art.1-14 NTSyCS."}},
+    {"@type": "Question", "name": "Que necesita el SCADA de respaldo segun CEN?", "acceptedAnswer": {"@type": "Answer", "text": "Segundo centro de control redundante con pruebas de avalancha, redundancia, enlaces y backup."}}
+  ]
+}
+</script>
 </body>
 </html>
