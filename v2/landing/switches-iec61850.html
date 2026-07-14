@@ -1432,22 +1432,26 @@ a {
 <section class="cta-final" id="diagnostico"><div class="cta-container"><div class="cta-content"><span class="cta-overline">Campana de Cumplimiento NTSyCS 2025</span><h2 class="cta-title">Cotice su proyecto y <strong>cumpla con el CEN</strong></h2><p class="cta-subtitle">Ingenieria y suministro de equipos homologados. Soporte local en Chile.</p></div><div class="cta-form-container"><h3 class="form-title">Solicitar Cotizacion</h3><form class="contact-form" action="/v2/form.php" method="POST"><div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text" name="name" required></div><div class="form-group"><label class="form-label">Empresa</label><input class="form-input" type="text" name="company" required></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" required></div><div class="form-group"><label class="form-label">Telefono</label><input class="form-input" type="tel" name="phone" required></div><input type="hidden" name="landing" value="switches-iec61850"><button type="submit" class="form-submit-btn">Solicitar Cotizacion</button></form></div></div></section>
 <footer class="footer"><div class="footer-container"><div class="footer-brand"><span style="font-family:Outfit,sans-serif;font-size:20px;font-weight:800;color:var(--brand-dark)">CONECTA S.A.</span><p class="footer-tagline">Automatizacion y control industrial Chile.</p></div><div class="footer-column"><h4>Contacto</h4><p style="font-size:.85rem;color:var(--text-muted)">victor.vilche@conecta.cl<br>+56 9 9784 7431</p></div></div></footer>
 <script>
-document.addEventListener('DOMContentLoaded', function() { document.querySelector('.contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    var btn = this.querySelector('.form-submit-btn');
-    var fd = new FormData(this);
-    var data = {};
-    fd.forEach(function(v,k) { data[k] = v; });
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
-    fetch('/v2/form.php', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-      .then(function(r) { return r.json(); })
-      .then(function(r) {
-        if (r.ok) { btn.textContent = 'Recibido.'; btn.style.background='#10B981'; }
-        else { btn.textContent = 'Error'; btn.style.background='#DC2626'; }
-      })
-      .catch(function() { btn.textContent = 'Error de conexion'; btn.style.background='#DC2626'; })
-      .finally(function() { setTimeout(function() { btn.disabled=false; btn.textContent='Solicitar Cotizacion'; btn.style.background='var(--brand-accent)'; }, 4000); });
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.querySelector('.contact-form');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var btn = this.querySelector('.form-submit-btn');
+        var fd = new FormData(this);
+        var data = {};
+        fd.forEach(function(v,k) { data[k] = v; });
+        btn.textContent = 'Enviando...';
+        btn.disabled = true;
+        fetch('/v2/form.php', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+          .then(function(r) { return r.json(); })
+          .then(function(r) {
+            if (r.ok) { btn.textContent = 'Recibido.'; btn.style.background='#10B981'; }
+            else { btn.textContent = 'Error'; btn.style.background='#DC2626'; }
+          })
+          .catch(function() { btn.textContent = 'Error de conexion'; btn.style.background='#DC2626'; })
+          .finally(function() { setTimeout(function() { btn.disabled=false; btn.textContent='Solicitar Cotizacion'; btn.style.background='var(--brand-accent)'; }, 4000); });
+    });
 });
-}); }); </script>
+</script>
 </body></html>
