@@ -87,8 +87,7 @@ a{text-decoration:none;color:inherit}
 .btn2:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.3);color:#fff;transform:translateY(-2px)}
 .hero-visual{display:flex;align-items:center;justify-content:center}
 .hero-visual svg{width:100%;max-width:520px;height:auto;filter:drop-shadow(0 0 60px rgba(37,99,235,0.2))}
-@media(max-width:1024px){.hero-container{grid-template-columns:1fr;gap:40px;text-align:center}.hero-content{max-width:100%}.hero-sub{max-width:100%}.hero-ctas{justify-content:center}.hero-caps{grid-template-columns:repeat(2,1fr)}.hero-visual svg{max-width:360px}}
-@media(max-width:640px){.hero{min-height:auto;padding-bottom:60px}.hero-caps{grid-template-columns:1fr}.hero-ctas{flex-direction:column}}
+@media(max-width:640px){.hero-caps{grid-template-columns:1fr}.hero-ctas{flex-direction:column}}
 
 /* SECTION GENERIC */
 .sec{padding:100px 0;position:relative;z-index:10}
@@ -264,6 +263,16 @@ a{text-decoration:none;color:inherit}
 .footer-mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
 @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px}.footer-brand{max-width:100%}}
 @media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+/* HERO CAROUSEL */
+.hero-slides{position:relative;width:100%}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;display:flex;align-items:center}
+.hero-slide.active{opacity:1;pointer-events:auto;position:relative}
+.hero-dots{display:flex;gap:10px;margin-top:28px;z-index:10;position:relative}
+.hero-dot{width:32px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s ease}
+.hero-dot.active{background:var(--blue-accent);width:48px}
+@media(max-width:1024px){.hero-slide{grid-template-columns:1fr!important;gap:40px;text-align:center}.hero-slide .hero-content{max-width:100%}.hero-slide .hero-sub{max-width:100%}.hero-slide .hero-ctas{justify-content:center}.hero-slide .hero-caps{grid-template-columns:repeat(2,1fr)}.hero-slide .hero-visual svg{max-width:360px}}
+@media(max-width:640px){.hero-dots{justify-content:center}.hero-slide .hero-caps{grid-template-columns:1fr}.hero-slide .hero-ctas{flex-direction:column}}
 </style>
 <style>
 .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:9999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s ease;cursor:pointer}
@@ -288,71 +297,147 @@ a{text-decoration:none;color:inherit}
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO CAROUSEL -->
 <section class="hero" id="inicio">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-  <div class="hero-container">
-    <div class="hero-content">
-      <div class="hero-badge"><span class="hero-badge-dot"></span> CONECTA S.A. | 34 AÑOS DE INGENIERÍA CHILENA</div>
-      <h1>Especialistas en <span class="hl">RTU, PMU, SCADA</span> y protecciones eléctricas</h1>
-      <p class="hero-sub">Soporte local, ingeniería avanzada y provisión directa en Chile para marcas globales líderes de infraestructura crítica. Representantes oficiales de <b style="color:#93C5FD">SUPcon</b>, <b style="color:#93C5FD">NovaTech Automation</b>, <b style="color:#93C5FD">Belden/Hirschmann</b>, <b style="color:#93C5FD">NR Electric</b> y <b style="color:#93C5FD">Vizimax</b>.</p>
-      <div class="hero-caps">
-        <div class="hero-cap">
-          <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg> Sistemas RTU</div>
-          <div class="hero-cap-desc">Cambio de remotas obsoletas, retrofitting (GE D20/D200 a OrionLX+) y gateways.</div>
+  <div class="hero-container" style="display:block">
+    <div class="hero-slides" id="heroSlides">
+      <!-- SLIDE 1: SISTEMAS DE POTENCIA -->
+      <div class="hero-slide active" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center">
+        <div class="hero-content">
+          <div class="hero-badge"><span class="hero-badge-dot"></span> DIVISIÓN SISTEMAS DE POTENCIA</div>
+          <h1>Especialistas en <span class="hl">RTU, PMU, SCADA</span> y protecciones eléctricas</h1>
+          <p class="hero-sub">Soporte local, ingeniería avanzada y provisión directa en Chile para marcas globales líderes de infraestructura crítica. Representantes oficiales de <b style="color:#93C5FD">SUPcon</b>, <b style="color:#93C5FD">NovaTech Automation</b>, <b style="color:#93C5FD">Belden/Hirschmann</b>, <b style="color:#93C5FD">NR Electric</b> y <b style="color:#93C5FD">Vizimax</b>.</p>
+          <div class="hero-caps">
+            <div class="hero-cap">
+              <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg> Sistemas RTU</div>
+              <div class="hero-cap-desc">Cambio de remotas obsoletas, retrofitting (GE D20/D200 a OrionLX+) y gateways.</div>
+            </div>
+            <div class="hero-cap">
+              <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Telemedida PMU</div>
+              <div class="hero-cap-desc">Sistemas de medida integrados exigidos por la norma del Coordinador Eléctrico Nacional.</div>
+            </div>
+            <div class="hero-cap">
+              <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> SCADA & EMS</div>
+              <div class="hero-cap-desc">Integración de centros de control, SCADA Elipse, DCS de procesos e interfaz HMI local.</div>
+            </div>
+            <div class="hero-cap">
+              <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Protecciones</div>
+              <div class="hero-cap-desc">Ingeniería, pruebas y suministro de relés de protección y esquemas EDAC y SITR.</div>
+            </div>
+          </div>
+          <div class="hero-ctas">
+            <a href="#soluciones" class="btn1">Sistemas de Automatización <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+            <a href="#campo" class="btn2">Catálogo de Equipos B2B <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+          </div>
         </div>
-        <div class="hero-cap">
-          <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Telemedida PMU</div>
-          <div class="hero-cap-desc">Sistemas de medida integrados exigidos por la norma del Coordinador Eléctrico Nacional.</div>
-        </div>
-        <div class="hero-cap">
-          <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> SCADA & EMS</div>
-          <div class="hero-cap-desc">Integración de centros de control, SCADA Elipse, DCS de procesos e interfaz HMI local.</div>
-        </div>
-        <div class="hero-cap">
-          <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Protecciones</div>
-          <div class="hero-cap-desc">Ingeniería, pruebas y suministro de relés de protección y esquemas EDAC y SITR.</div>
+        <div class="hero-visual">
+          <svg viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="40" y="380" width="440" height="1" stroke="rgba(37,99,235,0.2)"/>
+            <rect x="40" y="340" width="440" height="1" stroke="rgba(37,99,235,0.1)" stroke-width="0.5"/>
+            <g transform="translate(260,200)">
+              <polygon points="0,-80 -120,-40 0,0 120,-40" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
+              <polygon points="0,-80 120,-40 120,80 0,40" fill="rgba(37,99,235,0.08)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <polygon points="0,-80 -120,-40 -120,80 0,40" fill="rgba(37,99,235,0.05)" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
+              <rect x="10" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <rect x="40" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <rect x="70" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
+              <line x1="0" y1="-80" x2="0" y2="-120" stroke="rgba(37,99,235,0.6)" stroke-width="2"/>
+              <circle cx="0" cy="-120" r="4" fill="#3B82F6" opacity="0.9"/>
+            </g>
+            <g transform="translate(80,240)">
+              <rect x="-20" y="-60" width="40" height="100" rx="3" fill="rgba(37,99,235,0.06)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+              <line x1="0" y1="-60" x2="0" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="2"/>
+              <line x1="-20" y1="-80" x2="20" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="1.5"/>
+            </g>
+            <g transform="translate(440,240)">
+              <rect x="-20" y="-60" width="40" height="100" rx="3" fill="rgba(37,99,235,0.06)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+              <line x1="0" y1="-60" x2="0" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="2"/>
+              <line x1="-20" y1="-80" x2="20" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="1.5"/>
+            </g>
+            <g transform="translate(170,140)">
+              <line x1="0" y1="0" x2="0" y2="120" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+              <line x1="0" y1="0" x2="-45" y2="0" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+              <line x1="0" y1="0" x2="45" y2="0" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
+            </g>
+            <path d="M260,240 Q170,230 100,240" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
+            <path d="M260,240 Q350,230 420,240" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
+            <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(96,165,250,0.35)" letter-spacing="2">RTU · SCADA · IEC 61850</text>
+          </svg>
         </div>
       </div>
-      <div class="hero-ctas">
-        <a href="#soluciones" class="btn1">Sistemas de Automatización <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-        <a href="#campo" class="btn2">Catálogo de Equipos B2B <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+
+      <!-- SLIDE 2: PROCESOS INDUSTRIALES -->
+      <div class="hero-slide" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center">
+        <div class="hero-content">
+          <div class="hero-badge" style="background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3);color:#6EE7B7"><span class="hero-badge-dot" style="background:#34D399"></span> DIVISIÓN PROCESOS INDUSTRIALES</div>
+          <h1>Control Distribuido, <span class="hl">IA Predictiva</span> y Digitalización de Plantas</h1>
+          <p class="hero-sub"><b style="color:#6EE7B7">Partners exclusivos SUPcon en Chile.</b> DCS ECS-700, plataforma IIoT supOS, inteligencia artificial PRIDE con 1,566 modos de falla y control avanzado APC. Llevamos la industria chilena al siguiente nivel.</p>
+          <div class="hero-caps">
+            <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
+              <div class="hero-cap-title" style="color:#6EE7B7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> DCS ECS-700</div>
+              <div class="hero-cap-desc">Control distribuido + SIS SIL3 certificado. Redundancia total, hot-swap y seguridad funcional.</div>
+            </div>
+            <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
+              <div class="hero-cap-title" style="color:#6EE7B7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10H12V2z"/><path d="M2 12h8"/></svg> IA Predictiva PRIDE</div>
+              <div class="hero-cap-desc">1,566 modos de falla integrados. Detección temprana y diagnóstico automático 24/7.</div>
+            </div>
+            <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
+              <div class="hero-cap-title" style="color:#6EE7B7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> APC V11.2</div>
+              <div class="hero-cap-desc">Control avanzado de procesos. ROI en 3 a 6 meses. Optimización multivariable en tiempo real.</div>
+            </div>
+            <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
+              <div class="hero-cap-title" style="color:#6EE7B7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg> supOS IIoT</div>
+              <div class="hero-cap-desc">Namespace unificado (UNS). 300+ protocolos nativos. Conectividad total planta-piso.</div>
+            </div>
+          </div>
+          <div class="hero-ctas">
+            <a href="#procesos" class="btn1" style="background:#10B981;box-shadow:0 4px 20px rgba(16,185,129,0.4)">Soluciones SUPcon <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+            <a href="#diagnostico" class="btn2">Evaluar Mi Planta <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <svg viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="40" y="380" width="440" height="1" stroke="rgba(16,185,129,0.2)"/>
+            <rect x="40" y="340" width="440" height="1" stroke="rgba(16,185,129,0.1)" stroke-width="0.5"/>
+            <g transform="translate(260,180)">
+              <rect x="-60" y="-60" width="120" height="80" rx="4" fill="rgba(16,185,129,0.08)" stroke="rgba(52,211,153,0.3)" stroke-width="1.5"/>
+              <rect x="-40" y="-40" width="35" height="20" rx="2" fill="none" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
+              <rect x="5" y="-40" width="35" height="20" rx="2" fill="none" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
+              <line x1="0" y1="-60" x2="0" y2="-90" stroke="rgba(16,185,129,0.6)" stroke-width="2"/>
+              <circle cx="0" cy="-90" r="4" fill="#10B981" opacity="0.9"/>
+              <line x1="-60" y1="-20" x2="-90" y2="-20" stroke="rgba(52,211,153,0.4)" stroke-width="1.5"/>
+              <line x1="60" y1="-20" x2="90" y2="-20" stroke="rgba(52,211,153,0.4)" stroke-width="1.5"/>
+            </g>
+            <g transform="translate(100,280)">
+              <circle cx="0" cy="0" r="30" fill="rgba(16,185,129,0.05)" stroke="rgba(52,211,153,0.3)" stroke-width="1.5"/>
+              <path d="M-15,0 a15,15 0 1,1 30,0" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="3 2"/>
+              <circle cx="0" cy="0" r="3" fill="#34D399"/>
+            </g>
+            <g transform="translate(420,280)">
+              <circle cx="0" cy="0" r="30" fill="rgba(16,185,129,0.05)" stroke="rgba(52,211,153,0.3)" stroke-width="1.5"/>
+              <path d="M-15,0 a15,15 0 1,1 30,0" fill="none" stroke="#10B981" stroke-width="2" stroke-dasharray="3 2"/>
+              <circle cx="0" cy="0" r="3" fill="#34D399"/>
+            </g>
+            <g transform="translate(170,160)">
+              <rect x="-10" y="-10" width="20" height="20" rx="2" fill="none" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
+              <line x1="0" y1="10" x2="0" y2="40" stroke="rgba(52,211,153,0.3)" stroke-width="1.5"/>
+              <line x1="0" y1="40" x2="-45" y2="40" stroke="rgba(52,211,153,0.3)" stroke-width="1.5"/>
+              <line x1="0" y1="40" x2="45" y2="40" stroke="rgba(52,211,153,0.3)" stroke-width="1.5"/>
+            </g>
+            <path d="M260,180 Q170,220 100,280" fill="none" stroke="#10B981" stroke-width="1" stroke-dasharray="6 4" opacity="0.4"/>
+            <path d="M260,180 Q350,220 420,280" fill="none" stroke="#10B981" stroke-width="1" stroke-dasharray="6 4" opacity="0.4"/>
+            <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(52,211,153,0.35)" letter-spacing="2">DCS · IIoT · PRIDE AI</text>
+          </svg>
+        </div>
       </div>
     </div>
-    <div class="hero-visual">
-      <svg viewBox="0 0 520 440" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="40" y="380" width="440" height="1" stroke="rgba(37,99,235,0.2)"/>
-        <rect x="40" y="340" width="440" height="1" stroke="rgba(37,99,235,0.1)" stroke-width="0.5"/>
-        <g transform="translate(260,200)">
-          <polygon points="0,-80 -120,-40 0,0 120,-40" fill="none" stroke="rgba(96,165,250,0.5)" stroke-width="1.5"/>
-          <polygon points="0,-80 120,-40 120,80 0,40" fill="rgba(37,99,235,0.08)" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-          <polygon points="0,-80 -120,-40 -120,80 0,40" fill="rgba(37,99,235,0.05)" stroke="rgba(96,165,250,0.2)" stroke-width="1"/>
-          <rect x="10" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-          <rect x="40" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-          <rect x="70" y="-30" width="20" height="20" rx="2" fill="none" stroke="rgba(96,165,250,0.3)" stroke-width="1"/>
-          <line x1="0" y1="-80" x2="0" y2="-120" stroke="rgba(37,99,235,0.6)" stroke-width="2"/>
-          <circle cx="0" cy="-120" r="4" fill="#3B82F6" opacity="0.9"/>
-        </g>
-        <g transform="translate(80,240)">
-          <rect x="-20" y="-60" width="40" height="100" rx="3" fill="rgba(37,99,235,0.06)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-          <line x1="0" y1="-60" x2="0" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="2"/>
-          <line x1="-20" y1="-80" x2="20" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="1.5"/>
-        </g>
-        <g transform="translate(440,240)">
-          <rect x="-20" y="-60" width="40" height="100" rx="3" fill="rgba(37,99,235,0.06)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
-          <line x1="0" y1="-60" x2="0" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="2"/>
-          <line x1="-20" y1="-80" x2="20" y2="-80" stroke="rgba(37,99,235,0.5)" stroke-width="1.5"/>
-        </g>
-        <g transform="translate(170,140)">
-          <line x1="0" y1="0" x2="0" y2="120" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
-          <line x1="0" y1="0" x2="-45" y2="0" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
-          <line x1="0" y1="0" x2="45" y2="0" stroke="rgba(96,165,250,0.3)" stroke-width="1.5"/>
-        </g>
-        <path d="M260,240 Q170,230 100,240" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
-        <path d="M260,240 Q350,230 420,240" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
-        <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(96,165,250,0.35)" letter-spacing="2">RTU · SCADA · IEC 61850</text>
-      </svg>
+
+    <!-- DOTS NAVIGATION -->
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+      <button class="hero-dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
     </div>
   </div>
 </section>
@@ -509,7 +594,7 @@ a{text-decoration:none;color:inherit}
     </div>
     <div class="cta-form fade-up">
       <h3>Agendar Reunión</h3>
-      <form action="form.php" method="POST" id="pilot-form">
+      <form action="/form" method="POST" id="pilot-form">
         <div class="form-grp"><label>Nombre y Apellido</label><input type="text" name="name" placeholder="Ej. Juan Pérez" required></div>
         <div class="form-grp"><label>Empresa</label><input type="text" name="company" placeholder="Ej. Minera Los Andes" required></div>
         <div class="form-grp" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label>Cargo</label><input type="text" name="role" placeholder="Ej. Jefe de Mantención" required></div><div><label>Celular</label><input type="tel" name="phone" placeholder="+56 9 XXXX XXXX" required></div></div>
@@ -557,7 +642,30 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const f=this;const d={name:f.name.value,company:f.company.value,role:f.role.value,phone:f.phone.value,email:f.email.value,service:f.service.value,urgency:f.urgency.value};b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('form.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(r=>{if(r.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754';f.reset()}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
+document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const f=this;const d={name:f.name.value,company:f.company.value,role:f.role.value,phone:f.phone.value,email:f.email.value,service:f.service.value,urgency:f.urgency.value};b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('/form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(r=>{if(r.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754';f.reset()}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
+</script>
+
+<!-- HERO CAROUSEL SCRIPT -->
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots = document.querySelectorAll('.hero-dot');
+let autoplay = setInterval(nextSlide, 6000);
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+  clearInterval(autoplay);
+  autoplay = setInterval(nextSlide, 6000);
+}
+
+function nextSlide() {
+  const n = (currentSlide + 1) % slides.length;
+  goToSlide(n);
+}
 </script>
 
 <a href="https://wa.me/56997847438?text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20CONECTA%20S.A." target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
