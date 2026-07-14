@@ -1,13 +1,1434 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Switches IEC 61850-3 • Red OT Subestacion • Hirschmann | CONECTA</title>
-<meta name="description" content="Switches industriales Hirschmann/Belden IEC 61850-3. Redundancia PRP/HSR. Ciberseguridad OT integrada. 33 canales de teleproteccion bajo 100 en Chile. Cotizar ahora.">
-<meta name="keywords" content="switch IEC 61850-3 Chile, Hirschmann Chile distribuidor, switch RuggedCom subestacion, red PRP HSR subestacion, switch Siemens Scalance IEC 61850, red OT subestacion, ciberseguridad OT NERC CIP">
+<meta name="description" content="Si tu red de subestacion se cae. Switches Hirschmann/Belden IEC 61850-3. Redundancia PRP/HSR. Ciberseguridad OT. Teleproteccion.">
+<meta name="keywords" content="switch IEC 61850-3 Chile, Hirschmann Chile, red PRP HSR subestacion, switch RuggedCom, ciberseguridad OT, teleproteccion">
 <link rel="canonical" href="https://conecta.cl/v2/landing/switches-iec61850.html">
-<meta property="og:title" content="Switches IEC 61850-3 • Red OT Subestacion | CONECTA">
-<style>:root{--navy:#0A1628;--blue:#2563eb;--green:#10B981;--text:#0F172A;--muted:#64748B;--bg:#fff}*{margin:0;padding:0;box-sizing:border-box}body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}.container{max-width:800px;margin:0 auto;padding:2rem}.hero{background:linear-gradient(160deg,#0A1628,#0F1F3D);color:#fff;padding:3rem 2rem;text-align:center}.hero h1{font-size:2rem;margin-bottom:.5rem;font-family:Outfit,sans-serif}.hero .hl{color:#60A5FA}.hero p{color:#94A3B8;font-size:1.1rem;max-width:600px;margin:0 auto}.cta-block{display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}.btn-wa{background:#25D366;color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:600;font-size:1.1rem}.btn-form{background:var(--blue);color:#fff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:600}.section{padding:2.5rem 0}.section h2{font-size:1.5rem;margin-bottom:1rem;color:var(--navy)}.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:1.5rem}.card{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:1.5rem}.card h3{font-size:1.1rem;margin-bottom:.5rem;color:var(--blue)}.card p{color:var(--muted);font-size:.9rem}.footer{text-align:center;padding:2rem;background:#F1F5F9;font-size:.85rem;color:var(--muted);margin-top:2rem}</style></head>
-<body><section class="hero"><div class="container"><h1>Se te cae la <span class="hl">red de la subestacion</span> y pierdes visibilidad SCADA?</h1><p>Switches industriales Hirschmann/Belden IEC 61850-3. Redundancia PRP/HSR. Ciberseguridad OT integrada. Cotizar ahora.</p><div class="cta-block"><a href="https://wa.me/56997847438" class="btn-wa" target="_blank">Cotizar por WhatsApp</a><a href="/v2/#diagnostico" class="btn-form">Solicitar Diagnostico</a></div></div></section>
-<div class="container"><div class="section"><h2>El Problema</h2><p>33 canales de teleproteccion en Chile con disponibilidad inferior al 100 por ciento. El switch de comunicaciones es el punto mas debil de la subestacion. Sin redundancia PRP/HSR, una falla de switch te deja ciego ante el CEN.</p></div>
-<div class="section"><h2>La Solucion</h2><div class="grid2"><div class="card"><h3>Hirschmann IEC 61850-3</h3><p>Switches certificados para subestacion. Temperatura extendida, zero packet loss, MTBF 50+ anos.</p></div><div class="card"><h3>Redundancia PRP/HSR</h3><p>Protocolos de redundancia sin tiempo de recuperacion. Si un switch falla, la red sigue operando.</p></div><div class="card"><h3>Ciberseguridad OT</h3><p>Firewalls de celda, segmentacion de red, cumplimiento NERC CIP y Ley 21.663.</p></div><div class="card"><h3>Teleproteccion</h3><p>Canales de comunicacion para teleproteccion con disponibilidad 99.999 por ciento. Aprobado CEN.</p></div></div></div>
-<div class="section" style="text-align:center"><h2>Listo para blindar tu red OT?</h2><p style="margin-bottom:1.5rem">Cotiza sin costo.</p><div class="cta-block"><a href="https://wa.me/56997847438" class="btn-wa" target="_blank">WhatsApp</a><a href="/v2/#diagnostico" class="btn-form">Formulario</a></div></div></div>
-<div class="footer">CONECTA Ingenieria S.A. • victor.vilche@conecta.cl • +56 9 9784 7431<br><a href="/v2/">Volver al sitio principal</a></div></body></html>
+<meta property="og:title" content="Switches IEC 61850-3 • Red OT Subestacion • Hirschmann | CONECTA"><meta property="og:description" content="Si tu red de subestacion se cae. Switches Hirschmann/Belden IEC 61850-3. Redundancia PRP/HSR. Ciberseguridad OT. Teleproteccion.">
+<link rel="icon" href="https://conecta.cl/wp-content/uploads/2024/03/cropped-favicon-32x32.jpg">
+<style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --brand-dark: #071324;       /* Navy Profundo */
+  --brand-blue: #1e3a8a;       /* Azul B2B */
+  --brand-accent: #2563eb;     /* Azul Royal */
+  --brand-accent-hover: #1d4ed8;
+  --brand-alert: #eab308;      /* Amarillo Alerta */
+  --text-main: #1e293b;        /* Slate text principal */
+  --text-muted: #64748b;       /* Gris técnico suave */
+  --bg-page: #f8fafc;          /* Fondo de página claro premium */
+  --bg-card: #ffffff;          /* Tarjetas en blanco puro */
+  --border-light: #e2e8f0;     /* Bordes finos de grilla */
+  
+  /* Radios de Bordes */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  
+  /* Sombras */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.06), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --grid-gap: 24px;
+  --card-padding: 30px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  color: var(--brand-dark);
+  line-height: 1.2;
+}
+
+p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+/* Grilla técnica Blueprint */
+.blueprint-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border-light) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Announcement Bar */
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 32px;
+  background-color: var(--brand-dark);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 102;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 32px;
+  width: 100%;
+  height: 72px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--brand-dark);
+}
+
+.logo-conecta {
+  color: var(--brand-dark);
+}
+
+.logo-separator {
+  color: var(--brand-accent);
+  margin: 0 4px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-link {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+  position: relative;
+  padding: 8px 0;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--brand-accent);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--brand-accent);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-contact {
+  display: inline-block;
+  background-color: var(--brand-accent);
+  color: #ffffff !important;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: var(--radius-sm) !important;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-contact:hover {
+  background-color: var(--brand-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  min-height: 95vh;
+  display: flex;
+  align-items: center;
+  padding-top: 132px;
+  padding-bottom: 80px;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #ffffff 0%, #f1f5f9 100%);
+}
+
+.hero-shading {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 30%, rgba(37, 99, 235, 0.06), transparent 60%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.hero-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 48px;
+}
+
+.hero-content {
+  max-width: 760px;
+}
+
+.hero-overline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(37, 99, 235, 0.1);
+  padding: 6px 16px;
+  border-radius: var(--radius-sm) !important;
+}
+
+.hero-title {
+  font-size: 50px;
+  line-height: 1.15;
+  font-weight: 800;
+  color: var(--brand-dark);
+  margin-bottom: 24px;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -1.5px;
+}
+
+.hero-title span {
+  color: var(--brand-accent);
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: 40px;
+}
+
+.hero-subtitle b {
+  color: var(--brand-dark);
+}
+
+.hero-capabilities {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+  width: 100%;
+}
+
+.capability-badge {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md) !important;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.capability-badge:hover {
+  border-color: rgba(37, 99, 235, 0.4);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  background-color: #ffffff;
+}
+
+.capability-badge .cap-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.capability-badge .cap-title span {
+  color: var(--brand-accent);
+}
+
+.capability-badge .cap-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 20px;
+}
+
+.btn-primary-rect {
+  display: inline-block;
+  background-color: var(--brand-dark);
+  color: #ffffff;
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: var(--radius-sm) !important;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary-rect:hover {
+  background-color: #000000;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary-rect {
+  display: inline-block;
+  background-color: #ffffff;
+  color: var(--text-main);
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-secondary-rect:hover {
+  border-color: var(--text-muted);
+  background-color: var(--bg-page);
+}
+
+.hero-graphic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-blueprint {
+  width: 100%;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg) !important;
+  padding: 24px;
+  background-color: #ffffff;
+  position: relative;
+  box-shadow: var(--shadow-md);
+}
+
+.hero-blueprint::before {
+  content: 'CONECTA AVAILABILITY VISUALIZER';
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.hero-image-stack {
+  position: relative;
+  width: 100%;
+  padding-top: 16px;
+}
+
+.hero-image {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.whatsapp-float {
+  position: absolute;
+  bottom: -40px;
+  left: -20px;
+  width: 220px;
+  animation: float 6s ease-in-out infinite;
+  z-index: 10;
+  border-radius: 20px;
+  box-shadow: var(--shadow-xl);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Brands Bar Section */
+.brands-section {
+  padding: 40px 0;
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+  z-index: 10;
+}
+
+.brands-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.brands-title {
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+}
+
+.brands-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  transition: var(--transition);
+}
+
+.brands-grid:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+.brand-logo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.brand-title-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--brand-dark);
+}
+
+.brand-logo-item.novatech .brand-title-text { color: #0033a0; }
+.brand-logo-item.sel .brand-title-text { color: #a51d24; }
+.brand-logo-item.ge .brand-title-text { color: #005a9c; }
+.brand-logo-item.bitronics .brand-title-text { color: #1e3a8a; }
+.brand-logo-item.elipse .brand-title-text { color: #0066cc; }
+.brand-logo-item.supcon .brand-title-text { color: #d32f2f; }
+
+.brand-subtitle-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Stats / Cumplimiento Normas */
+.stats {
+  background-color: var(--bg-page);
+  padding: 80px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.stats-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gap);
+}
+
+.stat-item {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md) !important;
+  padding: 30px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-badge {
+  display: inline-block;
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--brand-accent);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm) !important;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.stat-number {
+  font-family: 'Outfit', sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--brand-accent);
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -1px;
+}
+
+.stat-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 8px;
+}
+
+.stat-description {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* Sections */
+.section {
+  padding: 100px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-header {
+  margin-bottom: 60px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.section-title-wrap {
+  max-width: 750px;
+}
+
+.section-overline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -1px;
+}
+
+.section-title strong {
+  font-weight: 800;
+  color: var(--brand-accent);
+}
+
+.section-tagline {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  max-width: 440px;
+  text-align: right;
+  font-family: 'IBM Plex Mono', monospace;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+/* Solutions Grid / Cards (Features) */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--grid-gap);
+}
+
+.solution-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg) !important;
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.solution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.solution-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.solution-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 12px;
+  font-family: 'Outfit', sans-serif;
+}
+
+.solution-description {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.solution-description b {
+  color: var(--brand-dark);
+}
+
+.solution-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-light);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.solution-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand-accent);
+}
+
+.solution-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-dark);
+}
+
+.solution-link:hover {
+  color: var(--brand-accent);
+}
+
+/* Showcase (4 Steps) Section */
+.showcase-bg {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.showcase-visual {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-page);
+  padding: 12px;
+}
+
+.showcase-visual img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  display: block;
+  box-shadow: var(--shadow-sm);
+}
+
+.showcase-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.showcase-step-item {
+  display: flex;
+  gap: 16px;
+}
+
+.step-num-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(37, 99, 235, 0.1);
+  color: var(--brand-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.step-text-wrap h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  margin-bottom: 6px;
+}
+
+.step-text-wrap p {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* Interactive Alertas Simulator */
+.simulator-section {
+  padding: 100px 0;
+  background-color: var(--bg-page);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  position: relative;
+}
+
+.sim-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 32px;
+}
+
+.sim-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg) !important;
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+
+.sim-card::before {
+  content: 'SIMULATION: TELEMETRY ALERT PROTOCOL';
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.sim-controls h3 {
+  font-size: 20px;
+  color: var(--brand-dark);
+  margin-bottom: 8px;
+}
+
+.substation-status-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg-page);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 20px;
+}
+
+.substation-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.substation-row:last-child {
+  border-bottom: none;
+}
+
+.sub-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--brand-dark);
+}
+
+.status-badge {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 99px;
+}
+
+.status-ok {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.status-fail {
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.sim-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border-left: 2px dashed var(--border-light);
+  padding-left: 20px;
+  margin-left: 10px;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+}
+
+.timeline-step.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.step-time {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--brand-accent);
+  background: rgba(37, 99, 235, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.step-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Smartphone Mockup */
+.phone-mockup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-mockup {
+  width: 300px;
+  height: 450px;
+  background: #ffffff;
+  border: 8px solid var(--brand-dark);
+  border-radius: 36px;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.phone-header {
+  background: #f1f5f9;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.phone-back {
+  font-size: 12px;
+  color: var(--brand-accent);
+  font-weight: 600;
+}
+
+.phone-contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-contact-name {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--brand-dark);
+}
+
+.phone-contact-status {
+  font-size: 9px;
+  color: #10B981;
+}
+
+.phone-body {
+  flex: 1;
+  background: #e2e8f0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1.5px, transparent 1.5px);
+  background-size: 12px 12px;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-date {
+  font-size: 9px;
+  color: var(--text-muted);
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.chat-placeholder {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 90px;
+  padding: 0 16px;
+  line-height: 1.5;
+}
+
+.chat-bubble {
+  max-width: 90%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  line-height: 1.45;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  animation: pop 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+
+@keyframes pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.chat-bubble-alert {
+  align-self: flex-start;
+  background: #ffffff;
+  color: var(--text-main);
+  border-left: 3px solid var(--brand-alert);
+  border-bottom-left-radius: 2px;
+}
+
+.chat-bubble-ok {
+  align-self: flex-start;
+  background: #ffffff;
+  color: var(--text-main);
+  border-left: 3px solid var(--brand-accent);
+  border-bottom-left-radius: 2px;
+}
+
+/* Contact / Final CTA Section */
+.cta-final {
+  background-color: #f1f5f9;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.cta-content {
+  max-width: 560px;
+}
+
+.cta-overline {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand-accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.cta-title {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  color: var(--brand-dark);
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -1px;
+}
+
+.cta-title strong {
+  font-weight: 800;
+  color: var(--brand-accent);
+}
+
+.cta-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.cta-technical-stamp {
+  display: flex;
+  gap: 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-light);
+  padding-top: 24px;
+}
+
+.stamp-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stamp-item::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background-color: var(--brand-accent);
+  border-radius: 50% !important;
+}
+
+.cta-form-container {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg) !important;
+  padding: 40px;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+}
+
+.cta-form-container::before {
+  content: 'FORM: TELEMETRY DIAGNOSTIC PROTOCOL';
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.form-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+  color: var(--brand-dark);
+  font-family: 'Outfit', sans-serif;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-dark);
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  background-color: #f8fafc;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm) !important;
+  padding: 12px 16px;
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--brand-accent);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+.form-submit-btn {
+  width: 100%;
+  background-color: var(--brand-accent);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-sm) !important;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  margin-top: 10px;
+}
+
+.form-submit-btn:hover {
+  background-color: var(--brand-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.form-disclaimer {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 16px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* Footer Section */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid var(--border-light);
+  padding: 80px 0 40px 0;
+  font-size: 14px;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1.2fr repeat(3, 0.6fr);
+  gap: 40px;
+}
+
+.footer-brand {
+  max-width: 320px;
+}
+
+.footer-logo {
+  margin-bottom: 20px;
+}
+
+.footer-tagline {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border-light);
+  padding: 8px 16px;
+  background-color: #f8fafc;
+  border-radius: var(--radius-sm) !important;
+}
+
+.partner-badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--brand-accent);
+  border-radius: 50% !important;
+}
+
+.partner-badge-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-column-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--brand-dark);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-link-item {
+  margin-bottom: 12px;
+}
+
+.footer-link-item a {
+  color: var(--text-muted);
+}
+
+.footer-link-item a:hover {
+  color: var(--brand-accent);
+  padding-left: 2px;
+}
+
+.footer-contact-info {
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footer-contact-info p {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 60px auto 0 auto;
+  padding: 30px 40px 0 40px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 12.5px;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .hero-overline {
+    justify-content: center;
+  }
+  
+  .hero-ctas {
+    justify-content: center;
+  }
+  
+  .hero-capabilities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .solutions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .sim-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .cta-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .cta-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  
+  .cta-technical-stamp {
+    justify-content: center;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 20px;
+  }
+  
+  .nav-links {
+    display: none; /* Mobile menu could be toggled with JS */
+  }
+  
+  .hero-title {
+    font-size: 38px;
+  }
+  
+  .hero-capabilities {
+    grid-template-columns: 1fr;
+  }
+  
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+</style></head>
+<body>
+<div class="blueprint-bg"></div>
+<div class="announcement-bar"><span>// CUMPLIMIENTO NTSyCS 2025 // INGENIERIA LOCAL CHILE //</span></div>
+<header class="navbar"><div class="navbar-container"><a href="/v2/" style="font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:var(--brand-dark);text-decoration:none">CONECTA<span style="font-size:11px;color:var(--text-muted);margin-left:6px;letter-spacing:1px;text-transform:uppercase">Ingenieria</span></a><nav class="nav-links"><a href="/v2/" style="font-size:13.5px;font-weight:500;color:var(--text-muted);text-decoration:none;margin-right:20px">Inicio</a><a href="/v2/#diagnostico" style="background:var(--brand-accent);color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none">Contacto</a></nav></div></header>
+<section class="hero" id="inicio" style="padding-top:104px"><div class="hero-shading"></div><div class="hero-container"><div class="hero-content">
+<span class="hero-overline">DIVISION COMERCIAL • REDES OT</span>
+<h1 class="hero-title">Si tu <span>red de subestacion</span> se cae y pierdes visibilidad SCADA</h1>
+<p class="hero-subtitle">Switches Hirschmann/Belden IEC 61850-3. Redundancia PRP/HSR. Ciberseguridad OT. Teleproteccion con alta disponibilidad.</p>
+<div class="hero-capabilities"><div class="capability-badge"><div class="cap-title">IEC 61850-3</div><div class="cap-desc">Certificados para subestacion. Zero packet loss.</div></div><div class="capability-badge"><div class="cap-title">PRP/HSR</div><div class="cap-desc">Redundancia sin tiempo de recuperacion.</div></div><div class="capability-badge"><div class="cap-title">Ciberseguridad</div><div class="cap-desc">NERC CIP, IEC 62443, Ley 21.663.</div></div><div class="capability-badge"><div class="cap-title">Teleproteccion</div><div class="cap-desc">Canales alta disponibilidad. Aprobado CEN.</div></div></div>
+<div class="hero-ctas"><a href="https://wa.me/56997847438?text=Necesito%20switches%20IEC%2061850-3" class="btn-primary-rect" target="_blank">Cotizar por WhatsApp</a><a href="#diagnostico" class="btn-secondary-rect">Solicitar Diagnostico</a></div></div>
+<div class="hero-graphic"><div class="hero-blueprint"><div style="background:var(--brand-dark);border-radius:20px;padding:40px;text-align:center;color:#fff"><div style="font-size:3.5rem;font-weight:800;color:var(--brand-accent);margin-bottom:.5rem">33</div><div style="color:var(--text-muted);font-size:.9rem">canales de teleproteccion con disponibilidad inferior al 100% en Chile. Incluye caso con 152 dias caido.</div><div style="color:var(--brand-accent);font-size:.7rem;margin-top:.5rem;letter-spacing:1px">Fuente: Anexo NTSyCS 2025</div></div></div></div></div></section>
+<section class="section" id="soluciones" style="background:var(--bg-page);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light)"><div class="section-container"><header class="section-header"><div class="section-title-wrap"><span class="section-overline">Soluciones Especializadas</span><h2 class="section-title">Servicios de <strong>Ingenieria y Suministro</strong></h2></div><div class="section-tagline">// PARTNERS: SUPCON NOVATECH VIZIMAX BELDEN ELPROS</div></header><div class="solutions-grid"><article class="solution-card"><span class="solution-num">CN-SW-001</span><h3 class="solution-title">Switches Hirschmann</h3><p class="solution-description">Certificados para subestacion. Temperatura extendida. MTBF 50+ anos.</p><div class="solution-details"><span class="solution-tag">Marca: Belden/Hirschmann</span><a href="#diagnostico" class="solution-link">Cotizar Switches &rarr;</a></div></article>
+<article class="solution-card"><span class="solution-num">CN-SW-002</span><h3 class="solution-title">Redundancia PRP/HSR</h3><p class="solution-description">Protocolos sin tiempo de recuperacion. Si un switch falla, red sigue operando.</p><div class="solution-details"><span class="solution-tag">Protocolos: PRP/HSR</span><a href="#diagnostico" class="solution-link">Disenar Red &rarr;</a></div></article>
+<article class="solution-card"><span class="solution-num">CN-SW-003</span><h3 class="solution-title">Firewall OT de Celda</h3><p class="solution-description">Segmentacion de red entre niveles. NERC CIP y Ley 21.663.</p><div class="solution-details"><span class="solution-tag">Norma: NERC CIP/21.663</span><a href="#diagnostico" class="solution-link">Cotizar Firewall &rarr;</a></div></article>
+<article class="solution-card"><span class="solution-num">CN-SW-004</span><h3 class="solution-title">Cableado Fibra Optica</h3><p class="solution-description">Suministro de fibra optica industrial. Conectores, bandejas, patch panels.</p><div class="solution-details"><span class="solution-tag">Componentes: FO Industrial</span><a href="#diagnostico" class="solution-link">Cotizar Cableado &rarr;</a></div></article>
+<article class="solution-card"><span class="solution-num">CN-SW-005</span><h3 class="solution-title">Monitoreo de Red OT</h3><p class="solution-description">Supervision de switches, puertos y enlaces. Alertas ante caidas.</p><div class="solution-details"><span class="solution-tag">Servicio: Monitoreo</span><a href="#diagnostico" class="solution-link">Activar Monitoreo &rarr;</a></div></article>
+<article class="solution-card"><span class="solution-num">CN-SW-006</span><h3 class="solution-title">Upgrade Red Legacy</h3><p class="solution-description">Reemplazo de switches obsoletos por Hirschmann IEC 61850-3.</p><div class="solution-details"><span class="solution-tag">Retrofit: Switches</span><a href="#diagnostico" class="solution-link">Evaluar Upgrade &rarr;</a></div></article>
+</div></div></section>
+<section class="cta-final" id="diagnostico"><div class="cta-container"><div class="cta-content"><span class="cta-overline">Campana de Cumplimiento NTSyCS 2025</span><h2 class="cta-title">Cotice su proyecto y <strong>cumpla con el CEN</strong></h2><p class="cta-subtitle">Ingenieria y suministro de equipos homologados. Soporte local en Chile.</p></div><div class="cta-form-container"><h3 class="form-title">Solicitar Cotizacion</h3><form class="contact-form" action="/v2/form.php" method="POST"><div class="form-group"><label class="form-label">Nombre</label><input class="form-input" type="text" name="name" required></div><div class="form-group"><label class="form-label">Empresa</label><input class="form-input" type="text" name="company" required></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" name="email" required></div><div class="form-group"><label class="form-label">Telefono</label><input class="form-input" type="tel" name="phone" required></div><button type="submit" class="form-submit-btn">Solicitar Cotizacion</button></form></div></div></section>
+<footer class="footer"><div class="footer-container"><div class="footer-brand"><span style="font-family:Outfit,sans-serif;font-size:20px;font-weight:800;color:var(--brand-dark)">CONECTA S.A.</span><p class="footer-tagline">Automatizacion y control industrial Chile.</p></div><div class="footer-column"><h4>Contacto</h4><p style="font-size:.85rem;color:var(--text-muted)">victor.vilche@conecta.cl<br>+56 9 9784 7431</p></div></div></footer>
+</body></html>
