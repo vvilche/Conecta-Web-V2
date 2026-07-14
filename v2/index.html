@@ -266,7 +266,7 @@ a{text-decoration:none;color:inherit}
 
 /* HERO CAROUSEL */
 .hero-slides{position:relative;width:100%}
-.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;display:flex;align-items:center}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
 .hero-slide.active{opacity:1;pointer-events:auto;position:relative}
 .hero-dots{display:flex;gap:10px;margin-top:28px;z-index:10;position:relative}
 .hero-dot{width:32px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s ease}
@@ -316,7 +316,7 @@ a{text-decoration:none;color:inherit}
             </div>
             <div class="hero-cap">
               <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Telemedida PMU</div>
-              <div class="hero-cap-desc">Sistemas de medida integrados exigidos por la norma del Coordinador Eléctrico Nacional.</div>
+              <div class="hero-cap-desc">Medición sincrofasorial IEEE C37.118 exigida por la NTSyCS del Coordinador Eléctrico Nacional.</div>
             </div>
             <div class="hero-cap">
               <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> SCADA & EMS</div>
