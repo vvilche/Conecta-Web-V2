@@ -1,1331 +1,372 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo SUPCON | CONECTA Especialistas B2B</title>
-    <meta name="description"
-        content="Representantes oficiales de SUPCON en Chile. Conecta Ingeniería suministra sistemas DCS, SIS e instrumentación inteligente de clase mundial para la industria y minería.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-
-    <style>
-        /* ================================================================
-           CONECTA WEB V2 — DESIGN SYSTEM + SUPCON BRAND EXTENSION
-           ================================================================ */
-        :root {
-            --navy-deep: #0A1628;
-            --navy: #0F1F3D;
-            --blue-royal: #1E3A5F;
-            --blue-accent: #2563eb;
-            --blue-hover: #1d4ed8;
-            --blue-glow: rgba(37, 99, 235, 0.12);
-            --blue-glass: rgba(37, 99, 235, 0.06);
-            --text: #0F172A;
-            --text2: #475569;
-            --text3: #94A3B8;
-            --bg: #ffffff;
-            --bg2: #F1F5F9;
-            --bg3: #F8FAFC;
-            --border: #E2E8F0;
-            --r-sm: 6px;
-            --r-md: 10px;
-            --r-lg: 16px;
-            --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-            --sh-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-            --sh-xl: 0 20px 40px rgba(0, 0, 0, 0.10);
-            --t: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-            /* SUPCON Brand Accent */
-            --supcon-red: #D32F2F;
-            --supcon-red-light: #EF4444;
-            --supcon-glow: rgba(211, 47, 47, 0.12);
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            line-height: 1.15;
-            color: var(--navy-deep);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ── NAVBAR (Frosted Glass V2) ── */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid transparent;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar.scrolled {
-            height: 64px;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--navy-deep);
-            transition: font-size 0.3s ease;
-        }
-
-        .navbar.scrolled .nav-logo {
-            font-size: 19px;
-        }
-
-        .nav-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--supcon-red);
-            border-radius: 50%;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .nav-link {
-            font-size: 13.5px;
-            font-weight: 500;
-            color: var(--text2);
-            position: relative;
-            padding: 6px 0;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: var(--supcon-red);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--supcon-red);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.25s ease;
-        }
-
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .nav-cta {
-            display: inline-block;
-            background: var(--supcon-red);
-            color: #fff !important;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: var(--r-sm);
-            box-shadow: 0 2px 8px rgba(211, 47, 47, 0.3);
-            transition: all 0.25s ease;
-        }
-
-        .nav-cta:hover {
-            background: #b91c1c;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(211, 47, 47, 0.4);
-        }
-
-        @media(max-width:1024px) {
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* ── HERO (Navy Gradient V2 + SUPCON Red Glow) ── */
-        .supcon-hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background: linear-gradient(160deg, #0A1628 0%, #0F1F3D 40%, #1a0808 70%, #0A1628 100%);
-            padding-top: 80px;
-        }
-
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(211, 47, 47, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(211, 47, 47, 0.06) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridPulse 8s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes gridPulse {
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        .hero-glow {
-            position: absolute;
-            top: 50%;
-            right: -5%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(211, 47, 47, 0.15), transparent 70%);
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .hero-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 40px;
-            width: 100%;
-            position: relative;
-            z-index: 3;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 680px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(211, 47, 47, 0.15);
-            border: 1px solid rgba(211, 47, 47, 0.3);
-            color: #FCA5A5;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            padding: 6px 16px;
-            border-radius: 999px;
-            margin-bottom: 28px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .hero-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--supcon-red-light);
-            border-radius: 50%;
-            animation: statusPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes statusPulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
-            }
-        }
-
-        .supcon-hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.6rem);
-            font-weight: 800;
-            color: #FFF;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-        }
-
-        .supcon-hero h1 .hl {
-            background: linear-gradient(135deg, #FCA5A5, var(--supcon-red-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            color: #94A3B8;
-            line-height: 1.7;
-            margin-bottom: 14px;
-            max-width: 560px;
-            font-weight: 400;
-        }
-
-        .hero-caps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .hero-cap {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--r-md);
-            padding: 16px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .hero-cap:hover {
-            background: rgba(211, 47, 47, 0.12);
-            border-color: rgba(211, 47, 47, 0.35);
-            transform: translateY(-2px);
-        }
-
-        .hero-cap-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            color: #CBD5E1;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .hero-cap-title svg {
-            color: var(--supcon-red-light);
-            flex-shrink: 0;
-        }
-
-        .hero-cap-desc {
-            font-size: 10.5px;
-            color: #64748B;
-            line-height: 1.4;
-            font-weight: 500;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn1 {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--supcon-red);
-            color: #fff;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 14px 28px;
-            border-radius: var(--r-sm);
-            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.4);
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn1::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-
-        .btn1:hover::after {
-            transform: translateX(100%);
-        }
-
-        .btn1:hover {
-            background: #b91c1c;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(211, 47, 47, 0.5);
-        }
-
-        .btn2 {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #CBD5E1;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 14px 28px;
-            border-radius: var(--r-sm);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.25s ease;
-        }
-
-        .btn2:hover {
-            background: rgba(255, 255, 255, 0.14);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .hero-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--r-lg);
-            padding: 40px;
-            min-height: 300px;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .hero-visual .brand-logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4rem;
-            font-weight: 800;
-            color: #FFF;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-visual .brand-sub {
-            font-size: 0.9rem;
-            color: #94A3B8;
-            font-weight: 500;
-        }
-
-        @media(max-width:1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-                padding-top: 20px;
-                padding-bottom: 60px;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero-sub {
-                max-width: 100%;
-            }
-            .hero-ctas {
-                justify-content: center;
-            }
-            .hero-caps {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:640px) {
-            .supcon-hero {
-                min-height: auto;
-                padding-bottom: 60px;
-            }
-            .hero-caps {
-                grid-template-columns: 1fr;
-            }
-            .hero-ctas {
-                flex-direction: column;
-            }
-        }
-
-        /* ── CATALOG SECTION ── */
-        .catalog-section {
-            padding: 100px 0;
-            position: relative;
-            z-index: 10;
-            background: var(--bg);
-        }
-
-        .sec-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .sec-header {
-            margin-bottom: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .sec-overline {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--supcon-red);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .sec-title {
-            font-size: clamp(28px, 3.5vw, 38px);
-            font-weight: 700;
-            color: var(--navy-deep);
-            letter-spacing: -0.5px;
-        }
-
-        .sec-title strong {
-            color: var(--supcon-red);
-            font-weight: 800;
-        }
-
-        .sec-tag {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text3);
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            text-align: right;
-            max-width: 300px;
-        }
-
-        /* ── Product Category Title ── */
-        .product-category-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--navy-deep);
-            margin-bottom: 32px;
-            padding-bottom: 14px;
-            border-bottom: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .product-category-title span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--supcon-red);
-            background: rgba(211, 47, 47, 0.08);
-            padding: 4px 12px;
-            border-radius: var(--r-sm);
-        }
-
-        /* ── Product Grid ── */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 80px;
-        }
-
-        .product-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--r-md);
-            padding: 32px 28px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            border-top: 3px solid var(--supcon-red);
-            box-shadow: var(--sh-sm);
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--sh-xl);
-            border-color: #cbd5e1;
-        }
-
-        .product-icon {
-            text-align: center;
-            margin-bottom: 20px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg3);
-            border-radius: var(--r-md);
-            padding: 16px;
-        }
-
-        .product-icon img {
-            max-width: 100%;
-            max-height: 120px;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover .product-icon img {
-            transform: scale(1.05);
-        }
-
-        .product-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--navy-deep);
-            margin-bottom: 10px;
-            letter-spacing: -0.3px;
-        }
-
-        .product-card p {
-            color: var(--text2);
-            margin-bottom: 16px;
-            flex-grow: 1;
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .feature-list li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 7px;
-            font-size: 0.8rem;
-            color: var(--text2);
-            line-height: 1.5;
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--supcon-red);
-            font-weight: 700;
-            font-size: 0.75rem;
-        }
-
-        .btn-primary-card {
-            display: block;
-            text-align: center;
-            margin-top: auto;
-            border-radius: var(--r-sm);
-            font-weight: 600;
-            font-size: 0.85rem;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, var(--supcon-red), #b91c1c);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(211, 47, 47, 0.2);
-            transition: all 0.25s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn-primary-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(211, 47, 47, 0.35);
-            filter: brightness(1.05);
-        }
-
-        @media(max-width:1024px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:640px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            .sec-container,
-            .nav-container,
-            .hero-container {
-                padding: 0 20px;
-            }
-        }
-
-        /* ── CTA BANNER ── */
-        .cta-banner {
-            position: relative;
-            z-index: 10;
-            background: linear-gradient(160deg, var(--navy-deep) 0%, #1a0808 70%);
-            padding: 80px 0;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-banner h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(24px, 3vw, 34px);
-            font-weight: 700;
-            color: #FFF;
-            margin-bottom: 14px;
-            letter-spacing: -0.5px;
-        }
-
-        .cta-banner p {
-            color: #94A3B8;
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin: 0 auto 32px auto;
-            line-height: 1.7;
-        }
-
-        .cta-banner .btn1 {
-            font-size: 1rem;
-            padding: 16px 36px;
-        }
-
-        /* ── FOOTER ── */
-        .footer {
-            background: var(--navy-deep);
-            color: #94A3B8;
-            padding: 60px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            position: relative;
-            z-index: 10;
-            text-align: center;
-        }
-
-        .footer .brand-logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 22px;
-            font-weight: 800;
-            color: #FFF;
-            margin-bottom: 12px;
-        }
-
-        .footer .brand-logo span {
-            color: var(--supcon-red);
-        }
-
-        .footer p {
-            font-size: 0.85rem;
-            color: var(--text3);
-        }
-
-        /* ── MODAL (B2B Quote) ── */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 22, 40, 0.8);
-            backdrop-filter: blur(6px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-content {
-            background: #ffffff;
-            border-radius: var(--r-lg);
-            width: 90%;
-            max-width: 600px;
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-top: 4px solid var(--supcon-red);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 28px;
-            line-height: 1;
-            color: #94a3b8;
-            cursor: pointer;
-            transition: color 0.2s;
-            background: none;
-            border: none;
-        }
-
-        .close-modal:hover {
-            color: var(--supcon-red);
-        }
-
-        .modal-header {
-            margin-bottom: 28px;
-        }
-
-        .modal-header h3 {
-            font-family: 'Outfit', sans-serif;
-            color: var(--navy-deep);
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
-
-        .modal-header p {
-            color: var(--text2);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .quote-form .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .quote-form .form-group {
-            margin-bottom: 18px;
-        }
-
-        .quote-form label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 6px;
-            letter-spacing: 0.02em;
-        }
-
-        .quote-form input,
-        .quote-form select,
-        .quote-form textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            background: var(--bg);
-            color: var(--text);
-        }
-
-        .quote-form input:focus,
-        .quote-form select:focus,
-        .quote-form textarea:focus {
-            outline: none;
-            border-color: var(--supcon-red);
-            box-shadow: 0 0 0 3px rgba(211, 47, 47, 0.08);
-        }
-
-        .quote-form .readonly-input {
-            background-color: var(--bg3);
-            color: var(--navy-deep);
-            font-weight: 700;
-            border-color: var(--border);
-            cursor: not-allowed;
-        }
-
-        .btn-submit {
-            background: linear-gradient(135deg, var(--supcon-red), #b91c1c);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: var(--r-sm);
-            cursor: pointer;
-            margin-top: 12px;
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(211, 47, 47, 0.3);
-            filter: brightness(1.08);
-        }
-
-        @media(max-width:600px) {
-            .quote-form .form-row {
-                grid-template-columns: 1fr;
-            }
-            .modal-content {
-                padding: 28px 20px;
-            }
-        }
-
-        /* ── Fade-up Animation ── */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogo SUPCON | DCS, Instrumentos, SIS, PLC | CONECTA</title>
+<meta name="description" content="Catalogo SUPCON: DCS ECS-700, transmisores CXT, caudalimetros, SIS TCS-500, PLC G5Pro, PRIDE IA, supOS. Partner exclusivo Chile.">
+<link rel="canonical" href="https://conecta.cl/catalogo_supcon.html">
+<style>
+/* ================================================================
+   CONECTA WEB V2 — DESIGN SYSTEM COMPLETO
+   ================================================================ */
+:root {
+  --navy-deep: #0A1628; --navy: #0F1F3D; --blue-royal: #1E3A5F;
+  --blue-accent: #2563eb; --blue-hover: #1d4ed8;
+  --blue-glow: rgba(37,99,235,0.12); --blue-glass: rgba(37,99,235,0.06);
+  --text: #0F172A; --text2: #475569; --text3: #94A3B8;
+  --bg: #ffffff; --bg2: #F1F5F9; --bg3: #F8FAFC;
+  --border: #E2E8F0;
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
+  --sh-sm: 0 1px 2px rgba(0,0,0,0.04); --sh-md: 0 4px 12px rgba(0,0,0,0.06);
+  --sh-xl: 0 20px 40px rgba(0,0,0,0.10);
+  --t: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --red: #D32F2F; --orange: #F26522; --green: #10B981; --purple: #6C5CE7;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden;line-height:1.6}
+h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:700;line-height:1.15;color:var(--navy-deep)}
+a{text-decoration:none;color:inherit}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;width:100%;height:80px;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;z-index:1000;transition:all 0.3s ease;display:flex;align-items:center}
+.navbar.scrolled{height:64px;background:rgba(255,255,255,0.95);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(0,0,0,0.06)}
+.nav-container{max-width:1280px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;padding:0 40px}
+.nav-logo{display:flex;align-items:center;gap:6px;font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;color:var(--navy-deep);transition:font-size 0.3s ease}
+.navbar.scrolled .nav-logo{font-size:19px}
+.nav-dot{width:8px;height:8px;background:var(--blue-accent);border-radius:50%}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:13.5px;font-weight:500;color:var(--text2);position:relative;padding:6px 0;transition:color 0.2s}
+.nav-link:hover{color:var(--blue-accent)}
+.nav-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--blue-accent);transform:scaleX(0);transform-origin:right;transition:transform 0.25s ease}
+.nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{display:inline-block;background:var(--blue-accent);color:#fff!important;font-size:13px;font-weight:600;padding:10px 20px;border-radius:var(--r-sm);box-shadow:0 2px 8px rgba(37,99,235,0.3);transition:all 0.25s ease}
+.nav-cta:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,0.4)}
+@media(max-width:1024px){.nav-links{display:none}}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--navy-deep);border-radius:2px;transition:all 0.3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.nav-links.mobile-open{display:flex!important;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(255,255,255,0.98);backdrop-filter:blur(16px);justify-content:center;align-items:center;gap:32px;z-index:1000;animation:fadeIn 0.3s ease}
+.nav-links.mobile-open .nav-link{font-size:20px}
+.nav-links.mobile-open .nav-cta{font-size:18px;padding:16px 32px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:1024px){.hamburger{display:flex}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#0A1628 0%,#0F1F3D 40%,#13294B 70%,#0A1628 100%);padding-top:80px}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.08) 1px,transparent 1px);background-size:60px 60px;animation:gridPulse 8s ease-in-out infinite;pointer-events:none;z-index:1}
+@keyframes gridPulse{0%,100%{opacity:0.5}50%{opacity:0.8}}
+.hero-glow{position:absolute;top:50%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,0.12),transparent 70%);transform:translateY(-50%);pointer-events:none;z-index:2}
+.hero-container{max-width:1280px;margin:0 auto;padding:0 40px;width:100%;position:relative;z-index:3;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+.hero-content{max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);color:#93C5FD;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;padding:6px 16px;border-radius:999px;margin-bottom:28px;font-family:'JetBrains Mono',monospace}
+.hero-badge-dot{width:6px;height:6px;background:#60A5FA;border-radius:50%;animation:statusPulse 2s ease-in-out infinite}
+@keyframes statusPulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#FFF;line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px}
+.hero h1 .hl{background:linear-gradient(135deg,#60A5FA,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:#94A3B8;line-height:1.7;margin-bottom:14px;max-width:560px;font-weight:400}
+.hero-caps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.hero-cap{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:16px 14px;display:flex;flex-direction:column;gap:6px;transition:all 0.3s ease}
+.hero-cap:hover{background:rgba(37,99,235,0.12);border-color:rgba(37,99,235,0.35);transform:translateY(-2px)}
+.hero-cap-title{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:#CBD5E1;display:flex;align-items:center;gap:6px}
+.hero-cap-title svg{color:#60A5FA;flex-shrink:0}
+.hero-cap-desc{font-size:10.5px;color:#64748B;line-height:1.4;font-weight:500}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn1{display:inline-flex;align-items:center;gap:8px;background:var(--blue-accent);color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:var(--r-sm);box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all 0.25s ease;position:relative;overflow:hidden}
+.btn1::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transform:translateX(-100%);transition:transform 0.5s ease}
+.btn1:hover::after{transform:translateX(100%)}
+.btn1:hover{background:var(--blue-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,99,235,0.5)}
+.btn2{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#CBD5E1;font-size:15px;font-weight:600;padding:14px 28px;border-radius:var(--r-sm);border:1px solid rgba(255,255,255,0.15);transition:all 0.25s ease}
+.btn2:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.3);color:#fff;transform:translateY(-2px)}
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.hero-visual svg{width:100%;max-width:520px;height:auto;filter:drop-shadow(0 0 60px rgba(37,99,235,0.2))}
+@media(max-width:640px){.hero-caps{grid-template-columns:1fr}.hero-ctas{flex-direction:column}}
+
+/* SECTION GENERIC */
+.sec{padding:100px 0;position:relative;z-index:10}
+.sec-alt{background:var(--bg2)}
+.sec-white{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-container{max-width:1280px;margin:0 auto;padding:0 40px}
+.sec-header{margin-bottom:60px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+.sec-overline{font-size:13px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;display:block}
+.sec-title{font-size:clamp(28px,3.5vw,38px);font-weight:700;color:var(--navy-deep);letter-spacing:-0.5px}
+.sec-title strong{color:var(--blue-accent);font-weight:800}
+.sec-tag{font-size:12px;font-weight:600;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;text-align:right;max-width:300px}
+.sec-cta-center{text-align:center;margin-top:44px}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* BRANDS */
+.brands-sec{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:50px 0}
+.brands-title{text-align:center;font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:30px}
+.brands-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;opacity:0.7;filter:grayscale(100%);transition:all 0.4s ease}
+.brands-row:hover{opacity:1;filter:grayscale(0%)}
+.brand-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.brand-name{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.5px}
+.brand-sub{font-size:11px;font-weight:500;color:var(--text3)}
+.brand-item.s0 .brand-name{color:var(--red)}
+.brand-item.s1 .brand-name{color:#0033a0}
+.brand-item.s2 .brand-name{color:#000}
+.brand-item.s3 .brand-name{color:#004b87}
+.brand-item.s4 .brand-name{color:var(--green)}
+.brand-item.s5 .brand-name{color:var(--orange)}
+
+/* STATS CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:28px 22px;text-align:center;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.stat-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);border-color:rgba(37,99,235,0.25)}
+.stat-badge{display:inline-block;background:rgba(37,99,235,0.08);color:var(--blue-accent);font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:var(--r-sm);text-transform:uppercase;margin-bottom:16px;letter-spacing:0.5px}
+.stat-num{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--blue-accent);line-height:1;margin-bottom:10px}
+.stat-title{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:var(--navy-deep);margin-bottom:6px}
+.stat-desc{font-size:12.5px;color:var(--text2);line-height:1.5}
+@media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.stats-grid{grid-template-columns:1fr}}
+
+/* SOLUTIONS CARDS */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sol-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;display:flex;flex-direction:column;position:relative;box-shadow:var(--sh-sm);transition:all 0.3s ease;border-top:4px solid transparent}
+.sol-card:hover{border-top-color:var(--blue-accent);transform:translateY(-4px);box-shadow:var(--sh-md)}
+.sol-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);margin-bottom:12px}
+.sol-card:hover .sol-num{color:var(--blue-accent)}
+.sol-title{font-size:18px;font-weight:700;color:var(--navy-deep);margin-bottom:10px}
+.sol-desc{font-size:13.5px;color:var(--text2);line-height:1.6;flex-grow:1;margin-bottom:20px}
+.sol-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:14px;margin-top:auto}
+.sol-tag{font-size:11px;font-weight:600;background:var(--bg2);color:var(--text2);padding:4px 10px;border-radius:var(--r-sm)}
+.sol-link{font-size:13px;font-weight:600;color:var(--blue-accent);display:flex;align-items:center;gap:4px;transition:gap 0.2s}
+.sol-link:hover{gap:8px}
+.sol-card.featured{border:2px solid var(--blue-accent);border-top:4px solid var(--blue-accent)}
+@media(max-width:768px){.sol-grid{grid-template-columns:1fr}}
+
+/* PROCESS CARDS (2x2) */
+.proc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.proc-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;display:flex;gap:24px;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.proc-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:rgba(37,99,235,0.25)}
+.proc-icon{flex-shrink:0;width:64px;height:64px;display:flex;align-items:center;justify-content:center}
+.proc-icon img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.06))}
+.proc-name{font-size:17px;font-weight:700;color:var(--navy-deep);margin-bottom:8px}
+.proc-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.proc-spec{font-size:11.5px;font-weight:600;color:var(--text3);font-family:'JetBrains Mono',monospace}
+@media(max-width:768px){.proc-grid{grid-template-columns:1fr}.proc-card{flex-direction:column}}
+
+/* FIELD CARDS (4 cols) */
+.field-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.field-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 20px;display:flex;flex-direction:column;box-shadow:var(--sh-sm);transition:all 0.3s ease;border-top:4px solid var(--blue-accent)}
+.field-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.field-icon{height:100px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.field-icon img{max-height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.05))}
+.field-name{font-size:16px;font-weight:700;color:var(--navy-deep);margin-bottom:8px}
+.field-desc{font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:16px;flex-grow:1}
+.field-specs{list-style:none;font-size:11.5px;color:var(--text2);margin-bottom:16px}
+.field-specs li{margin-bottom:4px;padding-left:12px;position:relative}
+.field-specs li::before{content:'•';position:absolute;left:0;color:var(--blue-accent);font-weight:700}
+.field-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:14px;margin-top:auto}
+@media(max-width:1024px){.field-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.field-grid{grid-template-columns:1fr}}
+
+/* NEWS */
+.news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.news-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.news-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}
+.news-source{font-size:11px;font-weight:600;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+.news-title{font-size:20px;font-weight:700;color:var(--navy-deep);margin-bottom:10px}
+.news-desc{font-size:13.5px;color:var(--text2);line-height:1.6;flex-grow:1;margin-bottom:16px}
+.news-link{font-size:13px;font-weight:600;color:var(--blue-accent);display:flex;align-items:center;gap:4px;transition:gap 0.2s}
+.news-link:hover{gap:8px}
+@media(max-width:640px){.news-grid{grid-template-columns:1fr}}
+
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pain-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue-accent)}
+.pain-card.alert::before{background:#EAB308}
+.pain-badge{font-size:11px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px}
+.pain-card.alert .pain-badge{color:#B45309}
+.pain-title{font-size:20px;font-weight:700;color:var(--navy-deep);margin-bottom:10px}
+.pain-desc{font-size:13.5px;color:var(--text2);line-height:1.6;flex-grow:1;margin-bottom:20px}
+.pain-actions{display:flex;gap:10px;flex-wrap:wrap}
+.pain-btn{font-size:12px;font-weight:600;padding:8px 16px;border-radius:var(--r-sm);border:1px solid var(--border);color:var(--text);background:var(--bg);transition:all 0.2s}
+.pain-btn:hover{background:var(--bg2);border-color:var(--text3)}
+.pain-btn.accent{background:var(--blue-accent);color:#fff;border-color:var(--blue-accent)}
+.pain-btn.accent:hover{background:var(--blue-hover)}
+@media(max-width:640px){.pain-grid{grid-template-columns:1fr}}
+
+/* CLIENT CATEGORIES */
+.client-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.client-cat{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:24px 20px}
+.client-cat h3{font-size:14px;font-weight:700;color:var(--navy-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--blue-accent);display:inline-block}
+.client-list{display:flex;flex-wrap:wrap;gap:6px}
+.client-item{font-size:12px;color:var(--text2);background:var(--bg3);padding:4px 10px;border-radius:var(--r-sm);font-weight:500}
+@media(max-width:1024px){.client-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.client-grid{grid-template-columns:1fr}}
+
+/* INDUSTRIES */
+.ind-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.ind-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;display:grid;grid-template-columns:1fr 120px;gap:20px;align-items:center;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.ind-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:rgba(37,99,235,0.25)}
+.ind-tag{font-size:11px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;display:block}
+.ind-name{font-size:22px;font-weight:700;color:var(--navy-deep);margin-bottom:8px}
+.ind-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px}
+.ind-link{font-size:12.5px;font-weight:600;color:var(--blue-accent);display:inline-flex;align-items:center;gap:4px}
+.ind-visual svg{width:100%;height:auto;max-height:140px;color:var(--text3);transition:color 0.3s;stroke:currentColor}
+.ind-card:hover .ind-visual svg{color:var(--blue-accent)}
+@media(max-width:768px){.ind-grid{grid-template-columns:1fr}.ind-card{grid-template-columns:1fr}.ind-visual{display:none}}
+
+/* CTA FINAL */
+.cta-final{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 0;position:relative;overflow:hidden}
+.cta-container{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.cta-overline{font-size:13px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;display:block}
+.cta-title{font-size:clamp(28px,3.5vw,40px);font-weight:700;line-height:1.2;margin-bottom:20px;color:var(--navy-deep)}
+.cta-title strong{color:var(--blue-accent);font-weight:800}
+.cta-subtitle{font-size:15px;line-height:1.6;color:var(--text2);margin-bottom:28px}
+.cta-stamps{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;font-weight:600;color:var(--text2);border-top:1px solid var(--border);padding-top:20px}
+.cta-stamp{display:flex;align-items:center;gap:6px}
+.cta-stamp::before{content:'';display:inline-block;width:6px;height:6px;background:var(--blue-accent);border-radius:50%}
+.cta-form{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:36px;box-shadow:var(--sh-xl);position:relative}
+.cta-form::before{content:'FORM: CONTROL DIAGNOSTIC PROTOCOL';position:absolute;top:14px;right:18px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3)}
+.cta-form h3{font-size:17px;font-weight:700;color:var(--navy-deep);margin-bottom:20px}
+.form-grp{margin-bottom:18px}
+.form-grp label{display:block;font-size:12px;font-weight:600;color:var(--navy-deep);margin-bottom:5px}
+.form-grp input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);transition:all 0.2s}
+.form-grp select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);transition:all 0.2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%2394A3B8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.form-grp select:focus{outline:none;border-color:var(--blue-accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1);background-color:var(--bg)}
+.form-grp select:invalid{color:var(--text3)}
+.form-btn{width:100%;background:var(--blue-accent);color:#fff;border:none;border-radius:var(--r-sm);padding:13px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;box-shadow:var(--sh-sm);transition:all 0.25s ease;margin-top:6px}
+.form-btn:hover{background:var(--blue-hover);transform:translateY(-2px);box-shadow:var(--sh-md)}
+.form-disc{font-size:10.5px;color:var(--text3);margin-top:14px;text-align:center;line-height:1.4}
+@media(max-width:768px){.cta-container{grid-template-columns:1fr;gap:40px}}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--border);padding:70px 0 36px;font-size:13.5px}
+.footer-grid{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 0.7fr 0.7fr 0.7fr;gap:36px}
+.footer-brand{max-width:300px}
+.footer-logo{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;color:var(--navy-deep);margin-bottom:16px;display:block;letter-spacing:-0.5px}
+.footer-tagline{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:18px}
+.footer-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:7px 14px;background:var(--bg3);border-radius:var(--r-sm)}
+.footer-badge-dot{width:6px;height:6px;background:var(--blue-accent);border-radius:50%}
+.footer-badge-text{font-size:10.5px;font-weight:600;color:var(--navy-deep);text-transform:uppercase;letter-spacing:0.3px}
+.footer-col h4{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:var(--navy-deep);text-transform:uppercase;margin-bottom:20px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--text2);font-size:13px;transition:all 0.2s}
+.footer-col a:hover{color:var(--blue-accent);padding-left:2px}
+.footer-col p{color:var(--text2);margin-bottom:6px}
+.footer-bottom{max-width:1280px;margin:50px auto 0;padding:28px 40px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;color:var(--text2);font-size:12px;flex-wrap:wrap;gap:12px}
+.footer-mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px}.footer-brand{max-width:100%}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+/* HERO CAROUSEL */
+.hero-slides{position:relative;width:100%}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+.hero-slide.active{opacity:1;pointer-events:auto;position:relative}
+.hero-dots{display:flex;gap:10px;margin-top:28px;z-index:10;position:relative}
+.hero-dot{width:32px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s ease}
+.hero-dot.active{background:var(--blue-accent);width:48px}
+@media(max-width:1024px){.hero-slide{grid-template-columns:1fr!important;gap:40px;text-align:center}.hero-slide .hero-content{max-width:100%}.hero-slide .hero-sub{max-width:100%}.hero-slide .hero-ctas{justify-content:center}.hero-slide .hero-caps{grid-template-columns:repeat(2,1fr)}.hero-slide .hero-visual svg{max-width:360px}}
+@media(max-width:640px){.hero-dots{justify-content:center}.hero-slide .hero-caps{grid-template-columns:1fr}.hero-slide .hero-ctas{flex-direction:column}}
+</style>
 </head>
-
 <body>
 
-    <!-- NAVBAR V2 (Frosted Glass) -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">CONECTA<div class="nav-dot"></div></a>
-            <div class="nav-links">
-                <a href="index.html#sistemas" class="nav-link">División Sistemas</a>
-                <a href="index.html#equipos" class="nav-link">Venta de Equipos</a>
-                <a href="#catalogo" class="nav-link">Catálogo Automación</a>
-                <a href="index.html#normativa" class="nav-link">Normativa</a>
-                <a href="#cotizar" class="nav-cta">Cotizar SUPCON</a>
-            </div>
-        </div>
+<header class="site-header" style="background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100">
+  <div class="sec-container" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0">
+    <a href="/" class="logo" style="font-family:Outfit;font-size:22px;font-weight:800;color:var(--navy-deep);text-decoration:none">CONECTA</a>
+    <nav style="display:flex;gap:24px;align-items:center">
+      <a href="/" style="font-size:14px;color:var(--text2);text-decoration:none">Inicio</a>
+      <a href="/#soluciones" style="font-size:14px;color:var(--text2);text-decoration:none">Soluciones</a>
+      <a href="/#diagnostico" style="background:var(--blue-accent);color:#fff;padding:8px 20px;border-radius:var(--r-sm);text-decoration:none;font-weight:600;font-size:14px">Contacto</a>
     </nav>
+  </div>
+</header>
 
-    <!-- HERO V2 -->
-    <header class="supcon-hero">
-        <div class="hero-grid"></div>
-        <div class="hero-glow"></div>
-        <div class="hero-container">
-            <div class="hero-content fade-up">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span> Official Partners Chile
-                </div>
-                <h1>Automatización <span class="hl">SUPCON</span> de Clase Mundial</h1>
-                <p class="hero-sub">Distribuidores directos e integradores expertos del principal fabricante asiático de sistemas de
-                    control distribuido (DCS) e instrumentación inteligente de misión crítica.</p>
-                <div class="hero-caps">
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/></svg> DCS</div>
-                        <div class="hero-cap-desc">ECS-700 / JX-300XP</div>
-                    </div>
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> SIS</div>
-                        <div class="hero-cap-desc">TCS-900 / TCS-500 SIL3</div>
-                    </div>
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> PLC</div>
-                        <div class="hero-cap-desc">G5 Pro / G3 Smart</div>
-                    </div>
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg> Field</div>
-                        <div class="hero-cap-desc">Válvulas + Transmisores</div>
-                    </div>
-                </div>
-                <div class="hero-ctas">
-                    <a href="#catalogo" class="btn1">Ver Familias de Productos</a>
-                    <a href="index.html" class="btn2">Volver a CONECTA</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="brand-logo">SUPCON</div>
-                <div class="brand-sub">Webfield DCS / Instrumentación Inteligente</div>
-            </div>
-        </div>
-    </header>
+<section class="sec sec-alt" style="background:var(--navy-deep);color:#fff;padding:80px 0 60px">
+  <div class="sec-container">
+    <div class="sec-header"><div>
+      <span class="sec-overline" style="color:var(--blue-accent)">PARTNER EXCLUSIVO CHILE</span>
+      <h1 class="sec-title" style="color:#fff">Catalogo <span style="color:var(--blue-accent)">SUPCON</span></h1>
+      <p style="color:var(--text3);font-size:18px;max-width:600px">DCS, SIS, instrumentacion, PLCs, SCADA y plataformas IIoT. 30K+ bases instaladas en 50+ paises.</p>
+    </div></div>
+  </div>
+</section>
 
-    <!-- CATALOG SECTION -->
-    <section id="catalogo" class="catalog-section">
-        <div class="sec-container">
-            <div class="sec-header">
-                <div>
-                    <span class="sec-overline">Catálogo Oficial</span>
-                    <h2 class="sec-title">Tecnologías <strong>SUPCON</strong></h2>
-                </div>
-                <p class="sec-tag">Equipamiento e inteligencia industrial para minería, energía y manufactura avanzada.</p>
-            </div>
-
-            <!-- CATEGORY 1: Control Systems -->
-            <h3 class="product-category-title"><span>01</span> Sistemas de Control (DCS / SIS / PLC)</h3>
-            <div class="product-grid">
-
-                <!-- ECS-700 -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/DCS.png" alt="DCS ECS-700"></div>
-                    <h3>ECS-700 (DCS)</h3>
-                    <p>Plataforma de datos para toda la planta. Soporta una expansión flexible de hasta 1 millón de
-                        I/Os. Orientada a la asistencia inteligente con datos históricos de la planta.</p>
-                    <ul class="feature-list">
-                        <li>Integración: OPC, MODBUS, HART, FF, PROFIBUS</li>
-                        <li>CE(EMC/LVD), G3 anti-corrosión, EAC, PAC</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('ECS-700 (DCS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- JX-300XP -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/DCS.png" alt="DCS JX-300XP"></div>
-                    <h3>JX-300XP (DCS)</h3>
-                    <p>Red de comunicación industrial SCnet II de alta velocidad y confiabilidad. Permite redundancia
-                        aleatoria y descarga online sin interferencias en el control.</p>
-                    <ul class="feature-list">
-                        <li>Protocolos: Modbus, HostLink</li>
-                        <li>CE(EMC/LVD), G3 anti-corrosión</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('JX-300XP (DCS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- TCS-900 -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/SIS.webp" alt="TCS-900 SIS"></div>
-                    <h3>TCS-900 (SIS)</h3>
-                    <p>Sistema Instrumentado de Seguridad (SIS) de máximo nivel. Diagnóstico >99% con diseño
-                        'Fail-safe'. Tolerancia máxima de 3 fallos y red aislada del DCS.</p>
-                    <ul class="feature-list">
-                        <li>Certificación SIL3 y Seguridad IEC 62443</li>
-                        <li>CE(EMC), G3 anti-corrosión (-20~70℃)</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('TCS-900 (SIS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- TCS-500 -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/SIS.webp" alt="TCS-500 SIS"></div>
-                    <h3>TCS-500 (SIS)</h3>
-                    <p>Sistema de Seguridad de alta densidad y flexibilidad de instalación. Arquitectura 2oo4D con 300
-                        puntos de hardware por armario. Transmisión vía SCNET IV o Modbus RTU.</p>
-                    <ul class="feature-list">
-                        <li>Certificación SIL3 (2oo4D)</li>
-                        <li>Aislamiento físico del DCS</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('TCS-500 (SIS)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- G5 Pro -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/PLC.png" alt="G5 Pro PLC"></div>
-                    <h3>G5 Pro (PLC)</h3>
-                    <p>PLC con procesador 32-bit a 1 GHz y 1.5 GB de memoria del sistema. Soporta Hot-swapping en todos
-                        los módulos. Capacidad de conexión de hasta 512 I/Os.</p>
-                    <ul class="feature-list">
-                        <li>PROFINET, DNP3, OPC, Modbus</li>
-                        <li>Ciberseguridad dual-core (RSA/AES)</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('G5 Pro (PLC)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- G3 Smart -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/PLC.png" alt="G3 Smart PLC"></div>
-                    <h3>G3 Smart (PLC)</h3>
-                    <p>Controlador Lógico Programable compacto y flexible. Entorno de configuración amigable compatible
-                        con lenguajes IEC 61131-3 (FBD, LD, ST, SFC).</p>
-                    <ul class="feature-list">
-                        <li>Soporte de topologías Anillo y Estrella</li>
-                        <li>CE(EMC/LVD), G3 anti-corrosión</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('G3 Smart (PLC)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-            </div>
-
-            <!-- CATEGORY 2: Field Instrumentation -->
-            <h3 class="product-category-title"><span>02</span> Instrumentación de Campo</h3>
-            <div class="product-grid">
-
-                <!-- LN/LM Globe Valve -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/LNLM.png" alt="Válvula LN/LM"></div>
-                    <h3>Válvula de Globo LN/LM</h3>
-                    <p>Modularización funcional, alta precisión y mantenimiento sencillo. DN15 a DN600. Fugas: ANSI
-                        B16.104 Class Ⅳ/Ⅴ/Ⅵ.</p>
-                    <ul class="feature-list">
-                        <li>ANSI CL150~CL2500, DIN PN16~PN250</li>
-                        <li>CE, ATEX, ISO 15848, API 6FA, SIL3</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula de Globo LN/LM')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- SN5 Ball Valve -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/SN5.png" alt="Válvula Bola SN5"></div>
-                    <h3>Válvula de Bola O-type SN5</h3>
-                    <p>Excelente corte y sellado. Bajo torque y fugas cero (API6D/API598). Alta resistencia al desgaste.
-                        DN15 a DN600.</p>
-                    <ul class="feature-list">
-                        <li>ANSI CL150~CL2500, DIN PN16~PN250</li>
-                        <li>CE, ATEX, API 607 Fire Safe, SIL3</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula de Bola O-type SN5')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- CN8 Eccentric Rotary Plug Valve -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/CN8.png" alt="Válvula Excéntrica CN8"></div>
-                    <h3>Válvula Excéntrica CN8</h3>
-                    <p>Doble excentricidad. Alta capacidad de flujo, anti-cavitación y anti-desgaste. Ideal para lodos y
-                        fluidos abrasivos. DN15 a DN400.</p>
-                    <ul class="feature-list">
-                        <li>Fugas Clase Ⅳ/Ⅴ/Ⅵ. Lineal.</li>
-                        <li>CE, ATEX, ISO 15848, SIL3</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula Excéntrica CN8')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- BN Butterfly Valve -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/BN.png" alt="Válvula Mariposa BN"></div>
-                    <h3>Válvula Mariposa BN</h3>
-                    <p>Libre de desgaste/fricción. Cierre hermético ante temperaturas o presiones extremas. Eje central,
-                        excentricidad triple disponible. DN50 a DN2400.</p>
-                    <ul class="feature-list">
-                        <li>ANSI CL150~1500, Fugas Ⅴ/Ⅵ.</li>
-                        <li>CE, ATEX, API 6FA, SIL3</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Válvula Mariposa BN')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- CXT Pressure Transmitter -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/CXT.png" alt="Transmisor Presión CXT"></div>
-                    <h3>Transmisor de Presión CXT</h3>
-                    <p>Precisión hasta +0.035% y estabilidad de ±0.1% a 10 años. Solución certificada para procesos
-                        especiales (Sinopec, CNPC).</p>
-                    <ul class="feature-list">
-                        <li>Capacidad: 200,000 uds/año</li>
-                        <li>CE, ROHS, ATEX/IECEx Ex d/Exia, SIL2</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Transmisor de Presión CXT')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- SFE900 Flowmeter -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/SFE900.webp" alt="Caudalímetro SFE900"></div>
-                    <h3>Caudalímetro Mag. SFE900</h3>
-                    <p>Mide líquidos con baja conductividad (2μS/cm). ±0.2% precisión. Fuerte supresión de ruido y malla
-                        de acero para presión negativa.</p>
-                    <ul class="feature-list">
-                        <li>Rango: 0.1~12 m/s</li>
-                        <li>Certificado Ex d (China)</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Caudalímetro Mag. SFE900')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- SL900 Radar Level -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/SL900.png" alt="Radar Nivel SL900"></div>
-                    <h3>Transmisor Nivel SL900 (Radar)</h3>
-                    <p>Tecnología FMCW 80GHz. Precisión ±1mm. Ángulo de haz 3°, perfecto para tanques estrechos. Zona
-                        muerta 0.1m, rango 100m.</p>
-                    <ul class="feature-list">
-                        <li>Bandwidth de barrido 4GHz</li>
-                        <li>Ex ia & Ex d, SIL2</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Transmisor Nivel SL900 (Radar)')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- HD5500 Safety Barrier -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/HD5500.png" alt="Barrera Aislada HD5500"></div>
-                    <h3>Barrera de Seguridad HD5500</h3>
-                    <p>Diseño ultra-fino 12.5mm. Conversión a 0.1%. Alarma inteligente y ahorro energético 40%.
-                        Fiabilidad industrial líder (0.12‰).</p>
-                    <ul class="feature-list">
-                        <li>Múltiples montajes (DIN, bus bar)</li>
-                        <li>CE, IECEx/ATEX, Intrinsically Safe, SIL2/3</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Barrera de Seguridad HD5500')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-
-                <!-- X600 Calibrator -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/supcon_img/mapped/X600.png" alt="Calibrador X600"></div>
-                    <h3>Calibrador Interactivo X600</h3>
-                    <p>Precisión de señal máxima: 0.01%. Integración HART al 100%. Combina comunicador HART de campo e
-                        IDM de instrumentación SUPCON.</p>
-                    <ul class="feature-list">
-                        <li>Update online de archivos HART DD</li>
-                        <li>Módulo de señal desmontable</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Calibrador Interactivo X600')" class="btn-primary-card">✉️ Solicitar Cotización</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA BANNER -->
-    <section id="cotizar" class="cta-banner">
-        <div class="sec-container">
-            <h2>¿Listo para integrar tecnología SUPCON en su planta?</h2>
-            <p>Nuestros ingenieros en Santiago están listos para revisar sus P&ID, homologar bases técnicas de
-                licitación o cotizar instrumentación específica con tiempos de entrega directos de fábrica.</p>
-            <button type="button" onclick="openQuoteModal('Equipo/Servicio')" class="btn1">Contactar a Ingeniería Comercial de CONECTA</button>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="brand-logo">CONECTA<span>.</span></div>
-        <p>Representantes exclusivos e integradores nivel experto de tecnología SUPCON en Chile.<br>&copy; 2026
-            CONECTA Ingeniería. Todos los derechos reservados.</p>
-    </footer>
-
-    <!-- MODAL COTIZACION B2B -->
-    <div id="quoteModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeQuoteModal()">&times;</button>
-            <div class="modal-header">
-                <h3>Solicitud de Cotización B2B</h3>
-                <p>Complete sus datos para que un ingeniero especialista le contacte a la brevedad.</p>
-            </div>
-            <form name="cotizacion-equipo" method="POST" data-netlify="true" class="quote-form">
-                <input type="hidden" name="subject" data-remove-prefix value="Nueva Cotización de Equipo B2B" />
-                <div class="form-group">
-                    <label for="frm-equipo">Equipo a Cotizar</label>
-                    <input type="text" id="frm-equipo" name="equipo" readonly class="readonly-input" value="">
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="frm-nombre">Nombre Completo *</label>
-                        <input type="text" id="frm-nombre" name="nombre" required placeholder="Ej: Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="frm-empresa">Empresa / Rut *</label>
-                        <input type="text" id="frm-empresa" name="empresa" required placeholder="Ej: Minera Escondida">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="frm-email">Correo Corporativo *</label>
-                        <input type="email" id="frm-email" name="email" required placeholder="juan@empresa.cl">
-                    </div>
-                    <div class="form-group">
-                        <label for="frm-servicio">Requerimiento Principal *</label>
-                        <select id="frm-servicio" name="servicio" required>
-                            <option value="">Seleccione una opción...</option>
-                            <option value="Suministro de Hardware">Suministro de Equipos / Hardware</option>
-                            <option value="Servicio de Integracion">Integración y Puesta en Marcha</option>
-                            <option value="Soporte Tecnico">Soporte Técnico / Mantención</option>
-                            <option value="Asesoria Normativa">Asesoría Normativa / Consultoría</option>
-                            <option value="Otro">Otro (Especifique en el mensaje)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="frm-mensaje">Mensaje o Detalles Adicionales</label>
-                    <textarea id="frm-mensaje" name="mensaje" rows="3"
-                        placeholder="Indique cantidad, plazos o detalles técnicos relevantes..."></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Enviar Solicitud a Ingeniería</button>
-                <div style="text-align: center; margin-top: 12px; font-size: 0.75rem; color: #94a3b8;">Sistema cifrado y
-                    gestionado por CONECTA B2B</div>
-            </form>
-        </div>
+<section class="sec sec-white">
+  <div class="sec-container">
+    <div class="field-grid">
+      <article class="field-card fade-up" style="border-top-color:var(--blue-accent)">
+        <div class="field-icon"><img src="/v2/assets/supcon_img/mapped/DCS.png" alt="DCS ECS-700"></div>
+        <h3 class="field-name">DCS ECS-700</h3>
+        <p class="field-desc">Control distribuido redundante de ultima generacion. Hot-swap de todos los modulos sin detener proceso. Arquitectura escalable.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>Redundante total</li><li>Hot-swap</li></ul>
+        <div class="field-footer"><span class="sol-tag">DCS</span><a href="/v2/landing/dcs-supcon-industrial.html" class="sol-link">Ver landing &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:var(--red)">
+        <div class="field-icon"><img src="/v2/assets/supcon_img/mapped/SIS.webp" alt="SIS TCS-500"></div>
+        <h3 class="field-name">SIS TCS-500 SIL4</h3>
+        <p class="field-desc">Sistema Instrumentado de Seguridad. Arquitectura 2oo4D con tolerancia a fallos. Certificacion SIL4 / IEC 61511.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>SIL4 / 2oo4D</li><li>IEC 61511</li></ul>
+        <div class="field-footer"><span class="sol-tag">Seguridad</span><a href="/#diagnostico" class="sol-link" style="color:var(--red)">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:var(--green)">
+        <div class="field-icon"><img src="/v2/assets/supcon_img/mapped/PLC.png" alt="PLC G5Pro"></div>
+        <h3 class="field-name">PLC G5Pro / G3Smart</h3>
+        <p class="field-desc">PLC flagship con certificacion CE + Achilles cybersecurity. G3 anti-corrosion. Software GCSContrix V1.80.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>CE + Achilles</li><li>G3 corrosion</li></ul>
+        <div class="field-footer"><span class="sol-tag">PLC</span><a href="/#diagnostico" class="sol-link" style="color:var(--green)">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#8b5cf6">
+        <div class="field-icon"><img src="/v2/assets/supcon_img/mapped/LoRa_Gateway.webp" alt="supOS IIoT"></div>
+        <h3 class="field-name">supOS Plataforma IIoT</h3>
+        <p class="field-desc">Sistema operativo industrial. Unifica DCS + SCADA + ERP. 300+ protocolos nativos. Dashboards low-code.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>300+ protocolos</li><li>Low-code</li></ul>
+        <div class="field-footer"><span class="sol-tag">IIoT</span><a href="/#diagnostico" class="sol-link" style="color:#8b5cf6">Agendar reunion &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:var(--red)">
+        <div class="field-icon"><img src="/v2/assets/supcon_img/mapped/SFE900.webp" alt="Caudalimetro EMF"></div>
+        <h3 class="field-name">Caudalimetros EMF</h3>
+        <p class="field-desc">Electromagneticos desde DN10 hasta DN2000. Precision ±0.2%. Desde 2 L/h. Aprobacion MID.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>DN10-DN2000</li><li>±0.2% precision</li></ul>
+        <div class="field-footer"><span class="sol-tag">Instrumentacion</span><a href="/#campo" class="sol-link" style="color:var(--red)">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:var(--blue-accent)">
+        <div class="field-icon"><span style="font-size:40px">📡</span></div>
+        <h3 class="field-name">Transmisores CXT</h3>
+        <p class="field-desc">Precision ±0.035% con sensor monocristalino de silicio. Estabilidad ±0.1%/10 años. HART/FF/Zigbee.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>±0.035% exactitud</li><li>100:1 range ratio</li></ul>
+        <div class="field-footer"><span class="sol-tag">Presion</span><a href="/#campo" class="sol-link">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#f59e0b">
+        <div class="field-icon"><span style="font-size:40px">🤖</span></div>
+        <h3 class="field-name">PRIDE IA Predictiva</h3>
+        <p class="field-desc">1,566 modos de falla integrados. Detecta anomalias 2 semanas antes. 130+ agentes IA en operacion.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>1,566 fallas</li><li>130+ agentes IA</li></ul>
+        <div class="field-footer"><span class="sol-tag">IA</span><a href="/v2/landing/dcs-supcon-industrial.html" class="sol-link" style="color:#f59e0b">Agendar reunion &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:var(--green)">
+        <div class="field-icon"><span style="font-size:40px">📊</span></div>
+        <h3 class="field-name">APC V11.2 Control Avanzado</h3>
+        <p class="field-desc">Optimizacion multivariable en tiempo real. Reduce variabilidad y consumo energetico. ROI en 3-6 meses.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>Multivariable</li><li>ROI 3-6 meses</li></ul>
+        <div class="field-footer"><span class="sol-tag">APC</span><a href="/#diagnostico" class="sol-link" style="color:var(--green)">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#ec4899">
+        <div class="field-icon"><span style="font-size:40px">🌐</span></div>
+        <h3 class="field-name">Radar 80GHz SL90</h3>
+        <p class="field-desc">Medicion de nivel sin contacto. Inmune a polvo denso y vapor. Alcance hasta 120m. Precision milimetrica.</p>
+        <ul class="field-specs"><li>Marca: SUPCON</li><li>80GHz</li><li>120m alcance</li></ul>
+        <div class="field-footer"><span class="sol-tag">Nivel</span><a href="/#campo" class="sol-link" style="color:#ec4899">Cotizar &rarr;</a></div>
+      </article>
     </div>
+  </div>
+</section>
 
-    <!-- MODAL JS -->
-    <script>
-        function openQuoteModal(itemName) {
-            document.getElementById('frm-equipo').value = itemName;
-            var modal = document.getElementById('quoteModal');
-            modal.style.display = 'flex';
-            modal.offsetHeight;
-            modal.style.opacity = '1';
-        }
+<footer style="background:var(--bg2);padding:24px 0;text-align:center;font-size:13px;color:var(--text2)">
+  CONECTA Ingenieria S.A. &bull; Partner exclusivo SUPCON Chile &bull; <a href="/" style="color:var(--blue-accent)">conecta.cl</a>
+</footer>
 
-        function closeQuoteModal() {
-            var modal = document.getElementById('quoteModal');
-            modal.style.display = 'none';
-            modal.style.opacity = '0';
-        }
-
-        window.onclick = function (event) {
-            var modal = document.getElementById('quoteModal');
-            if (event.target === modal) {
-                closeQuoteModal();
-            }
-        }
-
-        // Navbar scroll shrink
-        window.addEventListener('scroll', function () {
-            var navbar = document.getElementById('navbar');
-            if (window.scrollY > 10) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade-up reveal on scroll
-        (function () {
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-up').forEach(function (el) {
-                observer.observe(el);
-            });
-            // Make hero content visible immediately
-            var heroContent = document.querySelector('.hero-content.fade-up');
-            if (heroContent) heroContent.classList.add('visible');
-        })();
-    </script>
-
-</body>
-
-</html>
+</body></html>

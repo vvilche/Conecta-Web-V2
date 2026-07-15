@@ -1,1228 +1,351 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo NovaTech | CONECTA Especialistas B2B</title>
-    <meta name="description"
-        content="Proveedores e Integradores de la línea NovaTech Automation. RTUs OrionLX, Gateways IEC 61850 y Medición Bitronics para subestaciones en Chile.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
-
-    <style>
-        /* ================================================================
-           CONECTA WEB V2 — DESIGN SYSTEM + NOVATECH BRAND EXTENSION
-           ================================================================ */
-        :root {
-            --navy-deep: #0A1628;
-            --navy: #0F1F3D;
-            --blue-royal: #1E3A5F;
-            --blue-accent: #2563eb;
-            --blue-hover: #1d4ed8;
-            --blue-glow: rgba(37, 99, 235, 0.12);
-            --blue-glass: rgba(37, 99, 235, 0.06);
-            --text: #0F172A;
-            --text2: #475569;
-            --text3: #94A3B8;
-            --bg: #ffffff;
-            --bg2: #F1F5F9;
-            --bg3: #F8FAFC;
-            --border: #E2E8F0;
-            --r-sm: 6px;
-            --r-md: 10px;
-            --r-lg: 16px;
-            --sh-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-            --sh-md: 0 4px 12px rgba(0, 0, 0, 0.06);
-            --sh-xl: 0 20px 40px rgba(0, 0, 0, 0.10);
-            --t: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-            /* NovaTech Brand Accent */
-            --nova-blue: #0033a0;
-            --nova-blue-light: #3b82f6;
-            --nova-glow: rgba(0, 51, 160, 0.15);
-        }
-
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            background: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        h1,
-        h2,
-        h3 {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 700;
-            line-height: 1.15;
-            color: var(--navy-deep);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* ── NAVBAR (Frosted Glass V2) ── */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid transparent;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-        }
-
-        .navbar.scrolled {
-            height: 64px;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06);
-        }
-
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: var(--navy-deep);
-            transition: font-size 0.3s ease;
-        }
-
-        .navbar.scrolled .nav-logo {
-            font-size: 19px;
-        }
-
-        .nav-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--nova-blue);
-            border-radius: 50%;
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .nav-link {
-            font-size: 13.5px;
-            font-weight: 500;
-            color: var(--text2);
-            position: relative;
-            padding: 6px 0;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: var(--nova-blue-light);
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--nova-blue-light);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.25s ease;
-        }
-
-        .nav-link:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
-        }
-
-        .nav-cta {
-            display: inline-block;
-            background: var(--nova-blue);
-            color: #fff !important;
-            font-size: 13px;
-            font-weight: 600;
-            padding: 10px 20px;
-            border-radius: var(--r-sm);
-            box-shadow: 0 2px 8px rgba(0, 51, 160, 0.3);
-            transition: all 0.25s ease;
-        }
-
-        .nav-cta:hover {
-            background: #002277;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 16px rgba(0, 51, 160, 0.4);
-        }
-
-        @media(max-width:1024px) {
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* ── HERO (Navy Gradient V2 + NovaTech Blue Glow) ── */
-        .nova-hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            background: linear-gradient(160deg, #0A1628 0%, #0F1F3D 40%, #001233 70%, #0A1628 100%);
-            padding-top: 80px;
-        }
-
-        .hero-grid {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(0, 51, 160, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 51, 160, 0.06) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: gridPulse 8s ease-in-out infinite;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        @keyframes gridPulse {
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 0.8;
-            }
-        }
-
-        .hero-glow {
-            position: absolute;
-            top: 50%;
-            right: -5%;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(0, 51, 160, 0.2), transparent 70%);
-            transform: translateY(-50%);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        .hero-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 40px;
-            width: 100%;
-            position: relative;
-            z-index: 3;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .hero-content {
-            max-width: 680px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(0, 51, 160, 0.15);
-            border: 1px solid rgba(0, 51, 160, 0.3);
-            color: #93C5FD;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            padding: 6px 16px;
-            border-radius: 999px;
-            margin-bottom: 28px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .hero-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--nova-blue-light);
-            border-radius: 50%;
-            animation: statusPulse 2s ease-in-out infinite;
-        }
-
-        @keyframes statusPulse {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.3;
-            }
-        }
-
-        .nova-hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.6rem);
-            font-weight: 800;
-            color: #FFF;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 20px;
-        }
-
-        .nova-hero h1 .hl {
-            background: linear-gradient(135deg, #93C5FD, var(--nova-blue-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-sub {
-            font-size: 1.05rem;
-            color: #94A3B8;
-            line-height: 1.7;
-            margin-bottom: 14px;
-            max-width: 560px;
-            font-weight: 400;
-        }
-
-        .hero-caps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 32px;
-        }
-
-        .hero-cap {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--r-md);
-            padding: 16px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .hero-cap:hover {
-            background: rgba(0, 51, 160, 0.12);
-            border-color: rgba(0, 51, 160, 0.35);
-            transform: translateY(-2px);
-        }
-
-        .hero-cap-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            color: #CBD5E1;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .hero-cap-title svg {
-            color: var(--nova-blue-light);
-            flex-shrink: 0;
-        }
-
-        .hero-cap-desc {
-            font-size: 10.5px;
-            color: #64748B;
-            line-height: 1.4;
-            font-weight: 500;
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .btn1 {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--nova-blue);
-            color: #fff;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 14px 28px;
-            border-radius: var(--r-sm);
-            box-shadow: 0 4px 20px rgba(0, 51, 160, 0.4);
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn1::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.5s ease;
-        }
-
-        .btn1:hover::after {
-            transform: translateX(100%);
-        }
-
-        .btn1:hover {
-            background: #002277;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 51, 160, 0.5);
-        }
-
-        .btn2 {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.08);
-            color: #CBD5E1;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 14px 28px;
-            border-radius: var(--r-sm);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: all 0.25s ease;
-        }
-
-        .btn2:hover {
-            background: rgba(255, 255, 255, 0.14);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #fff;
-            transform: translateY(-2px);
-        }
-
-        .hero-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--r-lg);
-            padding: 24px;
-            min-height: 300px;
-        }
-
-        .hero-visual img {
-            width: 100%;
-            border-radius: 8px;
-            filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2));
-        }
-
-        @media(max-width:1024px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: center;
-                padding-top: 20px;
-                padding-bottom: 60px;
-            }
-            .hero-content {
-                max-width: 100%;
-            }
-            .hero-sub {
-                max-width: 100%;
-            }
-            .hero-ctas {
-                justify-content: center;
-            }
-            .hero-caps {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:640px) {
-            .nova-hero {
-                min-height: auto;
-                padding-bottom: 60px;
-            }
-            .hero-caps {
-                grid-template-columns: 1fr;
-            }
-            .hero-ctas {
-                flex-direction: column;
-            }
-        }
-
-        /* ── CATALOG SECTION ── */
-        .catalog-section {
-            padding: 100px 0;
-            position: relative;
-            z-index: 10;
-            background: var(--bg);
-        }
-
-        .sec-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .sec-header {
-            margin-bottom: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .sec-overline {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--nova-blue-light);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .sec-title {
-            font-size: clamp(28px, 3.5vw, 38px);
-            font-weight: 700;
-            color: var(--navy-deep);
-            letter-spacing: -0.5px;
-        }
-
-        .sec-title strong {
-            color: var(--nova-blue-light);
-            font-weight: 800;
-        }
-
-        .sec-tag {
-            font-size: 12px;
-            font-weight: 600;
-            color: var(--text3);
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-            text-align: right;
-            max-width: 300px;
-        }
-
-        /* ── Product Category Title ── */
-        .product-category-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--navy-deep);
-            margin-bottom: 32px;
-            padding-bottom: 14px;
-            border-bottom: 2px solid var(--border);
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .product-category-title span {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--nova-blue-light);
-            background: rgba(59, 130, 246, 0.08);
-            padding: 4px 12px;
-            border-radius: var(--r-sm);
-        }
-
-        /* ── Product Grid ── */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            margin-bottom: 80px;
-        }
-
-        .product-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: var(--r-md);
-            padding: 32px 28px;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            border-top: 3px solid var(--nova-blue);
-            box-shadow: var(--sh-sm);
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--sh-xl);
-            border-color: #cbd5e1;
-        }
-
-        .product-icon {
-            text-align: center;
-            margin-bottom: 20px;
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg3);
-            border-radius: var(--r-md);
-            padding: 16px;
-        }
-
-        .product-icon img {
-            max-width: 100%;
-            max-height: 120px;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover .product-icon img {
-            transform: scale(1.05);
-        }
-
-        .product-card h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--navy-deep);
-            margin-bottom: 10px;
-            letter-spacing: -0.3px;
-        }
-
-        .product-card p {
-            color: var(--text2);
-            margin-bottom: 16px;
-            flex-grow: 1;
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-
-        .feature-list {
-            list-style: none;
-            margin-bottom: 24px;
-        }
-
-        .feature-list li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 7px;
-            font-size: 0.8rem;
-            color: var(--text2);
-            line-height: 1.5;
-        }
-
-        .feature-list li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--nova-blue-light);
-            font-weight: 700;
-            font-size: 0.75rem;
-        }
-
-        .btn-primary-card {
-            display: block;
-            text-align: center;
-            margin-top: auto;
-            border-radius: var(--r-sm);
-            font-weight: 600;
-            font-size: 0.85rem;
-            padding: 12px 20px;
-            background: linear-gradient(135deg, var(--nova-blue), #002277);
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 51, 160, 0.2);
-            transition: all 0.25s ease;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn-primary-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 51, 160, 0.35);
-            filter: brightness(1.08);
-        }
-
-        @media(max-width:1024px) {
-            .product-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:640px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-            }
-            .sec-container,
-            .nav-container,
-            .hero-container {
-                padding: 0 20px;
-            }
-        }
-
-        /* ── CTA BANNER ── */
-        .cta-banner {
-            position: relative;
-            z-index: 10;
-            background: linear-gradient(160deg, var(--navy-deep) 0%, #001233 70%);
-            padding: 80px 0;
-            text-align: center;
-            color: white;
-        }
-
-        .cta-banner h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: clamp(24px, 3vw, 34px);
-            font-weight: 700;
-            color: #FFF;
-            margin-bottom: 14px;
-            letter-spacing: -0.5px;
-        }
-
-        .cta-banner p {
-            color: #94A3B8;
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin: 0 auto 32px auto;
-            line-height: 1.7;
-        }
-
-        .cta-banner .btn1 {
-            font-size: 1rem;
-            padding: 16px 36px;
-        }
-
-        /* ── FOOTER ── */
-        .footer {
-            background: var(--navy-deep);
-            color: #94A3B8;
-            padding: 60px 0 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            position: relative;
-            z-index: 10;
-            text-align: center;
-        }
-
-        .footer .brand-logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 22px;
-            font-weight: 800;
-            color: #FFF;
-            margin-bottom: 12px;
-        }
-
-        .footer .brand-logo span {
-            color: var(--nova-blue-light);
-        }
-
-        .footer p {
-            font-size: 0.85rem;
-            color: var(--text3);
-        }
-
-        /* ── MODAL (B2B Quote) ── */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 22, 40, 0.8);
-            backdrop-filter: blur(6px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-content {
-            background: #ffffff;
-            border-radius: var(--r-lg);
-            width: 90%;
-            max-width: 600px;
-            padding: 40px;
-            position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            animation: modalFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-top: 4px solid var(--nova-blue);
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        @keyframes modalFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 24px;
-            font-size: 28px;
-            line-height: 1;
-            color: #94a3b8;
-            cursor: pointer;
-            transition: color 0.2s;
-            background: none;
-            border: none;
-        }
-
-        .close-modal:hover {
-            color: var(--nova-blue);
-        }
-
-        .modal-header {
-            margin-bottom: 28px;
-        }
-
-        .modal-header h3 {
-            font-family: 'Outfit', sans-serif;
-            color: var(--navy-deep);
-            font-size: 1.6rem;
-            margin-bottom: 8px;
-        }
-
-        .modal-header p {
-            color: var(--text2);
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .quote-form .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .quote-form .form-group {
-            margin-bottom: 18px;
-        }
-
-        .quote-form label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 6px;
-            letter-spacing: 0.02em;
-        }
-
-        .quote-form input,
-        .quote-form select,
-        .quote-form textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid var(--border);
-            border-radius: var(--r-sm);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            transition: all 0.2s;
-            background: var(--bg);
-            color: var(--text);
-        }
-
-        .quote-form input:focus,
-        .quote-form select:focus,
-        .quote-form textarea:focus {
-            outline: none;
-            border-color: var(--nova-blue-light);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.08);
-        }
-
-        .quote-form .readonly-input {
-            background-color: var(--bg3);
-            color: var(--navy-deep);
-            font-weight: 700;
-            border-color: var(--border);
-            cursor: not-allowed;
-        }
-
-        .btn-submit {
-            background: linear-gradient(135deg, var(--nova-blue), #002277);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 16px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: var(--r-sm);
-            cursor: pointer;
-            margin-top: 12px;
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-            font-family: 'Inter', sans-serif;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 51, 160, 0.3);
-            filter: brightness(1.12);
-        }
-
-        @media(max-width:600px) {
-            .quote-form .form-row {
-                grid-template-columns: 1fr;
-            }
-            .modal-content {
-                padding: 28px 20px;
-            }
-        }
-
-        /* ── Fade-up Animation ── */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogo NovaTech | Orion RTU, Bitronics, Kronos | CONECTA</title>
+<meta name="description" content="Catalogo NovaTech Automation: RTU OrionLX+, Orion I/O pin-compatible GE D20, medidores Bitronics, relojes Kronos. Distribuidor oficial Chile.">
+<link rel="canonical" href="https://conecta.cl/catalogo_novatech.html">
+<style>
+/* ================================================================
+   CONECTA WEB V2 — DESIGN SYSTEM COMPLETO
+   ================================================================ */
+:root {
+  --navy-deep: #0A1628; --navy: #0F1F3D; --blue-royal: #1E3A5F;
+  --blue-accent: #2563eb; --blue-hover: #1d4ed8;
+  --blue-glow: rgba(37,99,235,0.12); --blue-glass: rgba(37,99,235,0.06);
+  --text: #0F172A; --text2: #475569; --text3: #94A3B8;
+  --bg: #ffffff; --bg2: #F1F5F9; --bg3: #F8FAFC;
+  --border: #E2E8F0;
+  --r-sm: 6px; --r-md: 10px; --r-lg: 16px;
+  --sh-sm: 0 1px 2px rgba(0,0,0,0.04); --sh-md: 0 4px 12px rgba(0,0,0,0.06);
+  --sh-xl: 0 20px 40px rgba(0,0,0,0.10);
+  --t: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --red: #D32F2F; --orange: #F26522; --green: #10B981; --purple: #6C5CE7;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden;line-height:1.6}
+h1,h2,h3{font-family:'Outfit',sans-serif;font-weight:700;line-height:1.15;color:var(--navy-deep)}
+a{text-decoration:none;color:inherit}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;width:100%;height:80px;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;z-index:1000;transition:all 0.3s ease;display:flex;align-items:center}
+.navbar.scrolled{height:64px;background:rgba(255,255,255,0.95);border-bottom:1px solid var(--border);box-shadow:0 1px 8px rgba(0,0,0,0.06)}
+.nav-container{max-width:1280px;margin:0 auto;width:100%;display:flex;justify-content:space-between;align-items:center;padding:0 40px}
+.nav-logo{display:flex;align-items:center;gap:6px;font-family:'Outfit',sans-serif;font-size:22px;font-weight:800;letter-spacing:-0.5px;color:var(--navy-deep);transition:font-size 0.3s ease}
+.navbar.scrolled .nav-logo{font-size:19px}
+.nav-dot{width:8px;height:8px;background:var(--blue-accent);border-radius:50%}
+.nav-links{display:flex;align-items:center;gap:28px}
+.nav-link{font-size:13.5px;font-weight:500;color:var(--text2);position:relative;padding:6px 0;transition:color 0.2s}
+.nav-link:hover{color:var(--blue-accent)}
+.nav-link::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;background:var(--blue-accent);transform:scaleX(0);transform-origin:right;transition:transform 0.25s ease}
+.nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{display:inline-block;background:var(--blue-accent);color:#fff!important;font-size:13px;font-weight:600;padding:10px 20px;border-radius:var(--r-sm);box-shadow:0 2px 8px rgba(37,99,235,0.3);transition:all 0.25s ease}
+.nav-cta:hover{background:var(--blue-hover);transform:translateY(-1px);box-shadow:0 4px 16px rgba(37,99,235,0.4)}
+@media(max-width:1024px){.nav-links{display:none}}
+/* Hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;z-index:1001;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2.5px;background:var(--navy-deep);border-radius:2px;transition:all 0.3s ease}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.nav-links.mobile-open{display:flex!important;flex-direction:column;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(255,255,255,0.98);backdrop-filter:blur(16px);justify-content:center;align-items:center;gap:32px;z-index:1000;animation:fadeIn 0.3s ease}
+.nav-links.mobile-open .nav-link{font-size:20px}
+.nav-links.mobile-open .nav-cta{font-size:18px;padding:16px 32px}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media(max-width:1024px){.hamburger{display:flex}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:linear-gradient(160deg,#0A1628 0%,#0F1F3D 40%,#13294B 70%,#0A1628 100%);padding-top:80px}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(37,99,235,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,0.08) 1px,transparent 1px);background-size:60px 60px;animation:gridPulse 8s ease-in-out infinite;pointer-events:none;z-index:1}
+@keyframes gridPulse{0%,100%{opacity:0.5}50%{opacity:0.8}}
+.hero-glow{position:absolute;top:50%;right:-5%;width:700px;height:700px;background:radial-gradient(circle,rgba(37,99,235,0.12),transparent 70%);transform:translateY(-50%);pointer-events:none;z-index:2}
+.hero-container{max-width:1280px;margin:0 auto;padding:0 40px;width:100%;position:relative;z-index:3;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+.hero-content{max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,0.15);border:1px solid rgba(37,99,235,0.3);color:#93C5FD;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;padding:6px 16px;border-radius:999px;margin-bottom:28px;font-family:'JetBrains Mono',monospace}
+.hero-badge-dot{width:6px;height:6px;background:#60A5FA;border-radius:50%;animation:statusPulse 2s ease-in-out infinite}
+@keyframes statusPulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;color:#FFF;line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px}
+.hero h1 .hl{background:linear-gradient(135deg,#60A5FA,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:1.05rem;color:#94A3B8;line-height:1.7;margin-bottom:14px;max-width:560px;font-weight:400}
+.hero-caps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}
+.hero-cap{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:16px 14px;display:flex;flex-direction:column;gap:6px;transition:all 0.3s ease}
+.hero-cap:hover{background:rgba(37,99,235,0.12);border-color:rgba(37,99,235,0.35);transform:translateY(-2px)}
+.hero-cap-title{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:#CBD5E1;display:flex;align-items:center;gap:6px}
+.hero-cap-title svg{color:#60A5FA;flex-shrink:0}
+.hero-cap-desc{font-size:10.5px;color:#64748B;line-height:1.4;font-weight:500}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn1{display:inline-flex;align-items:center;gap:8px;background:var(--blue-accent);color:#fff;font-size:15px;font-weight:600;padding:14px 28px;border-radius:var(--r-sm);box-shadow:0 4px 20px rgba(37,99,235,0.4);transition:all 0.25s ease;position:relative;overflow:hidden}
+.btn1::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transform:translateX(-100%);transition:transform 0.5s ease}
+.btn1:hover::after{transform:translateX(100%)}
+.btn1:hover{background:var(--blue-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,99,235,0.5)}
+.btn2{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);color:#CBD5E1;font-size:15px;font-weight:600;padding:14px 28px;border-radius:var(--r-sm);border:1px solid rgba(255,255,255,0.15);transition:all 0.25s ease}
+.btn2:hover{background:rgba(255,255,255,0.14);border-color:rgba(255,255,255,0.3);color:#fff;transform:translateY(-2px)}
+.hero-visual{display:flex;align-items:center;justify-content:center}
+.hero-visual svg{width:100%;max-width:520px;height:auto;filter:drop-shadow(0 0 60px rgba(37,99,235,0.2))}
+@media(max-width:640px){.hero-caps{grid-template-columns:1fr}.hero-ctas{flex-direction:column}}
+
+/* SECTION GENERIC */
+.sec{padding:100px 0;position:relative;z-index:10}
+.sec-alt{background:var(--bg2)}
+.sec-white{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sec-container{max-width:1280px;margin:0 auto;padding:0 40px}
+.sec-header{margin-bottom:60px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px}
+.sec-overline{font-size:13px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px;display:block}
+.sec-title{font-size:clamp(28px,3.5vw,38px);font-weight:700;color:var(--navy-deep);letter-spacing:-0.5px}
+.sec-title strong{color:var(--blue-accent);font-weight:800}
+.sec-tag{font-size:12px;font-weight:600;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;text-align:right;max-width:300px}
+.sec-cta-center{text-align:center;margin-top:44px}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+/* BRANDS */
+.brands-sec{background:var(--bg);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:50px 0}
+.brands-title{text-align:center;font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:30px}
+.brands-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;opacity:0.7;filter:grayscale(100%);transition:all 0.4s ease}
+.brands-row:hover{opacity:1;filter:grayscale(0%)}
+.brand-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.brand-name{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;letter-spacing:-0.5px}
+.brand-sub{font-size:11px;font-weight:500;color:var(--text3)}
+.brand-item.s0 .brand-name{color:var(--red)}
+.brand-item.s1 .brand-name{color:#0033a0}
+.brand-item.s2 .brand-name{color:#000}
+.brand-item.s3 .brand-name{color:#004b87}
+.brand-item.s4 .brand-name{color:var(--green)}
+.brand-item.s5 .brand-name{color:var(--orange)}
+
+/* STATS CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.stat-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:28px 22px;text-align:center;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.stat-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);border-color:rgba(37,99,235,0.25)}
+.stat-badge{display:inline-block;background:rgba(37,99,235,0.08);color:var(--blue-accent);font-size:10.5px;font-weight:700;padding:3px 10px;border-radius:var(--r-sm);text-transform:uppercase;margin-bottom:16px;letter-spacing:0.5px}
+.stat-num{font-family:'Outfit',sans-serif;font-size:28px;font-weight:800;color:var(--blue-accent);line-height:1;margin-bottom:10px}
+.stat-title{font-family:'Outfit',sans-serif;font-size:15px;font-weight:700;color:var(--navy-deep);margin-bottom:6px}
+.stat-desc{font-size:12.5px;color:var(--text2);line-height:1.5}
+@media(max-width:1024px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.stats-grid{grid-template-columns:1fr}}
+
+/* SOLUTIONS CARDS */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.sol-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;display:flex;flex-direction:column;position:relative;box-shadow:var(--sh-sm);transition:all 0.3s ease;border-top:4px solid transparent}
+.sol-card:hover{border-top-color:var(--blue-accent);transform:translateY(-4px);box-shadow:var(--sh-md)}
+.sol-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3);margin-bottom:12px}
+.sol-card:hover .sol-num{color:var(--blue-accent)}
+.sol-title{font-size:18px;font-weight:700;color:var(--navy-deep);margin-bottom:10px}
+.sol-desc{font-size:13.5px;color:var(--text2);line-height:1.6;flex-grow:1;margin-bottom:20px}
+.sol-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:14px;margin-top:auto}
+.sol-tag{font-size:11px;font-weight:600;background:var(--bg2);color:var(--text2);padding:4px 10px;border-radius:var(--r-sm)}
+.sol-link{font-size:13px;font-weight:600;color:var(--blue-accent);display:flex;align-items:center;gap:4px;transition:gap 0.2s}
+.sol-link:hover{gap:8px}
+.sol-card.featured{border:2px solid var(--blue-accent);border-top:4px solid var(--blue-accent)}
+@media(max-width:768px){.sol-grid{grid-template-columns:1fr}}
+
+/* PROCESS CARDS (2x2) */
+.proc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.proc-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;display:flex;gap:24px;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.proc-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:rgba(37,99,235,0.25)}
+.proc-icon{flex-shrink:0;width:64px;height:64px;display:flex;align-items:center;justify-content:center}
+.proc-icon img{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.06))}
+.proc-name{font-size:17px;font-weight:700;color:var(--navy-deep);margin-bottom:8px}
+.proc-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.proc-spec{font-size:11.5px;font-weight:600;color:var(--text3);font-family:'JetBrains Mono',monospace}
+@media(max-width:768px){.proc-grid{grid-template-columns:1fr}.proc-card{flex-direction:column}}
+
+/* FIELD CARDS (4 cols) */
+.field-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.field-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 20px;display:flex;flex-direction:column;box-shadow:var(--sh-sm);transition:all 0.3s ease;border-top:4px solid var(--blue-accent)}
+.field-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
+.field-icon{height:100px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.field-icon img{max-height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 3px 6px rgba(0,0,0,0.05))}
+.field-name{font-size:16px;font-weight:700;color:var(--navy-deep);margin-bottom:8px}
+.field-desc{font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:16px;flex-grow:1}
+.field-specs{list-style:none;font-size:11.5px;color:var(--text2);margin-bottom:16px}
+.field-specs li{margin-bottom:4px;padding-left:12px;position:relative}
+.field-specs li::before{content:'•';position:absolute;left:0;color:var(--blue-accent);font-weight:700}
+.field-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:14px;margin-top:auto}
+@media(max-width:1024px){.field-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.field-grid{grid-template-columns:1fr}}
+
+/* NEWS */
+.news-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.news-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.news-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md)}
+.news-source{font-size:11px;font-weight:600;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px}
+.news-title{font-size:20px;font-weight:700;color:var(--navy-deep);margin-bottom:10px}
+.news-desc{font-size:13.5px;color:var(--text2);line-height:1.6;flex-grow:1;margin-bottom:16px}
+.news-link{font-size:13px;font-weight:600;color:var(--blue-accent);display:flex;align-items:center;gap:4px;transition:gap 0.2s}
+.news-link:hover{gap:8px}
+@media(max-width:640px){.news-grid{grid-template-columns:1fr}}
+
+/* PAIN */
+.pain-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.pain-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.pain-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue-accent)}
+.pain-card.alert::before{background:#EAB308}
+.pain-badge{font-size:11px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px}
+.pain-card.alert .pain-badge{color:#B45309}
+.pain-title{font-size:20px;font-weight:700;color:var(--navy-deep);margin-bottom:10px}
+.pain-desc{font-size:13.5px;color:var(--text2);line-height:1.6;flex-grow:1;margin-bottom:20px}
+.pain-actions{display:flex;gap:10px;flex-wrap:wrap}
+.pain-btn{font-size:12px;font-weight:600;padding:8px 16px;border-radius:var(--r-sm);border:1px solid var(--border);color:var(--text);background:var(--bg);transition:all 0.2s}
+.pain-btn:hover{background:var(--bg2);border-color:var(--text3)}
+.pain-btn.accent{background:var(--blue-accent);color:#fff;border-color:var(--blue-accent)}
+.pain-btn.accent:hover{background:var(--blue-hover)}
+@media(max-width:640px){.pain-grid{grid-template-columns:1fr}}
+
+/* CLIENT CATEGORIES */
+.client-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.client-cat{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-md);padding:24px 20px}
+.client-cat h3{font-size:14px;font-weight:700;color:var(--navy-deep);margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--blue-accent);display:inline-block}
+.client-list{display:flex;flex-wrap:wrap;gap:6px}
+.client-item{font-size:12px;color:var(--text2);background:var(--bg3);padding:4px 10px;border-radius:var(--r-sm);font-weight:500}
+@media(max-width:1024px){.client-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.client-grid{grid-template-columns:1fr}}
+
+/* INDUSTRIES */
+.ind-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.ind-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:32px;display:grid;grid-template-columns:1fr 120px;gap:20px;align-items:center;box-shadow:var(--sh-sm);transition:all 0.3s ease}
+.ind-card:hover{transform:translateY(-3px);box-shadow:var(--sh-md);border-color:rgba(37,99,235,0.25)}
+.ind-tag{font-size:11px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;display:block}
+.ind-name{font-size:22px;font-weight:700;color:var(--navy-deep);margin-bottom:8px}
+.ind-desc{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px}
+.ind-link{font-size:12.5px;font-weight:600;color:var(--blue-accent);display:inline-flex;align-items:center;gap:4px}
+.ind-visual svg{width:100%;height:auto;max-height:140px;color:var(--text3);transition:color 0.3s;stroke:currentColor}
+.ind-card:hover .ind-visual svg{color:var(--blue-accent)}
+@media(max-width:768px){.ind-grid{grid-template-columns:1fr}.ind-card{grid-template-columns:1fr}.ind-visual{display:none}}
+
+/* CTA FINAL */
+.cta-final{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:100px 0;position:relative;overflow:hidden}
+.cta-container{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:2}
+.cta-overline{font-size:13px;font-weight:700;color:var(--blue-accent);text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;display:block}
+.cta-title{font-size:clamp(28px,3.5vw,40px);font-weight:700;line-height:1.2;margin-bottom:20px;color:var(--navy-deep)}
+.cta-title strong{color:var(--blue-accent);font-weight:800}
+.cta-subtitle{font-size:15px;line-height:1.6;color:var(--text2);margin-bottom:28px}
+.cta-stamps{display:flex;gap:20px;flex-wrap:wrap;font-size:12px;font-weight:600;color:var(--text2);border-top:1px solid var(--border);padding-top:20px}
+.cta-stamp{display:flex;align-items:center;gap:6px}
+.cta-stamp::before{content:'';display:inline-block;width:6px;height:6px;background:var(--blue-accent);border-radius:50%}
+.cta-form{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-lg);padding:36px;box-shadow:var(--sh-xl);position:relative}
+.cta-form::before{content:'FORM: CONTROL DIAGNOSTIC PROTOCOL';position:absolute;top:14px;right:18px;font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--text3)}
+.cta-form h3{font-size:17px;font-weight:700;color:var(--navy-deep);margin-bottom:20px}
+.form-grp{margin-bottom:18px}
+.form-grp label{display:block;font-size:12px;font-weight:600;color:var(--navy-deep);margin-bottom:5px}
+.form-grp input{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);transition:all 0.2s}
+.form-grp select{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r-sm);padding:11px 14px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text);transition:all 0.2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%2394A3B8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.form-grp select:focus{outline:none;border-color:var(--blue-accent);box-shadow:0 0 0 3px rgba(37,99,235,0.1);background-color:var(--bg)}
+.form-grp select:invalid{color:var(--text3)}
+.form-btn{width:100%;background:var(--blue-accent);color:#fff;border:none;border-radius:var(--r-sm);padding:13px;font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:0.5px;cursor:pointer;box-shadow:var(--sh-sm);transition:all 0.25s ease;margin-top:6px}
+.form-btn:hover{background:var(--blue-hover);transform:translateY(-2px);box-shadow:var(--sh-md)}
+.form-disc{font-size:10.5px;color:var(--text3);margin-top:14px;text-align:center;line-height:1.4}
+@media(max-width:768px){.cta-container{grid-template-columns:1fr;gap:40px}}
+
+/* FOOTER */
+.footer{background:var(--bg);border-top:1px solid var(--border);padding:70px 0 36px;font-size:13.5px}
+.footer-grid{max-width:1280px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1.2fr 0.7fr 0.7fr 0.7fr;gap:36px}
+.footer-brand{max-width:300px}
+.footer-logo{font-family:'Outfit',sans-serif;font-size:20px;font-weight:800;color:var(--navy-deep);margin-bottom:16px;display:block;letter-spacing:-0.5px}
+.footer-tagline{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:18px}
+.footer-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);padding:7px 14px;background:var(--bg3);border-radius:var(--r-sm)}
+.footer-badge-dot{width:6px;height:6px;background:var(--blue-accent);border-radius:50%}
+.footer-badge-text{font-size:10.5px;font-weight:600;color:var(--navy-deep);text-transform:uppercase;letter-spacing:0.3px}
+.footer-col h4{font-family:'Outfit',sans-serif;font-size:13px;font-weight:700;color:var(--navy-deep);text-transform:uppercase;margin-bottom:20px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--text2);font-size:13px;transition:all 0.2s}
+.footer-col a:hover{color:var(--blue-accent);padding-left:2px}
+.footer-col p{color:var(--text2);margin-bottom:6px}
+.footer-bottom{max-width:1280px;margin:50px auto 0;padding:28px 40px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;color:var(--text2);font-size:12px;flex-wrap:wrap;gap:12px}
+.footer-mono{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px}.footer-brand{max-width:100%}}
+@media(max-width:480px){.footer-grid{grid-template-columns:1fr}}
+
+/* HERO CAROUSEL */
+.hero-slides{position:relative;width:100%}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.8s ease;pointer-events:none;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
+.hero-slide.active{opacity:1;pointer-events:auto;position:relative}
+.hero-dots{display:flex;gap:10px;margin-top:28px;z-index:10;position:relative}
+.hero-dot{width:32px;height:4px;border-radius:2px;background:rgba(255,255,255,0.2);border:none;cursor:pointer;transition:all 0.3s ease}
+.hero-dot.active{background:var(--blue-accent);width:48px}
+@media(max-width:1024px){.hero-slide{grid-template-columns:1fr!important;gap:40px;text-align:center}.hero-slide .hero-content{max-width:100%}.hero-slide .hero-sub{max-width:100%}.hero-slide .hero-ctas{justify-content:center}.hero-slide .hero-caps{grid-template-columns:repeat(2,1fr)}.hero-slide .hero-visual svg{max-width:360px}}
+@media(max-width:640px){.hero-dots{justify-content:center}.hero-slide .hero-caps{grid-template-columns:1fr}.hero-slide .hero-ctas{flex-direction:column}}
+</style>
 </head>
-
 <body>
 
-    <!-- NAVBAR V2 (Frosted Glass) -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">CONECTA<div class="nav-dot"></div></a>
-            <div class="nav-links">
-                <a href="index.html#sistemas" class="nav-link">División Sistemas</a>
-                <a href="index.html#equipos" class="nav-link">Venta de Equipos</a>
-                <a href="#catalogo" class="nav-link">Catálogo Subestaciones</a>
-                <a href="index.html#normativa" class="nav-link">Normativa</a>
-                <a href="#cotizar" class="nav-cta">Cotizar NovaTech</a>
-            </div>
-        </div>
+<header class="site-header" style="background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100">
+  <div class="sec-container" style="display:flex;justify-content:space-between;align-items:center;padding:16px 0">
+    <a href="/" class="logo" style="font-family:Outfit;font-size:22px;font-weight:800;color:var(--navy-deep);text-decoration:none">CONECTA</a>
+    <nav style="display:flex;gap:24px;align-items:center">
+      <a href="/" style="font-size:14px;color:var(--text2);text-decoration:none">Inicio</a>
+      <a href="/#soluciones" style="font-size:14px;color:var(--text2);text-decoration:none">Soluciones</a>
+      <a href="/#diagnostico" style="background:var(--blue-accent);color:#fff;padding:8px 20px;border-radius:var(--r-sm);text-decoration:none;font-weight:600;font-size:14px">Contacto</a>
     </nav>
+  </div>
+</header>
 
-    <!-- HERO V2 -->
-    <header class="nova-hero">
-        <div class="hero-grid"></div>
-        <div class="hero-glow"></div>
-        <div class="hero-container">
-            <div class="hero-content fade-up">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span> Substation Automation
-                </div>
-                <h1>Automatización <span class="hl">NovaTech</span>. El cerebro de la S/E.</h1>
-                <p class="hero-sub">Integramos y suministramos la legendaria familia OrionLX para digitalizar, controlar y comunicar
-                    subestaciones eléctricas bajo los más altos estándares normativos.</p>
-                <div class="hero-caps">
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/></svg> OrionLX</div>
-                        <div class="hero-cap-desc">Gateway + RTU</div>
-                    </div>
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> IEC 61850</div>
-                        <div class="hero-cap-desc">MMS / GOOSE / SV</div>
-                    </div>
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg> Bitronics</div>
-                        <div class="hero-cap-desc">Medición + PMU</div>
-                    </div>
-                    <div class="hero-cap">
-                        <div class="hero-cap-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Kronos</div>
-                        <div class="hero-cap-desc">GPS / PTP Clock</div>
-                    </div>
-                </div>
-                <div class="hero-ctas">
-                    <a href="#catalogo" class="btn1">Ver Arquitectura Orion</a>
-                    <a href="index.html" class="btn2">Volver a CONECTA</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <img src="assets/novatech_img/orionlx_plus.webp" alt="NovaTech OrionLX Gateway">
-            </div>
-        </div>
-    </header>
+<section class="sec sec-alt" style="background:#0033a0;color:#fff;padding:80px 0 60px">
+  <div class="sec-container">
+    <div class="sec-header"><div>
+      <span class="sec-overline" style="color:#60a5fa">DISTRIBUIDOR OFICIAL CHILE</span>
+      <h1 class="sec-title" style="color:#fff">Catalogo <span style="color:#60a5fa">NovaTech</span></h1>
+      <p style="color:#b3cde0;font-size:18px;max-width:600px">RTUs OrionLX+, modulos Orion I/O pin-compatible GE D20, medidores Bitronics, relojes Kronos. 40+ protocolos nativos.</p>
+    </div></div>
+  </div>
+</section>
 
-    <!-- CATALOG SECTION -->
-    <section id="catalogo" class="catalog-section">
-        <div class="sec-container">
-            <div class="sec-header">
-                <div>
-                    <span class="sec-overline">Plataforma Oficial</span>
-                    <h2 class="sec-title"><strong>NovaTech</strong> Automation</h2>
-                </div>
-                <p class="sec-tag">RTUs, Medidores y Gateways preferidos por utilies eléctricas USA · Validados CEN Chile.</p>
-            </div>
-
-            <!-- CATEGORY 1: RTU & Gateways -->
-            <h3 class="product-category-title"><span>01</span> Gateways y RTUs (Familia Orion)</h3>
-            <div class="product-grid">
-
-                <!-- OrionLX -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/novatech_img/orionlx_plus.webp" alt="OrionLX"></div>
-                    <h3>OrionLX Automation Platform</h3>
-                    <p>El estándar de la industria. Un gateway multiprotocolo, HMI local, procesador lógico y servidor
-                        de datos en un solo dispositivo robusto para racks de 19".</p>
-                    <ul class="feature-list">
-                        <li>Más de 40 protocolos (DNP3, IEC 61850, Modbus)</li>
-                        <li>Gestión de puertos seriales y Ethernet flexibles</li>
-                        <li>Editor de lógicas matemáticas tipo PLC integrado</li>
-                        <li>Ciberseguridad NERC CIP</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('OrionLX Automation Platform')" class="btn-primary-card">✉️ Consultar a Ingeniería</button>
-                </div>
-
-                <!-- OrionLXm -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/novatech_img/orionlx_m.webp" alt="OrionLXm"></div>
-                    <h3>OrionLXm (Compacto)</h3>
-                    <p>Todo el poder de ruteo del OrionLX en un formato compacto para montaje en riel DIN o paneles
-                        pequeños en celdas de Media Tensión.</p>
-                    <ul class="feature-list">
-                        <li>Consumo ultra-bajo (&lt; 10W)</li>
-                        <li>Topologías de red redundantes integradas</li>
-                        <li>Micro-SD para almacenamiento masivo SCADA local</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('OrionLXm (Compacto)')" class="btn-primary-card">✉️ Consultar a Ingeniería</button>
-                </div>
-
-                <!-- Orion I/O -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/novatech_img/orion_io.webp" alt="Orion I/O"></div>
-                    <h3>Distributed I/O Modules</h3>
-                    <p>Módulos de entradas y salidas de campo (analógicas y digitales) ultra-robustos que conectan
-                        señales de desconectadores y relés mecánicos al ecosistema Orion.</p>
-                    <ul class="feature-list">
-                        <li>Comunicación rápida por Fibra/Cobre DNP3</li>
-                        <li>Etiquetas magnéticas personalizables</li>
-                        <li>Aislamiento galvánico severo clase S/E</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Distributed I/O Modules')" class="btn-primary-card">✉️ Consultar a Ingeniería</button>
-                </div>
-            </div>
-
-            <!-- CATEGORY 2: Measurement -->
-            <h3 class="product-category-title"><span>02</span> Medición y Calidad de Energía (Bitronics)</h3>
-            <div class="product-grid">
-
-                <!-- Bitronics M650 -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/novatech_img/bitronics_660.webp" alt="Bitronics M650"></div>
-                    <h3>Medidores Panel Bitronics M650</h3>
-                    <p>Medidores de panel con gran visibilidad LED, diseñados especificamente para tableros eléctricos.
-                        Brindan medición SCADA y visualización in-situ.</p>
-                    <ul class="feature-list">
-                        <li>Pantalla LED de alto brillo y 3 líneas</li>
-                        <li>DNP3 Ethernet y Serial nativo</li>
-                        <li>Configuración vía puerto frontal IP</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Medidores Panel Bitronics M650')" class="btn-primary-card">✉️ Consultar a Ingeniería</button>
-                </div>
-
-                <!-- Bitronics M871 / PMU -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/novatech_img/bitronics_663.webp" alt="Bitronics M871"></div>
-                    <h3>Bitronics M871 (Analizador &amp; PMU)</h3>
-                    <p>Analizador de calidad de red avanzado que incorpora funcionalidad de medición fasorial
-                        sincronizada (PMU) según estándar IEEE C37.118-2018.</p>
-                    <ul class="feature-list">
-                        <li>Registro de fallas / Oscilografía de alta tasa</li>
-                        <li>Capacidad PMU exigida por el CEN</li>
-                        <li>Dual Ethernet para arquitecturas PRP/HSR</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Bitronics M871 (Analizador &amp; PMU)')" class="btn-primary-card">✉️ Consultar a Ingeniería</button>
-                </div>
-            </div>
-
-            <!-- CATEGORY 3: Time Sync -->
-            <h3 class="product-category-title"><span>03</span> Sincronización de Tiempo (Kronos)</h3>
-            <div class="product-grid">
-
-                <!-- Kronos Series 2 -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/novatech_img/kronos_2p.webp" alt="Kronos Series 2"></div>
-                    <h3>Kronos Series 2 (Reloj Satelital)</h3>
-                    <p>Relojes precisos para montaje en riel DIN. Diseñados para entregar señales PTP e IRIG-B
-                        garantizando la marca de tiempo (SOE) requerida en subestaciones sin infraestructura rackeable.</p>
-                    <ul class="feature-list">
-                        <li>Receptor GPS y GLONASS</li>
-                        <li>Salidas de precisión por fibra (ST/SC) o cobre (BNC)</li>
-                        <li>Alimentación dual redundante S/E</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Sincronizador Satelital Kronos Series 2')" class="btn-primary-card">✉️ Consultar a Ingeniería</button>
-                </div>
-
-                <!-- Kronos Series 3 -->
-                <div class="product-card fade-up">
-                    <div class="product-icon"><img src="assets/novatech_img/kronos_3r.webp" alt="Kronos Series 3"></div>
-                    <h3>Kronos Series 3 (Rack 19")</h3>
-                    <p>Grandmaster Clock IEC 61850 PTP robusto, apto para Centros de Datos de subestaciones y
-                        aplicaciones críticas de PMU donde la sincronización absoluta de la red es mandate.</p>
-                    <ul class="feature-list">
-                        <li>Soporte Perfil PTP Power (IEEE C37.238)</li>
-                        <li>Oscilador OCXO integrado ("Holdover")</li>
-                        <li>Configuración Web encriptada HTTPS</li>
-                    </ul>
-                    <button type="button" onclick="openQuoteModal('Grandmaster Clock Kronos Series 3')" class="btn-primary-card">✉️ Consultar a Ingeniería</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA BANNER -->
-    <section id="cotizar" class="cta-banner">
-        <div class="sec-container">
-            <h2>Hablemos sobre redes de control bajo IEC 61850</h2>
-            <p>Nuestros ingenieros integradores están preparados para resolver sus arquitecturas de S/E, proveer soporte
-                y cotizar los equipos NovaTech que su proyecto necesita.</p>
-            <button type="button" onclick="openQuoteModal('Equipo/Servicio')" class="btn1">Cotizar Hardware con Ingeniería Integrada</button>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="brand-logo">CONECTA<span>.</span></div>
-        <p>Integradores Multimarca recomendados NovaTech Automation Chile.<br>&copy; 2026 CONECTA Ingeniería. Todos
-            los derechos reservados.</p>
-    </footer>
-
-    <!-- MODAL COTIZACION B2B -->
-    <div id="quoteModal" class="modal-overlay">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeQuoteModal()">&times;</button>
-            <div class="modal-header">
-                <h3>Solicitud de Cotización B2B</h3>
-                <p>Complete sus datos para que un ingeniero especialista le contacte a la brevedad.</p>
-            </div>
-            <form name="cotizacion-equipo" method="POST" data-netlify="true" class="quote-form">
-                <input type="hidden" name="subject" data-remove-prefix value="Nueva Cotización de Equipo B2B" />
-                <div class="form-group">
-                    <label for="frm-equipo">Equipo a Cotizar</label>
-                    <input type="text" id="frm-equipo" name="equipo" readonly class="readonly-input" value="">
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="frm-nombre">Nombre Completo *</label>
-                        <input type="text" id="frm-nombre" name="nombre" required placeholder="Ej: Juan Pérez">
-                    </div>
-                    <div class="form-group">
-                        <label for="frm-empresa">Empresa / Rut *</label>
-                        <input type="text" id="frm-empresa" name="empresa" required placeholder="Ej: Minera Escondida">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="frm-email">Correo Corporativo *</label>
-                        <input type="email" id="frm-email" name="email" required placeholder="juan@empresa.cl">
-                    </div>
-                    <div class="form-group">
-                        <label for="frm-servicio">Requerimiento Principal *</label>
-                        <select id="frm-servicio" name="servicio" required>
-                            <option value="">Seleccione una opción...</option>
-                            <option value="Suministro de Hardware">Suministro de Equipos / Hardware</option>
-                            <option value="Servicio de Integracion">Integración y Puesta en Marcha</option>
-                            <option value="Soporte Tecnico">Soporte Técnico / Mantención</option>
-                            <option value="Asesoria Normativa">Asesoría Normativa / Consultoría</option>
-                            <option value="Otro">Otro (Especifique en el mensaje)</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="frm-mensaje">Mensaje o Detalles Adicionales</label>
-                    <textarea id="frm-mensaje" name="mensaje" rows="3"
-                        placeholder="Indique cantidad, plazos o detalles técnicos relevantes..."></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Enviar Solicitud a Ingeniería</button>
-                <div style="text-align: center; margin-top: 12px; font-size: 0.75rem; color: #94a3b8;">Sistema cifrado y
-                    gestionado por CONECTA B2B</div>
-            </form>
-        </div>
+<section class="sec sec-white">
+  <div class="sec-container">
+    <div class="field-grid">
+      <article class="field-card fade-up" style="border-top-color:#0033a0">
+        <div class="field-icon"><img src="/v2/assets/novatech_img/orionlx_plus.webp" alt="OrionLX+"></div>
+        <h3 class="field-name">OrionLX+ RTU Gateway</h3>
+        <p class="field-desc">40+ protocolos nativos: DNP3, IEC 61850, Modbus, ICCP/TASE.2. Arquitectura redundante Activo-Activo. NERC CIP.</p>
+        <ul class="field-specs"><li>Marca: NovaTech</li><li>40+ protocolos</li><li>Redundante</li></ul>
+        <div class="field-footer"><span class="sol-tag">RTU</span><a href="/v2/landing/reemplazo-ge-d20.html" class="sol-link" style="color:#0033a0">Ver retrofit &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#0033a0">
+        <div class="field-icon"><img src="/v2/assets/novatech_img/orion_io.webp" alt="Orion I/O"></div>
+        <h3 class="field-name">Orion I/O Pin-Compatible</h3>
+        <p class="field-desc">Modulos I/O compatibles pin a pin con GE D20, D200, D25. Reemplazo sin re-cablear el gabinete.</p>
+        <ul class="field-specs"><li>Marca: NovaTech</li><li>Pin GE D20</li><li>Sin re-cablear</li></ul>
+        <div class="field-footer"><span class="sol-tag">I/O</span><a href="/v2/landing/reemplazo-ge-d20.html" class="sol-link" style="color:#0033a0">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#0033a0">
+        <div class="field-icon"><img src="/v2/assets/novatech_img/orionlx_m.webp" alt="OrionLXm"></div>
+        <h3 class="field-name">OrionMX Compacto</h3>
+        <p class="field-desc">RTU para espacios reducidos. Misma herramienta de configuracion que OrionLX+. Ideal para gabinetes pequenos.</p>
+        <ul class="field-specs"><li>Marca: NovaTech</li><li>Compacto</li><li>Misma config</li></ul>
+        <div class="field-footer"><span class="sol-tag">RTU</span><a href="/#diagnostico" class="sol-link" style="color:#0033a0">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#0033a0">
+        <div class="field-icon"><span style="font-size:40px">⚡</span></div>
+        <h3 class="field-name">Bitronics M650/M871</h3>
+        <p class="field-desc">Medicion de potencia con precision 0.2s. MTBF 40 anos. Garantia 10 anos. Display web configurable.</p>
+        <ul class="field-specs"><li>Marca: NovaTech</li><li>Precision 0.2s</li><li>Garantia 10 años</li></ul>
+        <div class="field-footer"><span class="sol-tag">Medicion</span><a href="/#diagnostico" class="sol-link" style="color:#0033a0">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#0033a0">
+        <div class="field-icon"><span style="font-size:40px">🕐</span></div>
+        <h3 class="field-name">Kronos 3R Reloj Satelital</h3>
+        <p class="field-desc">GPS+GALILEO+BEIDOU+GLONASS. Precision 60ns. PTP IEEE C37.238. PRP/HSR integrado.</p>
+        <ul class="field-specs"><li>Marca: NovaTech</li><li>60ns precision</li><li>4 constelaciones</li></ul>
+        <div class="field-footer"><span class="sol-tag">Sincronismo</span><a href="/#diagnostico" class="sol-link" style="color:#0033a0">Cotizar &rarr;</a></div>
+      </article>
+      <article class="field-card fade-up" style="border-top-color:#0033a0">
+        <div class="field-icon"><span style="font-size:40px">🔌</span></div>
+        <h3 class="field-name">Hermes Switches</h3>
+        <p class="field-desc">Switches Layer 2 Gigabit endurecidos para subestacion. IEC 61850-3. Redundancia PRP/HSR.</p>
+        <ul class="field-specs"><li>Marca: NovaTech</li><li>IEC 61850-3</li><li>PRP/HSR</li></ul>
+        <div class="field-footer"><span class="sol-tag">Red OT</span><a href="/v2/landing/switches-iec61850.html" class="sol-link" style="color:#0033a0">Ver switches &rarr;</a></div>
+      </article>
     </div>
+  </div>
+</section>
 
-    <!-- MODAL JS -->
-    <script>
-        function openQuoteModal(itemName) {
-            document.getElementById('frm-equipo').value = itemName;
-            var modal = document.getElementById('quoteModal');
-            modal.style.display = 'flex';
-            modal.offsetHeight;
-            modal.style.opacity = '1';
-        }
+<footer style="background:var(--bg2);padding:24px 0;text-align:center;font-size:13px;color:var(--text2)">
+  CONECTA Ingenieria S.A. &bull; Distribuidor oficial NovaTech Chile &bull; <a href="/" style="color:#0033a0">conecta.cl</a>
+</footer>
 
-        function closeQuoteModal() {
-            var modal = document.getElementById('quoteModal');
-            modal.style.display = 'none';
-            modal.style.opacity = '0';
-        }
-
-        window.onclick = function (event) {
-            var modal = document.getElementById('quoteModal');
-            if (event.target === modal) {
-                closeQuoteModal();
-            }
-        }
-
-        // Navbar scroll shrink
-        window.addEventListener('scroll', function () {
-            var navbar = document.getElementById('navbar');
-            if (window.scrollY > 10) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade-up reveal on scroll
-        (function () {
-            var observer = new IntersectionObserver(function (entries) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.fade-up').forEach(function (el) {
-                observer.observe(el);
-            });
-            var heroContent = document.querySelector('.hero-content.fade-up');
-            if (heroContent) heroContent.classList.add('visible');
-        })();
-    </script>
-
-</body>
-
-</html>
+</body></html>
