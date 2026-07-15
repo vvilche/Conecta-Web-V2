@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://conecta.cl/catalogo_novatech.html">
 <style>
 /* ================================================================
-   CONECTA WEB V2 — DESIGN SYSTEM COMPLETO
+   CONECTA WEB V2 â DESIGN SYSTEM COMPLETO
    ================================================================ */
 :root {
   --navy-deep: #0A1628; --navy: #0F1F3D; --blue-royal: #1E3A5F;
@@ -164,7 +164,7 @@ a{text-decoration:none;color:inherit}
 .field-desc{font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:16px;flex-grow:1}
 .field-specs{list-style:none;font-size:11.5px;color:var(--text2);margin-bottom:16px}
 .field-specs li{margin-bottom:4px;padding-left:12px;position:relative}
-.field-specs li::before{content:'•';position:absolute;left:0;color:var(--blue-accent);font-weight:700}
+.field-specs li::before{content:'â¢';position:absolute;left:0;color:var(--blue-accent);font-weight:700}
 .field-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:14px;margin-top:auto}
 @media(max-width:1024px){.field-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.field-grid{grid-template-columns:1fr}}
@@ -270,6 +270,8 @@ a{text-decoration:none;color:inherit}
 .hero-dot.active{background:var(--blue-accent);width:48px}
 @media(max-width:1024px){.hero-slide{grid-template-columns:1fr!important;gap:40px;text-align:center}.hero-slide .hero-content{max-width:100%}.hero-slide .hero-sub{max-width:100%}.hero-slide .hero-ctas{justify-content:center}.hero-slide .hero-caps{grid-template-columns:repeat(2,1fr)}.hero-slide .hero-visual svg{max-width:360px}}
 @media(max-width:640px){.hero-dots{justify-content:center}.hero-slide .hero-caps{grid-template-columns:1fr}.hero-slide .hero-ctas{flex-direction:column}}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10B981;color:#fff;padding:16px 28px;border-radius:12px;font-family:Inter,sans-serif;font-size:15px;font-weight:500;z-index:9999;opacity:0;transition:opacity 0.4s ease,transform 0.4s ease;box-shadow:0 8px 30px rgba(16,185,129,0.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-8px)}
 </style>
 </head>
 <body>
@@ -320,21 +322,21 @@ a{text-decoration:none;color:inherit}
         <div class="field-footer"><span class="sol-tag">RTU</span><a href="/#diagnostico" class="sol-link" style="color:#0033a0">Cotizar &rarr;</a></div>
       </article>
       <article class="field-card fade-up" style="border-top-color:#0033a0">
-        <div class="field-icon"><span style="font-size:40px">⚡</span></div>
+        <div class="field-icon"><span style="font-size:40px">â¡</span></div>
         <h3 class="field-name">Bitronics M650/M871</h3>
         <p class="field-desc">Medicion de potencia con precision 0.2s. MTBF 40 anos. Garantia 10 anos. Display web configurable.</p>
-        <ul class="field-specs"><li>Marca: NovaTech</li><li>Precision 0.2s</li><li>Garantia 10 años</li></ul>
+        <ul class="field-specs"><li>Marca: NovaTech</li><li>Precision 0.2s</li><li>Garantia 10 aÃ±os</li></ul>
         <div class="field-footer"><span class="sol-tag">Medicion</span><a href="/#diagnostico" class="sol-link" style="color:#0033a0">Cotizar &rarr;</a></div>
       </article>
       <article class="field-card fade-up" style="border-top-color:#0033a0">
-        <div class="field-icon"><span style="font-size:40px">🕐</span></div>
+        <div class="field-icon"><span style="font-size:40px">ð</span></div>
         <h3 class="field-name">Kronos 3R Reloj Satelital</h3>
         <p class="field-desc">GPS+GALILEO+BEIDOU+GLONASS. Precision 60ns. PTP IEEE C37.238. PRP/HSR integrado.</p>
         <ul class="field-specs"><li>Marca: NovaTech</li><li>60ns precision</li><li>4 constelaciones</li></ul>
         <div class="field-footer"><span class="sol-tag">Sincronismo</span><a href="/#diagnostico" class="sol-link" style="color:#0033a0">Cotizar &rarr;</a></div>
       </article>
       <article class="field-card fade-up" style="border-top-color:#0033a0">
-        <div class="field-icon"><span style="font-size:40px">🔌</span></div>
+        <div class="field-icon"><span style="font-size:40px">ð</span></div>
         <h3 class="field-name">Hermes Switches</h3>
         <p class="field-desc">Switches Layer 2 Gigabit endurecidos para subestacion. IEC 61850-3. Redundancia PRP/HSR.</p>
         <ul class="field-specs"><li>Marca: NovaTech</li><li>IEC 61850-3</li><li>PRP/HSR</li></ul>
@@ -348,4 +350,7 @@ a{text-decoration:none;color:inherit}
   CONECTA Ingenieria S.A. &bull; Distribuidor oficial NovaTech Chile &bull; <a href="/" style="color:#0033a0">conecta.cl</a>
 </footer>
 
+<script>
+function showToast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show');setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove()},400)},3000)});}
+</script>
 </body></html>

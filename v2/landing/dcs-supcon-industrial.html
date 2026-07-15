@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>DCS SUPCON ECS-700 ÃÂ¢ÃÂÃÂ¢ Control Distribuido Industrial | CONECTA</title>
+<title>DCS SUPCON ECS-700 ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¢ Control Distribuido Industrial | CONECTA</title>
 <meta name="description" content="Si tu DCS esta obsoleto y necesitas migrar sin parar. SUPCON ECS-700. IA predictiva PRIDE. Compatible instrumentacion legacy.">
 <meta name="keywords" content="DCS SUPCON Chile, ECS-700 control distribuido, migrar DCS sin parar planta, SUPcon vs Emerson, PRIDE IA predictiva">
 <link rel="canonical" href="https://conecta.cl/v2/landing/dcs-supcon-industrial.html">
-<meta property="og:title" content="DCS SUPCON ECS-700 ÃÂ¢ÃÂÃÂ¢ Control Distribuido Industrial | CONECTA"><meta property="og:description" content="Si tu DCS esta obsoleto y necesitas migrar sin parar. SUPCON ECS-700. IA predictiva PRIDE. Compatible instrumentacion legacy.">
+<meta property="og:title" content="DCS SUPCON ECS-700 ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¢ Control Distribuido Industrial | CONECTA"><meta property="og:description" content="Si tu DCS esta obsoleto y necesitas migrar sin parar. SUPCON ECS-700. IA predictiva PRIDE. Compatible instrumentacion legacy.">
 <link rel="icon" href="https://conecta.cl/wp-content/uploads/2024/03/cropped-favicon-32x32.jpg">
 <style>@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
@@ -15,8 +15,8 @@
   --brand-accent-hover: #1d4ed8;
   --brand-alert: #eab308;      /* Amarillo Alerta */
   --text-main: #1e293b;        /* Slate text principal */
-  --text-muted: #64748b;       /* Gris tÃÂÃÂ©cnico suave */
-  --bg-page: #f8fafc;          /* Fondo de pÃÂÃÂ¡gina claro premium */
+  --text-muted: #64748b;       /* Gris tÃÂÃÂÃÂÃÂ©cnico suave */
+  --bg-page: #f8fafc;          /* Fondo de pÃÂÃÂÃÂÃÂ¡gina claro premium */
   --bg-card: #ffffff;          /* Tarjetas en blanco puro */
   --border-light: #e2e8f0;     /* Bordes finos de grilla */
   
@@ -73,7 +73,7 @@ a {
   transition: var(--transition);
 }
 
-/* Grilla tÃÂÃÂ©cnica Blueprint */
+/* Grilla tÃÂÃÂÃÂÃÂ©cnica Blueprint */
 .blueprint-bg {
   position: absolute;
   inset: 0;
@@ -1410,13 +1410,15 @@ a {
     text-align: center;
   }
 }
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10B981;color:#fff;padding:16px 28px;border-radius:12px;font-family:Inter,sans-serif;font-size:15px;font-weight:500;z-index:9999;opacity:0;transition:opacity 0.4s ease,transform 0.4s ease;box-shadow:0 8px 30px rgba(16,185,129,0.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-8px)}
 </style></head>
 <body>
 <div class="blueprint-bg"></div>
 <div class="announcement-bar"><span>// CUMPLIMIENTO NTSyCS 2025 // INGENIERIA LOCAL CHILE //</span></div>
 <header class="navbar"><div class="navbar-container"><a href="/v2/" style="font-family:Outfit,sans-serif;font-size:22px;font-weight:800;color:var(--brand-dark);text-decoration:none">CONECTA<span style="font-size:11px;color:var(--text-muted);margin-left:6px;letter-spacing:1px;text-transform:uppercase">Ingenieria</span></a><nav class="nav-links"><a href="/v2/" style="font-size:13.5px;font-weight:500;color:var(--text-muted);text-decoration:none;margin-right:20px">Inicio</a><a href="#diagnostico" style="background:var(--brand-accent);color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:8px;text-decoration:none">Contacto</a></nav></div></header>
 <section class="hero" id="inicio" style="padding-top:104px"><div class="hero-shading"></div><div class="hero-container"><div class="hero-content">
-<span class="hero-overline">DIVISION PROCESOS INDUSTRIALES ÃÂ¢ÃÂÃÂ¢ CONTROL DISTRIBUIDO</span>
+<span class="hero-overline">DIVISION PROCESOS INDUSTRIALES ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ¢ CONTROL DISTRIBUIDO</span>
 <h1 class="hero-title">Si tu <span>DCS esta obsoleto</span> y necesitas migrar sin parar la planta</h1>
 <p class="hero-subtitle">DCS SUPCON ECS-700. IA predictiva PRIDE con 1,566 modos de falla. Compatible con instrumentacion legacy Modbus/HART.</p>
 <div class="hero-capabilities"><div class="capability-badge"><div class="cap-title">ECS-700</div><div class="cap-desc">Control distribuido redundante. Hot-swap modulos.</div></div><div class="capability-badge"><div class="cap-title">IA PRIDE</div><div class="cap-desc">1,566 modos de falla. Deteccion anticipada.</div></div><div class="capability-badge"><div class="cap-title">APC V11.2</div><div class="cap-desc">Optimizacion multivariable. ROI 3-6 meses.</div></div><div class="capability-badge"><div class="cap-title">supOS IIoT</div><div class="cap-desc">Plataforma unificada. 300+ protocolos nativos.</div></div></div>
@@ -1446,12 +1448,15 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('/v2/form.php', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
           .then(function(r) { return r.json(); })
           .then(function(r) {
-            if (r.ok) { btn.textContent = 'Recibido.'; btn.style.background='#10B981'; }
+            if (r.ok) { btn.textContent = 'Enviado!'; showToast('Gracias ' + (data.name || data.nombre || '') + '. Te contactaremos pronto.'); btn.style.background='#10B981'; }
             else { btn.textContent = 'Error'; btn.style.background='#DC2626'; }
           })
           .catch(function() { btn.textContent = 'Error de conexion'; btn.style.background='#DC2626'; })
           .finally(function() { setTimeout(function() { btn.disabled=false; btn.textContent='Cotizar'; btn.style.background='var(--brand-accent)'; }, 4000); });
     });
 });
+</script>
+<script>
+function showToast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show');setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove()},400)},3000)});}
 </script>
 </body></html>

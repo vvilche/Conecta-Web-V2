@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ejemplos de Ingenieria • CONECTA</title>
+<title>Ejemplos de Ingenieria â¢ CONECTA</title>
 <meta name="description" content="Casos de ingenieria CONECTA: SCADA, RTU, PMU, protecciones, control en Chile.">
-<style></style></head>
+<style>.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10B981;color:#fff;padding:16px 28px;border-radius:12px;font-family:Inter,sans-serif;font-size:15px;font-weight:500;z-index:9999;opacity:0;transition:opacity 0.4s ease,transform 0.4s ease;box-shadow:0 8px 30px rgba(16,185,129,0.3)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(-8px)}
+</style></head>
 <body>
 <div class="blueprint-bg"></div>
 <div class="announcement-bar"><span>// EJEMPLOS DE INGENIERIA // CONECTA CHILE //</span></div>
@@ -20,4 +22,7 @@
 <article class="solution-card"><h3 class="solution-title">Centro de Control GPE</h3><p class="solution-description">Desarrollo de ingenieria e integracion para centro de control de generacion. Supervision y telemedida.</p><div class="solution-details"><span class="solution-tag">Fuente: MCH</span><a href="https://www.mch.cl/conecta-ingenieria-y-gpe-dan-el-salto-a-la-operacion-centralizada-con-su-nuevo-centro-de-control/" class="solution-link" target="_blank">Leer nota &rarr;</a></div></article>
 </div></div>
 <footer class="footer"><div class="footer-container"><div class="footer-brand"><span style="font-family:Outfit;font-size:20px;font-weight:800;color:var(--brand-dark)">CONECTA S.A.</span></div></div></footer>
+<script>
+function showToast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show');setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove()},400)},3000)});}
+</script>
 </body></html>

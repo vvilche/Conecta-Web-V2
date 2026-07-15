@@ -9,12 +9,12 @@
   "@graph": [
     {
       "@type": "Organization",
-      "name": "CONECTA IngenierÃ­a S.A.",
+      "name": "CONECTA Ingeniería S.A.",
       "url": "https://conecta.cl",
-      "description": "AutomatizaciÃ³n y control industrial en Chile â SCADA, RTU, PMU, DCS, protecciÃ³n elÃ©ctrica.",
+      "description": "Automatización y control industrial en Chile — SCADA, RTU, PMU, DCS, protección eléctrica.",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Doctor Alejandro del RÃ­o 2171, ÃuÃ±oa",
+        "streetAddress": "Doctor Alejandro del Río 2171, Ñuñoa",
         "addressLocality": "Santiago",
         "addressCountry": "CL"
       },
@@ -27,9 +27,9 @@
     },
     {
       "@type": "WebSite",
-      "name": "CONECTA IngenierÃ­a",
+      "name": "CONECTA Ingeniería",
       "url": "https://conecta.cl/v2/",
-      "description": "AutomatizaciÃ³n y control industrial Chile",
+      "description": "Automatización y control industrial Chile",
       "potentialAction": {
         "@type": "SearchAction",
         "target": "https://conecta.cl/?s={search_term_string}",
@@ -39,21 +39,21 @@
   ]
 }
 </script>
-<title>CONECTA INGENIERÃA | DigitalizaciÃ³n de Subestaciones y Control Industrial</title>
-  <meta name="description" content="CONECTA IngenierÃ­a â AutomatizaciÃ³n y control industrial en Chile. SCADA, RTU, PMU, DCS, protecciÃ³n elÃ©ctrica y consultorÃ­a para cumplimiento CEN NTSyCS. Partners oficiales SUPCON, NovaTech, Vizimax.">
+<title>CONECTA INGENIERÍA | Digitalización de Subestaciones y Control Industrial</title>
+  <meta name="description" content="CONECTA Ingeniería — Automatización y control industrial en Chile. SCADA, RTU, PMU, DCS, protección eléctrica y consultoría para cumplimiento CEN NTSyCS. Partners oficiales SUPCON, NovaTech, Vizimax.">
   <meta name="keywords" content="reemplazo GE D20 Chile, retrofit RTU, OrionLX NovaTech, cambio remotas obsoletas, RTU IEC 61850, PMU medicion sincrofasorial CEN, SCADA redundante subestacion, SCADA backup NTSyCS, switch Hirschmann IEC 61850-3, protecciones secundarias CEN, EDAC coordinador electrico, implementar EDAC subestacion, ECAP parque solar, ciberseguridad OT NERC CIP, ley 21663 infraestructura critica, PMGD requisito CEN, Vizimax SynchroTeq, DNP3 IEC 61850, automatizacion industrial Chile, CONECTA ingenieria, SUPcon DCS, Orion I/O pin compatible GE D20">
-  <meta property="og:title" content="CONECTA IngenierÃ­a â AutomatizaciÃ³n y Control Industrial Chile">
-  <meta property="og:description" content="SCADA, RTU, PMU, DCS y consultorÃ­a para cumplimiento CEN. Partners SUPCON, NovaTech, Vizimax.">
+  <meta property="og:title" content="CONECTA Ingeniería — Automatización y Control Industrial Chile">
+  <meta property="og:description" content="SCADA, RTU, PMU, DCS y consultoría para cumplimiento CEN. Partners SUPCON, NovaTech, Vizimax.">
   <meta property="og:url" content="https://conecta.cl/v2/">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="CONECTA IngenierÃ­a">
+  <meta property="og:site_name" content="CONECTA Ingeniería">
   <link rel="icon" href="https://conecta.cl/wp-content/uploads/2024/03/cropped-favicon-32x32.jpg" sizes="32x32">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* ================================================================
-   CONECTA WEB V2 â DESIGN SYSTEM COMPLETO
+   CONECTA WEB V2 — DESIGN SYSTEM COMPLETO
    ================================================================ */
 :root {
   --navy-deep: #0A1628; --navy: #0F1F3D; --blue-royal: #1E3A5F;
@@ -209,7 +209,7 @@ a{text-decoration:none;color:inherit}
 .field-desc{font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:16px;flex-grow:1}
 .field-specs{list-style:none;font-size:11.5px;color:var(--text2);margin-bottom:16px}
 .field-specs li{margin-bottom:4px;padding-left:12px;position:relative}
-.field-specs li::before{content:'â¢';position:absolute;left:0;color:var(--blue-accent);font-weight:700}
+.field-specs li::before{content:'•';position:absolute;left:0;color:var(--blue-accent);font-weight:700}
 .field-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:14px;margin-top:auto}
 @media(max-width:1024px){.field-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.field-grid{grid-template-columns:1fr}}
@@ -315,16 +315,12 @@ a{text-decoration:none;color:inherit}
 .hero-dot.active{background:var(--blue-accent);width:48px}
 @media(max-width:1024px){.hero-slide{grid-template-columns:1fr!important;gap:40px;text-align:center}.hero-slide .hero-content{max-width:100%}.hero-slide .hero-sub{max-width:100%}.hero-slide .hero-ctas{justify-content:center}.hero-slide .hero-caps{grid-template-columns:repeat(2,1fr)}.hero-slide .hero-visual svg{max-width:360px}}
 @media(max-width:640px){.hero-dots{justify-content:center}.hero-slide .hero-caps{grid-template-columns:1fr}.hero-slide .hero-ctas{flex-direction:column}}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10B981;color:#fff;padding:16px 28px;border-radius:12px;font-family:Inter,sans-serif;font-size:15px;font-weight:500;z-index:9999;opacity:0;transition:opacity 0.4s ease,transform 0.4s ease;box-shadow:0 8px 30px rgba(16,185,129,0.3)}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(-8px)}
 </style>
 <style>
 .whatsapp-float{position:fixed;bottom:24px;right:24px;z-index:9999;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,0.4);transition:all 0.3s ease;cursor:pointer}
 .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,0.5)}
 .whatsapp-float svg{width:32px;height:32px;fill:#fff}
 @media(max-width:640px){.whatsapp-float{bottom:16px;right:16px;width:52px;height:52px}.whatsapp-float svg{width:28px;height:28px}}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:#10B981;color:#fff;padding:16px 28px;border-radius:12px;font-family:Inter,sans-serif;font-size:15px;font-weight:500;z-index:9999;opacity:0;transition:opacity 0.4s ease,transform 0.4s ease;box-shadow:0 8px 30px rgba(16,185,129,0.3)}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(-8px)}
 </style>
 <link rel="canonical" href="https://conecta.cl/v2/">
 <script type="application/ld+json">
@@ -344,9 +340,9 @@ a{text-decoration:none;color:inherit}
 <nav class="navbar" id="navbar">
   <div class="nav-container">
     <a href="#" class="nav-logo"><span class="nav-dot"></span>CONECTA S.A.</a>
-    <button class="hamburger" id="hamburger" aria-label="MenÃº"><span></span><span></span><span></span></button>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
     <div class="nav-links">
-      <a href="#soluciones" class="nav-link">DivisiÃ³n Sistemas</a>
+      <a href="#soluciones" class="nav-link">División Sistemas</a>
       <a href="#procesos" class="nav-link">SUPcon Procesos</a>
       <a href="#campo" class="nav-link">Venta de Equipos</a>
       <a href="#diagnostico" class="nav-cta">Evaluar Proyecto</a>
@@ -363,9 +359,9 @@ a{text-decoration:none;color:inherit}
       <!-- SLIDE 1: SISTEMAS DE POTENCIA -->
       <div class="hero-slide active" >
         <div class="hero-content">
-          <div class="hero-badge"><span class="hero-badge-dot"></span> DIVISIÃN SISTEMAS DE POTENCIA</div>
-          <h1>Especialistas en <span class="hl">RTU, PMU, SCADA</span> y protecciones elÃ©ctricas</h1>
-          <p class="hero-sub">Soporte local, ingenierÃ­a avanzada y provisiÃ³n directa en Chile para marcas globales lÃ­deres de infraestructura crÃ­tica. Representantes oficiales de <b style="color:#93C5FD">SUPcon</b>, <b style="color:#93C5FD">NovaTech Automation</b>, <b style="color:#93C5FD">Belden/Hirschmann</b>, <b style="color:#93C5FD">Vizimax</b>.</p>
+          <div class="hero-badge"><span class="hero-badge-dot"></span> DIVISIÓN SISTEMAS DE POTENCIA</div>
+          <h1>Especialistas en <span class="hl">RTU, PMU, SCADA</span> y protecciones eléctricas</h1>
+          <p class="hero-sub">Soporte local, ingeniería avanzada y provisión directa en Chile para marcas globales líderes de infraestructura crítica. Representantes oficiales de <b style="color:#93C5FD">SUPcon</b>, <b style="color:#93C5FD">NovaTech Automation</b>, <b style="color:#93C5FD">Belden/Hirschmann</b>, <b style="color:#93C5FD">Vizimax</b>.</p>
           <div class="hero-caps">
             <div class="hero-cap">
               <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg> Sistemas RTU</div>
@@ -373,20 +369,20 @@ a{text-decoration:none;color:inherit}
             </div>
             <div class="hero-cap">
               <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Telemedida PMU</div>
-              <div class="hero-cap-desc">MediciÃ³n sincrofasorial IEEE C37.118 exigida por la NTSyCS del Coordinador ElÃ©ctrico Nacional.</div>
+              <div class="hero-cap-desc">Medición sincrofasorial IEEE C37.118 exigida por la NTSyCS del Coordinador Eléctrico Nacional.</div>
             </div>
             <div class="hero-cap">
               <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg> SCADA & EMS</div>
-              <div class="hero-cap-desc">IntegraciÃ³n de centros de control, SCADA Elipse, DCS de procesos e interfaz HMI local.</div>
+              <div class="hero-cap-desc">Integración de centros de control, SCADA Elipse, DCS de procesos e interfaz HMI local.</div>
             </div>
             <div class="hero-cap">
               <div class="hero-cap-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Protecciones</div>
-              <div class="hero-cap-desc">IngenierÃ­a, pruebas y suministro de relÃ©s de protecciÃ³n y esquemas EDAC y SITR.</div>
+              <div class="hero-cap-desc">Ingeniería, pruebas y suministro de relés de protección y esquemas EDAC y SITR.</div>
             </div>
           </div>
           <div class="hero-ctas">
-            <a href="#soluciones" class="btn1">Sistemas de AutomatizaciÃ³n <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
-            <a href="#campo" class="btn2">CatÃ¡logo de Equipos B2B <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+            <a href="#soluciones" class="btn1">Sistemas de Automatización <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
+            <a href="#campo" class="btn2">Catálogo de Equipos B2B <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h12M2 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
           </div>
         </div>
         <div class="hero-visual">
@@ -420,7 +416,7 @@ a{text-decoration:none;color:inherit}
             </g>
             <path d="M260,240 Q170,230 100,240" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
             <path d="M260,240 Q350,230 420,240" fill="none" stroke="#3B82F6" stroke-width="1" stroke-dasharray="6 4" opacity="0.5"/>
-            <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(96,165,250,0.35)" letter-spacing="2">RTU Â· SCADA Â· IEC 61850</text>
+            <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(96,165,250,0.35)" letter-spacing="2">RTU · SCADA · IEC 61850</text>
           </svg>
         </div>
       </div>
@@ -428,8 +424,8 @@ a{text-decoration:none;color:inherit}
       <!-- SLIDE 2: PROCESOS INDUSTRIALES -->
       <div class="hero-slide" >
         <div class="hero-content">
-          <div class="hero-badge" style="background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3);color:#6EE7B7"><span class="hero-badge-dot" style="background:#34D399"></span> DIVISIÃN PROCESOS INDUSTRIALES</div>
-          <h1>Control Distribuido, <span class="hl">IA Predictiva</span> y DigitalizaciÃ³n de Plantas</h1>
+          <div class="hero-badge" style="background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.3);color:#6EE7B7"><span class="hero-badge-dot" style="background:#34D399"></span> DIVISIÓN PROCESOS INDUSTRIALES</div>
+          <h1>Control Distribuido, <span class="hl">IA Predictiva</span> y Digitalización de Plantas</h1>
           <p class="hero-sub"><b style="color:#6EE7B7">Partners exclusivos SUPcon en Chile.</b> DCS ECS-700, plataforma IIoT supOS, inteligencia artificial PRIDE con 1,566 modos de falla y control avanzado APC. Llevamos la industria chilena al siguiente nivel.</p>
           <div class="hero-caps">
             <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
@@ -438,11 +434,11 @@ a{text-decoration:none;color:inherit}
             </div>
             <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
               <div class="hero-cap-title" style="color:#6EE7B7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M12 2a10 10 0 0 1 10 10H12V2z"/><path d="M2 12h8"/></svg> IA Predictiva PRIDE</div>
-              <div class="hero-cap-desc">1,566 modos de falla integrados. DetecciÃ³n temprana y diagnÃ³stico automÃ¡tico 24/7.</div>
+              <div class="hero-cap-desc">1,566 modos de falla integrados. Detección temprana y diagnóstico automático 24/7.</div>
             </div>
             <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
               <div class="hero-cap-title" style="color:#6EE7B7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg> APC V11.2</div>
-              <div class="hero-cap-desc">Control avanzado de procesos. ROI en 3 a 6 meses. OptimizaciÃ³n multivariable en tiempo real.</div>
+              <div class="hero-cap-desc">Control avanzado de procesos. ROI en 3 a 6 meses. Optimización multivariable en tiempo real.</div>
             </div>
             <div class="hero-cap" style="border-color:rgba(16,185,129,0.2)">
               <div class="hero-cap-title" style="color:#6EE7B7"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10"/></svg> supOS IIoT</div>
@@ -485,7 +481,7 @@ a{text-decoration:none;color:inherit}
             </g>
             <path d="M260,180 Q170,220 100,280" fill="none" stroke="#10B981" stroke-width="1" stroke-dasharray="6 4" opacity="0.4"/>
             <path d="M260,180 Q350,220 420,280" fill="none" stroke="#10B981" stroke-width="1" stroke-dasharray="6 4" opacity="0.4"/>
-            <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(52,211,153,0.35)" letter-spacing="2">DCS Â· IIoT Â· PRIDE AI</text>
+            <text x="260" y="390" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="rgba(52,211,153,0.35)" letter-spacing="2">DCS · IIoT · PRIDE AI</text>
           </svg>
         </div>
       </div>
@@ -502,9 +498,9 @@ a{text-decoration:none;color:inherit}
 <!-- BRANDS -->
 <section class="brands-sec">
   <div class="sec-container">
-    <div class="brands-title">TecnologÃ­as de Clase Mundial Integradas por CONECTA</div>
+    <div class="brands-title">Tecnologías de Clase Mundial Integradas por CONECTA</div>
     <div class="brands-row">
-      <div class="brand-item s0"><span class="brand-name">SUPCON</span><span class="brand-sub">DCS & InstrumentaciÃ³n</span></div>
+      <div class="brand-item s0"><span class="brand-name">SUPCON</span><span class="brand-sub">DCS & Instrumentación</span></div>
       <div class="brand-item s1"><span class="brand-name">NovaTech</span><span class="brand-sub">RTUs & Gateways S/E</span></div>
       <div class="brand-item s2"><span class="brand-name">VIZIMAX</span><span class="brand-sub">Control de Transformadores</span></div>
       <div class="brand-item s4"><span class="brand-name">ELPROS</span><span class="brand-sub">SCADA & PMU Software</span></div>
@@ -519,60 +515,60 @@ a{text-decoration:none;color:inherit}
     <div style="text-align:center;margin-bottom:48px">
       <span class="sec-overline">Aseguramiento de la Continuidad Operativa</span>
       <h2 class="sec-title">Un Plan Simple en <strong>Tres Etapas</strong></h2>
-      <p style="color:var(--text2);max-width:600px;margin:14px auto 0">Aplicamos metodologÃ­as probadas bajo estÃ¡ndares internacionales para asegurar el cumplimiento normativo de su planta sin interrumpir su producciÃ³n.</p>
+      <p style="color:var(--text2);max-width:600px;margin:14px auto 0">Aplicamos metodologías probadas bajo estándares internacionales para asegurar el cumplimiento normativo de su planta sin interrumpir su producción.</p>
     </div>
     <div class="sol-grid">
-      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">01</span><h3 class="sol-title" style="margin-top:8px">DiagnÃ³stico de Brechas</h3><p class="sol-desc">Realizamos un <b>levantamiento de seÃ±ales y ciberseguridad</b> de forma pasiva y no invasiva para detectar vulnerabilidades normativas o riesgos crÃ­ticos en su SCADA de respaldo.</p></div>
-      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">02</span><h3 class="sol-title" style="margin-top:8px">IntegraciÃ³n de IngenierÃ­a</h3><p class="sol-desc">Modernizamos sus RTUs obsoletas e implementamos los armarios PMUs o DCS (ECS-700 de SUPcon) de manera modular, traduciendo protocolos y validando cada seÃ±al sin detener la continuidad operativa de su negocio.</p></div>
-      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">03</span><h3 class="sol-title" style="margin-top:8px">Aprobacion y Soporte</h3><p class="sol-desc">Nos encargamos de las auditorÃ­as y la <a href="https://www.coordinador.cl/" target="_blank" rel="noopener">aprobacion final ante el Coordinador Electrico Nacional</a>. Su planta queda respaldada bajo el <b>Soporte Local y la garantÃ­a directa de CONECTA</b> en Chile.</p></div>
+      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">01</span><h3 class="sol-title" style="margin-top:8px">Diagnóstico de Brechas</h3><p class="sol-desc">Realizamos un <b>levantamiento de señales y ciberseguridad</b> de forma pasiva y no invasiva para detectar vulnerabilidades normativas o riesgos críticos en su SCADA de respaldo.</p></div>
+      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">02</span><h3 class="sol-title" style="margin-top:8px">Integración de Ingeniería</h3><p class="sol-desc">Modernizamos sus RTUs obsoletas e implementamos los armarios PMUs o DCS (ECS-700 de SUPcon) de manera modular, traduciendo protocolos y validando cada señal sin detener la continuidad operativa de su negocio.</p></div>
+      <div class="sol-card fade-up"><span class="sol-num" style="font-size:24px;font-weight:800;color:var(--blue-accent)">03</span><h3 class="sol-title" style="margin-top:8px">Aprobacion y Soporte</h3><p class="sol-desc">Nos encargamos de las auditorías y la <a href="https://www.coordinador.cl/" target="_blank" rel="noopener">aprobacion final ante el Coordinador Electrico Nacional</a>. Su planta queda respaldada bajo el <b>Soporte Local y la garantía directa de CONECTA</b> en Chile.</p></div>
     </div>
-    <div class="sec-cta-center"><a href="#diagnostico" class="nav-cta" style="font-size:15px;padding:14px 30px">Solicitar una ReuniÃ³n TÃ©cnica â</a></div>
+    <div class="sec-cta-center"><a href="#diagnostico" class="nav-cta" style="font-size:15px;padding:14px 30px">Solicitar una Reunión Técnica →</a></div>
   </div>
 </section>
 
-<!-- DIVISIÃN SISTEMAS -->
+<!-- DIVISIÓN SISTEMAS -->
 <section class="sec sec-alt" id="soluciones">
   <div class="sec-container">
     <header class="sec-header">
-      <div><span class="sec-overline">IngenierÃ­a aplicada bajo altos estÃ¡ndares normativos</span><h2 class="sec-title">AutomatizaciÃ³n y Control en <strong>Sistemas de Potencia</strong></h2></div>
-      <div class="sec-tag">// 1. DIVISIÃN SISTEMAS & INTEGRACIÃN</div>
+      <div><span class="sec-overline">Ingeniería aplicada bajo altos estándares normativos</span><h2 class="sec-title">Automatización y Control en <strong>Sistemas de Potencia</strong></h2></div>
+      <div class="sec-tag">// 1. DIVISIÓN SISTEMAS & INTEGRACIÓN</div>
     </header>
     <div class="sol-grid">
-      <article class="sol-card fade-up"><span class="sol-num">CN-SYS-001</span><h3 class="sol-title">SCADA Redundante y Anexo SITR</h3><p class="sol-desc">Desarrollamos centros de control con <b>arquitecturas redundantes de alta disponibilidad (Activo-Activo)</b> y enlaces DNP3/ICCP para recuperar su visibilidad total y asegurar cumplimiento estricto del Anexo TÃ©cnico SITR del CEN.</p><div class="sol-footer"><span class="sol-tag">DNP3 / ICCP / Anexo SITR</span><a href="#diagnostico" class="sol-link">Auditar ConexiÃ³n â</a></div></article>
-      <article class="sol-card featured fade-up"><span class="sol-num">CN-SYS-004 // #1 EN BASE INSTALADA CHILE</span><h3 class="sol-title">IntegraciÃ³n PMU y Software ELPROS</h3><p class="sol-desc">Evite rechazos tÃ©cnicos en sus proyectos de GeneraciÃ³n. IntegraciÃ³n llave en mano de armarios PMUS (IEC/IEEE) mÃ¡s la <a href="https://www.coordinador.cl/" target="_blank" rel="noopener">plataforma ELPROS oficial exigida por el CEN</a>. Compatibilidad garantizada ante el Coordinador ElÃ©ctrico.</p><div class="sol-footer"><span class="sol-tag">PMU IEEE C37.118 / ELPROS</span><a href="#diagnostico" class="sol-link">Contactar PMU Team â</a></div></article>
-      <article class="sol-card fade-up"><span class="sol-num">CN-SYS-006</span><h3 class="sol-title">Ciberseguridad y Ley 21.663</h3><p class="sol-desc">Blindamos infraestructuras crÃ­ticas. Suministramos RTUs nativamente seguras bajo estÃ¡ndar <b>NERC CIP</b> y arquitecturas PRP para cumplir con las exigencias de la nueva <b>Ley Marco de Ciberseguridad (21.663)</b> y los requerimientos del <a href="https://www.coordinador.cl/documentos/normas/ntsyc/" target="_blank" rel="noopener">Coordinador Electrico Nacional</a>.</p><div class="sol-footer"><span class="sol-tag">OT Security / Ley 21.663 / NERC</span><a href="#diagnostico" class="sol-link">Blindar Red OT â</a></div></article>
+      <article class="sol-card fade-up"><span class="sol-num">CN-SYS-001</span><h3 class="sol-title">SCADA Redundante y Anexo SITR</h3><p class="sol-desc">Desarrollamos centros de control con <b>arquitecturas redundantes de alta disponibilidad (Activo-Activo)</b> y enlaces DNP3/ICCP para recuperar su visibilidad total y asegurar cumplimiento estricto del Anexo Técnico SITR del CEN.</p><div class="sol-footer"><span class="sol-tag">DNP3 / ICCP / Anexo SITR</span><a href="#diagnostico" class="sol-link">Auditar Conexión →</a></div></article>
+      <article class="sol-card featured fade-up"><span class="sol-num">CN-SYS-004 // #1 EN BASE INSTALADA CHILE</span><h3 class="sol-title">Integración PMU y Software ELPROS</h3><p class="sol-desc">Evite rechazos técnicos en sus proyectos de Generación. Integración llave en mano de armarios PMUS (IEC/IEEE) más la <a href="https://www.coordinador.cl/" target="_blank" rel="noopener">plataforma ELPROS oficial exigida por el CEN</a>. Compatibilidad garantizada ante el Coordinador Eléctrico.</p><div class="sol-footer"><span class="sol-tag">PMU IEEE C37.118 / ELPROS</span><a href="#diagnostico" class="sol-link">Contactar PMU Team →</a></div></article>
+      <article class="sol-card fade-up"><span class="sol-num">CN-SYS-006</span><h3 class="sol-title">Ciberseguridad y Ley 21.663</h3><p class="sol-desc">Blindamos infraestructuras críticas. Suministramos RTUs nativamente seguras bajo estándar <b>NERC CIP</b> y arquitecturas PRP para cumplir con las exigencias de la nueva <b>Ley Marco de Ciberseguridad (21.663)</b> y los requerimientos del <a href="https://www.coordinador.cl/documentos/normas/ntsyc/" target="_blank" rel="noopener">Coordinador Electrico Nacional</a>.</p><div class="sol-footer"><span class="sol-tag">OT Security / Ley 21.663 / NERC</span><a href="#diagnostico" class="sol-link">Blindar Red OT →</a></div></article>
     </div>
   </div>
 </section>
 
-<!-- DIVISIÃN PROCESOS -->
+<!-- DIVISIÓN PROCESOS -->
 <section class="sec sec-white" id="procesos">
   <div class="sec-container">
     <header class="sec-header">
-      <div><span class="sec-overline">Sistemas Inteligentes Integrados para Control Continuo</span><h2 class="sec-title">IntegraciÃ³n de <strong>Procesos Industriales</strong></h2></div>
-      <div class="sec-tag">// 2. DIVISIÃN PROCESOS & IA INDUSTRIAL</div>
+      <div><span class="sec-overline">Sistemas Inteligentes Integrados para Control Continuo</span><h2 class="sec-title">Integración de <strong>Procesos Industriales</strong></h2></div>
+      <div class="sec-tag">// 2. DIVISIÓN PROCESOS & IA INDUSTRIAL</div>
     </header>
     <div class="proc-grid">
-      <article class="proc-card fade-up"><div class="proc-icon"><img src="/v2/assets/supcon_img/mapped/DCS.png" alt="Sistema de Control Distribuido SUPCON ECS-700"></div><div><h3 class="proc-name">Control Distribuido (DCS / SIS / UCS)</h3><p class="proc-desc">Sistemas de control distribuido (DCS) avanzados para la automatizaciÃ³n total de procesos mineros, celulosas y centrales termoelÃ©ctricas. Arquitectura IEC 61850 de misiÃ³n crÃ­tica sin gateways complejos.</p><span class="proc-spec">TecnologÃ­a: SUPCON DCS ECS-700 // Seguridad: SIS SIL3 Certificado</span></div></article>
-      <article class="proc-card fade-up"><div class="proc-icon"><img src="/v2/assets/supcon_img/mapped/SIS.webp" alt="Sistema Instrumentado de Seguridad SIL3"></div><div><h3 class="proc-name">Inteligencia Artificial Industrial (PRIDE)</h3><p class="proc-desc">ImplementaciÃ³n de gemelos digitales y mantenimiento predictivo en base a modelos de IA. Permite detectar fugas o anomalÃ­as tÃ©rmicas y mecÃ¡nicas severas con precision verificable.</p><span class="proc-spec">Algoritmos: Predictivo IA PRIDE // 1,566 Modos de Falla Integrados</span></div></article>
-      <article class="proc-card fade-up"><div class="proc-icon"><img src="/v2/assets/supcon_img/mapped/PLC.png" alt="Control Avanzado de Procesos APC V11.2"></div><div><h3 class="proc-name">OptimizaciÃ³n de Procesos (APC V11.2)</h3><p class="proc-desc">Algoritmos de control predictivo avanzado (APC). Optimiza puntos de operaciÃ³n en tiempo real en celdas de flotaciÃ³n, calderas y molienda. Estabiliza la operaciÃ³n reduciendo la variabilidad del proceso y optimizando el consumo energÃ©tico con resultados verificables en terreno.</p><span class="proc-spec">Control Avanzado: APC V11.2 // Retorno de InversiÃ³n: 3 a 6 meses</span></div></article>
-      <article class="proc-card fade-up"><div class="proc-icon"><img src="/v2/assets/supcon_img/mapped/LoRa_Gateway.webp" alt="Plataforma IIoT supOS SUPCON"></div><div><h3 class="proc-name">Plataforma IIoT supOS</h3><p class="proc-desc">UnificaciÃ³n industrial. Conecte su base de datos PI System, SCADA, ERP y DCS heredados en un bus unificado (UNS). Interfaz de monitoreo y diseÃ±o de dashboards en un entorno low-code nativo.</p><span class="proc-spec">Namespace Unificado (UNS) // Conectividad: 300+ Protocolos Nativo</span></div></article>
+      <article class="proc-card fade-up"><div class="proc-icon"><img src="assets/supcon_img/mapped/DCS.png" alt="Sistema de Control Distribuido SUPCON ECS-700"></div><div><h3 class="proc-name">Control Distribuido (DCS / SIS / UCS)</h3><p class="proc-desc">Sistemas de control distribuido (DCS) avanzados para la automatización total de procesos mineros, celulosas y centrales termoeléctricas. Arquitectura IEC 61850 de misión crítica sin gateways complejos.</p><span class="proc-spec">Tecnología: SUPCON DCS ECS-700 // Seguridad: SIS SIL3 Certificado</span></div></article>
+      <article class="proc-card fade-up"><div class="proc-icon"><img src="assets/supcon_img/mapped/SIS.webp" alt="Sistema Instrumentado de Seguridad SIL3"></div><div><h3 class="proc-name">Inteligencia Artificial Industrial (PRIDE)</h3><p class="proc-desc">Implementación de gemelos digitales y mantenimiento predictivo en base a modelos de IA. Permite detectar fugas o anomalías térmicas y mecánicas severas con precision verificable.</p><span class="proc-spec">Algoritmos: Predictivo IA PRIDE // 1,566 Modos de Falla Integrados</span></div></article>
+      <article class="proc-card fade-up"><div class="proc-icon"><img src="assets/supcon_img/mapped/PLC.png" alt="Control Avanzado de Procesos APC V11.2"></div><div><h3 class="proc-name">Optimización de Procesos (APC V11.2)</h3><p class="proc-desc">Algoritmos de control predictivo avanzado (APC). Optimiza puntos de operación en tiempo real en celdas de flotación, calderas y molienda. Estabiliza la operación reduciendo la variabilidad del proceso y optimizando el consumo energético con resultados verificables en terreno.</p><span class="proc-spec">Control Avanzado: APC V11.2 // Retorno de Inversión: 3 a 6 meses</span></div></article>
+      <article class="proc-card fade-up"><div class="proc-icon"><img src="assets/supcon_img/mapped/LoRa_Gateway.webp" alt="Plataforma IIoT supOS SUPCON"></div><div><h3 class="proc-name">Plataforma IIoT supOS</h3><p class="proc-desc">Unificación industrial. Conecte su base de datos PI System, SCADA, ERP y DCS heredados en un bus unificado (UNS). Interfaz de monitoreo y diseño de dashboards en un entorno low-code nativo.</p><span class="proc-spec">Namespace Unificado (UNS) // Conectividad: 300+ Protocolos Nativo</span></div></article>
     </div>
   </div>
 </section>
 
-<!-- DIVISIÃN COMERCIAL -->
+<!-- DIVISIÓN COMERCIAL -->
 <section class="sec sec-alt" id="campo">
   <div class="sec-container">
     <header class="sec-header">
-      <div><span class="sec-overline">Representantes Exclusivos y Distribuidores Oficiales en Chile</span><h2 class="sec-title">DivisiÃ³n Comercial: <strong>Equipamiento Industrial B2B</strong></h2></div>
-      <div class="sec-tag">// 3. DIVISIÃN COMERCIAL & INSTRUMENTACIÃN</div>
+      <div><span class="sec-overline">Representantes Exclusivos y Distribuidores Oficiales en Chile</span><h2 class="sec-title">División Comercial: <strong>Equipamiento Industrial B2B</strong></h2></div>
+      <div class="sec-tag">// 3. DIVISIÓN COMERCIAL & INSTRUMENTACIÓN</div>
     </header>
     <div class="field-grid">
-      <article class="field-card fade-up" style="border-top-color:var(--red)"><div class="field-icon"><img src="/v2/assets/supcon_img/mapped/SFE900.webp" alt="CaudalÃ­metro electromagnÃ©tico SUPCON SFE900"></div><h3 class="field-name">InstrumentaciÃ³n Inteligente</h3><p class="field-desc">Venta directa de caudalÃ­metros (DN10-DN2000), transmisores de presiÃ³n Serie CXT y sensores de nivel por radar 80GHz de alta exactitud e inmunes a polvo denso.</p><ul class="field-specs"><li>Marca: SUPCON Exclusive</li><li>Exactitud: Â±0.075% FS</li><li>Protocolos: HART, Modbus, FF</li></ul><div class="field-footer"><span class="sol-tag">SUPcon</span><a href="catalogo_supcon.html" class="sol-link" style="color:var(--red)">Ver CatÃ¡logo SUPcon â</a></div></article>
-      <article class="field-card fade-up" style="border-top-color:#0033a0"><div class="field-icon"><img src="/v2/assets/novatech_img/orionlx_plus.webp" alt="RTU OrionLX+ NovaTech Automation"></div><h3 class="field-name">Gateways de Comunicaciones</h3><p class="field-desc">Suministro de la familia OrionLX/OrionLX+ y Orion I/O. Potentes RTUs para integrar mÃºltiples protocolos legacy y actuar como gateways nativos IEC 61850 de subestaciÃ³n.</p><ul class="field-specs"><li>Marca: NovaTech Automation</li><li>Modelos: OrionLX / OrionLX+</li><li>Retrofit: Reemplazo GE D20</li></ul><div class="field-footer"><span class="sol-tag">NovaTech</span><a href="catalogo_novatech.html" class="sol-link" style="color:#0033a0">Ver CatÃ¡logo NovaTech â</a></div></article>
-      <article class="field-card fade-up" style="border-top-color:var(--orange)"><div class="field-icon"><img src="/v2/assets/novatech_img/orion_io.webp" alt="MÃ³dulos Orion I/O pin-compatible GE D20"></div><h3 class="field-name">Switches OT & Redes</h3><p class="field-desc">Switches industriales de comunicaciones crÃ­ticas con certificaciÃ³n IEC 61850-3, cables de fibra Ã³ptica robustos y routers de borde OT con ciberseguridad integrada.</p><ul class="field-specs"><li>Marcas: Hirschmann / Belden</li><li>EstÃ¡ndar: IEC 61850-3 Substation</li><li>Seguridad: Firewalls de Celda</li></ul><div class="field-footer"><span class="sol-tag">Belden</span><a href="#diagnostico" class="sol-link" style="color:var(--orange)">Cotizar SoluciÃ³n â</a></div></article>
-      <article class="field-card fade-up" style="border-top-color:#004b87"><div class="field-icon"><img src="/v2/assets/novatech_img/orionlx_m.webp" alt="OrionLXm NovaTech para montaje en riel DIN"></div><h3 class="field-name">Protecciones & Retrofit</h3><p class="field-desc">Suministro de equipos de protecciÃ³n secundaria homologados por la CEN y servicios llave en mano de retrofit para reemplazar relÃ©s descontinuados.</p><ul class="field-specs"><li>Marca: Vizimax</li><li>HomologaciÃ³n: Aprobado CEN</li><li>Especialidad: Control de Transformador</li></ul><div class="field-footer"><span class="sol-tag">Vizimax</span><a href="#diagnostico" class="sol-link" style="color:#004b87">Cotizar SoluciÃ³n â</a></div></article>
+      <article class="field-card fade-up" style="border-top-color:var(--red)"><div class="field-icon"><img src="assets/supcon_img/mapped/SFE900.webp" alt="Caudalímetro electromagnético SUPCON SFE900"></div><h3 class="field-name">Instrumentación Inteligente</h3><p class="field-desc">Venta directa de caudalímetros (DN10-DN2000), transmisores de presión Serie CXT y sensores de nivel por radar 80GHz de alta exactitud e inmunes a polvo denso.</p><ul class="field-specs"><li>Marca: SUPCON Exclusive</li><li>Exactitud: ±0.075% FS</li><li>Protocolos: HART, Modbus, FF</li></ul><div class="field-footer"><span class="sol-tag">SUPcon</span><a href="catalogo_supcon.html" class="sol-link" style="color:var(--red)">Ver Catálogo SUPcon →</a></div></article>
+      <article class="field-card fade-up" style="border-top-color:#0033a0"><div class="field-icon"><img src="assets/novatech_img/orionlx_plus.webp" alt="RTU OrionLX+ NovaTech Automation"></div><h3 class="field-name">Gateways de Comunicaciones</h3><p class="field-desc">Suministro de la familia OrionLX/OrionLX+ y Orion I/O. Potentes RTUs para integrar múltiples protocolos legacy y actuar como gateways nativos IEC 61850 de subestación.</p><ul class="field-specs"><li>Marca: NovaTech Automation</li><li>Modelos: OrionLX / OrionLX+</li><li>Retrofit: Reemplazo GE D20</li></ul><div class="field-footer"><span class="sol-tag">NovaTech</span><a href="catalogo_novatech.html" class="sol-link" style="color:#0033a0">Ver Catálogo NovaTech →</a></div></article>
+      <article class="field-card fade-up" style="border-top-color:var(--orange)"><div class="field-icon"><img src="assets/novatech_img/orion_io.webp" alt="Módulos Orion I/O pin-compatible GE D20"></div><h3 class="field-name">Switches OT & Redes</h3><p class="field-desc">Switches industriales de comunicaciones críticas con certificación IEC 61850-3, cables de fibra óptica robustos y routers de borde OT con ciberseguridad integrada.</p><ul class="field-specs"><li>Marcas: Hirschmann / Belden</li><li>Estándar: IEC 61850-3 Substation</li><li>Seguridad: Firewalls de Celda</li></ul><div class="field-footer"><span class="sol-tag">Belden</span><a href="#diagnostico" class="sol-link" style="color:var(--orange)">Cotizar Solución →</a></div></article>
+      <article class="field-card fade-up" style="border-top-color:#004b87"><div class="field-icon"><img src="assets/novatech_img/orionlx_m.webp" alt="OrionLXm NovaTech para montaje en riel DIN"></div><h3 class="field-name">Protecciones & Retrofit</h3><p class="field-desc">Suministro de equipos de protección secundaria homologados por la CEN y servicios llave en mano de retrofit para reemplazar relés descontinuados.</p><ul class="field-specs"><li>Marca: Vizimax</li><li>Homologación: Aprobado CEN</li><li>Especialidad: Control de Transformador</li></ul><div class="field-footer"><span class="sol-tag">Vizimax</span><a href="#diagnostico" class="sol-link" style="color:#004b87">Cotizar Solución →</a></div></article>
     </div>
   </div>
 </section>
@@ -581,12 +577,12 @@ a{text-decoration:none;color:inherit}
 <section class="sec sec-white" id="prensa">
   <div class="sec-container">
     <header class="sec-header">
-      <div><span class="sec-overline">DivulgaciÃ³n y Liderazgo de OpiniÃ³n</span><h2 class="sec-title">CONECTA en la <strong>Prensa Industrial</strong></h2></div>
+      <div><span class="sec-overline">Divulgación y Liderazgo de Opinión</span><h2 class="sec-title">CONECTA en la <strong>Prensa Industrial</strong></h2></div>
       <div class="sec-tag">// PR & MEDIA OUTLETS // MCH.CL</div>
     </header>
     <div class="news-grid">
-      <article class="news-card fade-up"><span class="news-source">Revista MinerÃ­a Chilena</span><h3 class="news-title">Alianza EstratÃ©gica con SUPCON para IA Industrial</h3><p class="news-desc">Conecta IngenierÃ­a firma un acuerdo histÃ³rico con el gigante tecnolÃ³gico asiÃ¡tico SUPCON para introducir algoritmos de Inteligencia Artificial enfocados en la transiciÃ³n hacia plantas de molienda y procesos mineros autÃ³nomos en Chile.</p><a href="https://www.mch.cl/conecta-ingenieria-firma-alianza-con-empresa-china-para-impulsar-ia-industrial-en-chile/" target="_blank" rel="noopener" class="news-link">Leer Nota en MCH.cl â</a></article>
-      <article class="news-card fade-up"><span class="news-source">Revista MinerÃ­a Chilena</span><h3 class="news-title">Exitoso Lanzamiento del Nuevo Centro de Control GPE</h3><p class="news-desc">Medio especializado destaca el desarrollo de ingenierÃ­a e integraciÃ³n realizado por Conecta IngenierÃ­a en la puesta en marcha de un avanzado centro de control para la firma GPE, marcando un hito en supervisiÃ³n y telemedida de generaciÃ³n.</p><a href="https://www.mch.cl/conecta-ingenieria-y-gpe-dan-el-salto-a-la-operacion-centralizada-con-su-nuevo-centro-de-control/" target="_blank" rel="noopener" class="news-link">Leer Nota en MCH.cl â</a></article>
+      <article class="news-card fade-up"><span class="news-source">Revista Minería Chilena</span><h3 class="news-title">Alianza Estratégica con SUPCON para IA Industrial</h3><p class="news-desc">Conecta Ingeniería firma un acuerdo histórico con el gigante tecnológico asiático SUPCON para introducir algoritmos de Inteligencia Artificial enfocados en la transición hacia plantas de molienda y procesos mineros autónomos en Chile.</p><a href="https://www.mch.cl/conecta-ingenieria-firma-alianza-con-empresa-china-para-impulsar-ia-industrial-en-chile/" target="_blank" rel="noopener" class="news-link">Leer Nota en MCH.cl →</a></article>
+      <article class="news-card fade-up"><span class="news-source">Revista Minería Chilena</span><h3 class="news-title">Exitoso Lanzamiento del Nuevo Centro de Control GPE</h3><p class="news-desc">Medio especializado destaca el desarrollo de ingeniería e integración realizado por Conecta Ingeniería en la puesta en marcha de un avanzado centro de control para la firma GPE, marcando un hito en supervisión y telemedida de generación.</p><a href="https://www.mch.cl/conecta-ingenieria-y-gpe-dan-el-salto-a-la-operacion-centralizada-con-su-nuevo-centro-de-control/" target="_blank" rel="noopener" class="news-link">Leer Nota en MCH.cl →</a></article>
     </div>
   </div>
 </section>
@@ -597,14 +593,14 @@ a{text-decoration:none;color:inherit}
 <section class="sec sec-alt" id="industrias" style="padding:80px 0">
   <div class="sec-container">
     <header class="sec-header">
-      <div><span class="sec-overline">Sectores de OperaciÃ³n Clave</span><h2 class="sec-title">Especialistas por <strong>Industria</strong></h2></div>
+      <div><span class="sec-overline">Sectores de Operación Clave</span><h2 class="sec-title">Especialistas por <strong>Industria</strong></h2></div>
       <div class="sec-tag">// FIELD DEPLOYMENTS & SERVICES</div>
     </header>
     <div class="ind-grid">
-      <article class="ind-card fade-up"><div><span class="ind-tag">Sectores CrÃ­ticos</span><h3 class="ind-name">MinerÃ­a</h3><p class="ind-desc">Soluciones robustas para molienda, flotaciÃ³n y espesadores. Control avanzado de procesos y DCS redundantes para mantener la continuidad operativa y mitigar paradas imprevistas bajo condiciones ambientales crÃ­ticas.</p><a href="#diagnostico" class="ind-link">Ver Casos â</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><circle cx="100" cy="100" r="50"/><circle cx="100" cy="100" r="60" stroke-dasharray="3 3"/><line x1="100" y1="20" x2="100" y2="180" stroke-dasharray="4 4"/><path d="M 64,64 L 136,136 M 64,136 L 136,64"/></svg></div></article>
-      <article class="ind-card fade-up"><div><span class="ind-tag">GeneraciÃ³n & TransmisiÃ³n</span><h3 class="ind-name">EnergÃ­a</h3><p class="ind-desc">InterconexiÃ³n segura de parques solares y eÃ³licos al sistema de transmisiÃ³n nacional. Controladores de planta homologados por la CEN, sistemas PMU de mediciÃ³n sÃ­ncrona y lÃ³gica de automatizaciÃ³n robusta.</p><a href="#diagnostico" class="ind-link">Ver Casos â</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><path d="M 100,20 L 50,180 M 100,20 L 150,180"/><line x1="75" y1="100" x2="125" y2="100"/><line x1="40" y1="60" x2="160" y2="60" stroke-width="2"/></svg></div></article>
-      <article class="ind-card fade-up"><div><span class="ind-tag">Procesos Continuos</span><h3 class="ind-name">Celulosa y Papel</h3><p class="ind-desc">Control continuo de calderas recuperadoras, reactores quÃ­micos y bobinadoras de papel. Redundancia crÃ­tica y arquitecturas DCS avanzadas para mantener tolerancias estrictas de humedad, peso y consistencia de fibra.</p><a href="#diagnostico" class="ind-link">Ver Casos â</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><circle cx="60" cy="70" r="30"/><circle cx="140" cy="130" r="30"/><path d="M 60,40 L 140,100 M 60,100 L 140,160" stroke-width="2"/></svg></div></article>
-      <article class="ind-card fade-up"><div><span class="ind-tag">Batch & Trazabilidad</span><h3 class="ind-name">Industria y Alimentos</h3><p class="ind-desc">OptimizaciÃ³n de lÃ­neas de envasado, control higiÃ©nico de reactores y gestiÃ³n de recetas complejas por batch bajo estÃ¡ndar ISA-88. Monitoreo constante del consumo de servicios como vapor, gas y agua.</p><a href="#diagnostico" class="ind-link">Ver Casos â</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><rect x="60" y="30" width="80" height="120"/><path d="M 60,150 L 100,180 L 140,150"/><line x1="100" y1="15" x2="100" y2="120" stroke-width="1.5"/></svg></div></article>
+      <article class="ind-card fade-up"><div><span class="ind-tag">Sectores Críticos</span><h3 class="ind-name">Minería</h3><p class="ind-desc">Soluciones robustas para molienda, flotación y espesadores. Control avanzado de procesos y DCS redundantes para mantener la continuidad operativa y mitigar paradas imprevistas bajo condiciones ambientales críticas.</p><a href="#diagnostico" class="ind-link">Ver Casos →</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><circle cx="100" cy="100" r="50"/><circle cx="100" cy="100" r="60" stroke-dasharray="3 3"/><line x1="100" y1="20" x2="100" y2="180" stroke-dasharray="4 4"/><path d="M 64,64 L 136,136 M 64,136 L 136,64"/></svg></div></article>
+      <article class="ind-card fade-up"><div><span class="ind-tag">Generación & Transmisión</span><h3 class="ind-name">Energía</h3><p class="ind-desc">Interconexión segura de parques solares y eólicos al sistema de transmisión nacional. Controladores de planta homologados por la CEN, sistemas PMU de medición síncrona y lógica de automatización robusta.</p><a href="#diagnostico" class="ind-link">Ver Casos →</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><path d="M 100,20 L 50,180 M 100,20 L 150,180"/><line x1="75" y1="100" x2="125" y2="100"/><line x1="40" y1="60" x2="160" y2="60" stroke-width="2"/></svg></div></article>
+      <article class="ind-card fade-up"><div><span class="ind-tag">Procesos Continuos</span><h3 class="ind-name">Celulosa y Papel</h3><p class="ind-desc">Control continuo de calderas recuperadoras, reactores químicos y bobinadoras de papel. Redundancia crítica y arquitecturas DCS avanzadas para mantener tolerancias estrictas de humedad, peso y consistencia de fibra.</p><a href="#diagnostico" class="ind-link">Ver Casos →</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><circle cx="60" cy="70" r="30"/><circle cx="140" cy="130" r="30"/><path d="M 60,40 L 140,100 M 60,100 L 140,160" stroke-width="2"/></svg></div></article>
+      <article class="ind-card fade-up"><div><span class="ind-tag">Batch & Trazabilidad</span><h3 class="ind-name">Industria y Alimentos</h3><p class="ind-desc">Optimización de líneas de envasado, control higiénico de reactores y gestión de recetas complejas por batch bajo estándar ISA-88. Monitoreo constante del consumo de servicios como vapor, gas y agua.</p><a href="#diagnostico" class="ind-link">Ver Casos →</a></div><div class="ind-visual"><svg viewBox="0 0 200 200" fill="none" stroke-width="1.2"><rect x="60" y="30" width="80" height="120"/><path d="M 60,150 L 100,180 L 140,150"/><line x1="100" y1="15" x2="100" y2="120" stroke-width="1.5"/></svg></div></article>
     </div>
   </div>
 </section>
@@ -613,22 +609,22 @@ a{text-decoration:none;color:inherit}
 <section class="cta-final" id="diagnostico">
   <div class="cta-container">
     <div class="cta-content fade-up">
-      <span class="cta-overline">Agendar ReuniÃ³n</span>
-      <h2 class="cta-title"><strong>Solicita una reuniÃ³n</strong> con nuestro equipo tÃ©cnico</h2>
-      <p class="cta-subtitle">CuÃ©ntanos quÃ© necesitas y te contactaremos para coordinar una evaluaciÃ³n sin compromiso.</p>
-      <div class="cta-stamps"><div class="cta-stamp">Respuesta en 24h</div><div class="cta-stamp">Sin compromiso</div><div class="cta-stamp">IngenierÃ­a chilena</div></div>
+      <span class="cta-overline">Agendar Reunión</span>
+      <h2 class="cta-title"><strong>Solicita una reunión</strong> con nuestro equipo técnico</h2>
+      <p class="cta-subtitle">Cuéntanos qué necesitas y te contactaremos para coordinar una evaluación sin compromiso.</p>
+      <div class="cta-stamps"><div class="cta-stamp">Respuesta en 24h</div><div class="cta-stamp">Sin compromiso</div><div class="cta-stamp">Ingeniería chilena</div></div>
     </div>
     <div class="cta-form fade-up">
-      <h3>Agendar ReuniÃ³n</h3>
+      <h3>Agendar Reunión</h3>
       <form action="/form" method="POST" id="pilot-form">
-        <div class="form-grp"><label>Nombre y Apellido</label><input type="text" name="name" placeholder="Ej. Juan PÃ©rez" required></div>
+        <div class="form-grp"><label>Nombre y Apellido</label><input type="text" name="name" placeholder="Ej. Juan Pérez" required></div>
         <div class="form-grp"><label>Empresa</label><input type="text" name="company" placeholder="Ej. Minera Los Andes" required></div>
-        <div class="form-grp" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label>Cargo</label><input type="text" name="role" placeholder="Ej. Jefe de MantenciÃ³n" required></div><div><label>Celular</label><input type="tel" name="phone" placeholder="+56 9 XXXX XXXX" required></div></div>
+        <div class="form-grp" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label>Cargo</label><input type="text" name="role" placeholder="Ej. Jefe de Mantención" required></div><div><label>Celular</label><input type="tel" name="phone" placeholder="+56 9 XXXX XXXX" required></div></div>
         <div class="form-grp"><label>Email Corporativo</label><input type="email" name="email" placeholder="jperez@empresa.cl" required></div>
-        <div class="form-grp" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label>Tipo de Servicio</label><select name="service" required><option value="" disabled selected>Seleccionar...</option><option value="RTU">RTU / Cambio de Remotas</option><option value="PMU">PMU / Telemedida</option><option value="SCADA">SCADA / EMS</option><option value="DCS">DCS / Control de Procesos</option><option value="Instrumentacion">InstrumentaciÃ³n / Equipos</option><option value="Ciberseguridad">Ciberseguridad OT</option><option value="Protecciones">Protecciones / EDAC</option><option value="BESS">BESS / PMGD</option><option value="Consultoria">ConsultorÃ­a / AuditorÃ­a</option><option value="Otro">Otro</option></select></div><div><label>Urgencia</label><select name="urgency" required><option value="" disabled selected>Seleccionar...</option><option value="inmediata">Inmediata</option><option value="este_mes">Este mes</option><option value="este_trimestre">Este trimestre</option><option value="cotizacion">Solo cotizaciÃ³n</option></select></div></div>
-        <button type="submit" class="form-btn" id="form-btn">Solicitar ReuniÃ³n</button>
+        <div class="form-grp" style="display:grid;grid-template-columns:1fr 1fr;gap:12px"><div><label>Tipo de Servicio</label><select name="service" required><option value="" disabled selected>Seleccionar...</option><option value="RTU">RTU / Cambio de Remotas</option><option value="PMU">PMU / Telemedida</option><option value="SCADA">SCADA / EMS</option><option value="DCS">DCS / Control de Procesos</option><option value="Instrumentacion">Instrumentación / Equipos</option><option value="Ciberseguridad">Ciberseguridad OT</option><option value="Protecciones">Protecciones / EDAC</option><option value="BESS">BESS / PMGD</option><option value="Consultoria">Consultoría / Auditoría</option><option value="Otro">Otro</option></select></div><div><label>Urgencia</label><select name="urgency" required><option value="" disabled selected>Seleccionar...</option><option value="inmediata">Inmediata</option><option value="este_mes">Este mes</option><option value="este_trimestre">Este trimestre</option><option value="cotizacion">Solo cotización</option></select></div></div>
+        <button type="submit" class="form-btn" id="form-btn">Solicitar Reunión</button>
       </form>
-      <p class="form-disc">* IngenierÃ­a y soporte local en Chile.</p>
+      <p class="form-disc">* Ingeniería y soporte local en Chile.</p>
     </div>
   </div>
 </section>
@@ -655,9 +651,9 @@ a{text-decoration:none;color:inherit}
       <p class="footer-tagline">Ingenieria especializada y soporte local de CONECTA en Chile, integrando tecnologias lideres globales.</p>
       <div class="footer-badge"><div class="footer-badge-dot"></div><span class="footer-badge-text">Partner Exclusivo Chile</span></div>
     </div>
-    <div class="footer-col"><h4>TecnologÃ­as</h4><ul><li><a href="#procesos">Plataforma supOS</a></li><li><a href="#procesos">Predictivo PRIDE</a></li><li><a href="#procesos">DCS ECS-700</a></li><li><a href="#campo">Transmisores CXT</a></li><li><a href="#campo">Gateways OrionLX</a></li></ul></div>
+    <div class="footer-col"><h4>Tecnologías</h4><ul><li><a href="#procesos">Plataforma supOS</a></li><li><a href="#procesos">Predictivo PRIDE</a></li><li><a href="#procesos">DCS ECS-700</a></li><li><a href="#campo">Transmisores CXT</a></li><li><a href="#campo">Gateways OrionLX</a></li></ul></div>
     <div class="footer-col"><h4>Soporte Local</h4><p><strong>CONECTA S.A.</strong></p><p>Doctor Alejandro del Rio 2171, Nunoa</p><p>Santiago, Chile</p><p style="margin-top:14px;color:var(--blue-accent)">Contacto:</p><p>+56 9 9784 7431</p></div>
-    <div class="footer-col"><h4>Alianzas</h4><ul><li><a href="https://conecta.cl/" target="_blank" rel="noopener">conecta.cl</a></li><li><a href="https://global.supcon.com/" target="_blank" rel="noopener">global.supcon.com</a></li><li><a href="landing_ejemplos.html" style="color:var(--blue-accent);font-weight:600">â Ejemplos de IngenierÃ­a</a></li><li><a href="#soluciones">DivisiÃ³n Sistemas</a></li><li><a href="#campo">Venta de Equipos</a></li></ul></div>
+    <div class="footer-col"><h4>Alianzas</h4><ul><li><a href="https://conecta.cl/" target="_blank" rel="noopener">conecta.cl</a></li><li><a href="https://global.supcon.com/" target="_blank" rel="noopener">global.supcon.com</a></li><li><a href="landing_ejemplos.html" style="color:var(--blue-accent);font-weight:600">★ Ejemplos de Ingeniería</a></li><li><a href="#soluciones">División Sistemas</a></li><li><a href="#campo">Venta de Equipos</a></li></ul></div>
   </div>
   <div class="footer-bottom">
     <div>&copy; 2026 CONECTA S.A. & SUPcon Technology. Todos los derechos reservados.</div>
@@ -682,7 +678,7 @@ navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
 window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>80));
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:0.15});
 document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
-document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const f=this;const d={name:f.name.value,company:f.company.value,role:f.role.value,phone:f.phone.value,email:f.email.value,service:f.service.value,urgency:f.urgency.value};b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('/v2/form.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(r=>{if(r.ok){b.textContent='â Recibido. Te contactaremos.';b.style.background='#198754';f.reset()}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexiÃ³n';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar ReuniÃ³n';b.style.background='var(--blue-accent)'},4000)})});
+document.querySelector('form').addEventListener('submit',function(e){e.preventDefault();const b=document.getElementById('form-btn');const f=this;const d={name:f.name.value,company:f.company.value,role:f.role.value,phone:f.phone.value,email:f.email.value,service:f.service.value,urgency:f.urgency.value};b.disabled=true;b.textContent='Enviando...';b.style.background='var(--text3)';fetch('/v2/form.php',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(r=>r.json()).then(r=>{if(r.ok){b.textContent='✓ Recibido. Te contactaremos.';b.style.background='#198754';f.reset()}else{b.textContent='Error, intenta de nuevo';b.style.background='#DC2626'}}).catch(()=>{b.textContent='Error de conexión';b.style.background='#DC2626'}).finally(()=>{setTimeout(()=>{b.disabled=false;b.textContent='Solicitar Reunión';b.style.background='var(--blue-accent)'},4000)})});
 </script>
 
 <!-- HERO CAROUSEL SCRIPT -->
@@ -724,9 +720,6 @@ function nextSlide() {
     {"@type": "Question", "name": "Que necesita el SCADA de respaldo segun CEN?", "acceptedAnswer": {"@type": "Answer", "text": "Segundo centro de control redundante con pruebas de avalancha, redundancia, enlaces y backup."}}
   ]
 }
-</script>
-<script>
-function showToast(msg){var t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);requestAnimationFrame(function(){t.classList.add('show');setTimeout(function(){t.classList.remove('show');setTimeout(function(){t.remove()},400)},3000)});}
 </script>
 </body>
 </html>
